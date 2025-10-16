@@ -1,7 +1,9 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Random;
 
 public class Equipo {
     private String nombre;
@@ -113,6 +115,18 @@ public class Equipo {
             media += jugador.calcularMediaJugador();
         }
         return media / this.titulares.size();
+    }
+
+    public Jugador getJugadorAzar (){
+        if (titulares.isEmpty()) return null;
+
+        ArrayList<Jugador> listaT = new ArrayList<>(this.titulares);
+
+        Random rand = new Random();
+
+        int indice = rand.nextInt(listaT.size());
+
+        return listaT.get(indice);
     }
 
     //Equals & HashCode
