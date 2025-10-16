@@ -86,6 +86,10 @@ public class Partido {
         System.out.println("Simulado rapido " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
     }
 
+    public boolean involucraEquipoUsuario (Equipo equipo){
+        return local.equals(equipo) || visitante.equals(equipo);
+    }
+
     /**
      * Metodo para determinar el equipo ganador del partido. va a servir para copa y liga..
      * @return El objeto Equipo ganador, o null si fue empate.
