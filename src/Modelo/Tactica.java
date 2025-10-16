@@ -1,10 +1,11 @@
 package Modelo;
+import enums.*;
 
 public class Tactica {
     Eformacion eformacion;
-    Estilojuego estiloJuego;
+    EstiloJuego estiloJuego;
 
-    public Tactica(Eformacion eformacion, Estilojuego estiloJuego) {
+    public Tactica(Eformacion eformacion, EstiloJuego estiloJuego) {
         this.eformacion = eformacion;
         this.estiloJuego = estiloJuego;
     }
@@ -17,11 +18,11 @@ public class Tactica {
         this.eformacion = eformacion;
     }
 
-    public Estilojuego getEstiloJuego() {
+    public EstiloJuego getEstiloJuego() {
         return estiloJuego;
     }
 
-    public void setEstiloJuego(Estilojuego estiloJuego) {
+    public void setEstiloJuego(EstiloJuego estiloJuego) {
         this.estiloJuego = estiloJuego;
     }
 
