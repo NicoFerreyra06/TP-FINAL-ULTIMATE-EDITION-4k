@@ -42,25 +42,39 @@ public class Partido {
         this.golesVisitante = golesVisitante;
     }
 
+
+    // ===================Metodos=======================
     public void simularInteractivo () throws InterruptedException{
         System.out.println("Empieza el partido");
+        Jugador goleador;
         Thread.sleep(1000);
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
         for (int i = 1; i <= 90; i++){
-            System.out.println("Minuto" + i);
+            System.out.println("Minuto " + i);
+            //probabilidad meter gol local
             if (random.nextDouble()< probabilidadLocal){
-                System.out.println("Goool de " + getLocal().getNombre() + " " + local.getJugadorAzar().getNombre());
+                goleador = local.elegirAutorGol();
+                System.out.println("Goool de " + getLocal().getNombre() + " " + goleador.getNombre());
 
                 this.golesLocal++;
+                goleador.anotarGoles();
             }
 
+            //probabilidad meter gol visitante
             if (random.nextDouble() < probabilidadVisitante){
-                System.out.println("Goool de " + getVisitante().getNombre() + " "+ visitante.getJugadorAzar().getNombre());
+                 goleador = visitante.elegirAutorGol();
+                System.out.println("Goool de " + getVisitante().getNombre() + " " + goleador.getNombre());
                 this.golesVisitante++;
+
+                goleador.anotarGoles();
             }
+
+            //Falta probabilidades faltas y sucesos randoms del partido
+            //con souts para que el usuario vea
+
             Thread.sleep(500);
         }
 
@@ -69,18 +83,29 @@ public class Partido {
     }
 
     public void simularRapido (){
+        Jugador goleador;
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        for (int i = 1; i <= 90; i++){
+        for (int i = 1; i <= 90; i++){//Calculo MINUTO A MINUTO
+            //probabilidad meter gol local
             if (random.nextDouble() < probabilidadLocal){
+                goleador = local.elegirAutorGol();
+                goleador.anotarGoles();
                 this.golesLocal++;
             }
 
+            //probabilidad meter gol visitante
             if (random.nextDouble() < probabilidadVisitante){
+                goleador = visitante.elegirAutorGol();
+                goleador.anotarGoles();
                 this.golesVisitante++;
             }
+
+            //Falta probabilidades faltas y sucesos randoms del partido
+
+
         }
 
         System.out.println("Simulado rapido " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);

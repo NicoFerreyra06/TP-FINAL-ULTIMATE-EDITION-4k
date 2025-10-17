@@ -13,6 +13,7 @@ public class Equipo {
     private HashSet<Jugador> titulares;
     private HashSet<Jugador> suplentes;
     private int puntos;
+    private final Random random;
 
     public Equipo(String nombre, Estadio estadio, DirectorTecnico tecnico, double presupuesto) {
         this.nombre = nombre;
@@ -22,6 +23,7 @@ public class Equipo {
         this.titulares = new HashSet<>();
         this.suplentes = new HashSet<>();
         this.puntos = 0;
+        this.random = new Random();
     }
 
     // ==================== Getters y Setters ====================
@@ -80,7 +82,7 @@ public class Equipo {
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
-
+    // ===================Metodos=======================
     /**
      * Agrega jugador al equipo asegurandose que no haya duplicados
      * Si no existe, intenta agregarlo a la lista de titulares. Si esta ya tiene 11 jugadores,
@@ -117,16 +119,53 @@ public class Equipo {
         return media / this.titulares.size();
     }
 
-    public Jugador getJugadorAzar (){
+    /**
+     * Selecciona un jugador titular para ser el autor de un gol mediante un sorteo probabilístico.
+     * El metodo funciona en un bucle que garantiza la selección de un goleador. En cada iteración:
+     * Se elige un jugador titular completamente al azar.
+     * Se le asigna una probabilidad de anotar basada estrictamente en su posición en el campo.*/
+
+    public Jugador elegirAutorGol() {
+        // Si no hay jugadores, no se puede elegir a nadie.
+        if (titulares.isEmpty()) {
+            return null;
+        }
+
+        // Bucle infinito que se rompe solo cuando se elija un goleador.
+        while (true) {
+            //Selecciona un jugador completamente al azar.
+            Jugador candidato = getJugadorAzar();
+            double probabilidadDeAnotar = 0;
+
+            //Dependiendo de la posicion del "candidato" hay mas probabilidad de meter gol
+            switch (candidato.getPosicion()) {
+                case DELANTERO -> probabilidadDeAnotar = 0.46;
+                case MEDIOCAMPISTA -> probabilidadDeAnotar = 0.3;
+                case DEFENSOR ->  probabilidadDeAnotar = 0.2;
+                case ARQUERO -> probabilidadDeAnotar = 0.02;
+            }
+
+            // Si el número al azar es menor que su probabilidad de
+            if (random.nextDouble() < probabilidadDeAnotar) {
+                return candidato; // Se encontró al goleador, salimos del bucle.
+            }
+        }
+    }
+
+    /**
+     * Convierte nuestro Hashset de titulares
+     * en un arraylist para seleccionar
+     * un jugador al azar.
+     * @return {@link Jugador}
+     */
+    private Jugador getJugadorAzar (){
         if (titulares.isEmpty()) return null;
 
-        ArrayList<Jugador> listaT = new ArrayList<>(this.titulares);
+        // 1. Convertimos el HashSet a un ArrayList.
+        ArrayList<Jugador> listaTitulares = new ArrayList<>(titulares);
 
-        Random rand = new Random();
-
-        int indice = rand.nextInt(listaT.size());
-
-        return listaT.get(indice);
+        // 2. Ahora sí podemos usar .get() para seleccionar un jugador al azar.
+        return listaTitulares.get(random.nextInt(listaTitulares.size()));
     }
 
     //Equals & HashCode

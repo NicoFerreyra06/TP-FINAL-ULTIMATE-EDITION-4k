@@ -1,16 +1,19 @@
 package Modelo;
-
+import Interfaces.*;
 import enums.Posicion;
 
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
-public class Jugador extends Persona {
+public class Jugador extends Persona implements iEntrenable {
     private final String id;
     private Posicion posicion;
     private int habilidadAtaque;
     private int habilidadDefensa;
     private int estadoFisico;
+    private int golesConvertidos;
+    private final Random rand;
 
     public Jugador(String nombre, int edad, String nacionalidad, Posicion posicion, int habilidadAtaque, int habilidadDefensa, int estadoFisico) {
         super(nombre, edad, nacionalidad);
@@ -19,9 +22,19 @@ public class Jugador extends Persona {
         this.habilidadAtaque = habilidadAtaque;
         this.habilidadDefensa = habilidadDefensa;
         this.estadoFisico = estadoFisico;
+        this.golesConvertidos = 0;
+        this.rand = new Random();
     }
 
     // ==================== Getters y Setters ====================
+    public int getGolesConvertidos() {
+        return golesConvertidos;
+    }
+
+    public void setGolesConvertidos(int golesConvertidos) {
+        this.golesConvertidos = golesConvertidos;
+    }
+
     public Posicion getPosicion() {
         return posicion;
     }
@@ -59,19 +72,64 @@ public class Jugador extends Persona {
     }
 
     public void entrenar(){
+        if (Math.random() < 0.3){
+            return;
+        }
 
-        if (Math.random() < 0.25){
+        //Entrenamiento DELANTERO
+        if(Posicion.DELANTERO == this.posicion){
             if (habilidadAtaque < 100){
                 habilidadAtaque++;
                 System.out.println(getNombre() + " ha mejorado su ATAQUE a " + habilidadAtaque + "!");
             } else {
                 if (habilidadDefensa < 100){
                     habilidadDefensa++;
-                    System.out.println(getNombre() + " ha mejorado su DEFENSA a " + habilidadAtaque + "!");
+                    System.out.println(getNombre() + " ha mejorado su DEFENSA a " + habilidadDefensa + "!");
                 }
             }
         }
+
+        //Entrenamiento mediocampista
+        if (Posicion.MEDIOCAMPISTA == this.posicion){
+            if (rand.nextBoolean()){
+                if (habilidadAtaque < 100) {
+                    habilidadAtaque++;
+                    System.out.println(getNombre() + " ha mejorado su ATAQUE a " + habilidadAtaque + "!");
+                }
+            } else {
+                if (habilidadDefensa < 100) {
+                    habilidadDefensa++;
+                    System.out.println(getNombre() + " ha mejorado su DEFENSA a " + habilidadDefensa + "!");
+                }
+            }
+        }
+
+        //Entrenamiento defensor y arquero
+        if (Posicion.DEFENSOR == this.posicion || Posicion.ARQUERO == this.posicion){
+            if (habilidadDefensa < 100){
+                habilidadDefensa++;
+                System.out.println(getNombre() + " ha mejorado su DEFENSA a " + habilidadDefensa + "!");
+            } else {
+                if (habilidadAtaque < 100){
+                    habilidadAtaque++;
+                    System.out.println(getNombre() + " ha mejorado su ATAQUE a " + habilidadAtaque + "!");
+                }
+            }
+        }
+
+        if(Math.random() < 0.5){
+            if (estadoFisico < 100){
+                estadoFisico++;
+                System.out.println(getNombre() + " ha mejorado su ESTADO FISICO " + estadoFisico + "!");
+            }
+        }
     }
+
+    public void anotarGoles (){
+        this.golesConvertidos++;
+    }
+
+
     //Equals & Hashcode
     @Override
     public boolean equals(Object o) {
@@ -88,12 +146,13 @@ public class Jugador extends Persona {
 
     @Override
     public String toString() {
-        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d",
+        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d | Goles: %d\", ",
                 this.getNombre(),
                 this.posicion,
                 this.habilidadAtaque,
                 this.habilidadDefensa,
-                this.estadoFisico
+                this.estadoFisico,
+                this.golesConvertidos
         );
     }
 }

@@ -4,7 +4,6 @@ import enums.EstiloJuego;
 import enums.Posicion;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
     System.out.println("--- Creando equipos de prueba para el Superclásico ---");
 
@@ -24,8 +23,8 @@ void main() {
     river.agregarJugador(new Jugador("Esequiel Barco", 26, "Argentino", Posicion.MEDIOCAMPISTA, 85, 50, 91));
     river.agregarJugador(new Jugador("Claudio Echeverri", 19, "Argentino", Posicion.DELANTERO, 90, 40, 95));
     river.agregarJugador(new Jugador("Facundo Colidio", 25, "Argentino", Posicion.DELANTERO, 86, 45, 89));
-    river.agregarJugador(new Jugador("Miguel Borja", 32, "Colombiano", Posicion.DELANTERO, 92, 30, 86));
     river.agregarJugador(new Jugador("Pablo Solari", 24, "Argentino", Posicion.DELANTERO, 84, 50, 93));
+    river.agregarJugador(new Jugador("Miguel Borja", 32, "Colombiano", Posicion.DELANTERO, 92, 30, 86));
 
     //Boca
     System.out.println("\nCreando a Boca Juniors...");
@@ -58,7 +57,7 @@ void main() {
     //simulacion rapida
     partido.simularRapido();
 
-    //simulacion "Interactiva"
+    //*simulacion "Interactiva"
     try {
         partido.simularInteractivo();
     } catch (InterruptedException e) {
