@@ -1,5 +1,6 @@
 package Modelo;
 
+import enums.Posicion;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
@@ -142,12 +143,25 @@ public class Equipo {
                 case DELANTERO -> probabilidadDeAnotar = 0.46;
                 case MEDIOCAMPISTA -> probabilidadDeAnotar = 0.3;
                 case DEFENSOR ->  probabilidadDeAnotar = 0.2;
-                case ARQUERO -> probabilidadDeAnotar = 0.02;
+                case ARQUERO -> probabilidadDeAnotar = 0.001;
             }
 
             // Si el número al azar es menor que su probabilidad de
             if (random.nextDouble() < probabilidadDeAnotar) {
                 return candidato; // Se encontró al goleador, salimos del bucle.
+            }
+        }
+    }
+
+    public Jugador elegirAutorAsistencia(Jugador goleador) {
+        if (titulares.isEmpty()) {
+            return null;
+        }
+        while (true) {
+            Jugador asistidor = getJugadorAzar();
+
+            if (!(asistidor.equals(goleador)) && asistidor.getPosicion() != Posicion.ARQUERO) {
+                return asistidor;
             }
         }
     }
