@@ -1,5 +1,7 @@
 package Modelo;
 
+import enums.Posicion;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
@@ -185,6 +187,22 @@ public class Equipo {
      * un jugador al azar.
      * @return {@link Jugador}
      */
+
+    public Jugador elegirAutorAsistencia(Jugador goleador) {
+        //Funcion para probabilidad de cometer falta
+
+        if (titulares.isEmpty()) {
+            return null;
+        }
+        while (true) {
+            Jugador asistidor = getJugadorAzar();
+
+            if (!(asistidor.equals(goleador)) && asistidor.getPosicion() != Posicion.ARQUERO) {
+                return asistidor;
+            }
+        }
+    }
+
     private Jugador getJugadorAzar (){
         if (titulares.isEmpty()) return null;
 

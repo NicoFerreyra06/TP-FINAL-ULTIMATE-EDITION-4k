@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Partido {
@@ -105,34 +106,15 @@ public class Partido {
 
     // ===================Metodos=======================
     public void simularInteractivo () throws InterruptedException{
-        System.out.println("Empieza el partido");
-        Jugador goleador;
-        Jugador falta;
-        Thread.sleep(1000);
+        System.out.println("Empieza el partido entre " + local.getNombre() + " y " + visitante.getNombre());
+        double probLocal = local.calcularMediaGeneral() * 0.0002;
+        double probVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
-        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
+        Jugador falta;
 
         for (int i = 1; i <= 90; i++){
             System.out.println("Minuto " + i);
-            //probabilidad meter gol local
-            if (random.nextDouble()< probabilidadLocal){
-                goleador = local.elegirAutorGol();
-                System.out.println("Goool de " + getLocal().getNombre() + " " + goleador.getNombre());
-
-                this.golesLocal++;
-                goleador.anotarGoles();
-            }
-
-            //probabilidad meter gol visitante
-            if (random.nextDouble() < probabilidadVisitante){
-                goleador = visitante.elegirAutorGol();
-                System.out.println("Goool de " + getVisitante().getNombre() + " " + goleador.getNombre());
-                this.golesVisitante++;
-
-                goleador.anotarGoles();
-            }
-
+            simularMinuto(probLocal, probVisitante, true);
             //Falta probabilidades faltas y sucesos randoms del partido
             //con souts para que el usuario vea
 
@@ -172,7 +154,9 @@ public class Partido {
                     if(tipoDeFalta == 1){
 
                         System.out.println("Falta del equipo Local..." + falta.getNombre() +
-                                " A sido amodestado con Amarilla");
+                                " A sido amonestado con Amarilla");
+
+                        this.amarillaLocal++;
 
                         this.amarillaLocal++;
 
@@ -193,6 +177,7 @@ public class Partido {
             Thread.sleep(500);
         }
 
+        mostrarResultadoFinal();
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
         System.out.println("Faltas: " +  faltasLocal + " - " + faltasVisitante );
         System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
@@ -212,33 +197,17 @@ public class Partido {
 
     }
 
-
-
     // ===================Simulacion Rapida=======================
-
     public void simularRapido (){
-        Jugador goleador;
+
+        double probLocal = local.calcularMediaGeneral() * 0.0002;
+        double probVisitante = visitante.calcularMediaGeneral() * 0.0002;
+
         Jugador falta;
 
-        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
-        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
+        for (int i = 1; i <= 90; i++){
 
-        for (int i = 1; i <= 90; i++){//Calculo MINUTO A MINUTO
-            //probabilidad meter gol local
-            if (random.nextDouble() < probabilidadLocal){
-                goleador = local.elegirAutorGol();
-                goleador.anotarGoles();
-                this.golesLocal++;
-            }
-
-            //probabilidad meter gol visitante
-            if (random.nextDouble() < probabilidadVisitante){
-                goleador = visitante.elegirAutorGol();
-                goleador.anotarGoles();
-                this.golesVisitante++;
-            }
-
-            //Falta probabilidades faltas y sucesos randoms del partido
+            simularMinuto(probLocal, probVisitante, false);
 
             double probabilidadFalta = 0.133;
             double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral())? 0.45 : 0.50;
@@ -287,6 +256,44 @@ public class Partido {
         System.out.println("Simulado rapido " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
     }
 
+    // ==================== Lógica de un minuto ====================
+    private void simularMinuto(double probLocal, double probVisitante, boolean mostrar) {
+        if (random.nextDouble() < probLocal)
+            procesarGolesAsistencias(local, true, mostrar);
+
+        if (random.nextDouble() < probVisitante)
+            procesarGolesAsistencias(visitante, false, mostrar);
+    }
+
+    // ==================== Gol y asistencia ====================
+    public void procesarGolesAsistencias(Equipo equipo, boolean esLocal, boolean mostrar){
+        Jugador goleador = equipo.elegirAutorGol();
+        Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
+
+        if (esLocal){
+            golesLocal++;
+        } else {
+            golesVisitante++;
+        }
+
+        goleador.anotarGoles();
+        asistidor.anotarAsistencia();
+
+        if (mostrar) {
+            System.out.println("¡Gol de " + equipo.getNombre() + "! " + goleador.getNombre() +
+                    " (Asistencia de " + asistidor.getNombre() + ")");
+        }
+    }
+
+    // ==================== Resultado final ====================
+    private void mostrarResultadoFinal() {
+        System.out.println("\nResultado final:");
+        System.out.println(local.getNombre() + " " + golesLocal + " - " +
+                visitante.getNombre() + " " + golesVisitante);
+        System.out.println("Termina el partido.\n");
+    }
+
+    // ================AYUDAS================
     public boolean involucraEquipoUsuario (Equipo equipo){
         return local.equals(equipo) || visitante.equals(equipo);
     }
