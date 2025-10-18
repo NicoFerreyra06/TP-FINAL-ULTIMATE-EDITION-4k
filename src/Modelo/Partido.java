@@ -7,6 +7,12 @@ public class Partido {
     private final Equipo visitante;
     private int golesLocal;
     private int golesVisitante;
+    private int faltasTotalVisitante;
+    private int faltasTotaLocal;
+    private int rojaVisitante;
+    private int amarillaVisitante;
+    private int rojaLocal;
+    private int amarillaLocal;
     private final Random random;
 
     public Partido(Equipo local, Equipo visitante) {
@@ -15,6 +21,12 @@ public class Partido {
         this.golesLocal = 0;
         this.golesVisitante = 0;
         this.random = new Random();
+        this.rojaVisitante = 0;
+        this.amarillaVisitante = 0;
+        this.rojaLocal = 0;
+        this.amarillaLocal = 0;
+        this.faltasTotaLocal = 0;
+        this.faltasTotalVisitante = 0;
     }
 
     // ==================== Getters y Setters ====================
@@ -40,6 +52,54 @@ public class Partido {
 
     public void setGolesVisitante(int golesVisitante) {
         this.golesVisitante = golesVisitante;
+    }
+
+    public int getRojaVisitante() {
+        return rojaVisitante;
+    }
+
+    public void setRojaVisitante(int rojaVisitante) {
+        this.rojaVisitante = rojaVisitante;
+    }
+
+    public int getAmarillaVisitante() {
+        return amarillaVisitante;
+    }
+
+    public void setAmarillaVisitante(int amarillaVisitante) {
+        this.amarillaVisitante = amarillaVisitante;
+    }
+
+    public int getRojaLocal() {
+        return rojaLocal;
+    }
+
+    public void setRojaLocal(int rojaLocal) {
+        this.rojaLocal = rojaLocal;
+    }
+
+    public int getAmarillaLocal() {
+        return amarillaLocal;
+    }
+
+    public void setAmarillaLocal(int amarillaLocal) {
+        this.amarillaLocal = amarillaLocal;
+    }
+
+    public int getFaltasTotalVisitante() {
+        return faltasTotalVisitante;
+    }
+
+    public void setFaltasTotalVisitante(int faltasTotalVisitante) {
+        this.faltasTotalVisitante = faltasTotalVisitante;
+    }
+
+    public int getFaltasTotaLocal() {
+        return faltasTotaLocal;
+    }
+
+    public void setFaltasTotaLocal(int faltasTotaLocal) {
+        this.faltasTotaLocal = faltasTotaLocal;
     }
 
 
@@ -83,32 +143,45 @@ public class Partido {
             if(random.nextDouble() < probabilidadFalta){
                 if(random.nextDouble() > ajusteFalta){
                     falta = visitante.elegirAutorFalta();
+                    this.faltasTotalVisitante++;
 
                     if(tipoDeFalta == 1){
 
                         System.out.println("Falta del equipo visitante..." + falta.getNombre() +
                                 " A sido amodestado con Amarilla");
 
+                        this.amarillaVisitante++;
+
                     } else if (tipoDeFalta == 2) {
                         System.out.println("Falta peligrosa del equipo visitante..." + falta.getNombre() +
                                 " Expulsado!!!");
+
+                        this.rojaVisitante++;
+
                     }else{
 
                         System.out.println("Falta del equipo visitante...");
+
                     }
 
                 }
                 else{
                     falta = local.elegirAutorFalta();
+                    this.faltasTotaLocal++;
 
                     if(tipoDeFalta == 1){
 
                         System.out.println("Falta del equipo Local..." + falta.getNombre() +
                                 " A sido amodestado con Amarilla");
 
+                        this.amarillaLocal++;
+
                     } else if (tipoDeFalta == 2) {
                         System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
                                 " Expulsado!!!");
+
+                        this.rojaLocal++;
+
                     }else{
 
                         System.out.println("Falta del equipo local...");
@@ -121,6 +194,9 @@ public class Partido {
         }
 
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+        System.out.println("Faltas: " +  faltasTotaLocal + " - " + faltasTotalVisitante );
+        System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
+        System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
         System.out.println("Termina el partido");
     }
 
