@@ -1,6 +1,6 @@
 package Modelo;
 
-import java.util.*;
+import java.util.Random;
 
 public class Partido {
     private final Equipo local;
@@ -44,101 +44,174 @@ public class Partido {
 
 
     // ===================Metodos=======================
-    public void simularInteractivo() throws InterruptedException {
+    public void simularInteractivo () throws InterruptedException{
         System.out.println("Empieza el partido");
         Jugador goleador;
-        Jugador asistidor;
+        Jugador falta;
         Thread.sleep(1000);
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        ArrayList<Gol> goleadores = new ArrayList<>();
-
-        for (int i = 1; i <= 90; i++) {
+        for (int i = 1; i <= 90; i++){
             System.out.println("Minuto " + i);
             //probabilidad meter gol local
-            if (random.nextDouble() < probabilidadLocal) {
-                //autor del gol
+            if (random.nextDouble()< probabilidadLocal){
                 goleador = local.elegirAutorGol();
-                //Asistente
-                asistidor = local.elegirAutorAsistencia(goleador);
                 System.out.println("Goool de " + getLocal().getNombre() + " " + goleador.getNombre());
 
-                goleador.anotarGoles();
-                asistidor.anotarAsistencia();
-                goleadores.add(new Gol(i, goleador, asistidor));
-
                 this.golesLocal++;
+                goleador.anotarGoles();
             }
 
             //probabilidad meter gol visitante
-            if (random.nextDouble() < probabilidadVisitante) {
-                //autor del gol
+            if (random.nextDouble() < probabilidadVisitante){
                 goleador = visitante.elegirAutorGol();
-                //asistente
-                asistidor = visitante.elegirAutorAsistencia(goleador);
                 System.out.println("Goool de " + getVisitante().getNombre() + " " + goleador.getNombre());
+                this.golesVisitante++;
 
                 goleador.anotarGoles();
-                asistidor.anotarAsistencia();
-                goleadores.add(new Gol(i, goleador, asistidor));
-
-                this.golesVisitante++;
             }
 
             //Falta probabilidades faltas y sucesos randoms del partido
             //con souts para que el usuario vea
 
-            Thread.sleep(400);
+            double probabilidadFalta = 0.133;
+            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral())? 0.45 : 0.50;
+            int tipoDeFalta = faltaPeligrosa();
+
+            if(random.nextDouble() < probabilidadFalta){
+                if(random.nextDouble() > ajusteFalta){
+                    falta = visitante.elegirAutorFalta();
+
+                    if(tipoDeFalta == 1){
+
+                        System.out.println("Falta del equipo visitante..." + falta.getNombre() +
+                                " A sido amodestado con Amarilla");
+
+                    } else if (tipoDeFalta == 2) {
+                        System.out.println("Falta peligrosa del equipo visitante..." + falta.getNombre() +
+                                " Expulsado!!!");
+                    }else{
+
+                        System.out.println("Falta del equipo visitante...");
+                    }
+
+                }
+                else{
+                    falta = local.elegirAutorFalta();
+
+                    if(tipoDeFalta == 1){
+
+                        System.out.println("Falta del equipo Local..." + falta.getNombre() +
+                                " A sido amodestado con Amarilla");
+
+                    } else if (tipoDeFalta == 2) {
+                        System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
+                                " Expulsado!!!");
+                    }else{
+
+                        System.out.println("Falta del equipo local...");
+                    }
+
+                    }
+
+            }
+            Thread.sleep(500);
         }
 
-        System.out.println("Termina el partido");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+        System.out.println("Termina el partido");
+    }
 
-        for (Gol gol : goleadores) {
-            System.out.println("Minuto " + gol.getMinuto() +
-                    ": Gol de " + gol.getAutor().getNombre() +
-                    " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
-        }
+    public int faltaPeligrosa(){
+
+        double tarjeta = random.nextDouble();;
+        double amarilla = 0.20;
+        double roja = 0.03;
+
+        if(tarjeta <= roja)return 2;
+        else if (tarjeta > amarilla) return 0;
+        else return 1;
 
     }
 
-    public void simularRapido() {
+
+
+    // ===================Simulacion Rapida=======================
+
+    public void simularRapido (){
         Jugador goleador;
-        Jugador asistidor;
+        Jugador falta;
+
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        for (int i = 1; i <= 90; i++) {//Calculo MINUTO A MINUTO
+        for (int i = 1; i <= 90; i++){//Calculo MINUTO A MINUTO
             //probabilidad meter gol local
-            if (random.nextDouble() < probabilidadLocal) {
+            if (random.nextDouble() < probabilidadLocal){
                 goleador = local.elegirAutorGol();
-                asistidor = local.elegirAutorAsistencia(goleador);
                 goleador.anotarGoles();
-                asistidor.anotarAsistencia();
                 this.golesLocal++;
             }
 
             //probabilidad meter gol visitante
-            if (random.nextDouble() < probabilidadVisitante) {
+            if (random.nextDouble() < probabilidadVisitante){
                 goleador = visitante.elegirAutorGol();
-                asistidor = visitante.elegirAutorAsistencia(goleador);
-
                 goleador.anotarGoles();
-                asistidor.anotarAsistencia();
                 this.golesVisitante++;
             }
 
             //Falta probabilidades faltas y sucesos randoms del partido
 
+            double probabilidadFalta = 0.133;
+            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral())? 0.45 : 0.50;
+            int tipoDeFalta = faltaPeligrosa();
+
+            if(random.nextDouble() < probabilidadFalta){
+                if(random.nextDouble() > ajusteFalta){
+                    falta = visitante.elegirAutorFalta();
+
+                    if(tipoDeFalta == 1){
+
+                        System.out.println("Falta del equipo visitante..." + falta.getNombre() +
+                                " A sido amodestado con Amarilla");
+
+                    } else if (tipoDeFalta == 2) {
+                        System.out.println("Falta peligrosa del equipo visitante..." + falta.getNombre() +
+                                " Expulsado!!!");
+                    }else{
+
+                        System.out.println("Falta del equipo visitante...");
+                    }
+
+                }
+                else{
+                    falta = local.elegirAutorFalta();
+
+                    if(tipoDeFalta == 1){
+
+                        System.out.println("Falta del equipo Local..." + falta.getNombre() +
+                                " A sido amodestado con Amarilla");
+
+                    } else if (tipoDeFalta == 2) {
+                        System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
+                                " Expulsado!!!");
+                    }else{
+
+                        System.out.println("Falta del equipo local...");
+                    }
+
+                }
+
+            }
 
         }
 
         System.out.println("Simulado rapido " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
     }
 
-    public boolean involucraEquipoUsuario(Equipo equipo) {
+    public boolean involucraEquipoUsuario (Equipo equipo){
         return local.equals(equipo) || visitante.equals(equipo);
     }
 
@@ -147,12 +220,12 @@ public class Partido {
      * @return El objeto Equipo ganador, o null si fue empate.
      */
 
-    public Equipo getGanador() {
-        if (this.golesLocal == this.golesVisitante) {
+    public Equipo getGanador(){
+        if (this.golesLocal == this.golesVisitante){
             return null;
         }
 
-        if (this.golesLocal > this.golesVisitante) {
+        if (this.golesLocal > this.golesVisitante){
             return local;
         } else {
             return visitante;
