@@ -178,11 +178,7 @@ public class Partido {
         }
 
         mostrarResultadoFinal();
-        System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
-        System.out.println("Faltas: " +  faltasLocal + " - " + faltasVisitante );
-        System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
-        System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
-        System.out.println("Termina el partido");
+
     }
 
     public int faltaPeligrosa(){
@@ -287,10 +283,12 @@ public class Partido {
 
     // ==================== Resultado final ====================
     private void mostrarResultadoFinal() {
-        System.out.println("\nResultado final:");
-        System.out.println(local.getNombre() + " " + golesLocal + " - " +
-                visitante.getNombre() + " " + golesVisitante);
-        System.out.println("Termina el partido.\n");
+        System.out.println(" =====Termina el partido===== \n");
+        System.out.println("\nResultado final");
+        System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+        System.out.println("Faltas: " +  faltasLocal + " - " + faltasVisitante );
+        System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
+        System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
     }
 
     // ================AYUDAS================
