@@ -1,6 +1,5 @@
 package Modelo;
 
-import enums.Posicion;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
@@ -143,7 +142,7 @@ public class Equipo {
                 case DELANTERO -> probabilidadDeAnotar = 0.46;
                 case MEDIOCAMPISTA -> probabilidadDeAnotar = 0.3;
                 case DEFENSOR ->  probabilidadDeAnotar = 0.2;
-                case ARQUERO -> probabilidadDeAnotar = 0.001;
+                case ARQUERO -> probabilidadDeAnotar = 0.02;
             }
 
             // Si el número al azar es menor que su probabilidad de
@@ -153,17 +152,31 @@ public class Equipo {
         }
     }
 
-    public Jugador elegirAutorAsistencia(Jugador goleador) {
+    //Funcion para probabilidad de cometer falta
+    public Jugador elegirAutorFalta(){
+
         if (titulares.isEmpty()) {
             return null;
         }
-        while (true) {
-            Jugador asistidor = getJugadorAzar();
 
-            if (!(asistidor.equals(goleador)) && asistidor.getPosicion() != Posicion.ARQUERO) {
-                return asistidor;
+        while (true){
+
+            Jugador candidato = getJugadorAzar();
+            double probabilidadDeFalta = 0;
+            switch (candidato.getPosicion()) {
+                case DEFENSOR -> probabilidadDeFalta = 0.45;
+                case MEDIOCAMPISTA -> probabilidadDeFalta = 0.30;
+                case DELANTERO ->  probabilidadDeFalta = 0.20;
+                case ARQUERO -> probabilidadDeFalta = 0.05;
             }
+
+            if (random.nextDouble() < probabilidadDeFalta) {
+                return candidato; // Se encontro al que cometio la falta.
+            }
+
         }
+
+
     }
 
     /**
