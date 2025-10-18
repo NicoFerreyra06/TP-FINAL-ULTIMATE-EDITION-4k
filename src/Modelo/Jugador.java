@@ -13,6 +13,7 @@ public class Jugador extends Persona implements iEntrenable {
     private int habilidadDefensa;
     private int estadoFisico;
     private int golesConvertidos;
+    private int asistencias;
     private final Random rand;
 
     public Jugador(String nombre, int edad, String nacionalidad, Posicion posicion, int habilidadAtaque, int habilidadDefensa, int estadoFisico) {
@@ -129,6 +130,9 @@ public class Jugador extends Persona implements iEntrenable {
         this.golesConvertidos++;
     }
 
+    public void anotarAsistencia(){
+        this.asistencias++;
+    }
 
     //Equals & Hashcode
     @Override

@@ -5,6 +5,19 @@ import enums.Posicion;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 void main() {
+
+    Partido partidito = creacionPartidoPrueba();
+
+    try {
+        partidito.simularInteractivo();
+    } catch (InterruptedException e) {
+        System.out.println(e.getMessage());
+    }
+
+}
+
+public Partido creacionPartidoPrueba (){
+
     System.out.println("--- Creando equipos de prueba para el Superclásico ---");
 
     //RIVER
@@ -52,17 +65,5 @@ void main() {
     IO.println(river);
     IO.println(boca);
 
-    Partido partido = new Partido(river, boca);
-
-    //simulacion rapida
-    partido.simularRapido();
-
-    //*simulacion "Interactiva"
-    try {
-        partido.simularInteractivo();
-    } catch (InterruptedException e) {
-        System.out.println("INTERRUPTED");
-    }
-
-
+    return new Partido(river, boca);
 }
