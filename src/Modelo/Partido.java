@@ -7,8 +7,8 @@ public class Partido {
     private final Equipo visitante;
     private int golesLocal;
     private int golesVisitante;
-    private int faltasTotalVisitante;
-    private int faltasTotaLocal;
+    private int faltasVisitante;
+    private int faltasLocal;
     private int rojaVisitante;
     private int amarillaVisitante;
     private int rojaLocal;
@@ -25,8 +25,8 @@ public class Partido {
         this.amarillaVisitante = 0;
         this.rojaLocal = 0;
         this.amarillaLocal = 0;
-        this.faltasTotaLocal = 0;
-        this.faltasTotalVisitante = 0;
+        this.faltasLocal = 0;
+        this.faltasVisitante = 0;
     }
 
     // ==================== Getters y Setters ====================
@@ -86,20 +86,20 @@ public class Partido {
         this.amarillaLocal = amarillaLocal;
     }
 
-    public int getFaltasTotalVisitante() {
-        return faltasTotalVisitante;
+    public int getFaltasVisitante() {
+        return faltasVisitante;
     }
 
-    public void setFaltasTotalVisitante(int faltasTotalVisitante) {
-        this.faltasTotalVisitante = faltasTotalVisitante;
+    public void setFaltasVisitante(int faltasTotalVisitante) {
+        this.faltasVisitante = faltasTotalVisitante;
     }
 
-    public int getFaltasTotaLocal() {
-        return faltasTotaLocal;
+    public int getFaltasLocal() {
+        return faltasLocal;
     }
 
-    public void setFaltasTotaLocal(int faltasTotaLocal) {
-        this.faltasTotaLocal = faltasTotaLocal;
+    public void setFaltasLocal(int faltasTotaLocal) {
+        this.faltasLocal = faltasTotaLocal;
     }
 
 
@@ -143,7 +143,7 @@ public class Partido {
             if(random.nextDouble() < probabilidadFalta){
                 if(random.nextDouble() > ajusteFalta){
                     falta = visitante.elegirAutorFalta();
-                    this.faltasTotalVisitante++;
+                    this.faltasVisitante++;
 
                     if(tipoDeFalta == 1){
 
@@ -167,7 +167,7 @@ public class Partido {
                 }
                 else{
                     falta = local.elegirAutorFalta();
-                    this.faltasTotaLocal++;
+                    this.faltasLocal++;
 
                     if(tipoDeFalta == 1){
 
@@ -194,7 +194,7 @@ public class Partido {
         }
 
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
-        System.out.println("Faltas: " +  faltasTotaLocal + " - " + faltasTotalVisitante );
+        System.out.println("Faltas: " +  faltasLocal + " - " + faltasVisitante );
         System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
         System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
         System.out.println("Termina el partido");
