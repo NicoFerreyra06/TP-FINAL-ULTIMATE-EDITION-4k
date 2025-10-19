@@ -56,6 +56,53 @@ public class Partido {
         this.golesVisitante = golesVisitante;
     }
 
+    public int getFaltasLocal() {
+        return faltasLocal;
+    }
+
+    public void setFaltasLocal(int faltasLocal) {
+        this.faltasLocal = faltasLocal;
+    }
+
+    public int getFaltasVisitante() {
+        return faltasVisitante;
+    }
+
+    public void setFaltasVisitante(int faltasVisitante) {
+        this.faltasVisitante = faltasVisitante;
+    }
+
+    public int getAmarillasLocal() {
+        return amarillasLocal;
+    }
+
+    public void setAmarillasLocal(int amarillasLocal) {
+        this.amarillasLocal = amarillasLocal;
+    }
+
+    public int getAmarillasVisitante() {
+        return amarillasVisitante;
+    }
+
+    public void setAmarillasVisitante(int amarillasVisitante) {
+        this.amarillasVisitante = amarillasVisitante;
+    }
+
+    public int getRojasLocal() {
+        return rojasLocal;
+    }
+
+    public void setRojasLocal(int rojasLocal) {
+        this.rojasLocal = rojasLocal;
+    }
+
+    public int getRojasVisitante() {
+        return rojasVisitante;
+    }
+
+    public void setRojasVisitante(int rojasVisitante) {
+        this.rojasVisitante = rojasVisitante;
+    }
 
     // ===================Metodos=======================
     public void simularInteractivo() throws InterruptedException {
