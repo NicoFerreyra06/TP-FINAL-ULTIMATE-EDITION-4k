@@ -158,8 +158,6 @@ public class Partido {
 
                         this.amarillaLocal++;
 
-                        this.amarillaLocal++;
-
                     } else if (tipoDeFalta == 2) {
                         System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
                                 " Expulsado!!!");
@@ -286,8 +284,8 @@ public class Partido {
         System.out.println(" =====Termina el partido===== \n");
         System.out.println("\nResultado final");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
-        System.out.println("Faltas: " +  faltasLocal + " - " + faltasVisitante );
-        System.out.println("Rojas: " +  rojaLocal + " - " + rojaVisitante);
+        System.out.println("Faltas: " + faltasLocal + " - " + faltasVisitante);
+        System.out.println("Rojas: " + rojaLocal + " - " + rojaVisitante);
         System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
     }
 
