@@ -166,6 +166,32 @@ public class Equipo {
         }
     }
 
+    public Jugador elegirAutorFalta() {
+        if (titulares.isEmpty()) {
+            return null;
+        }
+        // Bucle infinito que se rompe solo cuando se elija un goleador.
+        while (true) {
+            //Selecciona un jugador completamente al azar.
+            Jugador candidato = getJugadorAzar();
+            double probabilidadDeAnotar = 0;
+
+            //Dependiendo de la posicion del "candidato" hay mas probabilidad de meter gol
+            switch (candidato.getPosicion()) {
+                case DEFENSOR ->  probabilidadDeAnotar = 0.5;
+                case MEDIOCAMPISTA -> probabilidadDeAnotar = 0.3;
+                case DELANTERO ->  probabilidadDeAnotar = 0.2;
+                case ARQUERO -> probabilidadDeAnotar = 0.001;
+            }
+
+            // Si el número al azar es menor que su probabilidad de
+            if (random.nextDouble() < probabilidadDeAnotar) {
+                return candidato; // Se encontró al goleador, salimos del bucle.
+            }
+        }
+    }
+
+
     /**
      * Convierte nuestro Hashset de titulares
      * en un arraylist para seleccionar

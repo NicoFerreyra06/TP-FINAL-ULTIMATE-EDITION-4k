@@ -7,6 +7,12 @@ public class Partido {
     private final Equipo visitante;
     private int golesLocal;
     private int golesVisitante;
+    private int faltasLocal;
+    private int faltasVisitante;
+    private int amarillasLocal;
+    private int amarillasVisitante;
+    private int rojasLocal;
+    private int rojasVisitante;
     private final Random random;
     ArrayList<Gol> goleadores;
 
@@ -15,6 +21,12 @@ public class Partido {
         this.visitante = visitante;
         this.golesLocal = 0;
         this.golesVisitante = 0;
+        this.faltasLocal = 0;
+        this.faltasVisitante = 0;
+        this.amarillasLocal = 0;
+        this.amarillasVisitante = 0;
+        this.rojasLocal = 0;
+        this.rojasVisitante = 0;
         this.random = new Random();
         this.goleadores = new ArrayList<>();
     }
@@ -52,10 +64,13 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
+        double probabilidadFalta = 0.08;
+
+
         for (int i = 1; i <= 90; i++) {
             System.out.println("Minuto " + i);
 
-            simularMinuto(probabilidadLocal, probabilidadVisitante, true, i);
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
 
             Thread.sleep(400);
         }
@@ -68,18 +83,30 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
+        double probabilidadFalta = 0.30;
+
         for (int i = 1; i <= 90; i++) {//Calculo MINUTO A MINUTO
-            simularMinuto(probabilidadLocal, probabilidadVisitante, false, i);
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i);
         }
     }
 
-    public void simularMinuto (double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto) {
+    public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto) {
         if (random.nextDouble() < probabilidadLocal) {
             gestionarGolesAsistencias(this.local, true, mostrar, minuto);
         }
 
         if (random.nextDouble() < probabilidadVisitante) {
             gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
+        }
+
+        if (random.nextDouble() < probabilidadFalta) { // ¿Ocurre una falta?
+            // Si ocurre, AHORA decidimos quién la hizo
+            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral()) ? 0.45 : 0.55; // Ejemplo
+            if (random.nextDouble() > ajusteFalta) {
+                gestionarFaltas(this.visitante, false, mostrar, minuto); // Falta visitante
+            } else {
+                gestionarFaltas(this.local, true, mostrar, minuto); // Falta local
+            }
         }
     }
 
@@ -102,6 +129,57 @@ public class Partido {
         }
     }
 
+    public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+        Jugador autorFalta = equipo.elegirAutorFalta();
+
+        int tipoTarjeta = determinarTarjeta();
+
+        if (local){
+            this.faltasLocal++;
+            if (tipoTarjeta == 1){
+                this.amarillasLocal++;
+                if (mostrar){
+                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                }
+            } else if (tipoTarjeta == 2){
+                this.rojasLocal++;
+                if (mostrar){
+                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                }
+            } else {
+                System.out.println("Falta de " + autorFalta.getNombre());
+            }
+        } else {
+            this.faltasVisitante++;
+            if (tipoTarjeta == 1){
+                this.amarillasVisitante++;
+                if (mostrar){
+                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                }
+            } else if (tipoTarjeta == 2){
+                this.rojasVisitante++;
+                if (mostrar){
+                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                }
+            } else {
+                System.out.println("Falta de " + autorFalta.getNombre());
+            }
+        }
+    }
+
+    private int determinarTarjeta() {
+        double valorAleatorio = random.nextDouble(); // Un número entre 0.0 y 1.0
+        double probRoja = 0.03; // 3% de probabilidad de roja directa
+        double probAmarilla = 0.4; // 20% de probabilidad de amarilla (adicional al 3% de roja)
+
+        if (valorAleatorio < probRoja) {
+            return 2; // Roja
+        } else if (valorAleatorio < probRoja + probAmarilla) {
+            return 1; // Amarilla
+        } else {
+            return 0; // Sin tarjeta
+        }
+    }
     public boolean involucraEquipoUsuario(Equipo equipo) {
         return local.equals(equipo) || visitante.equals(equipo);
     }
