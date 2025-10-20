@@ -5,6 +5,7 @@ import enums.Posicion;
 import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
+import org.json.JSONObject;
 
 public class Jugador extends Persona implements iEntrenable {
     private final String id;
@@ -26,7 +27,40 @@ public class Jugador extends Persona implements iEntrenable {
         this.estadoFisico = estadoFisico;
         this.tarjetaLiga = 0;
         this.golesConvertidos = 0;
+        this.asistencias = 0;
         this.rand = new Random();
+    }
+
+    //==================== JSON ====================
+    public Jugador (JSONObject json) {
+        super(json.getString("nombre"), json.getInt("edad"), json.getString("nacionalidad"));
+        this.id = json.getString("id");
+        this.habilidadAtaque = json.getInt("habilidadAtaque");
+        this.habilidadDefensa = json.getInt("habilidadDefensa");
+        this.estadoFisico = json.getInt("estadoFisico");
+        this.tarjetaLiga = json.getInt("tarjetaLiga");
+        this.golesConvertidos = json.getInt("golesConvertidos");
+        this.asistencias = json.getInt("asistencias");
+
+        String posicionStr = json.getString("posicion");
+        this.posicion = Posicion.valueOf(posicionStr);
+        this.rand = new Random();
+    }
+
+    public JSONObject toJson (){
+        JSONObject jsonJugador = new JSONObject();
+        jsonJugador.put("id", this.id);
+        jsonJugador.put("posicion", this.posicion.name());
+        jsonJugador.put("nombre", this.getNombre());
+        jsonJugador.put("edad", this.getEdad());
+        jsonJugador.put("nacionalidad", this.getNacionalidad());
+        jsonJugador.put("habilidadAtaque", this.habilidadAtaque);
+        jsonJugador.put("habilidadDefensa", this.habilidadDefensa);
+        jsonJugador.put("estadoFisico", this.estadoFisico);
+        jsonJugador.put("tarjetaLiga", this.tarjetaLiga);
+        jsonJugador.put("golesConvertidos", this.golesConvertidos);
+        jsonJugador.put("asistencias", this.asistencias);
+        return jsonJugador;
     }
 
     // ==================== Getters y Setters ====================
