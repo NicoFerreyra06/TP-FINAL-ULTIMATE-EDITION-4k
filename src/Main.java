@@ -39,14 +39,13 @@ void main() {
         // Generamos el fixture
         ligaDePrueba.generarFixture();
 
-        // --- 3. PRUEBA DE SIMULACIÓN ---
         Scanner scanner = new Scanner(System.in);
-        // Definimos cuál es el equipo del jugador (para simulación interactiva)
-
-        IO.println("Presione enter para simular la jornada 1");
-        scanner.nextLine();
 
         while (!ligaDePrueba.isTerminada()){
+
+            IO.println("Presione enter para simular la jornada");
+            scanner.nextLine();
+
             ligaDePrueba.jugarProximaFecha(equipoA);
         }
 
