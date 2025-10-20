@@ -1,4 +1,5 @@
 package Modelo;
+import org.json.JSONObject;
 
 public class Estadio {
     private String nombre;
@@ -11,6 +12,20 @@ public class Estadio {
         this.valorEntrada = valorEntrada;
     }
 
+    //==================== Constructores JSON ====================
+    public Estadio (JSONObject json){
+        this.nombre = json.getString("nombre");
+        this.capacidad = json.getInt("capacidad");
+        this.valorEntrada = json.getDouble("valorEntrada");
+    }
+
+    public JSONObject  toJSON(){
+        JSONObject jsonEstadio = new JSONObject();
+        jsonEstadio.put("nombre", nombre);
+        jsonEstadio.put("capacidad", capacidad);
+        jsonEstadio.put("valorEntrada", valorEntrada);
+        return jsonEstadio;
+    }
     // ==================== Getters y Setters ====================
     public String getNombre() {
         return nombre;
