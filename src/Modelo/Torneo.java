@@ -1,14 +1,15 @@
 package Modelo;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public abstract class Torneo {
     protected String nombre;
-    protected HashMap<String, Equipo> equipos;
+    protected LinkedHashMap<String, Equipo> equiposTorneo;
 
     public Torneo(String nombre) {
         this.nombre = nombre;
-        this.equipos = new HashMap<>();
+        this.equiposTorneo = new LinkedHashMap<>();
     }
 
     // ==================== Getters y Setters ====================
@@ -21,10 +22,22 @@ public abstract class Torneo {
     }
 
     public HashMap<String, Equipo> getEquipos() {
-        return equipos;
+        return equiposTorneo;
     }
 
     // ==================== Metodos ====================
-    public abstract void jugarProximaFecha();
+    public abstract void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException;
+
+    public boolean anotarEquipo (Equipo equipo) {
+        if (equipo == null) return false;
+
+        if (equiposTorneo.containsKey(equipo.getNombre())) {
+            System.out.println("Equipo ya inscripto");
+            return false;
+        }
+        equiposTorneo.put(equipo.getNombre(), equipo);
+        return true;
+    }
+
 
 }

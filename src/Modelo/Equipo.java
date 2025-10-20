@@ -15,6 +15,7 @@ public class Equipo {
     private HashSet<Jugador> suplentes;
     private int puntos;
     private final Random random;
+    private boolean jugoJornada;
 
     public Equipo(String nombre, Estadio estadio, DirectorTecnico tecnico, double presupuesto) {
         this.nombre = nombre;
@@ -83,6 +84,15 @@ public class Equipo {
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
+
+    public boolean isJugoJornada() {
+        return jugoJornada;
+    }
+
+    public void setJugoJornada(boolean jugoJornada) {
+        this.jugoJornada = jugoJornada;
+    }
+
     // ===================Metodos=======================
     /**
      * Agrega jugador al equipo asegurandose que no haya duplicados
@@ -213,7 +223,7 @@ public class Equipo {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Equipo equipo = (Equipo) o;
-        return Objects.equals(nombre, equipo.nombre);
+        return nombre == equipo.nombre;
     }
 
     @Override
@@ -229,6 +239,6 @@ public class Equipo {
                 "  - Presupuesto: $" + presupuesto + "\n" +
                 "  - Puntos: " + puntos + "\n" +
                 "  - Jugadores Titulares: " + titulares.size() + "\n" +
-                "  - Jugadores Suplentes: " + suplentes.size();
+                "  - Jugadores Suplentes: " + suplentes.size() + "\n\n\n";
     }
 }

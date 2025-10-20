@@ -111,7 +111,7 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadFalta = 0.08;
+        double probabilidadFalta = 0.1;
 
 
         for (int i = 1; i <= 90; i++) {
@@ -119,7 +119,7 @@ public class Partido {
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
 
-            Thread.sleep(400);
+            Thread.sleep(100);
         }
 
         mostrarResultado();
@@ -130,9 +130,9 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadFalta = 0.30;
+        double probabilidadFalta = 0.10;
 
-        for (int i = 1; i <= 90; i++) {//Calculo MINUTO A MINUTO
+        for (int i = 1; i <= 90; i++) {
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i);
         }
     }
@@ -194,7 +194,9 @@ public class Partido {
                     System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
             } else {
-                System.out.println("Falta de " + autorFalta.getNombre());
+                if (mostrar){
+                    System.out.println("Falta de " + autorFalta.getNombre());
+                }
             }
         } else {
             this.faltasVisitante++;
@@ -209,7 +211,9 @@ public class Partido {
                     System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
             } else {
-                System.out.println("Falta de " + autorFalta.getNombre());
+                if (mostrar){
+                    System.out.println("Falta de " + autorFalta.getNombre());
+                }
             }
         }
     }
@@ -227,6 +231,7 @@ public class Partido {
             return 0; // Sin tarjeta
         }
     }
+
     public boolean involucraEquipoUsuario(Equipo equipo) {
         return local.equals(equipo) || visitante.equals(equipo);
     }
