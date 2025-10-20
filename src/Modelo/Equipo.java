@@ -260,8 +260,33 @@ public class Equipo {
            }
 
         }
+    }
+
+
+    //Elegir suplentes, falta poner que el usuario eliga.
+
+    public void MeterSuplenteUsuario(int jugadorElegido){
+
+        int cont = 1;
+        System.out.println("suplentes");
+        ArrayList <Jugador> jug = new ArrayList<>(suplentes);
+
+        for(Jugador e : suplentes){
+            System.out.println("Asciento" + cont + e);
+            cont++;
+        };
+
 
     }
+
+    public void MeterSuplenteIA(){
+
+        ArrayList <Jugador> jug = new ArrayList<>(suplentes);
+        agregarJugador(jug.get(0));
+
+    }
+
+
 
     //Equals & HashCode
     @Override
