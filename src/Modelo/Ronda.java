@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ronda
 {
     private String nombre;
-    ArrayList <Partido> partidos;
+    private ArrayList <Partido> partidos;
 
     //falta completar metodo
     public void jugarRonda(Equipo equipo)
@@ -21,7 +21,7 @@ public class Ronda
         this.nombre = nombre;
         this.partidos = partidos;
     }
-
+    
     
     //Getters y Setters
     public String getNombre() {
