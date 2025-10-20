@@ -28,7 +28,6 @@ public class Ronda
     //Recorre los partidos jugados y devuelve una lista con los ganadores.
     //Si hay empate, llama a la tandaDePenales para decidir un ganador.
     //return ArrayList<Equipo> con los equipos que avanzan a la siguiente ronda.
-
     public ArrayList<Equipo> getGanadores() {
         ArrayList<Equipo> ganadores = new ArrayList<>();
 
