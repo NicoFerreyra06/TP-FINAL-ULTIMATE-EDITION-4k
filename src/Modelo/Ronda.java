@@ -8,7 +8,7 @@ public class Ronda
     ArrayList <Partido> partidos;
 
     //falta completar metodo
-    public void jugarRonda(Equipo)
+    public void jugarRonda(Equipo equipo)
     {
 
     }
