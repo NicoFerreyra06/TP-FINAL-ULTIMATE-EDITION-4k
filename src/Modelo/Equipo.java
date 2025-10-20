@@ -14,6 +14,7 @@ public class Equipo {
     private Stack <Jugador> Expulsados;
     private int puntos;
     private final Random random;
+    private boolean jugoJornada;
 
     public Equipo(String nombre, Estadio estadio, DirectorTecnico tecnico, double presupuesto) {
         this.nombre = nombre;
@@ -91,6 +92,14 @@ public class Equipo {
 
     public void setExpulsados(Stack<Jugador> expulsados) {
         Expulsados = expulsados;
+    }
+
+    public boolean isJugoJornada() {
+        return jugoJornada;
+    }
+
+    public void setJugoJornada(boolean jugoJornada) {
+        this.jugoJornada = jugoJornada;
     }
 
     // ===================Metodos=======================

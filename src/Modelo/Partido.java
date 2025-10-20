@@ -122,11 +122,6 @@ public class Partido {
             Thread.sleep(100);
         }
 
-        local.mostrarExpulsados();
-        visitante.mostrarExpulsados();
-
-        visitante.bajarSancion();
-        local.bajarSancion();
         mostrarResultado();
     }
 
@@ -137,7 +132,7 @@ public class Partido {
 
         double probabilidadFalta = 0.10;
 
-        for (int i = 1; i <= 90; i++) {//Calculo MINUTO A MINUTO
+        for (int i = 1; i <= 90; i++) {
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i);
         }
     }
@@ -190,15 +185,11 @@ public class Partido {
             this.faltasLocal++;
             if (tipoTarjeta == 1){
                 this.amarillasLocal++;
-                autorFalta.setTarjeta(autorFalta.getTarjeta() + 1);
-
                 if (mostrar){
                     System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasLocal++;
-                autorFalta.setTarjeta(2);
-
                 if (mostrar){
                     System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
@@ -207,24 +198,15 @@ public class Partido {
                     System.out.println("Falta de " + autorFalta.getNombre());
                 }
             }
-
-            equipo.ExpulsarJugador(autorFalta);
-
-        }
-
-        else {
+        } else {
             this.faltasVisitante++;
             if (tipoTarjeta == 1){
                 this.amarillasVisitante++;
-                autorFalta.setTarjeta(autorFalta.getTarjeta() + 1);
-
                 if (mostrar){
                     System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasVisitante++;
-                autorFalta.setTarjeta(2);
-
                 if (mostrar){
                     System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
@@ -233,8 +215,6 @@ public class Partido {
                     System.out.println("Falta de " + autorFalta.getNombre());
                 }
             }
-
-            equipo.ExpulsarJugador(autorFalta);
         }
     }
 
