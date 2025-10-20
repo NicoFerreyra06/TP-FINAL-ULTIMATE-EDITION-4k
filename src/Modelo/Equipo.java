@@ -152,7 +152,7 @@ public class Equipo {
             switch (candidato.getPosicion()) {
                 case DELANTERO -> probabilidadDeAnotar = 0.46;
                 case MEDIOCAMPISTA -> probabilidadDeAnotar = 0.3;
-                case DEFENSOR ->  probabilidadDeAnotar = 0.2;
+                case DEFENSOR -> probabilidadDeAnotar = 0.2;
                 case ARQUERO -> probabilidadDeAnotar = 0.02;
             }
 
