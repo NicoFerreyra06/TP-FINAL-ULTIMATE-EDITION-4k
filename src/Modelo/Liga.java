@@ -1,16 +1,17 @@
 package Modelo;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 public class Liga extends Torneo{
     private int jornada;
     private ArrayList<Partido> fixture;
+    private Map <Equipo, FilaTabla> tablaPosiciones;
 
     public Liga(String nombre) {
         super(nombre);
         this.jornada = 1;
         this.fixture = new ArrayList<>();
+        this.tablaPosiciones = new HashMap<>();
     }
 
 // ... El resto de tu clase Liga ...
@@ -19,8 +20,11 @@ public class Liga extends Torneo{
         ArrayList<Equipo> listaEquipos = new ArrayList<>(super.getEquipos().values());
         ArrayList<Partido> fixtureTotal = new ArrayList<>();
 
-        // Usar HashSet es mucho más rápido (O(1)) para búsquedas que ArrayList (O(N))
         HashSet<String> partidosProgramados = new HashSet<>();
+
+        for (Equipo equipo : listaEquipos) {
+            this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
+        }
 
         int numeroEquipos = listaEquipos.size();
 
@@ -99,6 +103,7 @@ public class Liga extends Torneo{
     public void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException {
         if (jornada > (super.getEquipos().size() - 1) * 2) {
             IO.println("LA LIGA HA FINALIZADO");
+            mostrarTabla();
             return;
         }
 
@@ -112,6 +117,7 @@ public class Liga extends Torneo{
                 p.simularRapido();
                 partidosRapidos.add(p);
             }
+            actualizarTabla(p);
         }
 
         System.out.println("\n--- Otros Resultados de la Fecha " + jornada + " ---");
@@ -124,8 +130,11 @@ public class Liga extends Torneo{
             }
         }
 
+        mostrarTabla();
         this.jornada++;
     }
+
+
 
     private ArrayList<Partido> getPartidosFecha(int numeroFecha) {
         ArrayList<Partido> partidosDeLaFecha = new ArrayList<>();
@@ -141,5 +150,56 @@ public class Liga extends Torneo{
         }
 
         return partidosDeLaFecha;
+    }
+
+    private void actualizarTabla(Partido partido) {
+        Equipo local = partido.getLocal();
+        Equipo visitante = partido.getVisitante();
+
+        // Obtener las filas correspondientes
+        FilaTabla filaLocal = tablaPosiciones.get(local);
+        FilaTabla filaVisitante = tablaPosiciones.get(visitante);
+
+        // Registrar el resultado en cada fila
+        if (filaLocal != null) {
+            filaLocal.registrarPartido(partido.getGolesLocal(), partido.getGolesVisitante());
+        }
+        if (filaVisitante != null) {
+            filaVisitante.registrarPartido(partido.getGolesVisitante(), partido.getGolesLocal());
+        }
+    }
+
+    /**
+     * Imprime la tabla de posiciones actual en la consola.
+     */
+    public void mostrarTabla() {
+        // Convertimos los valores del mapa a una lista
+        List<FilaTabla> filasOrdenadas = new ArrayList<>(tablaPosiciones.values());
+
+        Collections.sort(filasOrdenadas);
+
+        // Imprimir Encabezado
+        System.out.println("\n------------ TABLA DE POSICIONES ------------");
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.printf("%-3s | %-15s | %s | %s | %s | %s | %s | %s | %s | %s\n",
+                "Pos", "Equipo", "Pts", "PJ", "PG", "PE", "PP", "GF", "GC", "DG");
+        System.out.println("-------------------------------------------------------------------------------");
+
+        // Imprimir Filas
+        int posicion = 1;
+        for (FilaTabla fila : filasOrdenadas) {
+            System.out.printf("%-3d | %-15s | %3d | %2d | %2d | %2d | %2d | %3d | %3d | %5d\n",
+                    posicion++,
+                    fila.equipo.getNombre(), // Acceso directo al atributo
+                    fila.puntos,
+                    fila.jugados,
+                    fila.ganados,
+                    fila.empatados,
+                    fila.perdidos,
+                    fila.golesFavor,
+                    fila.golesContra,
+                    fila.diferenciaGoles);
+        }
+        System.out.println("-------------------------------------------------------------------------------");
     }
 }

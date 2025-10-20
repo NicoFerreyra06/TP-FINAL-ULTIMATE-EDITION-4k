@@ -119,7 +119,7 @@ public class Partido {
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
 
-            Thread.sleep(100);
+            Thread.sleep(0);
         }
 
         System.out.println("Expulsados de local: ");

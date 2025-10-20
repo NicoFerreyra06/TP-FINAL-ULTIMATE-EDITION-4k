@@ -47,6 +47,12 @@ void main() {
         IO.println("Presione enter para simular la jornada 1");
         scanner.nextLine();
         ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
+        ligaDePrueba.jugarProximaFecha(equipoA);
 
 
     } catch (InterruptedException e){
