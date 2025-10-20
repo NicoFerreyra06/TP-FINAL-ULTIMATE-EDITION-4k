@@ -111,7 +111,7 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadFalta = 0.1;
+        double probabilidadFalta = 0.20;
 
 
         for (int i = 1; i <= 90; i++) {
@@ -122,7 +122,9 @@ public class Partido {
             Thread.sleep(100);
         }
 
+        System.out.println("Expulsados de local: ");
         local.mostrarExpulsados();
+        System.out.println("Expulsados de visitante");
         visitante.mostrarExpulsados();
 
         visitante.bajarSancion();
@@ -240,8 +242,8 @@ public class Partido {
 
     private int determinarTarjeta() {
         double valorAleatorio = random.nextDouble(); // Un número entre 0.0 y 1.0
-        double probRoja = 0.03; // 3% de probabilidad de roja directa
-        double probAmarilla = 0.4; // 20% de probabilidad de amarilla (adicional al 3% de roja)
+        double probRoja = 0.02; // 3% de probabilidad de roja directa
+        double probAmarilla = 0.3; // 20% de probabilidad de amarilla (adicional al 3% de roja)
 
         if (valorAleatorio < probRoja) {
             return 2; // Roja
