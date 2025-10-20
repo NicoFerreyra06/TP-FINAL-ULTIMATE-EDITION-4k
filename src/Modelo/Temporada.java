@@ -1,17 +1,18 @@
 package Modelo;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class Temporada {
     protected int anio;
     protected Liga liga;
-    protected HashMap<String, Equipo> equipos;
+    protected LinkedHashSet<Equipo> equipos;
 
     //Constructor
     public Temporada(int anio, Liga liga) {
         this.anio = anio;
         this.liga = liga;
-        this.equipos = new HashMap<>();
+        this.equipos = new LinkedHashSet<>();
     }
 
     //Getters y Setters
