@@ -2,10 +2,7 @@ package Modelo;
 
 import enums.Posicion;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Equipo {
     private String nombre;
@@ -14,6 +11,7 @@ public class Equipo {
     private double presupuesto;
     private HashSet<Jugador> titulares;
     private HashSet<Jugador> suplentes;
+    private Stack <Jugador> Expulsados;
     private int puntos;
     private final Random random;
 
@@ -24,7 +22,9 @@ public class Equipo {
         this.presupuesto = presupuesto;
         this.titulares = new HashSet<>();
         this.suplentes = new HashSet<>();
+        this.Expulsados = new Stack<>();
         this.puntos = 0;
+
         this.random = new Random();
     }
 
@@ -84,6 +84,15 @@ public class Equipo {
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
+
+    public Stack<Jugador> getExpulsados() {
+        return Expulsados;
+    }
+
+    public void setExpulsados(Stack<Jugador> expulsados) {
+        Expulsados = expulsados;
+    }
+
     // ===================Metodos=======================
     /**
      * Agrega jugador al equipo asegurandose que no haya duplicados
@@ -213,6 +222,41 @@ public class Equipo {
         return listaTitulares.get(random.nextInt(listaTitulares.size()));
     }
 
+
+    public void ExpulsarJugador(Jugador expulsado){
+
+            if(expulsado.getTarjeta() == 2){
+
+                System.out.println(". Expulsado");
+
+                titulares.remove(expulsado);
+                Expulsados.push(expulsado);
+
+            }
+    }
+
+    public void bajarSancion(){
+
+        int tamanio = Expulsados.size();
+
+        for(int i = 0; i < tamanio; i++){
+
+            Jugador expulsado = Expulsados.remove(0);
+            expulsado.setTarjeta(expulsado.getTarjeta() - 1);
+
+           if (expulsado.getTarjeta() <= 0){
+
+               titulares.add(expulsado);
+
+           } else{
+
+                Expulsados.push(expulsado);
+           }
+
+        }
+
+    }
+
     //Equals & HashCode
     @Override
     public boolean equals(Object o) {
@@ -236,4 +280,13 @@ public class Equipo {
                 "  - Jugadores Titulares: " + titulares.size() + "\n" +
                 "  - Jugadores Suplentes: " + suplentes.size();
     }
+
+    public void mostrar(){
+
+        System.out.println(Expulsados.firstElement().getNombre());
+
+    }
+
 }
+
+
