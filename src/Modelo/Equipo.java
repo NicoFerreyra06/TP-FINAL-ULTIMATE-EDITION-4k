@@ -58,14 +58,19 @@ public class Equipo {
             JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
             this.suplentes.add(new Jugador(jsonJugador));
         }
-        //Faltan expulsados
+        //reconstruir lista expulsados
         this.Expulsados = new Stack<>();
+        JSONArray jsonExpulsados = json.getJSONArray("expulsados");
+        for (int i = 0; i < jsonExpulsados.length(); i++) {
+            JSONObject jsonJugador = jsonExpulsados.getJSONObject(i);
+            this.Expulsados.push(new Jugador(jsonJugador));
+        }
     }
 
     public JSONObject toJSON(){
         JSONObject obj = new JSONObject();
         obj.put("nombre", nombre);
-        obj.put("directorTecnico", tecnico.toJson());
+        obj.put("tecnico", tecnico.toJson());
         obj.put("estadio", estadio.toJson());
         obj.put("presupuesto", presupuesto);
         obj.put("puntos", puntos);
