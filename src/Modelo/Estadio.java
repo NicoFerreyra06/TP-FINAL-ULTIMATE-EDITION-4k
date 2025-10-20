@@ -19,7 +19,7 @@ public class Estadio {
         this.valorEntrada = json.getDouble("valorEntrada");
     }
 
-    public JSONObject  toJSON(){
+    public JSONObject toJson(){
         JSONObject jsonEstadio = new JSONObject();
         jsonEstadio.put("nombre", nombre);
         jsonEstadio.put("capacidad", capacidad);
