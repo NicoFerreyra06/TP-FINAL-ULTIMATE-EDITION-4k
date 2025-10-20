@@ -112,6 +112,7 @@ public class Partido {
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
         double probabilidadFalta = 0.20;
+        Scanner scanner = new Scanner(System.in);
 
 
         for (int i = 1; i <= 90; i++) {
@@ -119,7 +120,14 @@ public class Partido {
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
 
-            Thread.sleep(0);
+            if (i == 45){
+                System.out.println("Finalizo el primer tiempo! ");
+
+                IO.println("Presione enter para comenzar el ST");
+                scanner.nextLine();
+            }
+
+            Thread.sleep(500);
         }
 
         System.out.println("Expulsados de local: ");
@@ -202,7 +210,7 @@ public class Partido {
                 }
             } else {
                 if (mostrar){
-                    System.out.println("Falta de " + autorFalta.getNombre());
+                    System.out.println(" Minuto " + minuto + "Falta de " + autorFalta.getNombre());
                 }
             }
         } else {
@@ -219,7 +227,7 @@ public class Partido {
                 }
             } else {
                 if (mostrar){
-                    System.out.println("Falta de " + autorFalta.getNombre());
+                    System.out.println(" Minuto " + minuto +"Falta de " + autorFalta.getNombre());
                 }
             }
         }
