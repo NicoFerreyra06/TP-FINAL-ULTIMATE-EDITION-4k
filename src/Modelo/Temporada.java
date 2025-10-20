@@ -7,12 +7,14 @@ public class Temporada {
     protected Liga liga;
     protected HashMap<String, Equipo> equipos;
 
+    //Constructor
     public Temporada(int anio, Liga liga) {
         this.anio = anio;
         this.liga = liga;
         this.equipos = new HashMap<>();
     }
 
+    //Getters y Setters
     public int getAnio() {
         return anio;
     }
