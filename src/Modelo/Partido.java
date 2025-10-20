@@ -1,33 +1,34 @@
 package Modelo;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Partido {
     private final Equipo local;
     private final Equipo visitante;
     private int golesLocal;
     private int golesVisitante;
-    private int faltasVisitante;
     private int faltasLocal;
-    private int rojaVisitante;
-    private int amarillaVisitante;
-    private int rojaLocal;
-    private int amarillaLocal;
+    private int faltasVisitante;
+    private int amarillasLocal;
+    private int amarillasVisitante;
+    private int rojasLocal;
+    private int rojasVisitante;
     private final Random random;
+    ArrayList<Gol> goleadores;
 
     public Partido(Equipo local, Equipo visitante) {
         this.local = local;
         this.visitante = visitante;
         this.golesLocal = 0;
         this.golesVisitante = 0;
-        this.random = new Random();
-        this.rojaVisitante = 0;
-        this.amarillaVisitante = 0;
-        this.rojaLocal = 0;
-        this.amarillaLocal = 0;
         this.faltasLocal = 0;
         this.faltasVisitante = 0;
+        this.amarillasLocal = 0;
+        this.amarillasVisitante = 0;
+        this.rojasLocal = 0;
+        this.rojasVisitante = 0;
+        this.random = new Random();
+        this.goleadores = new ArrayList<>();
     }
 
     // ==================== Getters y Setters ====================
@@ -55,256 +56,227 @@ public class Partido {
         this.golesVisitante = golesVisitante;
     }
 
-    public int getRojaVisitante() {
-        return rojaVisitante;
+    public int getFaltasLocal() {
+        return faltasLocal;
     }
 
-    public void setRojaVisitante(int rojaVisitante) {
-        this.rojaVisitante = rojaVisitante;
-    }
-
-    public int getAmarillaVisitante() {
-        return amarillaVisitante;
-    }
-
-    public void setAmarillaVisitante(int amarillaVisitante) {
-        this.amarillaVisitante = amarillaVisitante;
-    }
-
-    public int getRojaLocal() {
-        return rojaLocal;
-    }
-
-    public void setRojaLocal(int rojaLocal) {
-        this.rojaLocal = rojaLocal;
-    }
-
-    public int getAmarillaLocal() {
-        return amarillaLocal;
-    }
-
-    public void setAmarillaLocal(int amarillaLocal) {
-        this.amarillaLocal = amarillaLocal;
+    public void setFaltasLocal(int faltasLocal) {
+        this.faltasLocal = faltasLocal;
     }
 
     public int getFaltasVisitante() {
         return faltasVisitante;
     }
 
-    public void setFaltasVisitante(int faltasTotalVisitante) {
-        this.faltasVisitante = faltasTotalVisitante;
+    public void setFaltasVisitante(int faltasVisitante) {
+        this.faltasVisitante = faltasVisitante;
     }
 
-    public int getFaltasLocal() {
-        return faltasLocal;
+    public int getAmarillasLocal() {
+        return amarillasLocal;
     }
 
-    public void setFaltasLocal(int faltasTotaLocal) {
-        this.faltasLocal = faltasTotaLocal;
+    public void setAmarillasLocal(int amarillasLocal) {
+        this.amarillasLocal = amarillasLocal;
     }
 
+    public int getAmarillasVisitante() {
+        return amarillasVisitante;
+    }
+
+    public void setAmarillasVisitante(int amarillasVisitante) {
+        this.amarillasVisitante = amarillasVisitante;
+    }
+
+    public int getRojasLocal() {
+        return rojasLocal;
+    }
+
+    public void setRojasLocal(int rojasLocal) {
+        this.rojasLocal = rojasLocal;
+    }
+
+    public int getRojasVisitante() {
+        return rojasVisitante;
+    }
+
+    public void setRojasVisitante(int rojasVisitante) {
+        this.rojasVisitante = rojasVisitante;
+    }
 
     // ===================Metodos=======================
-    public void simularInteractivo () throws InterruptedException{
-        System.out.println("Empieza el partido entre " + local.getNombre() + " y " + visitante.getNombre());
-        double probLocal = local.calcularMediaGeneral() * 0.0002;
-        double probVisitante = visitante.calcularMediaGeneral() * 0.0002;
+    public void simularInteractivo() throws InterruptedException {
+        System.out.println("Empieza el partido");
 
-        Jugador falta;
+        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
+        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        for (int i = 1; i <= 90; i++){
+        double probabilidadFalta = 0.4;
+
+
+        for (int i = 1; i <= 90; i++) {
             System.out.println("Minuto " + i);
-            simularMinuto(probLocal, probVisitante, true);
-            //Falta probabilidades faltas y sucesos randoms del partido
-            //con souts para que el usuario vea
 
-            double probabilidadFalta = 0.133;
-            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral())? 0.45 : 0.50;
-            int tipoDeFalta = faltaPeligrosa();
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
 
-            if(random.nextDouble() < probabilidadFalta){
-                if(random.nextDouble() > ajusteFalta){
-                    falta = visitante.elegirAutorFalta();
-                    this.faltasVisitante++;
-
-                    if(tipoDeFalta == 1){
-
-                        System.out.println("Falta del equipo visitante..." + falta.getNombre() +
-                                " A sido amodestado con Amarilla");
-
-                        this.amarillaVisitante++;
-
-                    } else if (tipoDeFalta == 2) {
-                        System.out.println("Falta peligrosa del equipo visitante..." + falta.getNombre() +
-                                " Expulsado!!!");
-
-                        this.rojaVisitante++;
-
-                    }else{
-
-                        System.out.println("Falta del equipo visitante...");
-
-                    }
-
-                }
-                else{
-                    falta = local.elegirAutorFalta();
-                    this.faltasLocal++;
-
-                    if(tipoDeFalta == 1){
-
-                        System.out.println("Falta del equipo Local..." + falta.getNombre() +
-                                " A sido amonestado con Amarilla");
-
-                        this.amarillaLocal++;
-
-                    } else if (tipoDeFalta == 2) {
-                        System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
-                                " Expulsado!!!");
-
-                        this.rojaLocal++;
-
-                    }else{
-
-                        System.out.println("Falta del equipo local...");
-                    }
-
-                    }
-
-            }
-            Thread.sleep(500);
+            Thread.sleep(100);
         }
 
-        mostrarResultadoFinal();
+        local.mostrar();
+        visitante.mostrar();
 
+        visitante.bajarSancion();
+        local.bajarSancion();
+        mostrarResultado();
     }
 
-    public int faltaPeligrosa(){
+    public void simularRapido() {
 
-        double tarjeta = random.nextDouble();;
-        double amarilla = 0.20;
-        double roja = 0.03;
+        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
+        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        if(tarjeta <= roja)return 2;
-        else if (tarjeta > amarilla) return 0;
-        else return 1;
+        double probabilidadFalta = 0.10;
 
+        for (int i = 1; i <= 90; i++) {//Calculo MINUTO A MINUTO
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i);
+        }
     }
 
-    // ===================Simulacion Rapida=======================
-    public void simularRapido (){
-
-        double probLocal = local.calcularMediaGeneral() * 0.0002;
-        double probVisitante = visitante.calcularMediaGeneral() * 0.0002;
-
-        Jugador falta;
-
-        for (int i = 1; i <= 90; i++){
-
-            simularMinuto(probLocal, probVisitante, false);
-
-            double probabilidadFalta = 0.133;
-            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral())? 0.45 : 0.50;
-            int tipoDeFalta = faltaPeligrosa();
-
-            if(random.nextDouble() < probabilidadFalta){
-                if(random.nextDouble() > ajusteFalta){
-                    falta = visitante.elegirAutorFalta();
-
-                    if(tipoDeFalta == 1){
-
-                        System.out.println("Falta del equipo visitante..." + falta.getNombre() +
-                                " A sido amodestado con Amarilla");
-
-                    } else if (tipoDeFalta == 2) {
-                        System.out.println("Falta peligrosa del equipo visitante..." + falta.getNombre() +
-                                " Expulsado!!!");
-                    }else{
-
-                        System.out.println("Falta del equipo visitante...");
-                    }
-
-                }
-                else{
-                    falta = local.elegirAutorFalta();
-
-                    if(tipoDeFalta == 1){
-
-                        System.out.println("Falta del equipo Local..." + falta.getNombre() +
-                                " A sido amodestado con Amarilla");
-
-                    } else if (tipoDeFalta == 2) {
-                        System.out.println("Falta peligrosa del equipo Local..." + falta.getNombre() +
-                                " Expulsado!!!");
-                    }else{
-
-                        System.out.println("Falta del equipo local...");
-                    }
-
-                }
-
-            }
-
+    public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto) {
+        if (random.nextDouble() < probabilidadLocal) {
+            gestionarGolesAsistencias(this.local, true, mostrar, minuto);
         }
 
-        System.out.println("Simulado rapido " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+        if (random.nextDouble() < probabilidadVisitante) {
+            gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
+        }
+
+        if (random.nextDouble() < probabilidadFalta) { // ¿Ocurre una falta?
+            // Si ocurre, AHORA decidimos quién la hizo
+            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral()) ? 0.45 : 0.55; // Ejemplo
+            if (random.nextDouble() > ajusteFalta) {
+                gestionarFaltas(this.visitante, false, mostrar, minuto); // Falta visitante
+            } else {
+                gestionarFaltas(this.local, true, mostrar, minuto); // Falta local
+            }
+        }
     }
 
-    // ==================== Lógica de un minuto ====================
-    private void simularMinuto(double probLocal, double probVisitante, boolean mostrar) {
-        if (random.nextDouble() < probLocal)
-            procesarGolesAsistencias(local, true, mostrar);
+    public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+        if (local){
+            this.golesLocal++;
+        } else {
+            this.golesVisitante++;
+        }
 
-        if (random.nextDouble() < probVisitante)
-            procesarGolesAsistencias(visitante, false, mostrar);
-    }
-
-    // ==================== Gol y asistencia ====================
-    public void procesarGolesAsistencias(Equipo equipo, boolean esLocal, boolean mostrar){
         Jugador goleador = equipo.elegirAutorGol();
         Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
-
-        if (esLocal){
-            golesLocal++;
-        } else {
-            golesVisitante++;
-        }
 
         goleador.anotarGoles();
         asistidor.anotarAsistencia();
 
-        if (mostrar) {
-            System.out.println("¡Gol de " + equipo.getNombre() + "! " + goleador.getNombre() +
-                    " (Asistencia de " + asistidor.getNombre() + ")");
+        if (mostrar){
+            System.out.println("⚽ ¡Goool de " + equipo.getNombre() + "! Anotó: " + goleador.getNombre());
+            goleadores.add(new Gol(minuto, goleador, asistidor));
         }
     }
 
-    // ==================== Resultado final ====================
-    private void mostrarResultadoFinal() {
-        System.out.println(" =====Termina el partido===== \n");
-        System.out.println("\nResultado final");
-        System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
-        System.out.println("Faltas: " + faltasLocal + " - " + faltasVisitante);
-        System.out.println("Rojas: " + rojaLocal + " - " + rojaVisitante);
-        System.out.println("Amarillas: " + amarillaLocal + " - " + amarillaVisitante);
+    public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+        Jugador autorFalta = equipo.elegirAutorFalta();
+
+        int tipoTarjeta = determinarTarjeta();
+
+        if (local){
+            this.faltasLocal++;
+            if (tipoTarjeta == 1){
+                this.amarillasLocal++;
+                autorFalta.setTarjeta(autorFalta.getTarjeta() + 1);
+
+                if (mostrar){
+                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                }
+            } else if (tipoTarjeta == 2){
+                this.rojasLocal++;
+                autorFalta.setTarjeta(2);
+
+                if (mostrar){
+                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                }
+            } else {
+                if (mostrar){
+                    System.out.println("Falta de " + autorFalta.getNombre());
+                }
+            }
+
+            equipo.ExpulsarJugador(autorFalta);
+
+        }
+
+        else {
+            this.faltasVisitante++;
+            if (tipoTarjeta == 1){
+                this.amarillasVisitante++;
+                autorFalta.setTarjeta(autorFalta.getTarjeta() + 1);
+
+                if (mostrar){
+                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                }
+            } else if (tipoTarjeta == 2){
+                this.rojasVisitante++;
+                autorFalta.setTarjeta(2);
+
+                if (mostrar){
+                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                }
+            } else {
+                if (mostrar){
+                    System.out.println("Falta de " + autorFalta.getNombre());
+                }
+            }
+
+            equipo.ExpulsarJugador(autorFalta);
+        }
     }
 
-    // ================AYUDAS================
-    public boolean involucraEquipoUsuario (Equipo equipo){
+    private int determinarTarjeta() {
+        double valorAleatorio = random.nextDouble(); // Un número entre 0.0 y 1.0
+        double probRoja = 0.03; // 3% de probabilidad de roja directa
+        double probAmarilla = 0.4; // 20% de probabilidad de amarilla (adicional al 3% de roja)
+
+        if (valorAleatorio < probRoja) {
+            return 2; // Roja
+        } else if (valorAleatorio < probRoja + probAmarilla) {
+            return 1; // Amarilla
+        } else {
+            return 0; // Sin tarjeta
+        }
+    }
+
+    public boolean involucraEquipoUsuario(Equipo equipo) {
         return local.equals(equipo) || visitante.equals(equipo);
     }
 
+    public void mostrarResultado (){
+        System.out.println("Termina el partido");
+        System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+
+        for (Gol gol : goleadores) {
+            System.out.println("Minuto " + gol.getMinuto() +
+                    ": Gol de " + gol.getAutor().getNombre() +
+                    " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
+        }
+    }
     /**
      * Metodo para determinar el equipo ganador del partido. va a servir para copa y liga..
      * @return El objeto Equipo ganador, o null si fue empate.
      */
 
-    public Equipo getGanador(){
-        if (this.golesLocal == this.golesVisitante){
+    public Equipo getGanador() {
+        if (this.golesLocal == this.golesVisitante) {
             return null;
         }
 
-        if (this.golesLocal > this.golesVisitante){
+        if (this.golesLocal > this.golesVisitante) {
             return local;
         } else {
             return visitante;
