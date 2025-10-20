@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class Copa extends Torneo{
+public  class Copa extends Torneo{
     private ArrayList<Ronda> rondas;
 
     //Constructor
@@ -13,8 +13,9 @@ public class Copa extends Torneo{
 
     //Implementación del metodo jugar de la clase padre torneo
     //Falta terminar
+
     @Override
-    public void jugar() {
+    public void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException {
 
     }
 }
