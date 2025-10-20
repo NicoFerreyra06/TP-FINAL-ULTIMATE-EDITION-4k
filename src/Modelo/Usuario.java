@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Objects;
+
 public class Usuario {
     protected String nombre;
     protected String contrasenia;
@@ -36,7 +38,16 @@ public class Usuario {
 
     //Metodo
     //Falta terminar
-    public void verificarContrasenia() {
+    public boolean verificarContrasenia(String contra) {
+        if (contra.equals(getContrasenia())) {
+            return false;
+        }
+        return true;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Usuario usuario)) return false;
+        return Objects.equals(contrasenia, usuario.contrasenia);
     }
 }
