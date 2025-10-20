@@ -11,7 +11,7 @@ public class Equipo {
     private double presupuesto;
     private HashSet<Jugador> titulares;
     private HashSet<Jugador> suplentes;
-    private Stack <Jugador> Expulsados;
+    private Stack<Jugador> Expulsados;
     private int puntos;
     private final Random random;
     private boolean jugoJornada;
@@ -103,6 +103,7 @@ public class Equipo {
     }
 
     // ===================Metodos=======================
+
     /**
      * Agrega jugador al equipo asegurandose que no haya duplicados
      * Si no existe, intenta agregarlo a la lista de titulares. Si esta ya tiene 11 jugadores,
@@ -110,6 +111,7 @@ public class Equipo {
      *
      * @return true si se agrego, falso si no.
      */
+
     public boolean agregarJugador(Jugador jugador) {
         if (jugador == null) return false;
 
@@ -130,6 +132,7 @@ public class Equipo {
      *
      * @return La valoración general del equipo en una escala de 0 a 100.
      */
+
     public double calcularMediaGeneral() {
         if (titulares.isEmpty()) return 0.0;
         double media = 0;
@@ -139,11 +142,24 @@ public class Equipo {
         return media / this.titulares.size();
     }
 
+
+    private Jugador getJugadorAzar() {
+        if (titulares.isEmpty()) return null;
+
+        // 1. Convertimos el HashSet a un ArrayList.
+        ArrayList<Jugador> listaTitulares = new ArrayList<>(titulares);
+
+        // 2. Ahora sí podemos usar .get() para seleccionar un jugador al azar.
+        return listaTitulares.get(random.nextInt(listaTitulares.size()));
+    }
+
+
     /**
      * Selecciona un jugador titular para ser el autor de un gol mediante un sorteo probabilístico.
      * El metodo funciona en un bucle que garantiza la selección de un goleador. En cada iteración:
      * Se elige un jugador titular completamente al azar.
-     * Se le asigna una probabilidad de anotar basada estrictamente en su posición en el campo.*/
+     * Se le asigna una probabilidad de anotar basada estrictamente en su posición en el campo.
+     */
 
     public Jugador elegirAutorGol() {
         // Si no hay jugadores, no se puede elegir a nadie.
@@ -172,34 +188,11 @@ public class Equipo {
         }
     }
 
-    //Funcion para probabilidad de cometer falta
-    public Jugador elegirAutorFalta(){
-
-        if (titulares.isEmpty()) {
-            return null;
-        }
-
-        while (true){
-
-            Jugador candidato = getJugadorAzar();
-            double probabilidadDeFalta = 0;
-            switch (candidato.getPosicion()) {
-                case DEFENSOR -> probabilidadDeFalta = 0.45;
-                case MEDIOCAMPISTA -> probabilidadDeFalta = 0.30;
-                case DELANTERO ->  probabilidadDeFalta = 0.20;
-                case ARQUERO -> probabilidadDeFalta = 0.05;
-            }
-
-            if (random.nextDouble() < probabilidadDeFalta) {
-                return candidato; // Se encontro al que cometio la falta.
-            }
-
-        }
-    }
     /**
      * Convierte nuestro Hashset de titulares
      * en un arraylist para seleccionar
      * un jugador al azar.
+     *
      * @return {@link Jugador}
      */
 
@@ -218,77 +211,129 @@ public class Equipo {
         }
     }
 
-    private Jugador getJugadorAzar (){
-        if (titulares.isEmpty()) return null;
 
-        // 1. Convertimos el HashSet a un ArrayList.
-        ArrayList<Jugador> listaTitulares = new ArrayList<>(titulares);
+    /**
+     * Funcion para probabilidad de cometer falta
+     */
 
-        // 2. Ahora sí podemos usar .get() para seleccionar un jugador al azar.
-        return listaTitulares.get(random.nextInt(listaTitulares.size()));
-    }
+    public Jugador elegirAutorFalta() {
 
+        if (titulares.isEmpty()) {
+            return null;
+        }
 
-    public void ExpulsarJugador(Jugador expulsado){
+        while (true) {
 
-            if(expulsado.getTarjeta() == 2){
-
-                System.out.println("Expulsado el jugador: " + expulsado.getNombre());
-
-                titulares.remove(expulsado);
-                Expulsados.push(expulsado);
-
+            Jugador candidato = getJugadorAzar();
+            double probabilidadDeFalta = 0;
+            switch (candidato.getPosicion()) {
+                case DEFENSOR -> probabilidadDeFalta = 0.45;
+                case MEDIOCAMPISTA -> probabilidadDeFalta = 0.30;
+                case DELANTERO -> probabilidadDeFalta = 0.20;
+                case ARQUERO -> probabilidadDeFalta = 0.05;
             }
-    }
 
-    public void bajarSancion(){
-
-        int tamanio = Expulsados.size();
-
-        for(int i = 0; i < tamanio; i++){
-
-            Jugador expulsado = Expulsados.remove(0);
-            expulsado.setTarjeta(expulsado.getTarjeta() - 1);
-
-           if (expulsado.getTarjeta() <= 0){
-
-               titulares.add(expulsado);
-
-           } else{
-
-                Expulsados.push(expulsado);
-           }
+            if (random.nextDouble() < probabilidadDeFalta) {
+                return candidato; // Se encontro al que cometio la falta.
+            }
 
         }
     }
 
+    /**
+     * Funcion que verifica cuantas tarjetas tiene el jugador
+     * Si son dos amarillas afuera, si es una roja afuera
+     */
 
-    //Elegir suplentes, falta poner que el usuario eliga.
+    public void ExpulsarJugador(Jugador expulsado) {
 
-    public void MeterSuplenteUsuario(int jugadorElegido){
+        if (expulsado.getTarjetaLiga() == 2) {
 
-        int cont = 1;
-        System.out.println("suplentes");
-        ArrayList <Jugador> jug = new ArrayList<>(suplentes);
+            System.out.println("Expulsado el jugador: " + expulsado.getNombre());
 
-        for(Jugador e : suplentes){
-            System.out.println("Asciento" + cont + e);
-            cont++;
-        };
+            titulares.remove(expulsado);
+            Expulsados.push(expulsado);
 
+        }
+    }
+
+    /**
+     * Por cada partido que pasa se baja la tarjeta
+     * De esa forma cuando el contador llegue a 0
+     * El jugador expulsado podra volver a jugar
+     */
+
+    public void bajarSancion() {
+
+        int tamanio = Expulsados.size();
+
+        for (int i = 0; i < tamanio; i++) {
+
+            Jugador expulsado = Expulsados.remove(0);
+            expulsado.setTarjetaLiga(expulsado.getTarjetaLiga() - 1);
+
+            if (expulsado.getTarjetaLiga() <= 0) {
+
+                titulares.add(expulsado);
+
+            } else {
+
+                Expulsados.push(expulsado);
+            }
+
+        }
+    }
+
+    //-------Mostrar jugadores Expulsados-------
+
+    public void mostrarExpulsados(){
+        Iterator <Jugador> it = Expulsados.iterator();
+        while (it.hasNext()){
+
+            Jugador jugador = it.next();
+            System.out.println("- " + jugador.getNombre());
+        }
+    }
+
+    /**
+     * Metodo para que el usuario pueda
+     * realizar los cambios que deseé
+     */
+
+    public void realizarCambio(Jugador entraSuplente, Jugador saleTitular) {
+
+        if (titulares.contains(saleTitular) && suplentes.contains(saleTitular)) {
+
+            suplentes.remove(entraSuplente);
+            titulares.remove(saleTitular);
+            titulares.add(entraSuplente);
+            suplentes.add(saleTitular);
+
+            System.out.println("⬇ Sale: " + saleTitular.getNombre());
+            System.out.println("⬆ Entra: " + entraSuplente.getNombre());
+
+        }
+    }
+
+    /**
+     * Si los titulares no son 11
+     * Se agregara uno del banco
+     */
+
+    public void verificarTitulares() {
+
+        if (titulares.size() == 11) return;
+
+        for (Jugador a : suplentes) {
+            if (titulares.size() == 11) break;
+            titulares.add(a);
+            suplentes.remove(a);
+        }
 
     }
 
-    public void MeterSuplenteIA(){
 
-        ArrayList <Jugador> jug = new ArrayList<>(suplentes);
-        agregarJugador(jug.get(0));
-
-    }
-
-
-
-    //Equals & HashCode
+    //---------Equals & HashCode---------
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -301,6 +346,11 @@ public class Equipo {
         return Objects.hashCode(nombre);
     }
 
+    //-----------------------------------
+
+
+    //---------metodo toString---------
+
     @Override
     public String toString() {
         return "Equipo: " + nombre + "\n" +
@@ -312,17 +362,6 @@ public class Equipo {
                 "  - Jugadores Suplentes: " + suplentes.size();
     }
 
-    public void mostrarExpulsados(){
-
-        Iterator <Jugador> it = Expulsados.iterator();
-
-        while (it.hasNext()){
-
-            Jugador jugador = it.next();
-            System.out.println("- " + jugador.getNombre());
-        }
-
-    }
 }
 
 

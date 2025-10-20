@@ -14,7 +14,7 @@ public class Jugador extends Persona implements iEntrenable {
     private int estadoFisico;
     private int golesConvertidos;
     private int asistencias;
-    private int tarjeta;
+    private int tarjetaLiga;
     private final Random rand;
 
     public Jugador(String nombre, int edad, String nacionalidad, Posicion posicion, int habilidadAtaque, int habilidadDefensa, int estadoFisico) {
@@ -24,7 +24,7 @@ public class Jugador extends Persona implements iEntrenable {
         this.habilidadAtaque = habilidadAtaque;
         this.habilidadDefensa = habilidadDefensa;
         this.estadoFisico = estadoFisico;
-        this.tarjeta = 0;
+        this.tarjetaLiga = 0;
         this.golesConvertidos = 0;
         this.rand = new Random();
     }
@@ -74,12 +74,12 @@ public class Jugador extends Persona implements iEntrenable {
         return (this.habilidadAtaque + this.habilidadDefensa) / 2.0;
     }
 
-    public int getTarjeta() {
-        return tarjeta;
+    public int getTarjetaLiga() {
+        return tarjetaLiga;
     }
 
-    public void setTarjeta(int tarjeta) {
-        this.tarjeta = tarjeta;
+    public void setTarjetaLiga(int tarjeta) {
+        this.tarjetaLiga = tarjeta;
     }
 
     public void entrenar(){

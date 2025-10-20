@@ -114,7 +114,6 @@ public class Partido {
         double probabilidadFalta = 0.20;
         Scanner scanner = new Scanner(System.in);
 
-
         for (int i = 1; i <= 90; i++) {
             System.out.println("Minuto " + i);
 
@@ -201,16 +200,16 @@ public class Partido {
             if (tipoTarjeta == 1){
                 this.amarillasLocal++;
                 if (mostrar){
-                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                    System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasLocal++;
                 if (mostrar){
-                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                    System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
             } else {
                 if (mostrar){
-                    System.out.println(" Minuto " + minuto + "Falta de " + autorFalta.getNombre());
+                    System.out.println("Minuto " + minuto + ": Falta de " + autorFalta.getNombre());
                 }
             }
         } else {
@@ -218,16 +217,16 @@ public class Partido {
             if (tipoTarjeta == 1){
                 this.amarillasVisitante++;
                 if (mostrar){
-                    System.out.println("️ Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                    System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasVisitante++;
                 if (mostrar){
-                    System.out.println(" Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                    System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
             } else {
                 if (mostrar){
-                    System.out.println(" Minuto " + minuto +"Falta de " + autorFalta.getNombre());
+                    System.out.println("Minuto " + minuto +": Falta de " + autorFalta.getNombre());
                 }
             }
         }

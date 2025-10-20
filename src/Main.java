@@ -21,9 +21,9 @@ void main() {
         // Añadir jugadores simplificados
         for(int i=0; i< 11; i++) {
             equipoA.agregarJugador(new Jugador("Jugador Nico " +i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
-            equipoB.agregarJugador(new Jugador("JugadorB"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 75, 75, 90));
-            equipoC.agregarJugador(new Jugador("JugadorC"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 65, 65, 90));
-            equipoD.agregarJugador(new Jugador("JugadorD"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 90));
+            equipoB.agregarJugador(new Jugador("Jugador B"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 75, 75, 90));
+            equipoC.agregarJugador(new Jugador("Jugador C"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 65, 65, 90));
+            equipoD.agregarJugador(new Jugador("Jugador D"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 90));
         }
 
         // --- 2. CREACIÓN Y CONFIGURACIÓN DE LA LIGA ---
