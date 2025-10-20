@@ -4,6 +4,9 @@ import enums.Posicion;
 
 import java.util.*;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Equipo {
     private String nombre;
     private Estadio estadio;
@@ -25,10 +28,71 @@ public class Equipo {
         this.suplentes = new HashSet<>();
         this.Expulsados = new Stack<>();
         this.puntos = 0;
-
         this.random = new Random();
     }
+    //==================== JSON ====================
+    public Equipo (JSONObject json){
+        this.nombre = json.getString("nombre");
 
+        JSONObject estadio = json.getJSONObject("estadio");
+        this.estadio = new Estadio(estadio);
+        this.presupuesto = json.getDouble("presupuesto");
+        this.puntos = json.getInt("puntos");
+        this.random = new Random();
+
+        JSONObject jsonTecnico = json.getJSONObject("tecnico");
+        this.tecnico = new DirectorTecnico(jsonTecnico);
+
+        //reconstruir lista titulares
+        this.titulares = new HashSet<>();
+        JSONArray jsonTitulares = json.getJSONArray("titulares");
+        for (int i = 0; i < jsonTitulares.length(); i++) {
+            JSONObject jsonJugador = jsonTitulares.getJSONObject(i);
+            this.titulares.add(new Jugador(jsonJugador));
+        }
+
+        //reconstruir lista suplentes
+        this.suplentes = new HashSet<>();
+        JSONArray jsonSuplentes = json.getJSONArray("suplentes");
+        for (int i = 0; i < jsonSuplentes.length(); i++) {
+            JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
+            this.suplentes.add(new Jugador(jsonJugador));
+        }
+        //Faltan expulsados
+        this.Expulsados = new Stack<>();
+    }
+
+    public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        obj.put("nombre", nombre);
+        obj.put("directorTecnico", tecnico.toJson());
+        obj.put("estadio", estadio.toJson());
+        obj.put("presupuesto", presupuesto);
+        obj.put("puntos", puntos);
+
+        //Convertir HashSet en un JSONArray
+        JSONArray jsonTitulares = new JSONArray();
+        for (Jugador jugador : titulares) {
+            jsonTitulares.put(jugador.toJson());
+        }
+        obj.put("titulares", jsonTitulares);
+
+        //Convertir HashSet en un JSONArray
+        JSONArray jsonSuplentes = new JSONArray();
+        for (Jugador jugador : suplentes) {
+            jsonSuplentes.put(jugador.toJson());
+        }
+        obj.put("suplentes", jsonSuplentes);
+
+        //Convertir Stack en un JSONArray
+        JSONArray jsonExpulsados = new JSONArray();
+        for (Jugador jugador : Expulsados) {
+            jsonExpulsados.put(jugador.toJson());
+        }
+        obj.put("expulsados", jsonExpulsados);
+
+        return obj;
+    }
     // ==================== Getters y Setters ====================
     public String getNombre() {
         return nombre;
