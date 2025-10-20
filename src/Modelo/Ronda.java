@@ -7,7 +7,7 @@ public class Ronda
 {
     private String nombre;
     private ArrayList <Partido> partidos;
-    
+
     //Constructor
     public Ronda(String nombre, ArrayList<Partido> partidos) {
         this.nombre = nombre;
