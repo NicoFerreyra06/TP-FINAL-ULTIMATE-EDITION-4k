@@ -19,7 +19,7 @@ void main() {
         Equipo equipoD = new Equipo("Equipo Juan", estGenerico, dtDefault, 100000);
 
         // Añadir jugadores simplificados
-        for(int i=0; i<11; i++) {
+        for(int i=0; i< 11; i++) {
             equipoA.agregarJugador(new Jugador("Jugador Nico " +i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
             equipoB.agregarJugador(new Jugador("JugadorB"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 75, 75, 90));
             equipoC.agregarJugador(new Jugador("JugadorC"+i, 25, "Local", Posicion.MEDIOCAMPISTA, 65, 65, 90));
@@ -37,7 +37,6 @@ void main() {
         ligaDePrueba.anotarEquipo(equipoD);
 
         // Generamos el fixture
-        System.out.println("Generando fixture...");
         ligaDePrueba.generarFixture();
 
         // --- 3. PRUEBA DE SIMULACIÓN ---
@@ -46,17 +45,12 @@ void main() {
 
         IO.println("Presione enter para simular la jornada 1");
         scanner.nextLine();
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
-        ligaDePrueba.jugarProximaFecha(equipoA);
 
+        while (!ligaDePrueba.isTerminada()){
+            ligaDePrueba.jugarProximaFecha(equipoA);
+        }
 
-
-
+        ligaDePrueba.campeonLiga();
     } catch (InterruptedException e){
         System.out.println("Errrorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
     }

@@ -14,7 +14,29 @@ public class Liga extends Torneo{
         this.tablaPosiciones = new HashMap<>();
     }
 
-// ... El resto de tu clase Liga ...
+    public int getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(int jornada) {
+        this.jornada = jornada;
+    }
+
+    public ArrayList<Partido> getFixture() {
+        return fixture;
+    }
+
+    public void setFixture(ArrayList<Partido> fixture) {
+        this.fixture = fixture;
+    }
+
+    public Map<Equipo, FilaTabla> getTablaPosiciones() {
+        return tablaPosiciones;
+    }
+
+    public void setTablaPosiciones(Map<Equipo, FilaTabla> tablaPosiciones) {
+        this.tablaPosiciones = tablaPosiciones;
+    }
 
     public void generarFixture() {
         ArrayList<Equipo> listaEquipos = new ArrayList<>(super.getEquipos().values());
@@ -85,12 +107,6 @@ public class Liga extends Torneo{
                 }
             }
 
-            // 3.
-            System.out.println("--- Jornada " + (jornada + 1) + " ---");
-            for (Partido p : partidosDeJornada) {
-                System.out.println(p.getLocal().getNombre() + " vs " + p.getVisitante().getNombre());
-            }
-
             // 4. Añade los partidos de esta jornada al fixture total
             fixtureTotal.addAll(partidosDeJornada);
         }
@@ -134,8 +150,6 @@ public class Liga extends Torneo{
         this.jornada++;
     }
 
-
-
     private ArrayList<Partido> getPartidosFecha(int numeroFecha) {
         ArrayList<Partido> partidosDeLaFecha = new ArrayList<>();
 
@@ -178,19 +192,19 @@ public class Liga extends Torneo{
 
         Collections.sort(filasOrdenadas);
 
-        // Imprimir Encabezado
+        // Encabezado
         System.out.println("\n------------ TABLA DE POSICIONES ------------");
         System.out.println("-------------------------------------------------------------------------------");
         System.out.printf("%-3s | %-15s | %s | %s | %s | %s | %s | %s | %s | %s\n",
                 "Pos", "Equipo", "Pts", "PJ", "PG", "PE", "PP", "GF", "GC", "DG");
         System.out.println("-------------------------------------------------------------------------------");
 
-        // Imprimir Filas
+        // Filas
         int posicion = 1;
         for (FilaTabla fila : filasOrdenadas) {
             System.out.printf("%-3d | %-15s | %3d | %2d | %2d | %2d | %2d | %3d | %3d | %5d\n",
                     posicion++,
-                    fila.equipo.getNombre(), // Acceso directo al atributo
+                    fila.equipo.getNombre(),
                     fila.puntos,
                     fila.jugados,
                     fila.ganados,
@@ -201,5 +215,27 @@ public class Liga extends Torneo{
                     fila.diferenciaGoles);
         }
         System.out.println("-------------------------------------------------------------------------------");
+    }
+
+    public void campeonLiga() {
+        // Convertimos los valores del mapa a un arraylist y lo ordenamos
+        List<FilaTabla> filasOrdenadas = new ArrayList<>(tablaPosiciones.values());
+        Collections.sort(filasOrdenadas);
+
+        if (filasOrdenadas.isEmpty()) {
+            System.out.println("La tabla esta vacia");
+        }
+        //Traigo al campeon
+        Equipo campeon = filasOrdenadas.getFirst().equipo;
+        System.out.println("🏆 ¡El campeón de la liga es: " + campeon.getNombre() + "!");
+    }
+
+    //Metodo para saber si la liga esta terminada
+    public boolean isTerminada (){
+        int numeroEquipos = super.getEquipos().size();
+
+        int jornadasTotales = (numeroEquipos - 1) * 2;
+
+        return this.jornada > jornadasTotales;
     }
 }
