@@ -186,10 +186,7 @@ public class Equipo {
             }
 
         }
-
-
     }
-
     /**
      * Convierte nuestro Hashset de titulares
      * en un arraylist para seleccionar
@@ -227,7 +224,7 @@ public class Equipo {
 
             if(expulsado.getTarjeta() == 2){
 
-                System.out.println(". Expulsado");
+                System.out.println("Expulsado el jugador: " + expulsado.getNombre());
 
                 titulares.remove(expulsado);
                 Expulsados.push(expulsado);
@@ -281,10 +278,11 @@ public class Equipo {
                 "  - Jugadores Suplentes: " + suplentes.size();
     }
 
-    public void mostrar(){
+    public void mostrarExpulsados(){
 
-        System.out.println(Expulsados.firstElement().getNombre());
-
+        if (!Expulsados.isEmpty()) {
+            System.out.println("Expulsados: " + Expulsados.firstElement().getNombre());
+        }
     }
 
 }

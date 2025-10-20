@@ -111,7 +111,7 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadFalta = 0.4;
+        double probabilidadFalta = 0.1;
 
 
         for (int i = 1; i <= 90; i++) {
@@ -122,8 +122,8 @@ public class Partido {
             Thread.sleep(100);
         }
 
-        local.mostrar();
-        visitante.mostrar();
+        local.mostrarExpulsados();
+        visitante.mostrarExpulsados();
 
         visitante.bajarSancion();
         local.bajarSancion();
