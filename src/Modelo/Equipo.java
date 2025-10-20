@@ -289,11 +289,15 @@ public class Equipo {
 
     public void mostrarExpulsados(){
 
-        if (!Expulsados.isEmpty()) {
-            System.out.println("Expulsados: " + Expulsados.firstElement().getNombre());
-        }
-    }
+        Iterator <Jugador> it = Expulsados.iterator();
 
+        while (it.hasNext()){
+
+            Jugador jugador = it.next();
+            System.out.println("- " + jugador.getNombre());
+        }
+
+    }
 }
 
 
