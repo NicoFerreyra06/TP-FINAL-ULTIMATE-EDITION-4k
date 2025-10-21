@@ -1,6 +1,6 @@
-package Modelo;
+package Modelo.Usuario;
 
-import java.util.Objects;
+import Modelo.Equipo.Equipo;
 
 public class Usuario {
     protected String nombre;
@@ -36,27 +36,32 @@ public class Usuario {
         this.equipoGestionado = equipoGestionado;
     }
 
-    //Metodo
+    //Métodos
     //Falta terminar
-    public boolean registrarse(String nombre, String contrasenia, Equipo equipo) {
+
+    //Registra un jugador en la base de datos, si este no existe
+    public boolean registrarse(String nombre, String contrasenia) {
         if (verificarNombre(nombre) && verificarContrasenia(contrasenia)) {
-            System.out.println("El usuario ya existe.");
-            return false;
-        }else {
             setNombre(nombre);
             setContrasenia(contrasenia);
-            setEquipoGestionado(equipo);
             return true;
+        }else {
+            System.out.println("El usuario ya existe. Debe iniciar sesión.");
+            return false;
         }
     }
 
+    //Entra a la cuenta del usuario, si esta existe
     public boolean inicioSesion(String nombre, String contrasenia) {
         if (verificarNombre(nombre) && verificarContrasenia(contrasenia)) {
             return true;
+        } else {
+            System.out.println("El usuario no existe. Debe registrarse.");
+            return false;
         }
-        return false;
     }
 
+    //Verifica que el nombre de usuario no exista
     public boolean verificarNombre(String nombre) {
         if (nombre.equals(this.nombre)) {
             return false;
@@ -64,6 +69,7 @@ public class Usuario {
         return true;
     }
 
+    //Verifica que la contraseña no exista
     public boolean verificarContrasenia(String contra) {
         if (contra.equals(getContrasenia())) {
             return false;

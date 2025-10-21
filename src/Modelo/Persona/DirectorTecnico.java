@@ -1,8 +1,9 @@
-package Modelo;
-import Interfaces.*;
+package Modelo.Persona;
+import enums.*;
+import Modelo.Equipo.*;
 import org.json.JSONObject;
 
-public class DirectorTecnico extends Persona implements iToJSON{
+public class DirectorTecnico extends Persona{
     private int experiencia; //0 a 100
     private Tactica tacticaPreferida;
 
@@ -23,7 +24,7 @@ public class DirectorTecnico extends Persona implements iToJSON{
         this.tacticaPreferida = new Tactica(jsonDT);
     }
 
-    public JSONObject toJSON(){
+    public JSONObject toJson(){
         JSONObject jsonDT = new JSONObject();
         jsonDT.put("nombre", this.nombre);
         jsonDT.put("edad", this.edad);

@@ -1,14 +1,16 @@
-package Modelo;
+package Modelo.Equipo;
 
-import Interfaces.*;
+import Modelo.Persona.DirectorTecnico;
+import Modelo.Persona.Jugador;
 import enums.Posicion;
+import Modelo.*;
 
 import java.util.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Equipo implements iToJSON {
+public class Equipo {
     private String nombre;
     private Estadio estadio;
     private DirectorTecnico tecnico;
@@ -71,8 +73,8 @@ public class Equipo implements iToJSON {
     public JSONObject toJSON(){
         JSONObject obj = new JSONObject();
         obj.put("nombre", nombre);
-        obj.put("tecnico", tecnico.toJSON());
-        obj.put("estadio", estadio.toJSON());
+        obj.put("tecnico", tecnico.toJson());
+        obj.put("estadio", estadio.toJson());
         obj.put("presupuesto", presupuesto);
         obj.put("puntos", puntos);
 

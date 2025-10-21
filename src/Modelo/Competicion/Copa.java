@@ -1,9 +1,12 @@
-package Modelo;
+package Modelo.Competicion;
+
+import Modelo.Equipo.Equipo;
+import Modelo.Partido.Partido;
 
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 
-public  class Copa extends Torneo{
+public  class Copa extends Torneo {
     private ArrayList<Ronda> rondas;
 
     //Constructor
@@ -58,7 +61,7 @@ public  class Copa extends Torneo{
         }
 
         //  Obtener ganadores y actualizar la lista de equipos en la copa
-        ArrayList<Equipo> ganadores = rondaActual.getGanadores();
+        ArrayList<Equipo> ganadores = rondaActual.getGanadores(equipoJugador);
         equiposTorneo.clear(); // Vaciamos la lista de equipos viejos
         for (Equipo ganador : ganadores) {
             equiposTorneo.put(ganador.getNombre(), ganador); // Y la llenamos con los ganadores

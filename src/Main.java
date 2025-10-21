@@ -1,13 +1,15 @@
-import Modelo.*;
-import enums.Eformacion;
-import enums.EstiloJuego;
-import enums.Posicion;
-import org.json.JSONArray;
-import org.json.JSONObject;
+// Clases del Modelo
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+import enums.*;
+import Modelo.Competicion.*;
+import Modelo.Equipo.*;
+import Modelo.Partido.*;
+import Modelo.Persona.*;
+import Modelo.Usuario.*;
+import java.util.*;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="SRun"/> or
 void main() {
-
 
     try {
         // --- 1. CREACIÓN DE EQUIPOS DE PRUEBA ---
@@ -85,16 +87,16 @@ void main() {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (!ligaDePrueba.isTerminada()) {
+        /*while (!ligaDePrueba.isTerminada()) {
 
             IO.println("Presione enter para simular la jornada");
             scanner.nextLine();
 
             ligaDePrueba.jugarProximaFecha(equipoA);
-        }
+        }*/
 
         // --- 2. CREACIÓN Y CONFIGURACIÓN DE LA COPA ---
-        System.out.println("\nCreando la Liga...");
+        System.out.println("\nCreando la Copa...");
         Copa copaDePrueba = new Copa("Copa de Prueba");
 
         //Anotamos los equipos en la copa

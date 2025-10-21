@@ -1,9 +1,7 @@
-package Modelo;
-
+package Modelo.Equipo;
 import org.json.JSONObject;
-import Interfaces.*;
 
-public class Estadio implements iToJSON{
+public class Estadio {
     private String nombre;
     private int capacidad;
     private double valorEntrada;
@@ -21,7 +19,7 @@ public class Estadio implements iToJSON{
         this.valorEntrada = json.getDouble("valorEntrada");
     }
 
-    public JSONObject toJSON(){
+    public JSONObject toJson(){
         JSONObject jsonEstadio = new JSONObject();
         jsonEstadio.put("nombre", nombre);
         jsonEstadio.put("capacidad", capacidad);

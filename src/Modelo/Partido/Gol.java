@@ -1,4 +1,6 @@
-package Modelo;
+package Modelo.Partido;
+
+import Modelo.Persona.Jugador;
 
 public class Gol {
     private int minuto;

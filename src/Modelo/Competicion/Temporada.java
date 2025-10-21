@@ -1,6 +1,7 @@
-package Modelo;
+package Modelo.Competicion;
 
-import java.util.HashMap;
+import Modelo.Equipo.Equipo;
+
 import java.util.LinkedHashSet;
 
 public class Temporada {
