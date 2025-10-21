@@ -165,6 +165,20 @@ public static void cargarEquipos(){
     rosarioCentral.agregarJugador(new Jugador("Emanuel Coronel",28,"Argentina",Posicion.DEFENSOR,58,64,61));
     rosarioCentral.agregarJugador(new Jugador("Ignacio Malcorra",38,"Argentina",Posicion.MEDIOCAMPISTA,75,39,60));
     rosarioCentral.agregarJugador(new Jugador("Franco Ibarra",24,"Argentina",Posicion.MEDIOCAMPISTA,63,67,62));
+    rosarioCentral.agregarJugador(new Jugador("Jaminton Campaz",25,"Colombia",Posicion.MEDIOCAMPISTA,69,49,62));
+    rosarioCentral.agregarJugador(new Jugador("Angel Di Maria",37,"Argentina",Posicion.DELANTERO,82,58,70));
+    rosarioCentral.agregarJugador(new Jugador("Enzo Giménez",27,"Paraguay",Posicion.MEDIOCAMPISTA,63,56,62));
+    rosarioCentral.agregarJugador(new Jugador("Alejo Véliz",22,"Argentina",Posicion.DELANTERO,76,48,78));
+    rosarioCentral.agregarJugador(new Jugador("Enzo Copetti",29,"Argentina",Posicion.DELANTERO,68,35,74));
+    rosarioCentral.agregarJugador(new Jugador("Juan Manuel Elordi",31,"Argentina",Posicion.DEFENSOR,58,60,62));
+    rosarioCentral.agregarJugador(new Jugador("Agustin Modica",22,"Argentina",Posicion.DELANTERO,62,33,55));
+    rosarioCentral.agregarJugador(new Jugador("Federico Navarro",25,"Argentina",Posicion.MEDIOCAMPISTA,62,61,62));
+    rosarioCentral.agregarJugador(new Jugador("Samuel Beltrán",21,"Argentina",Posicion.MEDIOCAMPISTA,53,51,56));
+    rosarioCentral.agregarJugador(new Jugador("Jorge Braun",39,"Argentina",Posicion.ARQUERO,18,70,69));
+    rosarioCentral.agregarJugador(new Jugador("Gioavanni Cantizano",18,"Argentina",Posicion.MEDIOCAMPISTA,63,51,60));
+    rosarioCentral.agregarJugador(new Jugador("Francesco Lo Celso",25,"Argentina",Posicion.MEDIOCAMPISTA,63,58,62));
+    rosarioCentral.agregarJugador(new Jugador("Santiago López",19,"Argentina",Posicion.DELANTERO,66,45,62));
+    
 
 }
 
