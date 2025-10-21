@@ -16,6 +16,8 @@ public  class Copa extends Torneo {
         return switch (numeroDeEquipos) {
             case 16 -> "Octavos de Final";
             case 8 -> "Cuartos de Final";
+            case 4 -> "Semifinales";
+            case 2 -> "GRAN FINAL";
             default -> "Ronda de " + numeroDeEquipos;
         };
     }
