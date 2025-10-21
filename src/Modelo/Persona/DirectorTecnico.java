@@ -1,6 +1,7 @@
-package Modelo;
+package Modelo.Persona;
+import Modelo.Equipo.Tactica;
 import org.json.JSONObject;
-public class DirectorTecnico extends Persona{
+public class DirectorTecnico extends Persona {
     private int experiencia; //0 a 100
     private Tactica tacticaPreferida;
 

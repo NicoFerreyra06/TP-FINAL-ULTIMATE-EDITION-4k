@@ -1,4 +1,10 @@
-import Modelo.*;
+import Modelo.Competicion.Copa;
+import Modelo.Competicion.Liga;
+import Modelo.Equipo.Equipo;
+import Modelo.Equipo.Estadio;
+import Modelo.Equipo.Tactica;
+import Modelo.Persona.DirectorTecnico;
+import Modelo.Persona.Jugador;
 import enums.Eformacion;
 import enums.EstiloJuego;
 import enums.Posicion;

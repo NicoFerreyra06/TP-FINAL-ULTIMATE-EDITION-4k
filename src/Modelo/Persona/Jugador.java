@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Persona;
 import Interfaces.*;
 import enums.Posicion;
 

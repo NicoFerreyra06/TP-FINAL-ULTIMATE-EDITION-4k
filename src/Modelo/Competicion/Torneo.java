@@ -1,4 +1,6 @@
-package Modelo;
+package Modelo.Competicion;
+
+import Modelo.Equipo.Equipo;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

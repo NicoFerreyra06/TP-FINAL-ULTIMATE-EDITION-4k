@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Equipo;
 import org.json.JSONObject;
 
 public class Estadio {

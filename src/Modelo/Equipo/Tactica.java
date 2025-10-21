@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Equipo;
 import enums.*;
 
 import org.json.JSONObject;
