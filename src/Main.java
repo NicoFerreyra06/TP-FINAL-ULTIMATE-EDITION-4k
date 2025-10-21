@@ -37,10 +37,10 @@ void main() {
 
         // Añadir jugadores simplificados
         for (int i = 0; i < 11; i++) {
-            equipoA.agregarJugador(new Jugador("Jugador Nico " + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoA.agregarJugador(new Jugador("Jugador Nico " + i, 25, "Local", Posicion.MEDIOCAMPISTA, 99, 99, 99));
             equipoB.agregarJugador(new Jugador("Jugador B" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 75, 75, 90));
             equipoC.agregarJugador(new Jugador("Jugador C" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 65, 65, 90));
-            equipoD.agregarJugador(new Jugador("Jugador D" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 90));
+            equipoD.agregarJugador(new Jugador("Jugador D" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 80));
             equipoE.agregarJugador(new Jugador("Jugador E" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
             equipoF.agregarJugador(new Jugador("Jugador F" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
             equipoG.agregarJugador(new Jugador("Jugador G" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 90));
@@ -118,7 +118,23 @@ void main() {
         copaDePrueba.anotarEquipo(equipoP);
 
         // --- 2. EJECUCION DE LA PRUEBA ---
-        copaDePrueba.jugarProximaFecha(equipoA); //Le pasas el equipo que usa el usuario.
+        //copaDePrueba.jugarProximaFecha(equipoA); //Le pasas el equipo que usa el usuario.
+        copaDePrueba.mostrarBracket();
+
+        // El bucle se ejecuta mientras quede más de 1 equipo
+        while (copaDePrueba.getEquipos().size() > 1) {
+            System.out.println("\nPresiona Enter para simular la siguiente ronda...");
+            scanner.nextLine();
+
+            // Juega la ronda (anuncia partidos, simula y define ganadores)
+            copaDePrueba.jugarProximaFecha(equipoA);
+
+            // Muestra el bracket actualizado con los resultados
+            copaDePrueba.mostrarBracket();
+        }
+
+        System.out.println("\n--- FIN DEL TORNEO ---");
+        // No necesitas llamar a un metodo "campeonCopa", la misma clase ya lo anuncia.
 
 
 

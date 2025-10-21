@@ -103,8 +103,8 @@ public  class Copa extends Torneo {
                         i + 1,
                         partido.getLocal().getNombre(),
                         partido.getGolesLocal(),
-                        partido.getVisitante().getNombre(),
-                        partido.getGolesVisitante());
+                        partido.getGolesVisitante(),
+                        partido.getVisitante().getNombre());
 
                 System.out.println(resultado + " -> Ganador: " + ganador.getNombre());
             }
