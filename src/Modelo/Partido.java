@@ -126,7 +126,7 @@ public class Partido {
                 scanner.nextLine();
             }
 
-            Thread.sleep(500);
+            Thread.sleep(00);
         }
 
         System.out.println("Expulsados de local: ");
