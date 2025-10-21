@@ -3,7 +3,6 @@ package Modelo.Equipo;
 import Modelo.Persona.DirectorTecnico;
 import Modelo.Persona.Jugador;
 import enums.Posicion;
-import Modelo.*;
 
 import java.util.*;
 
