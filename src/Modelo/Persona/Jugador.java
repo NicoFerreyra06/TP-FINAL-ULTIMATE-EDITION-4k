@@ -116,6 +116,14 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         this.tarjetaLiga = tarjeta;
     }
 
+    public int getAsistencias() {
+        return asistencias;
+    }
+
+    public void setAsistencias(int asistencias) {
+        this.asistencias = asistencias;
+    }
+
     public void entrenar(){
         if (Math.random() < 0.3){
             return;

@@ -106,7 +106,7 @@ public class PodiosDeCompeticion <T extends Torneo> {
     }
 
     /// ---------------------
-    /// Podio, top 4 (copa)
+    /// Podio, top 3 (copa)
     /// ---------------------
 
     private void mostrarTop3(){
