@@ -202,11 +202,15 @@ public class Partido {
             this.faltasLocal++;
             if (tipoTarjeta == 1){
                 this.amarillasLocal++;
+                autorFalta.setTarjetaLiga(autorFalta.getTarjetaLiga() + 1);
+
                 if (mostrar){
                     System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasLocal++;
+                autorFalta.setTarjetaLiga(2);
+
                 if (mostrar){
                     System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
@@ -219,11 +223,14 @@ public class Partido {
             this.faltasVisitante++;
             if (tipoTarjeta == 1){
                 this.amarillasVisitante++;
+                autorFalta.setTarjetaLiga(getFaltasLocal() + 1);
+
                 if (mostrar){
                     System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
                 }
             } else if (tipoTarjeta == 2){
                 this.rojasVisitante++;
+                autorFalta.setTarjetaLiga(2);
                 if (mostrar){
                     System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }

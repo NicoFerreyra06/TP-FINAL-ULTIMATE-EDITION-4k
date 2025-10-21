@@ -16,7 +16,7 @@ public class Equipo {
     private double presupuesto;
     private HashSet<Jugador> titulares;
     private HashSet<Jugador> suplentes;
-    private Stack<Jugador> Expulsados;
+    private LinkedHashSet <Jugador> Expulsados;
     private int puntos;
     private final Random random;
     private boolean jugoJornada;
@@ -28,7 +28,7 @@ public class Equipo {
         this.presupuesto = presupuesto;
         this.titulares = new HashSet<>();
         this.suplentes = new HashSet<>();
-        this.Expulsados = new Stack<>();
+        this.Expulsados = new LinkedHashSet <>();
         this.puntos = 0;
         this.random = new Random();
     }
@@ -61,11 +61,11 @@ public class Equipo {
             this.suplentes.add(new Jugador(jsonJugador));
         }
         //reconstruir lista expulsados
-        this.Expulsados = new Stack<>();
+        this.Expulsados = new LinkedHashSet<>();
         JSONArray jsonExpulsados = json.getJSONArray("expulsados");
         for (int i = 0; i < jsonExpulsados.length(); i++) {
             JSONObject jsonJugador = jsonExpulsados.getJSONObject(i);
-            this.Expulsados.push(new Jugador(jsonJugador));
+            this.Expulsados.remove(new Jugador(jsonJugador));
         }
     }
 
@@ -157,11 +157,11 @@ public class Equipo {
         this.puntos = puntos;
     }
 
-    public Stack<Jugador> getExpulsados() {
+    public LinkedHashSet<Jugador> getExpulsados() {
         return Expulsados;
     }
 
-    public void setExpulsados(Stack<Jugador> expulsados) {
+    public void setExpulsados(LinkedHashSet<Jugador> expulsados) {
         Expulsados = expulsados;
     }
 
@@ -323,7 +323,7 @@ public class Equipo {
             System.out.println("Expulsado el jugador: " + expulsado.getNombre());
 
             titulares.remove(expulsado);
-            Expulsados.push(expulsado);
+            Expulsados.add(expulsado);
 
         }
     }
@@ -340,7 +340,7 @@ public class Equipo {
 
         for (int i = 0; i < tamanio; i++) {
 
-            Jugador expulsado = Expulsados.remove(0);
+            Jugador expulsado = Expulsados.removeFirst();
             expulsado.setTarjetaLiga(expulsado.getTarjetaLiga() - 1);
 
             if (expulsado.getTarjetaLiga() <= 0) {
@@ -349,7 +349,7 @@ public class Equipo {
 
             } else {
 
-                Expulsados.push(expulsado);
+                Expulsados.add(expulsado);
             }
 
         }
