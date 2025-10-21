@@ -150,3 +150,21 @@ void main() {
 
 }
 
+public static void cargarEquipos(){
+    ArrayList<Equipo> equipos = new ArrayList<>();
+
+    Estadio estadioRosario = new Estadio("Gigante de Arroyito",51000,55.0);
+    Tactica tacticaRosario = new Tactica(Eformacion.F_4231,EstiloJuego.OFENSIVO);
+    DirectorTecnico dtRosario = new DirectorTecnico("Ariel Holan",65,"Argentina",73,tacticaRosario);
+    Equipo rosarioCentral = new Equipo("Rosario Central",estadioRosario,dtRosario,5000000.0);
+
+    rosarioCentral.agregarJugador(new Jugador("Axel Werner",29,"Argentina",Posicion.ARQUERO,24,67,70));
+    rosarioCentral.agregarJugador(new Jugador("Agustin Sández",24,"Paraguay",Posicion.DEFENSOR,60,69,65));
+    rosarioCentral.agregarJugador(new Jugador("Juan Komar",29,"Argentina",Posicion.DEFENSOR,50,69,72));
+    rosarioCentral.agregarJugador(new Jugador("Facundo Mallo",30,"Uruguay",Posicion.DEFENSOR,52,66,75));
+    rosarioCentral.agregarJugador(new Jugador("Emanuel Coronel",28,"Argentina",Posicion.DEFENSOR,58,64,61));
+    rosarioCentral.agregarJugador(new Jugador("Ignacio Malcorra",38,"Argentina",Posicion.MEDIOCAMPISTA,75,39,60));
+    rosarioCentral.agregarJugador(new Jugador("Franco Ibarra",24,"Argentina",Posicion.MEDIOCAMPISTA,63,67,62));
+
+}
+
