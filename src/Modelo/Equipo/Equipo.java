@@ -1,5 +1,6 @@
 package Modelo.Equipo;
 
+import Interfaces.iToJSON;
 import Modelo.Persona.DirectorTecnico;
 import Modelo.Persona.Jugador;
 import enums.Posicion;
@@ -9,7 +10,7 @@ import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Equipo {
+public class Equipo implements iToJSON {
     private String nombre;
     private Estadio estadio;
     private DirectorTecnico tecnico;
