@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Persona;
 
 public abstract class Persona {
     protected String nombre;

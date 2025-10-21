@@ -1,4 +1,6 @@
-package Modelo;
+package Modelo.Competicion;
+
+import Modelo.Equipo.Equipo;
 
 public class FilaTabla implements Comparable<FilaTabla>{
 

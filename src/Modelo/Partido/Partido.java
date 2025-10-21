@@ -1,4 +1,7 @@
-package Modelo;
+package Modelo.Partido;
+
+import Modelo.Equipo.Equipo;
+import Modelo.Persona.Jugador;
 
 import java.util.*;
 

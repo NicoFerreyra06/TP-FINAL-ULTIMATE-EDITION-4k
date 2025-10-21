@@ -1,8 +1,11 @@
-package Modelo;
+package Modelo.Competicion;
+
+import Modelo.Equipo.Equipo;
+import Modelo.Partido.Partido;
 
 import java.util.*;
 
-public class Liga extends Torneo{
+public class Liga extends Torneo {
     private int jornada;
     private ArrayList<Partido> fixture;
     private Map <Equipo, FilaTabla> tablaPosiciones;

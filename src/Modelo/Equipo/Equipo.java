@@ -1,6 +1,9 @@
-package Modelo;
+package Modelo.Equipo;
 
+import Modelo.Persona.DirectorTecnico;
+import Modelo.Persona.Jugador;
 import enums.Posicion;
+import Modelo.*;
 
 import java.util.*;
 
@@ -78,21 +81,21 @@ public class Equipo {
         //Convertir HashSet en un JSONArray
         JSONArray jsonTitulares = new JSONArray();
         for (Jugador jugador : titulares) {
-            jsonTitulares.put(jugador.toJson());
+            jsonTitulares.put(jugador.toJSON());
         }
         obj.put("titulares", jsonTitulares);
 
         //Convertir HashSet en un JSONArray
         JSONArray jsonSuplentes = new JSONArray();
         for (Jugador jugador : suplentes) {
-            jsonSuplentes.put(jugador.toJson());
+            jsonSuplentes.put(jugador.toJSON());
         }
         obj.put("suplentes", jsonSuplentes);
 
         //Convertir Stack en un JSONArray
         JSONArray jsonExpulsados = new JSONArray();
         for (Jugador jugador : Expulsados) {
-            jsonExpulsados.put(jugador.toJson());
+            jsonExpulsados.put(jugador.toJSON());
         }
         obj.put("expulsados", jsonExpulsados);
 

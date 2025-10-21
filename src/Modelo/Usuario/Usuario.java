@@ -1,6 +1,6 @@
-package Modelo;
+package Modelo.Usuario;
 
-import java.util.Objects;
+import Modelo.Equipo.Equipo;
 
 public class Usuario {
     protected String nombre;

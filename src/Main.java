@@ -1,11 +1,15 @@
-import Modelo.*;
-import enums.Eformacion;
-import enums.EstiloJuego;
-import enums.Posicion;
+// Clases del Modelo
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+import enums.*;
+import Modelo.Competicion.*;
+import Modelo.Equipo.*;
+import Modelo.Partido.*;
+import Modelo.Persona.*;
+import Modelo.Usuario.*;
+import java.util.*;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="SRun"/> or
 void main() {
-
 
     try {
         // --- 1. CREACIÓN DE EQUIPOS DE PRUEBA ---
