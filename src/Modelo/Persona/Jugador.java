@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.UUID;
 import org.json.JSONObject;
 
-public class Jugador extends Persona implements iEntrenable {
+public class Jugador extends Persona implements iEntrenable, iToJSON{
     private final String id;
     private Posicion posicion;
     private int habilidadAtaque;
@@ -47,7 +47,7 @@ public class Jugador extends Persona implements iEntrenable {
         this.rand = new Random();
     }
 
-    public JSONObject toJson (){
+    public JSONObject toJSON (){
         JSONObject jsonJugador = new JSONObject();
         jsonJugador.put("id", this.id);
         jsonJugador.put("posicion", this.posicion.name());
