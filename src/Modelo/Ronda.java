@@ -28,7 +28,7 @@ public class Ronda
     //Recorre los partidos jugados y devuelve una lista con los ganadores.
     //Si hay empate, llama a la tandaDePenales para decidir un ganador.
     //return ArrayList<Equipo> con los equipos que avanzan a la siguiente ronda.
-    public ArrayList<Equipo> getGanadores() {
+    public ArrayList<Equipo> getGanadores(Equipo equipoJugador) {
         ArrayList<Equipo> ganadores = new ArrayList<>();
 
         for (Partido partido : this.partidos) {
@@ -39,7 +39,7 @@ public class Ronda
                 System.out.println("El partido entre " + partido.getLocal().getNombre() + " y " +
                         partido.getVisitante().getNombre() + " terminó en empate.");
 
-                ganador = tandaDePenales(partido.getLocal(), partido.getVisitante());
+                ganador = tandaDePenales(partido.getLocal(), partido.getVisitante(), equipoJugador);
 
                 System.out.println("\n¡" + ganador.getNombre() + " GANA LA TANDA DE PENALES Y AVANZA DE RONDA!\n");
             }
@@ -52,65 +52,118 @@ public class Ronda
 
 
     //Simula una tanda de penales hasta obtener un unico ganador
-    private Equipo tandaDePenales(Equipo local, Equipo visitante) {
-        System.out.println("¡COMIENZA LA TANDA DE PENALES ENTRE " + local.getNombre() + " Y " + visitante.getNombre() + "!");
+    private Equipo tandaDePenales(Equipo local, Equipo visitante, Equipo equipoJugador) {
+        //Verifica si el partido es del usuario
+        boolean esPartidoDelJugador = local.equals(equipoJugador) || visitante.equals(equipoJugador);
 
-        int golesLocal = 0;
-        int golesVisitante = 0;
-        Random rand = new Random();
+        if (esPartidoDelJugador) {
+            System.out.println("¡COMIENZA LA TANDA DE PENALES ENTRE " + local.getNombre() + " Y " + visitante.getNombre() + "!");
 
-        // 1. Obtenemos la lista de jugadores titulares de cada equipo.
-        // Como getTitulares() devuelve un HashSet, lo convertimos a ArrayList para poder elegir por índice.
-        ArrayList<Jugador> pateadoresLocales = new ArrayList<>(local.getTitulares());
-        ArrayList<Jugador> pateadoresVisitantes = new ArrayList<>(visitante.getTitulares());
 
-        // Verificación para evitar errores si un equipo no tiene jugadores
-        if (pateadoresLocales.isEmpty() || pateadoresVisitantes.isEmpty()) {
-            System.out.println("Uno de los equipos no tiene jugadores para patear. Se decidirá por sorteo.");
-            return rand.nextBoolean() ? local : visitante;
-        }
+            int golesLocal = 0;
+            int golesVisitante = 0;
+            Random rand = new Random();
 
-        // --- Tanda de 5 penales ---
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("\n--- Penal #" + i + " ---");
+            // 1. Obtenemos la lista de jugadores titulares de cada equipo.
+            // Como getTitulares() devuelve un HashSet, lo convertimos a ArrayList para poder elegir por índice.
+            ArrayList<Jugador> pateadoresLocales = new ArrayList<>(local.getTitulares());
+            ArrayList<Jugador> pateadoresVisitantes = new ArrayList<>(visitante.getTitulares());
 
-            // Patea el equipo local
-            Jugador pateadorLocal = pateadoresLocales.get(rand.nextInt(pateadoresLocales.size()));
-            if (rand.nextDouble() < pateadorLocal.getHabilidadAtaque() / 125.0)
+            // Verificación para evitar errores si un equipo no tiene jugadores o fueron expulsados
+            if (pateadoresLocales.isEmpty() || pateadoresVisitantes.isEmpty()) {
+                System.out.println("Uno de los equipos no tiene jugadores para patear. Se decidirá por sorteo.");
+                return rand.nextBoolean() ? local : visitante;
+            }
+
+            // --- Tanda de 5 penales ---
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("\n--- Penal #" + i + " ---");
+
+                // Patea el equipo local
+                Jugador pateadorLocal = pateadoresLocales.get(rand.nextInt(pateadoresLocales.size()));
+                if (rand.nextDouble() < pateadorLocal.getHabilidadAtaque() / 125.0)
                 //Se divide por 125.00 para obtener un valor mas realista en la tanda de penales,
                 // Ej: tiene 100 de Hab Ataque/ 125 da un total de 0.8 de probabilidad de anotar un gol.
-            {
-                golesLocal++;
-                System.out.println("¡GOL de " + local.getNombre() + "! Anotó " + pateadorLocal.getNombre());
-            } else {
-                System.out.println("¡FALLÓ " + local.getNombre() + "! " + pateadorLocal.getNombre() + " no pudo convertir.");
+                {
+                    golesLocal++;
+                    System.out.println("¡GOL de " + local.getNombre() + "! Anotó " + pateadorLocal.getNombre());
+                } else {
+                    System.out.println("¡FALLÓ " + local.getNombre() + "! " + pateadorLocal.getNombre() + " no pudo convertir.");
+                }
+
+                // Patea el equipo visitante
+                Jugador pateadorVisitante = pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size()));
+                if (rand.nextDouble() < pateadorVisitante.getHabilidadAtaque() / 125.0) {
+                    golesVisitante++;
+                    System.out.println("¡GOL de " + visitante.getNombre() + "! Anotó " + pateadorVisitante.getNombre());
+                } else {
+                    System.out.println("¡FALLÓ " + visitante.getNombre() + "! " + pateadorVisitante.getNombre() + " no pudo convertir.");
+                }
+
+                System.out.println("Resultado parcial: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
             }
 
-            // Patea el equipo visitante
-            Jugador pateadorVisitante = pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size()));
-            if (rand.nextDouble() < pateadorVisitante.getHabilidadAtaque() / 125.0) {
-                golesVisitante++;
-                System.out.println("¡GOL de " + visitante.getNombre() + "! Anotó " + pateadorVisitante.getNombre());
-            } else {
-                System.out.println("¡FALLÓ " + visitante.getNombre() + "! " + pateadorVisitante.getNombre() + " no pudo convertir.");
+            // --- Muerte súbita si siguen empatados ---
+            if (golesLocal == golesVisitante) {
+                System.out.println("\n--- ¡MUERTE SÚBITA! ---");
+                while (golesLocal == golesVisitante) {
+                    // Se repite la misma lógica de un solo penal por equipo hasta que haya un ganador
+                    if (rand.nextDouble() < pateadoresLocales.get(rand.nextInt(pateadoresLocales.size())).getHabilidadAtaque() / 125.0)
+                        golesLocal++;
+                    if (rand.nextDouble() < pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size())).getHabilidadAtaque() / 125.0)
+                        golesVisitante++;
+                }
             }
 
-            System.out.println("Resultado parcial: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+            // Devolver al ganador y anunciar el resultado final de la tanda
+            System.out.println("Resultado final de la tanda: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+            return (golesLocal > golesVisitante) ? local : visitante;
+        } else {
+            ///Simulado rapido si no participa el equipo del usuario
+            System.out.println("¡COMIENZA LA TANDA DE PENALES ENTRE " + local.getNombre() + " Y " + visitante.getNombre() + "!");
+            int golesLocal = 0;
+            int golesVisitante = 0;
+            Random rand = new Random();
+            ArrayList<Jugador> pateadoresLocales = new ArrayList<>(local.getTitulares());
+            ArrayList<Jugador> pateadoresVisitantes = new ArrayList<>(visitante.getTitulares());
+
+            if (pateadoresLocales.isEmpty() || pateadoresVisitantes.isEmpty()) {
+                return rand.nextBoolean() ? local : visitante;
+            }
+
+            // --- Tanda de 5 penales ---
+            for (int i = 1; i <= 5; i++) {
+                // Patea el equipo local
+                Jugador pateadorLocal = pateadoresLocales.get(rand.nextInt(pateadoresLocales.size()));
+                if (rand.nextDouble() < pateadorLocal.getHabilidadAtaque() / 125.0) {
+                    golesLocal++;
+                }
+
+                // Patea el equipo visitante
+                Jugador pateadorVisitante = pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size()));
+                if (rand.nextDouble() < pateadorVisitante.getHabilidadAtaque() / 125.0) {
+                    golesVisitante++;
+                } else {
+
+                }
+
+                // --- Muerte súbita si siguen empatados ---
+                if (golesLocal == golesVisitante) {
+                    while (golesLocal == golesVisitante) {
+                        // Se repite la misma lógica de un solo penal por equipo hasta que haya un ganador
+                        if (rand.nextDouble() < pateadoresLocales.get(rand.nextInt(pateadoresLocales.size())).getHabilidadAtaque() / 125.0)
+                            golesLocal++;
+                        if (rand.nextDouble() < pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size())).getHabilidadAtaque() / 125.0)
+                            golesVisitante++;
+                    }
+                }
+                System.out.println("Resultado tanda de penales: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+
+                return (golesLocal > golesVisitante) ? local : visitante;
+
+            }
         }
-
-        // --- Muerte súbita si siguen empatados ---
-        if (golesLocal == golesVisitante) {
-            System.out.println("\n--- ¡MUERTE SÚBITA! ---");
-            while (golesLocal == golesVisitante) {
-                // Se repite la misma lógica de un solo penal por equipo hasta que haya un ganador
-                if (rand.nextDouble() < pateadoresLocales.get(rand.nextInt(pateadoresLocales.size())).getHabilidadAtaque() / 125.0) golesLocal++;
-                if (rand.nextDouble() < pateadoresVisitantes.get(rand.nextInt(pateadoresVisitantes.size())).getHabilidadAtaque() / 125.0) golesVisitante++;
-            }
-        }
-
-        // Devolver al ganador y anunciar el resultado final de la tanda
-        System.out.println("Resultado final de la tanda: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
-        return (golesLocal > golesVisitante) ? local : visitante;
+        return local;
     }
 
     

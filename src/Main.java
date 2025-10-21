@@ -83,16 +83,16 @@ void main() {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (!ligaDePrueba.isTerminada()) {
+        /*while (!ligaDePrueba.isTerminada()) {
 
             IO.println("Presione enter para simular la jornada");
             scanner.nextLine();
 
             ligaDePrueba.jugarProximaFecha(equipoA);
-        }
+        }*/
 
         // --- 2. CREACIÓN Y CONFIGURACIÓN DE LA COPA ---
-        System.out.println("\nCreando la Liga...");
+        System.out.println("\nCreando la Copa...");
         Copa copaDePrueba = new Copa("Copa de Prueba");
 
         //Anotamos los equipos en la copa

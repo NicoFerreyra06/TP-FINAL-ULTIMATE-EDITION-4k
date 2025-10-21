@@ -58,7 +58,7 @@ public  class Copa extends Torneo{
         }
 
         //  Obtener ganadores y actualizar la lista de equipos en la copa
-        ArrayList<Equipo> ganadores = rondaActual.getGanadores();
+        ArrayList<Equipo> ganadores = rondaActual.getGanadores(equipoJugador);
         equiposTorneo.clear(); // Vaciamos la lista de equipos viejos
         for (Equipo ganador : ganadores) {
             equiposTorneo.put(ganador.getNombre(), ganador); // Y la llenamos con los ganadores
