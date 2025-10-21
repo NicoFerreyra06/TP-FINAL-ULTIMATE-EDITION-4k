@@ -95,7 +95,7 @@ void main() {
             ligaDePrueba.jugarProximaFecha(equipoA);
         }*/
 
-        // --- 2. CREACIÓN Y CONFIGURACIÓN DE LA COPA ---
+        // --- 1. CREACIÓN Y CONFIGURACIÓN DE LA COPA ---
         System.out.println("\nCreando la Copa...");
         Copa copaDePrueba = new Copa("Copa de Prueba");
 
@@ -117,8 +117,11 @@ void main() {
         copaDePrueba.anotarEquipo(equipoO);
         copaDePrueba.anotarEquipo(equipoP);
 
-        // --- 3. EJECUCION DE LA PRUEBA ---
+        // --- 2. EJECUCION DE LA PRUEBA ---
         copaDePrueba.jugarProximaFecha(equipoA); //Le pasas el equipo que usa el usuario.
+
+
+
 
 
         ligaDePrueba.campeonLiga();
