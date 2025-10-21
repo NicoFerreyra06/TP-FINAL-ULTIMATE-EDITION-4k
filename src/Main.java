@@ -1,66 +1,152 @@
 // Clases del Modelo
 
-import Gestora.GestoraGenerica;
-import Gestora.JsonUtiles;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
 import Modelo.Partido.*;
 import Modelo.Persona.*;
 import Modelo.Usuario.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="SRun"/> or
 void main() {
-    
 
-}
+    try {
+        // --- 1. CREACIÓN DE EQUIPOS DE PRUEBA ---
+        System.out.println("Creando equipos para la prueba...");
+        Estadio estGenerico = new Estadio("Estadio Municipal", 15000, 15.0);
+        Tactica tacDefault = new Tactica(Eformacion.F_442, EstiloJuego.EQUILIBRADO);
+        DirectorTecnico dtDefault = new DirectorTecnico("DT Prueba", 50, "Local", 70, tacDefault);
 
-    public static ArrayList<Equipo> crearEquiposIniciales() {
-        ArrayList<Equipo> equipos = new ArrayList<>();
+        Equipo equipoA = new Equipo("Equipo Nico", estGenerico, dtDefault, 100000);
+        Equipo equipoB = new Equipo("Equipo Lucio", estGenerico, dtDefault, 100000);
+        Equipo equipoC = new Equipo("Equipo Tomas", estGenerico, dtDefault, 100000);
+        Equipo equipoD = new Equipo("Equipo Juan", estGenerico, dtDefault, 100000);
+        Equipo equipoE = new Equipo("Equipo Oscar", estGenerico, dtDefault, 100000);
+        Equipo equipoF = new Equipo("Equipo Ciro", estGenerico, dtDefault, 100000);
+        Equipo equipoG = new Equipo("Equipo Nahuel", estGenerico, dtDefault, 100000);
+        Equipo equipoH = new Equipo("Equipo Juanito", estGenerico, dtDefault, 100000);
+        Equipo equipoI = new Equipo("Equipo Pepe", estGenerico, dtDefault, 100000);
+        Equipo equipoJ = new Equipo("Equipo Fer", estGenerico, dtDefault, 100000);
+        Equipo equipoK = new Equipo("Equipo Ger", estGenerico, dtDefault, 100000);
+        Equipo equipoL = new Equipo("Equipo Ema", estGenerico, dtDefault, 100000);
+        Equipo equipoM = new Equipo("Equipo Momo", estGenerico, dtDefault, 100000);
+        Equipo equipoN = new Equipo("Equipo Bananirou", estGenerico, dtDefault, 100000);
+        Equipo equipoO = new Equipo("Equipo Villano", estGenerico, dtDefault, 100000);
+        Equipo equipoP = new Equipo("Equipo Coleccionista", estGenerico, dtDefault, 100000);
 
-        //River
-        Estadio monumental = new Estadio("Mas monumental", 86000, 55.00);
+        // Añadir jugadores simplificados
+        for (int i = 0; i < 11; i++) {
+            equipoA.agregarJugador(new Jugador("Jugador Nico " + i, 25, "Local", Posicion.MEDIOCAMPISTA, 99, 99, 99));
+            equipoB.agregarJugador(new Jugador("Jugador B" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 75, 75, 90));
+            equipoC.agregarJugador(new Jugador("Jugador C" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 65, 65, 90));
+            equipoD.agregarJugador(new Jugador("Jugador D" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 80));
+            equipoE.agregarJugador(new Jugador("Jugador E" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+            equipoF.agregarJugador(new Jugador("Jugador F" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoG.agregarJugador(new Jugador("Jugador G" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 80, 80, 90));
+            equipoH.agregarJugador(new Jugador("Jugador H" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+            equipoI.agregarJugador(new Jugador("Jugador I" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoJ.agregarJugador(new Jugador("Jugador J" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+            equipoK.agregarJugador(new Jugador("Jugador K" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoL.agregarJugador(new Jugador("Jugador L" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+            equipoM.agregarJugador(new Jugador("Jugador M" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoN.agregarJugador(new Jugador("Jugador N" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+            equipoO.agregarJugador(new Jugador("Jugador O" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 70, 70, 90));
+            equipoP.agregarJugador(new Jugador("Jugador P" + i, 25, "Local", Posicion.MEDIOCAMPISTA, 60, 60, 90));
+        }
 
-        Tactica tacticaRiver = new Tactica(Eformacion.F_442, EstiloJuego.OFENSIVO); // Táctica común
-        DirectorTecnico dtGallardo = new DirectorTecnico("Marcelo Gallardo", 49, "Argentino", 82, tacticaRiver); // Datos estimados
+        // --- 2. CREACIÓN Y CONFIGURACIÓN DE LA LIGA ---
+        System.out.println("\nCreando la Liga...");
+        Liga ligaDePrueba = new Liga("Liga de Prueba");
 
-        Equipo river = new Equipo("River Plate", monumental, dtGallardo, 30000000.00);
+        // Anotamos los equipos en la liga
+        ligaDePrueba.anotarEquipo(equipoA);
+        ligaDePrueba.anotarEquipo(equipoB);
+        ligaDePrueba.anotarEquipo(equipoC);
+        ligaDePrueba.anotarEquipo(equipoD);
+        ligaDePrueba.anotarEquipo(equipoE);
+        ligaDePrueba.anotarEquipo(equipoF);
+        ligaDePrueba.anotarEquipo(equipoG);
+        ligaDePrueba.anotarEquipo(equipoH);
+        ligaDePrueba.anotarEquipo(equipoI);
+        ligaDePrueba.anotarEquipo(equipoJ);
+        ligaDePrueba.anotarEquipo(equipoL);
+        ligaDePrueba.anotarEquipo(equipoM);
+        ligaDePrueba.anotarEquipo(equipoN);
+        ligaDePrueba.anotarEquipo(equipoO);
+        ligaDePrueba.anotarEquipo(equipoP);
+        ligaDePrueba.anotarEquipo(equipoK);
+        ligaDePrueba.anotarEquipo(equipoL);
+        ligaDePrueba.anotarEquipo(equipoM);
+        ligaDePrueba.anotarEquipo(equipoN);
+        ligaDePrueba.anotarEquipo(equipoO);
+        ligaDePrueba.anotarEquipo(equipoP);
 
-        //Jugadores
-        river.agregarJugador(new Jugador("Franco Armani", 39, "Argentina", Posicion.ARQUERO, 30, 87, 67));
-        //Defensores
-        river.agregarJugador(new Jugador("Lucas Martinez Quarta", 29, "Argentina", Posicion.DEFENSOR, 50, 85, 80));
-        river.agregarJugador(new Jugador("Lautaro Rivero", 21, "Argentina", Posicion.DEFENSOR, 50, 82, 80));
-        river.agregarJugador(new Jugador("Paulo Diaz", 31, "Chilena", Posicion.DEFENSOR, 43, 82, 80));
-        river.agregarJugador(new Jugador("Gonzalo Montiel", 28, "Chilena", Posicion.DEFENSOR, 50, 82, 80));
+        // Generamos el fixture
+        ligaDePrueba.generarFixture();
 
-        //MedioCampo
-        river.agregarJugador(new Jugador("Juan Carlos Portillo", 25, "Argentina", Posicion.MEDIOCAMPISTA, 60, 80, 83));
-        river.agregarJugador(new Jugador("Kevin Castano", 25, "Colombiana", Posicion.MEDIOCAMPISTA, 80,75 , 70));
-        river.agregarJugador(new Jugador("Santiago Lencina", 20, "Argentina", Posicion.MEDIOCAMPISTA, 81,64, 70));
-        river.agregarJugador(new Jugador("Juan Quintero", 32, "Colombiana", Posicion.MEDIOCAMPISTA, 86,50, 69));
+        Scanner scanner = new Scanner(System.in);
 
-        //Atacante
-        river.agregarJugador(new Jugador("Sebastian Driussi", 29, "Argentina", Posicion.DELANTERO, 87, 43, 75));
-        river.agregarJugador(new Jugador("Maximiliano Salas", 27, "Argentina", Posicion.DELANTERO, 85, 43, 83));
+        /*while (!ligaDePrueba.isTerminada()) {
 
-        //Suplentes
-        river.agregarJugador(new Jugador("Jeremias Ledesma", 32, "Argentino", Posicion.ARQUERO, 20, 89, 91));
-        river.agregarJugador(new Jugador("Fabricio Bustos", 29, "Argentino", Posicion.DEFENSOR, 75, 78, 90));
-        river.agregarJugador(new Jugador("Sebastian Boselli", 21, "Uruguayo", Posicion.DEFENSOR, 55, 84, 92));
-        river.agregarJugador(new Jugador("Giuliano Galoppo", 26, "Argentino", Posicion.MEDIOCAMPISTA, 82, 65, 88));
-        river.agregarJugador(new Jugador("Maximiliano Meza", 32, "Argentino", Posicion.MEDIOCAMPISTA, 80, 68, 87));
-        river.agregarJugador(new Jugador("Cristian Jaime", 21, "Mexicano", Posicion.DELANTERO, 83, 40, 90));
-        river.agregarJugador(new Jugador("Gonzalo Martinez", 32, "Argentino", Posicion.DELANTERO, 88, 50, 86));
-        river.agregarJugador(new Jugador("Miguel Borja", 32, "Colombiano", Posicion.DELANTERO, 92, 30, 86));
+            IO.println("Presione enter para simular la jornada");
+            scanner.nextLine();
 
-        equipos.add(river);
+            ligaDePrueba.jugarProximaFecha(equipoA);
+        }*/
 
-        return equipos;
+        // --- 1. CREACIÓN Y CONFIGURACIÓN DE LA COPA ---
+        System.out.println("\nCreando la Copa...");
+        Copa copaDePrueba = new Copa("Copa de Prueba");
+
+        //Anotamos los equipos en la copa
+        copaDePrueba.anotarEquipo(equipoA);
+        copaDePrueba.anotarEquipo(equipoB);
+        copaDePrueba.anotarEquipo(equipoC);
+        copaDePrueba.anotarEquipo(equipoD);
+        copaDePrueba.anotarEquipo(equipoE);
+        copaDePrueba.anotarEquipo(equipoF);
+        copaDePrueba.anotarEquipo(equipoG);
+        copaDePrueba.anotarEquipo(equipoH);
+        copaDePrueba.anotarEquipo(equipoI);
+        copaDePrueba.anotarEquipo(equipoJ);
+        copaDePrueba.anotarEquipo(equipoK);
+        copaDePrueba.anotarEquipo(equipoL);
+        copaDePrueba.anotarEquipo(equipoM);
+        copaDePrueba.anotarEquipo(equipoN);
+        copaDePrueba.anotarEquipo(equipoO);
+        copaDePrueba.anotarEquipo(equipoP);
+
+        // --- 2. EJECUCION DE LA PRUEBA ---
+        //copaDePrueba.jugarProximaFecha(equipoA); //Le pasas el equipo que usa el usuario.
+        copaDePrueba.mostrarBracket();
+
+        // El bucle se ejecuta mientras quede más de 1 equipo
+        while (copaDePrueba.getEquipos().size() > 1) {
+            System.out.println("\nPresiona Enter para simular la siguiente ronda...");
+            scanner.nextLine();
+
+            // Juega la ronda (anuncia partidos, simula y define ganadores)
+            copaDePrueba.jugarProximaFecha(equipoA);
+
+            // Muestra el bracket actualizado con los resultados
+            copaDePrueba.mostrarBracket();
+        }
+
+        System.out.println("\n--- FIN DEL TORNEO ---");
+        // No necesitas llamar a un metodo "campeonCopa", la misma clase ya lo anuncia.
+
+
+
+
+
+        ligaDePrueba.campeonLiga();
+    } catch (InterruptedException e) {
+        System.out.println("Errrorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
     }
 
+
+
+
+}
 
