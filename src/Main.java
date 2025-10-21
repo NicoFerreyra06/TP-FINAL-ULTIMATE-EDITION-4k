@@ -2,6 +2,8 @@ import Modelo.*;
 import enums.Eformacion;
 import enums.EstiloJuego;
 import enums.Posicion;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 void main() {

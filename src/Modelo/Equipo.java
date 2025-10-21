@@ -1,5 +1,6 @@
 package Modelo;
 
+import Interfaces.*;
 import enums.Posicion;
 
 import java.util.*;
@@ -7,7 +8,7 @@ import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Equipo {
+public class Equipo implements iToJSON {
     private String nombre;
     private Estadio estadio;
     private DirectorTecnico tecnico;
@@ -70,29 +71,29 @@ public class Equipo {
     public JSONObject toJSON(){
         JSONObject obj = new JSONObject();
         obj.put("nombre", nombre);
-        obj.put("tecnico", tecnico.toJson());
-        obj.put("estadio", estadio.toJson());
+        obj.put("tecnico", tecnico.toJSON());
+        obj.put("estadio", estadio.toJSON());
         obj.put("presupuesto", presupuesto);
         obj.put("puntos", puntos);
 
         //Convertir HashSet en un JSONArray
         JSONArray jsonTitulares = new JSONArray();
         for (Jugador jugador : titulares) {
-            jsonTitulares.put(jugador.toJson());
+            jsonTitulares.put(jugador.toJSON());
         }
         obj.put("titulares", jsonTitulares);
 
         //Convertir HashSet en un JSONArray
         JSONArray jsonSuplentes = new JSONArray();
         for (Jugador jugador : suplentes) {
-            jsonSuplentes.put(jugador.toJson());
+            jsonSuplentes.put(jugador.toJSON());
         }
         obj.put("suplentes", jsonSuplentes);
 
         //Convertir Stack en un JSONArray
         JSONArray jsonExpulsados = new JSONArray();
         for (Jugador jugador : Expulsados) {
-            jsonExpulsados.put(jugador.toJson());
+            jsonExpulsados.put(jugador.toJSON());
         }
         obj.put("expulsados", jsonExpulsados);
 

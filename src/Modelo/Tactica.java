@@ -1,9 +1,10 @@
 package Modelo;
 import enums.*;
+import Interfaces.*;
 
 import org.json.JSONObject;
 
-public class Tactica {
+public class Tactica implements iToJSON{
     private Eformacion eformacion;
     private EstiloJuego estiloJuego;
 

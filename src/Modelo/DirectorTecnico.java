@@ -1,6 +1,8 @@
 package Modelo;
+import Interfaces.*;
 import org.json.JSONObject;
-public class DirectorTecnico extends Persona{
+
+public class DirectorTecnico extends Persona implements iToJSON{
     private int experiencia; //0 a 100
     private Tactica tacticaPreferida;
 
@@ -21,7 +23,7 @@ public class DirectorTecnico extends Persona{
         this.tacticaPreferida = new Tactica(jsonDT);
     }
 
-    public JSONObject toJson(){
+    public JSONObject toJSON(){
         JSONObject jsonDT = new JSONObject();
         jsonDT.put("nombre", this.nombre);
         jsonDT.put("edad", this.edad);
