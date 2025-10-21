@@ -193,16 +193,16 @@ public class Liga extends Torneo{
         Collections.sort(filasOrdenadas);
 
         // Encabezado
-        System.out.println("\n------------ TABLA DE POSICIONES ------------");
+        System.out.println("\n---------------------------- TABLA DE POSICIONES ------------------------------");
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.printf("%-3s | %-15s | %s | %s | %s | %s | %s | %s | %s | %s\n",
+        System.out.printf("%-3s | %-20s | %3s | %2s | %2s | %2s | %2s | %3s | %3s | %3s\n",
                 "Pos", "Equipo", "Pts", "PJ", "PG", "PE", "PP", "GF", "GC", "DG");
         System.out.println("-------------------------------------------------------------------------------");
 
         // Filas
         int posicion = 1;
         for (FilaTabla fila : filasOrdenadas) {
-            System.out.printf("%-3d | %-15s | %3d | %2d | %2d | %2d | %2d | %3d | %3d | %5d\n",
+            System.out.printf("%-3d | %-20s | %3d | %2d | %2d | %2d | %2d | %3d | %3d | %2d\n",
                     posicion++,
                     fila.equipo.getNombre(),
                     fila.puntos,

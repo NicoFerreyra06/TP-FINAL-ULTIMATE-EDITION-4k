@@ -60,6 +60,23 @@ void main() {
         ligaDePrueba.anotarEquipo(equipoB);
         ligaDePrueba.anotarEquipo(equipoC);
         ligaDePrueba.anotarEquipo(equipoD);
+        ligaDePrueba.anotarEquipo(equipoE);
+        ligaDePrueba.anotarEquipo(equipoF);
+        ligaDePrueba.anotarEquipo(equipoG);
+        ligaDePrueba.anotarEquipo(equipoH);
+        ligaDePrueba.anotarEquipo(equipoI);
+        ligaDePrueba.anotarEquipo(equipoJ);
+        ligaDePrueba.anotarEquipo(equipoL);
+        ligaDePrueba.anotarEquipo(equipoM);
+        ligaDePrueba.anotarEquipo(equipoN);
+        ligaDePrueba.anotarEquipo(equipoO);
+        ligaDePrueba.anotarEquipo(equipoP);
+        ligaDePrueba.anotarEquipo(equipoK);
+        ligaDePrueba.anotarEquipo(equipoL);
+        ligaDePrueba.anotarEquipo(equipoM);
+        ligaDePrueba.anotarEquipo(equipoN);
+        ligaDePrueba.anotarEquipo(equipoO);
+        ligaDePrueba.anotarEquipo(equipoP);
 
         // Generamos el fixture
         ligaDePrueba.generarFixture();
