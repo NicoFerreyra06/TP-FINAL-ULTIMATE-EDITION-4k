@@ -142,7 +142,7 @@ public class PodiosDeCompeticion <T extends Torneo> {
 
 
         //Asistidores
-        ListList<Jugador> topAsistidores = todos.stream().sorted(Comparator.comparingInt(Jugador::getAsistencias).reversed()).limit(5)
+        List <Jugador> topAsistidores = todos.stream().sorted(Comparator.comparingInt(Jugador::getAsistencias).reversed()).limit(5)
                 .collect(Collectors.toList());
 
 
