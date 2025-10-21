@@ -3,7 +3,7 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 
-public  class Copa extends Torneo{
+public  class Copa extends Torneo {
     private ArrayList<Ronda> rondas;
 
     //Constructor
@@ -15,9 +15,7 @@ public  class Copa extends Torneo{
     private String getNombreRonda(int numeroDeEquipos) {
         return switch (numeroDeEquipos) {
             case 16 -> "Octavos de Final";
-            case 8  -> "Cuartos de Final";
-            case 4  -> "Semifinales";
-            case 2  -> "GRAN FINAL";
+            case 8 -> "Cuartos de Final";
             default -> "Ronda de " + numeroDeEquipos;
         };
     }
@@ -59,6 +57,9 @@ public  class Copa extends Torneo{
 
         //  Obtener ganadores y actualizar la lista de equipos en la copa
         ArrayList<Equipo> ganadores = rondaActual.getGanadores(equipoJugador);
+        rondas.add(rondaActual);
+
+        // Actualizamos la lista de equipos en la copa con los ganadores.
         equiposTorneo.clear(); // Vaciamos la lista de equipos viejos
         for (Equipo ganador : ganadores) {
             equiposTorneo.put(ganador.getNombre(), ganador); // Y la llenamos con los ganadores
@@ -70,6 +71,46 @@ public  class Copa extends Torneo{
         }
     }
 
+    public void mostrarBracket() {
+        System.out.println("\n=============================================");
+        System.out.println("        BRACKET DE LA " + getNombre().toUpperCase());
+        System.out.println("=============================================");
+
+        if (rondas.isEmpty()) {
+            System.out.println("\n      ...El torneo aún no ha comenzado...");
+            return;
+        }
+
+        for (Ronda ronda : this.rondas) {
+            System.out.println("\n--- " + ronda.getNombre().toUpperCase() + " ---");
+
+            ArrayList<Partido> partidos = ronda.getPartidos();
+            ArrayList<Equipo> ganadores = ronda.getGanadoresDeLaRonda();
+
+            if (ganadores == null) continue; // Si la ronda no se jugó, la saltamos
+
+            // Usamos UN SOLO BUCLE con un índice para emparejar partido y ganador
+            for (int i = 0; i < partidos.size(); i++) {
+                Partido partido = partidos.get(i);
+                Equipo ganador = ganadores.get(i); // El ganador del partido i
+
+                String resultado = String.format(" [%d] %-20s (%d) vs (%d) %-20s",
+                        i + 1,
+                        partido.getLocal().getNombre(),
+                        partido.getGolesLocal(),
+                        partido.getVisitante().getNombre(),
+                        partido.getGolesVisitante());
+
+                System.out.println(resultado + " -> Ganador: " + ganador.getNombre());
+            }
+        }
+        System.out.println("\n=============================================");
+    }
+
+
+        //Getters y Setters
+
+
 
     public ArrayList<Ronda> getRondas() {
         return rondas;
@@ -78,6 +119,4 @@ public  class Copa extends Torneo{
     public void setRondas(ArrayList<Ronda> rondas) {
         this.rondas = rondas;
     }
-
-
 }
