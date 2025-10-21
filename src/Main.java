@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 
 void main(String[] args) {
-    String archivoGuardado = "partida_pro_manager.json";
+    /*String archivoGuardado = "partida_pro_manager.json";
 
     // --- 1. Crear Equipos Iniciales ---
     System.out.println("Creando equipos iniciales...");
@@ -48,6 +48,9 @@ void main(String[] args) {
     wrapper.put(partidaParaGuardar);
     JsonUtiles.grabarUnJson(wrapper, archivoGuardado); // Guardar
     System.out.println("¡Partida inicial guardada exitosamente!");
+     */
+
+    //Json (No descomentar)
 }
 
 public static ArrayList<Equipo> crearEquiposIniciales() {
