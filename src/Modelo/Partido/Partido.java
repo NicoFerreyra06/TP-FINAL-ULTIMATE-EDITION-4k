@@ -180,7 +180,7 @@ public class Partido {
             }
         }
 
-        
+
     }
 
     public void gestionFaltaEvento(Equipo equipoQueRecibe, boolean esLocal, boolean mostrar, int minuto){
