@@ -394,12 +394,11 @@ public class Equipo implements iToJSON {
 
     public void verificarTitulares() {
 
-        if (titulares.size() == 11) return;
-
-        for (Jugador a : suplentes) {
-            if (titulares.size() == 11) break;
-            titulares.add(a);
-            suplentes.remove(a);
+        Iterator<Jugador> it = suplentes.iterator();
+        while (it.hasNext() && titulares.size() < 11) {
+            Jugador j = it.next();
+            it.remove();
+            titulares.add(j);
         }
 
     }
