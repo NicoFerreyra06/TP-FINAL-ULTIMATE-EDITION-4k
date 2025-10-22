@@ -22,6 +22,10 @@ public class Equipo implements iToJSON {
     private final Random random;
     private boolean jugoJornada;
 
+    public Equipo() {
+        random = new Random();
+    }
+
     public Equipo(String nombre, Estadio estadio, DirectorTecnico tecnico, double presupuesto) {
         this.nombre = nombre;
         this.estadio = estadio;
@@ -418,7 +422,18 @@ public class Equipo implements iToJSON {
         return Objects.hashCode(nombre);
     }
 
-    //-----------------------------------
+    public void entrenarEquipo (){
+        System.out.println("Entrenando a " + this.nombre);
+
+        for (Jugador titular : this.titulares) {
+            titular.entrenar();
+        }
+
+        for (Jugador suplente : this.suplentes) {
+            suplente.entrenar();
+        }
+        System.out.println(" ==========Sesion de entrenamiento exitosa========== ");
+    }
 
 
     //---------metodo toString---------

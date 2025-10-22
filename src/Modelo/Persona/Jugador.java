@@ -173,7 +173,7 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         if(Math.random() < 0.5){
             if (estadoFisico < 100){
                 estadoFisico++;
-                System.out.println(getNombre() + " ha mejorado su ESTADO FISICO " + estadoFisico + "!");
+                System.out.println(getNombre() + " ha mejorado su ESTADO FISICO a" + estadoFisico + "!");
             }
         }
     }

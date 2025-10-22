@@ -11,44 +11,103 @@ import java.util.*;
 import Gestora.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 
-void main(String[] args) {
-    String archivoGuardado = "partida_pro_manager.json";
+void main() {
 
-    // --- 1. Crear Equipos Iniciales ---
-    System.out.println("Creando equipos iniciales...");
-    ArrayList<Equipo> equiposIniciales = crearEquiposIniciales();
+    Scanner sc = new Scanner(System.in);
 
-    // --- 2. Cargar Equipos en la Gestora ---
-    GestoraGenerica<Equipo> gestoraEquipos = new GestoraGenerica<>("lista_equipos"); // Clave para JSON
-    System.out.println("Agregando equipos a la gestora...");
-    for (Equipo equipo : equiposIniciales) {
-        gestoraEquipos.agregarElemento(equipo);
+    JSONTokener tokener = JsonUtiles.leerUnJson("partida_pro_manager.json");
+    JSONArray wrapperArray = new JSONArray(tokener);
+
+    JSONObject partidaGuardada = wrapperArray.getJSONObject(0);
+
+    JSONObject progresoLiga = partidaGuardada.getJSONObject("progreso_liga");
+    int jornadaCargada = progresoLiga.getInt("jornadaActual");
+
+    JSONObject datosEquipos = partidaGuardada.getJSONObject("datos_equipos");
+    JSONArray jsonArrayEquipos = datosEquipos.getJSONArray("lista_equipos");
+
+    ArrayList<Equipo> listaDeEquipos = new ArrayList<>();
+    for (int i = 0; i < jsonArrayEquipos.length(); i++) {
+        JSONObject jsonEquipo = jsonArrayEquipos.getJSONObject(i);
+        Equipo equipo = new Equipo(jsonEquipo); // La magia ocurre aquí
+        System.out.println(equipo.getNombre());
+        listaDeEquipos.add(equipo);
     }
-    System.out.println("Equipos agregados a la gestora.");
 
-    // Creamos la liga solo para tener un objeto Liga y obtener la jornada inicial
-    Liga ligaDePrueba = new Liga("Liga de Prueba");
-    for (Equipo eq : gestoraEquipos.getElementos()) {
-        ligaDePrueba.anotarEquipo(eq);
+    try{
+
+        System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
+        System.out.println("Creando la liga y los equipos...");
+
+        Liga liga = new Liga("Liga prueba");
+
+        for (Equipo equipo : listaDeEquipos){
+            liga.anotarEquipo(equipo);
+        }
+
+        for (int i = 0; i < listaDeEquipos.size(); i++) {
+            System.out.println((i + 1) + ". " + listaDeEquipos.get(i).getNombre());
+        }
+
+        System.out.println(" ==== Seleccione su equipo ====");
+        int indice = sc.nextInt();
+        Equipo usuarioEquipo = listaDeEquipos.get(indice - 1);
+
+        liga.generarFixture();
+
+        System.out.println("¡Has elegido a " + usuarioEquipo.getNombre() + "! Mucha suerte.");
+        boolean salir = false;
+        int entrenamientosJornada = 0;
+        final int limiteEntrenamiento = 1;
+
+        while (!liga.isTerminada() && !salir) {
+
+            System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
+            System.out.println("Menú de Acciones:");
+            System.out.println("1. Jugar próxima fecha");
+            System.out.println("2. Ver tabla de posiciones");
+            int restantes = limiteEntrenamiento - entrenamientosJornada;
+            System.out.println("3. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
+            System.out.println("4. Salir del juego");
+            System.out.print("Elige una opción: ");
+            int opcion = sc.nextInt();
+
+            switch (opcion){
+                case 1:
+                    liga.jugarProximaFecha(usuarioEquipo);
+                    entrenamientosJornada = 0;
+                    break;
+                case 2:
+                    liga.mostrarTabla();
+                    break;
+                case 3:
+                    if (entrenamientosJornada < limiteEntrenamiento) {
+                        usuarioEquipo.entrenarEquipo();
+                        entrenamientosJornada++;
+                        System.out.println("Entrenamiento realizado con exito!");
+                    } else {
+                        System.out.println("Limites por jornada alcanzados");
+                    }
+
+                    break;
+
+                case 4:
+                    salir = true;
+
+            }
+        }
+
+        if (liga.isTerminada()) {
+            System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
+            liga.mostrarTabla();
+            liga.campeonLiga();
+        }
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
     }
-    // ligaDePrueba.generarFixture(); // No es necesario para solo guardar
-
-    System.out.println("\nPreparando datos para guardar...");
-    JSONObject partidaParaGuardar = new JSONObject();
-
-    JSONObject progresoLiga = new JSONObject();
-    progresoLiga.put("jornadaActual", ligaDePrueba.getJornada());
-    partidaParaGuardar.put("progreso_liga", progresoLiga);
-
-    partidaParaGuardar.put("datos_equipos", gestoraEquipos.toJSON()); // Llama a toJSON() de Gestora
-
-    JSONArray wrapper = new JSONArray(); // Envoltorio
-    wrapper.put(partidaParaGuardar);
-    JsonUtiles.grabarUnJson(wrapper, archivoGuardado); // Guardar
-    System.out.println("¡Partida inicial guardada exitosamente!");
-
 }
 
 public static ArrayList<Equipo> crearEquiposIniciales() {

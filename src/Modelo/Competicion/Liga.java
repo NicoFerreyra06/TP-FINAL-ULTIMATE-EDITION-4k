@@ -42,80 +42,87 @@ public class Liga extends Torneo {
     }
 
     public void generarFixture() {
-        ArrayList<Equipo> listaEquipos = new ArrayList<>(super.getEquipos().values());
-        ArrayList<Partido> fixtureTotal = new ArrayList<>();
+        // 1. Obtener la lista de equipos y manejar N° impar
+        ArrayList<Equipo> equipos = new ArrayList<>(super.getEquipos().values());
+        this.tablaPosiciones.clear(); // Limpiar la tabla por si acaso
 
-        HashSet<String> partidosProgramados = new HashSet<>();
-
-        for (Equipo equipo : listaEquipos) {
-            this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
+        if (equipos.size() % 2 != 0) {
+            Equipo equipoBye = new Equipo();
+            equipoBye.setNombre("FANTASMA");
+            equipos.add(equipoBye);
         }
 
-        int numeroEquipos = listaEquipos.size();
+        int numEquipos = equipos.size();
+        int numJornadasIda = numEquipos - 1;
 
-        // VALIDACIÓN: Es necesario un número par de equipos
-        if (numeroEquipos % 2 != 0) {
-            System.err.println("Error: El número de equipos debe ser par para generar el fixture.");
-            // En un juego real, podrías añadir un equipo "fantasma" (BYE)
-            return;
+        // 2. Inicializar la tabla de posiciones
+        for (Equipo equipo : equipos) {
+            if (!equipo.getNombre().equals("FANTASMA")) {
+                this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
+            }
         }
 
-        int numeroJornadas = (numeroEquipos - 1) * 2;
-        int jornadasIda = numeroJornadas / 2; // La mitad de las jornadas son de "ida"
+        // 3. Separar el equipo fijo y la lista de rotación
+        Equipo equipoFijo = equipos.get(0);
+        // Creamos una sublista con el resto de equipos.
+        List<Equipo> equiposRotativos = new ArrayList<>(equipos.subList(1, numEquipos));
 
-        for (int jornada = 0; jornada < numeroJornadas; jornada++) {
-            ArrayList<Partido> partidosDeJornada = new ArrayList<>();
+        ArrayList<Partido> fixtureIda = new ArrayList<>();
+        ArrayList<Partido> fixtureVuelta = new ArrayList<>();
 
-            // 1. Resetea el flag para esta jornada
-            for (Equipo e : listaEquipos) {
-                e.setJugoJornada(false);
+        // 4. Generar todas las jornadas de "IDA"
+        for (int jornada = 0; jornada < numJornadasIda; jornada++) {
+
+            // El equipo fijo juega contra el primer equipo de la lista rotativa
+            Equipo rivalFijo = equiposRotativos.get(0);
+
+            // Balanceo simple de local/visitante para el equipo fijo
+            if (jornada % 2 == 0) {
+                fixtureIda.add(new Partido(rivalFijo, equipoFijo)); // Fijo es visitante
+            } else {
+                fixtureIda.add(new Partido(equipoFijo, rivalFijo)); // Fijo es local
             }
 
-            // 2. Intenta armar la jornada
-            for (int i = 0; i < listaEquipos.size(); i++) {
-                for (int j = i + 1; j < listaEquipos.size(); j++) {
-
-                    Equipo equipo1 = listaEquipos.get(i);
-                    Equipo equipo2 = listaEquipos.get(j);
-
-                    String claveIda = equipo1.getNombre() + "-" + equipo2.getNombre();
-                    String claveVuelta = equipo2.getNombre() + "-" + equipo1.getNombre();
-
-                    // Si ambos equipos están libres ESTA JORNADA
-                    if (!equipo1.isJugoJornada() && !equipo2.isJugoJornada()) {
-
-                        // ---- LÓGICA DE IDA ----
-                        if (jornada < jornadasIda) {
-
-                            // Si NUNCA se ha programado este cruce (ni A-B ni B-A)
-                            if (!partidosProgramados.contains(claveIda) && !partidosProgramados.contains(claveVuelta)) {
-                                partidosDeJornada.add(new Partido(equipo1, equipo2)); // A vs B
-                                partidosProgramados.add(claveIda); // Registra "A-B"
-                                equipo1.setJugoJornada(true);
-                                equipo2.setJugoJornada(true);
-                            }
-                        }
-                        // ---- LÓGICA DE VUELTA ----
-                        else {
-
-                            // Si el partido de VUELTA (B vs A) aún no se ha programado
-                            if (!partidosProgramados.contains(claveVuelta)) { // <-- CORREGIDO
-                                partidosDeJornada.add(new Partido(equipo2, equipo1)); // Partido INVERSO (B vs A)
-                                partidosProgramados.add(claveVuelta); // Registra "B-A"
-                                equipo1.setJugoJornada(true);
-                                equipo2.setJugoJornada(true);
-                            }
-                        }
-                    }
-                }
+            // Emparejar al resto de la lista "desde afuera hacia adentro"
+            int mitad = (numEquipos / 2) - 1; // N° de partidos restantes en la jornada
+            for (int i = 0; i < mitad; i++) {
+                Equipo local = equiposRotativos.get(i + 1);
+                Equipo visitante = equiposRotativos.get(equiposRotativos.size() - 1 - i);
+                fixtureIda.add(new Partido(local, visitante));
             }
 
-            // 4. Añade los partidos de esta jornada al fixture total
-            fixtureTotal.addAll(partidosDeJornada);
+            // 5. ROTAR la lista para la siguiente jornada
+            // Guardamos el último equipo
+            Equipo ultimo = equiposRotativos.remove(equiposRotativos.size() - 1);
+            // Lo insertamos al principio (posición 0), desplazando al resto
+            equiposRotativos.add(0, ultimo);
         }
 
-        // 5. Asigna el fixture completo a la variable de la clase
-        this.fixture = fixtureTotal;
+        // 6. Generar la "VUELTA" invirtiendo los partidos de ida
+        for (Partido partidoIda : fixtureIda) {
+            // Solo añadimos partidos reales (ninguno es FANTASMA)
+            if (!partidoIda.getLocal().getNombre().equals("FANTASMA") &&
+                    !partidoIda.getVisitante().getNombre().equals("FANTASMA"))
+            {
+                // Creamos el partido de vuelta invirtiendo local y visitante
+                fixtureVuelta.add(new Partido(partidoIda.getVisitante(), partidoIda.getLocal()));
+            }
+        }
+
+        // 7. Limpiar los partidos "FANTASMA" de la lista de IDA
+        ArrayList<Partido> fixtureIdaLimpio = new ArrayList<>();
+        for(Partido p : fixtureIda) {
+            if (!p.getLocal().getNombre().equals("FANTASMA") &&
+                    !p.getVisitante().getNombre().equals("FANTASMA"))
+            {
+                fixtureIdaLimpio.add(p);
+            }
+        }
+
+        // 8. Asignar el fixture total
+        this.fixture = new ArrayList<>();
+        this.fixture.addAll(fixtureIdaLimpio);
+        this.fixture.addAll(fixtureVuelta);
     }
 
     @Override
