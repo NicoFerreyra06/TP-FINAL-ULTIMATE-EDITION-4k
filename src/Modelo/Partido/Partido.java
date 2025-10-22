@@ -114,7 +114,7 @@ public class Partido {
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
 
-        double probabilidadFalta = 0.20;
+        double probabilidadFalta = 0.15;
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 1; i <= 90; i++) {

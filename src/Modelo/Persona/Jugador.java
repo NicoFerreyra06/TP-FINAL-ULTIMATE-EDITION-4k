@@ -202,7 +202,7 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
 
     @Override
     public String toString() {
-        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d | Goles: %d\", ",
+        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d | Goles: %d\"",
                 this.getNombre(),
                 this.posicion,
                 this.habilidadAtaque,
