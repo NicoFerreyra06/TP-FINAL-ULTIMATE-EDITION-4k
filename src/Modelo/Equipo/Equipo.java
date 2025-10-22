@@ -346,7 +346,7 @@ public class Equipo implements iToJSON {
 
             if (expulsado.getTarjetaLiga() <= 0) {
 
-                titulares.add(expulsado);
+                suplentes.add(expulsado);
 
             } else {
 

@@ -182,8 +182,16 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         this.golesConvertidos++;
     }
 
+    public void cancelarGoles(){
+        if(this.golesConvertidos > 0) this.golesConvertidos--;
+    }
+
     public void anotarAsistencia(){
         this.asistencias++;
+    }
+
+    public void cancelarAsistencia(){
+        if(this.asistencias>0)this.asistencias--;
     }
 
     //Equals & Hashcode

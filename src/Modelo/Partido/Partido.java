@@ -2,6 +2,7 @@ package Modelo.Partido;
 
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
+import enums.EventoPartido;
 
 import java.util.*;
 
@@ -155,6 +156,8 @@ public class Partido {
     }
 
     public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto) {
+
+
         if (random.nextDouble() < probabilidadLocal) {
             gestionarGolesAsistencias(this.local, true, mostrar, minuto);
         }
@@ -165,24 +168,52 @@ public class Partido {
 
         if (random.nextDouble() < probabilidadFalta) { // ¿Ocurre una falta?
             // Si ocurre, AHORA decidimos quién la hizo
-            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral()) ? 0.45 : 0.55; // Ejemplo
+            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral()) ? 0.45 : 0.55;
+
             if (random.nextDouble() > ajusteFalta) {
                 gestionarFaltas(this.visitante, false, mostrar, minuto); // Falta visitante
+                gestionFaltaEvento(this.local, true, mostrar, minuto);
+
             } else {
                 gestionarFaltas(this.local, true, mostrar, minuto); // Falta local
+                gestionFaltaEvento(this.visitante, false, mostrar, minuto);
             }
         }
+
+
+    }
+
+    public void gestionFaltaEvento(Equipo equipoQueRecibe, boolean esLocal, boolean mostrar, int minuto){
+
+        GestionEventoDePartido gestionEvento = new GestionEventoDePartido();
+        EventoPartido evento = gestionEvento.generarlo(false);
+
+        if (mostrar) {
+            System.out.println(minuto + ": Se produce un " + evento + " a favor de " + equipoQueRecibe.getNombre());
+        }
+
+        double proBase = equipoQueRecibe.calcularMediaGeneral() * 0.0002;
+        double probGol = gestionEvento.modificarProbGol(evento,proBase);
+
+        if(random.nextDouble()< probGol){
+
+            gestionarGolesAsistencias(equipoQueRecibe,esLocal,mostrar,minuto);
+        }
+
+
     }
 
     public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+
+        Jugador goleador = equipo.elegirAutorGol();
+        Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
+
+
         if (local){
             this.golesLocal++;
         } else {
             this.golesVisitante++;
         }
-
-        Jugador goleador = equipo.elegirAutorGol();
-        Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
 
         goleador.anotarGoles();
         asistidor.anotarAsistencia();
@@ -190,6 +221,29 @@ public class Partido {
         if (mostrar){
             System.out.println("⚽ ¡Goool de " + equipo.getNombre() + "! Anotó: " + goleador.getNombre());
             goleadores.add(new Gol(minuto, goleador, asistidor));
+        }
+
+        //VERIFICA QUE NO SEA FUERA DE JUEGO
+
+        GestionEventoDePartido eventoOFF = new GestionEventoDePartido();
+        EventoPartido offside = eventoOFF.generarlo(true);
+
+        if(offside == EventoPartido.Pos_Adelantada){
+            if(mostrar) {
+                System.out.println("Gol anulado por fuera de juego...");
+            }
+
+            //anular gol y asistencia.
+            if(local){
+                if(this.golesLocal > 0) this.golesLocal--;
+
+            }else{
+                if(this.golesVisitante>0){this.golesVisitante--;
+
+                }
+            }
+            goleador.cancelarGoles();
+            asistidor.cancelarAsistencia();
         }
     }
 
@@ -223,7 +277,7 @@ public class Partido {
             this.faltasVisitante++;
             if (tipoTarjeta == 1){
                 this.amarillasVisitante++;
-                autorFalta.setTarjetaLiga(getFaltasLocal() + 1);
+                autorFalta.setTarjetaLiga(autorFalta.getTarjetaLiga() + 1);
 
                 if (mostrar){
                     System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
