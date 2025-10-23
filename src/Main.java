@@ -67,7 +67,7 @@ void main() {
         final int limiteEntrenamiento = 1;
 
         while (!liga.isTerminada() && !salir) {
-
+            liga.setJornada(38);
             System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
             System.out.println("Menú de Acciones:");
             System.out.println("1. Jugar próxima fecha");
@@ -107,6 +107,7 @@ void main() {
             System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
             PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
+            liga.podioLiga();
         }
     } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
