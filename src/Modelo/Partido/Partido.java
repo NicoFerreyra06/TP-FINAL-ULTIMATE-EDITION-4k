@@ -155,7 +155,7 @@ public class Partido {
         double probabilidadFalta = 0.10;
 
         for (int i = 1; i <= 90; i++) {
-            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
         }
     }
 
