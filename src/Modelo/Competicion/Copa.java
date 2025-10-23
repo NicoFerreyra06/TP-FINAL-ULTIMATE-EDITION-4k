@@ -1,7 +1,7 @@
 package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
-
+import Modelo.pPartido.Partido;
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 
