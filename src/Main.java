@@ -1,6 +1,7 @@
 // Clases del Modelo
 
 import Gestora.GestoraGenerica;
+import Modelo.Podios.PodiosDeCompeticion;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
@@ -89,23 +90,23 @@ void main() {
                     if (entrenamientosJornada < limiteEntrenamiento) {
                         usuarioEquipo.entrenarEquipo();
                         entrenamientosJornada++;
-                        System.out.println("Entrenamiento realizado con exito!");
+                        IO.println("Entrenamiento realizado con exito!");
                     } else {
-                        System.out.println("Limites por jornada alcanzados");
+                        IO.println("Limites por jornada alcanzados");
                     }
 
                     break;
 
                 case 4:
                     salir = true;
-
-            }
+                    break;
+             }
         }
 
         if (liga.isTerminada()) {
             System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
-            liga.mostrarTabla();
-            liga.campeonLiga();
+            PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
+            podiosDeCompeticion.mostrarEstadisticasIndivuduales();
         }
     } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
@@ -628,6 +629,31 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
     Tactica tacticaAtlanta = new Tactica(Eformacion.F_4231, EstiloJuego.EQUILIBRADO);
     DirectorTecnico dtAtlanta = new DirectorTecnico("Mauricio Giganti", 47, "Argentino", 77, tacticaAtlanta);
     Equipo atlanta = new Equipo("Atlanta", estadioAtlanta, dtAtlanta, 9000000.00);
+
+// Titulares
+    atlanta.agregarJugador(new Jugador("Rodrigo Lugo", 33, "Argentino", Posicion.ARQUERO, 38, 82, 79));
+    atlanta.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 68, 80, 77));
+    atlanta.agregarJugador(new Jugador("Nicolás Previtali", 28, "Argentino", Posicion.MEDIOCAMPISTA, 73, 81, 79));
+    atlanta.agregarJugador(new Jugador("Agustín Bolívar", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 80, 79));
+    atlanta.agregarJugador(new Jugador("Martín García", 24, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
+    atlanta.agregarJugador(new Jugador("Federico Bisanz", 25, "Argentino", Posicion.MEDIOCAMPISTA, 76, 79, 80));
+    atlanta.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 69, 80, 78));
+    atlanta.agregarJugador(new Jugador("Juan Galeano", 35, "Argentino", Posicion.MEDIOCAMPISTA, 75, 78, 78));
+    atlanta.agregarJugador(new Jugador("Luis López", 37, "Argentino", Posicion.DELANTERO, 83, 68, 80));
+    atlanta.agregarJugador(new Jugador("Fabricio Pedrozo", 31, "Argentino", Posicion.DELANTERO, 82, 70, 81));
+    atlanta.agregarJugador(new Jugador("Tomás Silva", 22, "Argentino", Posicion.DELANTERO, 80, 72, 80));
+
+// Suplentes
+    atlanta.agregarJugador(new Jugador("Francisco Rago", 31, "Argentino", Posicion.ARQUERO, 38, 80, 78));
+    atlanta.agregarJugador(new Jugador("Nahuel Tecilla", 28, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
+    atlanta.agregarJugador(new Jugador("Ignacio Colombini", 35, "Argentino", Posicion.DELANTERO, 82, 70, 80));
+    atlanta.agregarJugador(new Jugador("Diego Becker", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 79, 78));
+    atlanta.agregarJugador(new Jugador("Matías Molina", 24, "Argentino", Posicion.MEDIOCAMPISTA, 72, 77, 76));
+
+    equipos.add(atlanta);
+
+
+    Equipo atlanta1 = new Equipo("Atlanta B", estadioAtlanta, dtAtlanta, 9000000.00);
 
 // Titulares
     atlanta.agregarJugador(new Jugador("Rodrigo Lugo", 33, "Argentino", Posicion.ARQUERO, 38, 82, 79));

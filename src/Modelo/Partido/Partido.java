@@ -136,16 +136,7 @@ public class Partido {
             Thread.sleep(00);
         }
 
-
-        System.out.println("\n==== EXPULSADOS Y/O SANCIONADOS =====");
-        System.out.println("Expulsados de local: ");
-        local.mostrarExpulsados();
-        System.out.println("Expulsados de visitante");
-        visitante.mostrarExpulsados();
-        System.out.println("===================================\n");
         mostrarResultado();
-
-
 
         visitante.bajarSancion();
         local.bajarSancion();
@@ -253,7 +244,6 @@ public class Partido {
         }
     }
 
-
     public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
 
         Jugador goleador = equipo.elegirAutorGol();
@@ -282,6 +272,7 @@ public class Partido {
         if(offside == EventoPartido.Pos_Adelantada){
             if(mostrar) {
                 System.out.println("Gol anulado por fuera de juego...");
+                goleadores.remove(goleadores.size()-1);
             }
 
             //anular gol y asistencia.
@@ -342,12 +333,10 @@ public class Partido {
             } else {
                 if (mostrar){
                     System.out.println("Minuto " + minuto +": Falta de " + autorFalta.getNombre());
+                    equipo.ExpulsarJugador(autorFalta);
                 }
             }
         }
-
-        equipo.ExpulsarJugador(autorFalta);
-
     }
 
     private int determinarTarjeta() {
@@ -376,7 +365,6 @@ public class Partido {
             System.out.println("Minuto " + gol.getMinuto() +
                     ": Gol de " + gol.getAutor().getNombre() +
                     " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
-
         }
     }
     /**

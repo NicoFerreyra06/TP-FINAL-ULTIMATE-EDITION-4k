@@ -4411,6 +4411,241 @@
                 "nombre": "Estadio Don León Kolbowski",
                 "capacidad": 25000
             }
+        },
+
+        {
+          "expulsados": [],
+          "presupuesto": 9000000,
+          "titulares": [
+            {
+              "posicion": "ARQUERO",
+              "habilidadAtaque": 38,
+              "habilidadDefensa": 82,
+              "tarjetaLiga": 0,
+              "estadoFisico": 79,
+              "golesConvertidos": 0,
+              "id": "755a7b37-2ef8-46bb-9641-a84197e10ad7",
+              "nombre": "Rodrigo Lugo",
+              "edad": 33,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DELANTERO",
+              "habilidadAtaque": 80,
+              "habilidadDefensa": 72,
+              "tarjetaLiga": 0,
+              "estadoFisico": 80,
+              "golesConvertidos": 0,
+              "id": "1cb29330-a947-481e-8855-dfbd158242a8",
+              "nombre": "Tomás Silva",
+              "edad": 22,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 76,
+              "habilidadDefensa": 79,
+              "tarjetaLiga": 0,
+              "estadoFisico": 80,
+              "golesConvertidos": 0,
+              "id": "8e19d352-8cd5-477a-a4e3-16e7d6db9c4d",
+              "nombre": "Federico Bisanz",
+              "edad": 25,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 73,
+              "habilidadDefensa": 81,
+              "tarjetaLiga": 0,
+              "estadoFisico": 79,
+              "golesConvertidos": 0,
+              "id": "2bf85ffb-4361-412d-a447-a26852306548",
+              "nombre": "Nicolás Previtali",
+              "edad": 28,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DELANTERO",
+              "habilidadAtaque": 99,
+              "habilidadDefensa": 99,
+              "tarjetaLiga": 0,
+              "estadoFisico": 80,
+              "golesConvertidos": 0,
+              "id": "27b0be14-55b4-4dbf-a46f-229906d6cabf",
+              "nombre": "Luis López",
+              "edad": 37,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DEFENSOR",
+              "habilidadAtaque": 69,
+              "habilidadDefensa": 80,
+              "tarjetaLiga": 0,
+              "estadoFisico": 78,
+              "golesConvertidos": 0,
+              "id": "b426c181-44fc-4ef3-8577-830be2599e0f",
+              "nombre": "Alan Pérez",
+              "edad": 30,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DEFENSOR",
+              "habilidadAtaque": 68,
+              "habilidadDefensa": 80,
+              "tarjetaLiga": 0,
+              "estadoFisico": 77,
+              "golesConvertidos": 0,
+              "id": "2ce43d38-9b49-47e8-8990-11af5dc162bc",
+              "nombre": "Alan Pérez",
+              "edad": 30,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 74,
+              "habilidadDefensa": 80,
+              "tarjetaLiga": 0,
+              "estadoFisico": 79,
+              "golesConvertidos": 0,
+              "id": "cfba7a25-34eb-4d7c-869c-bc63de8b07eb",
+              "nombre": "Agustín Bolívar",
+              "edad": 27,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DEFENSOR",
+              "habilidadAtaque": 70,
+              "habilidadDefensa": 78,
+              "tarjetaLiga": 0,
+              "estadoFisico": 77,
+              "golesConvertidos": 0,
+              "id": "a1a80bef-cf1e-45ce-80db-6ba6e8b3899f",
+              "nombre": "Martín García",
+              "edad": 24,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DELANTERO",
+              "habilidadAtaque": 82,
+              "habilidadDefensa": 70,
+              "tarjetaLiga": 0,
+              "estadoFisico": 81,
+              "golesConvertidos": 0,
+              "id": "82223d43-aeaa-486d-94af-99fba27e117a",
+              "nombre": "Fabricio Pedrozo",
+              "edad": 31,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 75,
+              "habilidadDefensa": 78,
+              "tarjetaLiga": 0,
+              "estadoFisico": 78,
+              "golesConvertidos": 0,
+              "id": "44296871-134a-457b-99ab-303a3436acde",
+              "nombre": "Juan Galeano",
+              "edad": 35,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            }
+          ],
+          "suplentes": [
+            {
+              "posicion": "DELANTERO",
+              "habilidadAtaque": 82,
+              "habilidadDefensa": 70,
+              "tarjetaLiga": 0,
+              "estadoFisico": 80,
+              "golesConvertidos": 0,
+              "id": "f9d88dd8-74f0-4f68-a7b4-84b06aee7506",
+              "nombre": "Ignacio Colombini",
+              "edad": 35,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "DEFENSOR",
+              "habilidadAtaque": 70,
+              "habilidadDefensa": 78,
+              "tarjetaLiga": 0,
+              "estadoFisico": 77,
+              "golesConvertidos": 0,
+              "id": "a6cce059-0af6-421b-8245-05cb952600b7",
+              "nombre": "Nahuel Tecilla",
+              "edad": 28,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 72,
+              "habilidadDefensa": 77,
+              "tarjetaLiga": 0,
+              "estadoFisico": 76,
+              "golesConvertidos": 0,
+              "id": "b5f9587a-eedc-4f3c-a61e-5f5ad966f10c",
+              "nombre": "Matías Molina",
+              "edad": 24,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "ARQUERO",
+              "habilidadAtaque": 38,
+              "habilidadDefensa": 80,
+              "tarjetaLiga": 0,
+              "estadoFisico": 78,
+              "golesConvertidos": 0,
+              "id": "bb8fbf29-d4db-4472-9f3a-5f702450bc67",
+              "nombre": "Francisco Rago",
+              "edad": 31,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            },
+            {
+              "posicion": "MEDIOCAMPISTA",
+              "habilidadAtaque": 74,
+              "habilidadDefensa": 79,
+              "tarjetaLiga": 0,
+              "estadoFisico": 78,
+              "golesConvertidos": 0,
+              "id": "98ca73b2-6ebb-4682-9efe-49c9a3b477a7",
+              "nombre": "Diego Becker",
+              "edad": 27,
+              "asistencias": 0,
+              "nacionalidad": "Argentino"
+            }
+          ],
+          "tecnico": {
+            "experiencia": 77,
+            "nombre": "Mauricio Giganti",
+            "edad": 47,
+            "nacionalidad": "Argentino",
+            "tacticaPreferida": {
+              "eformacion": "F_4231",
+              "estiloJuego": "EQUILIBRADO"
+            }
+          },
+          "puntos": 0,
+          "nombre": "Atlanta Tomas",
+          "estadio": {
+            "valorEntrada": 33,
+            "nombre": "Estadio Don León Kolbowski",
+            "capacidad": 25000
+          }
         }
+
     ]}
 }]

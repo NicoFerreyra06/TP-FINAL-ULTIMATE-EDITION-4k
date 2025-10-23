@@ -360,10 +360,8 @@ public class Equipo implements iToJSON {
     //-------Mostrar jugadores Expulsados-------
 
     public void mostrarExpulsados(){
-        Iterator <Jugador> it = Expulsados.iterator();
-        while (it.hasNext()){
+        for (Jugador jugador : Expulsados) {
 
-            Jugador jugador = it.next();
             System.out.println("- " + jugador.getNombre());
         }
     }

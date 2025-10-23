@@ -51,10 +51,6 @@ public class PodiosDeCompeticion <T extends Torneo> {
 
         List<Equipo> ordenados = obtenerEquiposOrdenados();
 
-        System.out.println("\n================ TABLA FINAL DE LA LIGA =================");
-        System.out.printf("%-3s %-20s %-6s %-6s%n", "Pos", "Equipo", "Puntos", "Clasificación");
-        System.out.println("--------------------------------------------------------");
-
         for(int i = 0; i< ordenados.size(); i++){
 
             Equipo e = ordenados.get(i);
@@ -69,7 +65,6 @@ public class PodiosDeCompeticion <T extends Torneo> {
         for (int i = 0; i < posiciones.size();i++){
 
         }
-
     }
 
     public void mostrarTablaPorPuntos(){
@@ -164,7 +159,7 @@ public class PodiosDeCompeticion <T extends Torneo> {
         }
 
         if (balonOro != null) {
-            System.out.println("\n-- 🏅 BALON DE ORO --");
+            System.out.println("\n-- EL JUGADOR DEL TORNEO --");
             System.out.printf("%s — %d contribuciones (goles + asistencias)%n",
                     balonOro.getNombre(), balonOro.getGolesConvertidos() + balonOro.getAsistencias());
         }
@@ -181,7 +176,9 @@ public class PodiosDeCompeticion <T extends Torneo> {
                 all.addAll(e.getTitulares());
                 all.addAll(e.getSuplentes());
 
-            }catch (Exception e1){}
+            }catch (Exception e1){
+                IO.println(e1.getMessage());
+            }
         }
 
         return all;
