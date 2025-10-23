@@ -112,16 +112,19 @@ public class Partido {
     public void simularInteractivo() throws InterruptedException {
         System.out.println("Empieza el partido");
 
+        double corner = 0.003;
+
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
-
+        double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
+        double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
         double probabilidadFalta = 0.15;
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 1; i <= 90; i++) {
             System.out.println("Minuto " + i);
 
-            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i);
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
 
             if (i == 45){
                 System.out.println("Finalizo el primer tiempo! ");
@@ -144,18 +147,56 @@ public class Partido {
     }
 
     public void simularRapido() {
-
+        double corner = 0.003;
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
-
+        double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
+        double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
         double probabilidadFalta = 0.10;
 
         for (int i = 1; i <= 90; i++) {
-            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i);
+            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
         }
     }
 
-    public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto) {
+    public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto,double c_Local,double c_Visitante) {
+
+        GestionEventoDePartido gestionEvento = new GestionEventoDePartido();
+        EventoPartido evento = gestionEvento.generarlo(false);
+
+        // ======================================
+        // 1. SIMULACIÓN DE CÓRNERS
+        // ======================================
+
+
+        if(random.nextDouble() < c_Local){
+            if (mostrar) System.out.println(minuto + ": Corner para el equipo local");
+
+            // La probabilidad de gol aumenta para un córner (factor 1.5)
+            double probGolAumentada = gestionEvento.modificarProbGol(EventoPartido.Corner, probabilidadLocal);
+
+            // Simular si el córner termina en gol
+            if (random.nextDouble() < probGolAumentada) {
+                gestionarGolesAsistencias(this.local, true, mostrar, minuto);
+            }
+        }
+
+        // Córner para el Equipo VISITANTE
+        if(random.nextDouble() < c_Visitante){
+            if (mostrar) System.out.println(minuto + ": Corner para el equipo visitante");
+
+            // La probabilidad de gol aumenta para un córner (factor 1.5)
+            double probGolAumentada = gestionEvento.modificarProbGol(EventoPartido.Corner, probabilidadVisitante);
+
+            // Simular si el córner termina en gol
+            if (random.nextDouble() < probGolAumentada) {
+                gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
+            }
+        }
+
+        // ======================================
+        // 2. SIMULACIÓN DE GOL ATAUE
+        // ======================================
 
 
         if (random.nextDouble() < probabilidadLocal) {
@@ -165,6 +206,10 @@ public class Partido {
         if (random.nextDouble() < probabilidadVisitante) {
             gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
         }
+
+        // ======================================
+        // 3. SIMULACIÓN DE FALTAS
+        // ======================================
 
         if (random.nextDouble() < probabilidadFalta) { // ¿Ocurre una falta?
             // Si ocurre, AHORA decidimos quién la hizo
@@ -188,20 +233,21 @@ public class Partido {
         GestionEventoDePartido gestionEvento = new GestionEventoDePartido();
         EventoPartido evento = gestionEvento.generarlo(false);
 
-        if (mostrar) {
-            System.out.println(minuto + ": Se produce un " + evento + " a favor de " + equipoQueRecibe.getNombre());
-        }
 
+        if(EventoPartido.Ninguno != evento && EventoPartido.Corner != evento){
+            if (mostrar) {
+                System.out.println(minuto + ": Se produce un " + evento + " a favor de " + equipoQueRecibe.getNombre());
+            }
+        }
         double proBase = equipoQueRecibe.calcularMediaGeneral() * 0.0002;
-        double probGol = gestionEvento.modificarProbGol(evento,proBase);
+        double probGol = gestionEvento.modificarProbGol(evento, proBase);
 
-        if(random.nextDouble()< probGol){
-
-            gestionarGolesAsistencias(equipoQueRecibe,esLocal,mostrar,minuto);
+        // SIMULAR EL GOL con la probabilidad AUMENTADA
+        if(random.nextDouble() < probGol){
+            gestionarGolesAsistencias(equipoQueRecibe, esLocal, mostrar, minuto);
         }
-
-
     }
+
 
     public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
 
@@ -294,6 +340,9 @@ public class Partido {
                 }
             }
         }
+
+        equipo.ExpulsarJugador(autorFalta);
+
     }
 
     private int determinarTarjeta() {
