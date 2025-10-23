@@ -1,4 +1,4 @@
-package Modelo.Partido;
+package Modelo.pPartido;
 import enums.EventoPartido;
 
 import java.util.Random;

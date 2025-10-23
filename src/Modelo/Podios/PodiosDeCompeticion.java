@@ -1,11 +1,7 @@
 package Modelo.Podios;
 
-import Modelo.Competicion.Copa;
-import Modelo.Competicion.FilaTabla;
-import Modelo.Competicion.Liga;
 import Modelo.Competicion.Torneo;
 import Modelo.Equipo.Equipo;
-import Modelo.Partido.Partido;
 import Modelo.Persona.Jugador;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package Modelo.Partido;
+package Modelo.pPartido;
 
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
