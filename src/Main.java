@@ -105,8 +105,7 @@ void main() {
 
         if (liga.isTerminada()) {
             System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
-            PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
-            podiosDeCompeticion.mostrarEstadisticasIndivuduales();
+
         }
     } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
