@@ -131,6 +131,7 @@ void main() {
 
         if (liga.isTerminada()) {
             System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
+
             PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
             liga.podioLiga();

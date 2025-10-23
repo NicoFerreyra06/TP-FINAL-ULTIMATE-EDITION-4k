@@ -1,7 +1,7 @@
 package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
-import Modelo.Partido.Partido;
+import Modelo.pPartido.Partido;
 
 import java.util.*;
 
