@@ -2,7 +2,6 @@ package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
-import Modelo.Partido.Partido;
 
 import java.util.ArrayList;
 import java.util.Random;

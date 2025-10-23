@@ -1,12 +1,10 @@
 
-import Gestora.GestoraGenerica;
 import Modelo.Podios.PodiosDeCompeticion;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
-import Modelo.Partido.*;
 import Modelo.Persona.*;
-import Modelo.Usuario.*;
+
 import java.util.*;
 import Gestora.*;
 import org.json.JSONArray;
