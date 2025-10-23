@@ -44,10 +44,6 @@ void main() {
 
         Liga liga = new Liga("Liga prueba");
 
-        Estadio fixEstadio = new Estadio("Fix", 54545, 55);
-        Equipo fix = new Equipo("Fix", null, null, 5000);
-
-        liga.anotarEquipo(fix);
 
         for (Equipo equipo : listaDeEquipos){
             liga.anotarEquipo(equipo);
