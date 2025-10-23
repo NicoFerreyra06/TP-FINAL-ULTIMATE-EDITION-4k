@@ -136,11 +136,6 @@ public class Partido {
             Thread.sleep(00);
         }
 
-        System.out.println("Expulsados de local: ");
-        local.mostrarExpulsados();
-        System.out.println("Expulsados de visitante");
-        visitante.mostrarExpulsados();
-
         visitante.bajarSancion();
         local.bajarSancion();
         mostrarResultado();
@@ -372,6 +367,12 @@ public class Partido {
                     ": Gol de " + gol.getAutor().getNombre() +
                     " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
         }
+
+        System.out.println("Expulsados de local: ");
+        local.mostrarExpulsados();
+        System.out.println("Expulsados de visitante");
+        visitante.mostrarExpulsados();
+
     }
     /**
      * Metodo para determinar el equipo ganador del partido. va a servir para copa y liga..
