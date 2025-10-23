@@ -1,4 +1,3 @@
-// Clases del Modelo
 
 import Gestora.GestoraGenerica;
 import Modelo.Podios.PodiosDeCompeticion;
@@ -67,14 +66,37 @@ void main() {
         final int limiteEntrenamiento = 1;
 
         while (!liga.isTerminada() && !salir) {
-            liga.setJornada(38);
             System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
+            ArrayList<Partido> fixture = liga.getFixture();
+            int jornadaActual = liga.getJornada() - 1;
+
+            Partido partidoUsuario = null;
+
+            // Buscamos el partido donde juegue el equipo del usuario
+            for (Partido p : fixture) {
+                if (p.getLocal().equals(usuarioEquipo) || p.getVisitante().equals(usuarioEquipo)) {
+                    partidoUsuario = p;
+                    break;
+                }
+            }
+
+            Equipo local = partidoUsuario.getLocal();
+            Equipo visitante = partidoUsuario.getVisitante();
+            String estadio = local.getEstadio().getNombre();
+
+            if (partidoUsuario.getLocal().equals(usuarioEquipo)) {
+                System.out.println("Tu partido: " + usuarioEquipo.getNombre() + " vs " + partidoUsuario.getVisitante().getNombre());
+            } else {
+                System.out.println("Tu partido: " + partidoUsuario.getLocal().getNombre() + " vs " + usuarioEquipo.getNombre());
+            }
+
             System.out.println("Menú de Acciones:");
             System.out.println("1. Jugar próxima fecha");
             System.out.println("2. Ver tabla de posiciones");
             int restantes = limiteEntrenamiento - entrenamientosJornada;
             System.out.println("3. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
-            System.out.println("4. Salir del juego");
+            System.out.println("4. Hacer cambios");
+            System.out.println("5. Salir del juego");
             System.out.print("Elige una opción: ");
             int opcion = sc.nextInt();
 
@@ -98,6 +120,10 @@ void main() {
                     break;
 
                 case 4:
+                    realizarCambios(usuarioEquipo, sc);
+                    break;
+
+                case 5:
                     salir = true;
                     break;
              }
@@ -681,4 +707,31 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
     return equipos;
 }
 
+public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
+    int i = 0;
+    ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
+    ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
 
+    System.out.println("titulares");
+    for (Jugador j : usuarioEquipo.getTitulares()){
+        System.out.println(i + 1 + "-" +j.getNombre());
+        i++;
+    }
+    System.out.println("Ingrese el titular a cambiar");
+    int indiceTitular = sc.nextInt();
+
+    i = 0;
+    System.out.println("suplentes");
+    for (Jugador j : usuarioEquipo.getSuplentes()){
+        System.out.println(i+ 1 + "-" +j.getNombre());
+        i++;
+    }
+
+    System.out.println("Ingrese el suplente a cambiar");
+    int indiceSuplente = sc.nextInt();
+
+    Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
+    Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
+
+    usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
+}

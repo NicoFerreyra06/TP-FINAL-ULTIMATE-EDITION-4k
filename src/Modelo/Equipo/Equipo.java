@@ -371,17 +371,17 @@ public class Equipo implements iToJSON {
      * realizar los cambios que deseé
      */
 
-    public void realizarCambio(Jugador entraSuplente, Jugador saleTitular) {
+    public void realizarCambio(Jugador saleTitular, Jugador saleSuplente) {
 
-        if (titulares.contains(saleTitular) && suplentes.contains(saleTitular)) {
+        if (titulares.contains(saleTitular) && suplentes.contains(saleSuplente)) {
 
-            suplentes.remove(entraSuplente);
+            suplentes.remove(saleSuplente);
             titulares.remove(saleTitular);
-            titulares.add(entraSuplente);
+            titulares.add(saleSuplente);
             suplentes.add(saleTitular);
 
             System.out.println("⬇ Sale: " + saleTitular.getNombre());
-            System.out.println("⬆ Entra: " + entraSuplente.getNombre());
+            System.out.println("⬆ Entra: " + saleSuplente.getNombre());
 
         }
     }

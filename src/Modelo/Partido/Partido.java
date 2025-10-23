@@ -121,19 +121,24 @@ public class Partido {
         double probabilidadFalta = 0.15;
         Scanner scanner = new Scanner(System.in);
 
+        local.verificarTitulares();
+        visitante.verificarTitulares();
+
         for (int i = 1; i <= 90; i++) {
             System.out.println("Minuto " + i);
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
 
             if (i == 45){
-                System.out.println("Finalizo el primer tiempo! ");
+                IO.println("Finalizo el primer tiempo! ");
 
                 IO.println("Presione enter para comenzar el ST");
                 scanner.nextLine();
+
+                IO.println("Empieza el segundo tiempo! ");
             }
 
-            Thread.sleep(00);
+            Thread.sleep(0);
         }
 
         mostrarResultado();
