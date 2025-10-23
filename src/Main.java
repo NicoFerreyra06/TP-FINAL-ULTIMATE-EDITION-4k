@@ -1,5 +1,6 @@
 
 import Modelo.Podios.PodiosDeCompeticion;
+import Modelo.pPartido.Partido;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
