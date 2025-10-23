@@ -708,30 +708,54 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
 }
 
 public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
-    int i = 0;
+
     ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
     ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
 
-    System.out.println("titulares");
-    for (Jugador j : usuarioEquipo.getTitulares()){
-        System.out.println(i + 1 + "-" +j.getNombre());
-        i++;
+    boolean check = false;
+
+    while (!check) {
+        try{
+            int i = 0;
+            System.out.println("=== TITULARES ===");
+            for (Jugador j : usuarioEquipo.getTitulares()){
+                System.out.println(i + 1 + "-" +j.getNombre());
+                i++;
+            }
+
+            System.out.println("Ingrese el numero del titular a cambiar");
+            int indiceTitular = sc.nextInt();
+
+            if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+
+            i = 0;
+            System.out.println("\n=== SUPLENTES ===");
+            for (Jugador j : usuarioEquipo.getSuplentes()){
+                System.out.println(i+ 1 + "-" +j.getNombre());
+                i++;
+            }
+
+            System.out.println("Ingrese el numero del suplente a cambiar");
+            int indiceSuplente = sc.nextInt();
+
+            if (indiceSuplente < 1 || suplentesArray.size() < indiceSuplente){
+                throw new ArrayIndexOutOfBoundsException();
+            }
+
+            Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
+            Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
+
+            usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
+
+            check = true;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No selecciono bien el jugador, intente de nuevo!");
+        } catch (InputMismatchException e){
+            System.out.println("Debe ingresar un número válido");
+            sc.nextLine(); // limpia el buffer del scanner
+        }
+
     }
-    System.out.println("Ingrese el titular a cambiar");
-    int indiceTitular = sc.nextInt();
-
-    i = 0;
-    System.out.println("suplentes");
-    for (Jugador j : usuarioEquipo.getSuplentes()){
-        System.out.println(i+ 1 + "-" +j.getNombre());
-        i++;
-    }
-
-    System.out.println("Ingrese el suplente a cambiar");
-    int indiceSuplente = sc.nextInt();
-
-    Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
-    Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
-
-    usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
 }
