@@ -243,8 +243,14 @@ public class Liga extends Torneo {
     //Metodo para saber si la liga esta terminada
     public boolean isTerminada (){
         int numeroEquipos = super.getEquipos().size();
+        int jornadasTotales;
 
-        int jornadasTotales = (numeroEquipos - 1) * 2;
+        // Si hay cantidad impar, uno queda libre por fecha
+        if (numeroEquipos % 2 != 0) {
+            jornadasTotales = numeroEquipos * 2;
+        } else {
+            jornadasTotales = (numeroEquipos - 1) * 2;
+        }
 
         return this.jornada > jornadasTotales;
     }
