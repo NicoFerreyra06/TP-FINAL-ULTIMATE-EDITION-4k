@@ -240,6 +240,20 @@ public class Liga extends Torneo {
         System.out.println("🏆 ¡El campeón de la liga es: " + campeon.getNombre() + "!");
     }
 
+
+    public void podioLiga() {
+        List<FilaTabla> filasOrdenadas = new ArrayList<>(tablaPosiciones.values());
+        Collections.sort(filasOrdenadas);
+
+        System.out.println("🏆 PODIO DE LA LIGA 🏆");
+        System.out.println("------------------------");
+        System.out.println("🥇 1° " + filasOrdenadas.get(0).equipo.getNombre());
+        System.out.println("🥈 2° " + filasOrdenadas.get(1).equipo.getNombre());
+        System.out.println("🥉 3° " + filasOrdenadas.get(2).equipo.getNombre());
+        System.out.println("------------------------");
+
+    }
+
     //Metodo para saber si la liga esta terminada
     public boolean isTerminada (){
         int numeroEquipos = super.getEquipos().size();
