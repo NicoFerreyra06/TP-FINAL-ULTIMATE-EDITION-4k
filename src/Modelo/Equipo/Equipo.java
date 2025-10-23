@@ -341,24 +341,21 @@ public class Equipo implements iToJSON {
 
     public void bajarSancion() {
 
-        int tamanio = Expulsados.size();
+        Iterator<Jugador> it = Expulsados.iterator();
 
-        for (int i = 0; i < tamanio; i++) {
+        while (it.hasNext()) {
+            Jugador expulsado = it.next();
 
-            Jugador expulsado = Expulsados.removeFirst();
             expulsado.setTarjetaLiga(expulsado.getTarjetaLiga() - 1);
 
             if (expulsado.getTarjetaLiga() <= 0) {
+                it.remove();
 
                 suplentes.add(expulsado);
-
-            } else {
-
-                Expulsados.add(expulsado);
             }
-
         }
     }
+
 
     //-------Mostrar jugadores Expulsados-------
 

@@ -136,9 +136,19 @@ public class Partido {
             Thread.sleep(00);
         }
 
+
+        System.out.println("\n==== EXPULSADOS Y/O SANCIONADOS =====");
+        System.out.println("Expulsados de local: ");
+        local.mostrarExpulsados();
+        System.out.println("Expulsados de visitante");
+        visitante.mostrarExpulsados();
+        System.out.println("===================================\n");
+        mostrarResultado();
+
+
+
         visitante.bajarSancion();
         local.bajarSancion();
-        mostrarResultado();
     }
 
     public void simularRapido() {
@@ -366,13 +376,8 @@ public class Partido {
             System.out.println("Minuto " + gol.getMinuto() +
                     ": Gol de " + gol.getAutor().getNombre() +
                     " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
+
         }
-
-        System.out.println("Expulsados de local: ");
-        local.mostrarExpulsados();
-        System.out.println("Expulsados de visitante");
-        visitante.mostrarExpulsados();
-
     }
     /**
      * Metodo para determinar el equipo ganador del partido. va a servir para copa y liga..
