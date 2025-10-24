@@ -137,8 +137,13 @@ public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
             usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
 
             check = true;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Seleccione correctamente los numeros de los jugadores");
+        } catch (InputMismatchException e) {
+            System.out.println("Error, debe ingresar un numero valido");
+            sc.nextLine();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error, numero fuera de rango. Intente nuevamente ");
+        } catch (Exception e){
+            System.out.println("Ocurrio un error inesperado. Intente nuevamente");
             sc.nextLine();
         }
     }
