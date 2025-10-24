@@ -1,6 +1,5 @@
 
 import Modelo.Podios.PodiosDeCompeticion;
-import Modelo.pPartido.Partido;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
@@ -8,48 +7,66 @@ import Modelo.Persona.*;
 
 import java.util.*;
 import Gestora.*;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 
 void main() {
 
+    ArrayList <Equipo> listaDeEquipos = crearEquiposIniciales();
+
+    System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
     Scanner sc = new Scanner(System.in);
+    Liga liga = null;
+    Equipo usuarioEquipo = null;
 
-    JSONTokener tokener = JsonUtiles.leerUnJson("partida_pro_manager.json");
-    JSONArray wrapperArray = new JSONArray(tokener);
+    boolean partidaLista = false;
 
-    JSONObject partidaGuardada = wrapperArray.getJSONObject(0);
+    while (!partidaLista) {
+        try {
+            System.out.println("1. Nueva Partida");
+            System.out.println("2. Cargar Partida");
+            System.out.print("Seleccione una opción: ");
+            int opcionInicio = sc.nextInt();
 
-    JSONObject progresoLiga = partidaGuardada.getJSONObject("progreso_liga");
-    int jornadaCargada = progresoLiga.getInt("jornadaActual");
+            if (opcionInicio == 1) {
+                System.out.println("Creando la liga y los equipos...");
+                liga = new Liga("Liga Marino");
 
-    JSONObject datosEquipos = partidaGuardada.getJSONObject("datos_equipos");
-    JSONArray jsonArrayEquipos = datosEquipos.getJSONArray("lista_equipos");
+                for (Equipo equipo : listaDeEquipos) {
+                    liga.anotarEquipo(equipo);
+                }
 
-    ArrayList<Equipo> listaDeEquipos = new ArrayList<>();
-    for (int i = 0; i < jsonArrayEquipos.length(); i++) {
-        JSONObject jsonEquipo = jsonArrayEquipos.getJSONObject(i);
-        Equipo equipo = new Equipo(jsonEquipo); // La magia ocurre aquí
-        System.out.println(equipo.getNombre());
-        listaDeEquipos.add(equipo);
+                usuarioEquipo = seleccionarEquipo(sc, listaDeEquipos);
+
+                liga.setNombreEquipoUsuario(usuarioEquipo.getNombre());
+
+                liga.generarFixture();
+                partidaLista = true;
+
+            } else if (opcionInicio == 2) {
+
+                liga = cargarPartida();
+
+                if (liga != null) {
+
+                    String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
+                    usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
+
+                    System.out.println("¡Partida cargada! Su equipo es: " + usuarioEquipo.getNombre());
+                    partidaLista = true;
+                } else {
+                    System.out.println("No se pudo cargar la partida. Intente de nuevo.");
+                }
+            } else {
+                System.out.println("Opción no válida.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            sc.nextLine();
+        }
     }
 
-
-        System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
-        System.out.println("Creando la liga y los equipos...");
-
-        Liga liga = new Liga("Liga prueba");
-
-        //Anota los equipos
-        for (Equipo equipo : listaDeEquipos) {
-            liga.anotarEquipo(equipo);
-        }
-
     try{
-        //Selecciona el equipo del usuario
-        Equipo usuarioEquipo = seleccionarEquipo(sc, listaDeEquipos);
 
         liga.generarFixture();
 
@@ -69,14 +86,17 @@ void main() {
                     liga.mostrarTabla();
                     break;
                 case 3:
+                    mostrarEquipo(usuarioEquipo);
+                    break;
+                case 4:
                     entrenamientosJornada = menuCambios(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
                     break;
 
-                case 4:
+                case 5:
                     realizarCambios(usuarioEquipo, sc);
                     break;
 
-                case 5:
+                case 6:
                     salir = true;
                     break;
              }
@@ -94,6 +114,17 @@ void main() {
     }
 }
 
+public Liga cargarPartida (){
+    String jsonString = JsonUtiles.leer("partida_guardada");
+
+    JSONObject jsonPartida = new JSONObject(jsonString);
+    Liga ligaCargada = new Liga(jsonPartida);
+    ligaCargada.generarFixture();
+
+    System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
+
+    return ligaCargada;
+}
 public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
 
     ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
@@ -194,13 +225,14 @@ public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrena
             System.out.println("1. Jugar próxima fecha");
             System.out.println("2. Ver tabla de posiciones");
             int restantes = limiteEntrenamiento - entrenamientosJornada;
-            System.out.println("3. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
-            System.out.println("4. Hacer cambios");
-            System.out.println("5. Salir del juego");
+            System.out.println("3. Mostrar el equipo");
+            System.out.println("4. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
+            System.out.println("5. Hacer cambios");
+            System.out.println("6. Salir del juego");
             System.out.print("Elegi una opción: ");
 
             opcion = sc.nextInt();
-            if (opcion < 1 || opcion > 5) {
+            if (opcion < 1 || opcion > 6) {
                 throw new InputMismatchException();
             }
 
@@ -221,6 +253,21 @@ public static int menuCambios (int entrenamientosJornada, int limiteEntrenamient
     } else {
         IO.println("Limites por jornada alcanzados");
         return entrenamientosJornada;
+    }
+}
+
+public static void mostrarEquipo (Equipo equipo){
+    ArrayList <Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
+    ArrayList <Jugador> suplentesArray = new ArrayList<>(equipo.getSuplentes());
+
+    System.out.println("\n=== TITULARES ===");
+    for (Jugador jugador : titularesArray) {
+        System.out.println(jugador.toString());
+    }
+
+    System.out.println("\n=== SUPLENTES ===");
+    for (Jugador jugador : suplentesArray) {
+        System.out.println(jugador.toString());
     }
 }
 

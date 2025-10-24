@@ -325,8 +325,6 @@ public class Equipo implements iToJSON {
 
         if (expulsado.getTarjetaLiga() == 2) {
 
-            System.out.println("Expulsado el jugador: " + expulsado.getNombre());
-
             titulares.remove(expulsado);
             Expulsados.add(expulsado);
 

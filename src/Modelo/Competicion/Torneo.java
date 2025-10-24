@@ -1,11 +1,14 @@
 package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
+import Interfaces.iToJSON;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public abstract class Torneo {
+public abstract class Torneo implements iToJSON{
     protected String nombre;
     protected LinkedHashMap<String, Equipo> equiposTorneo;
 
@@ -14,6 +17,32 @@ public abstract class Torneo {
         this.equiposTorneo = new LinkedHashMap<>();
     }
 
+    @Override
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("nombre", this.nombre);
+
+        // Convertir el HashMap de equipos en un JSONArray
+        JSONArray jsonEquipos = new JSONArray();
+        for (Equipo equipo : this.equiposTorneo.values()) {
+            jsonEquipos.put(equipo.toJSON()); // Llama a Equipo.toJSON()
+        }
+
+        json.put("equiposTorneo", jsonEquipos);
+        return json;
+    }
+
+    public Torneo(JSONObject json) {
+        this.nombre = json.getString("nombre");
+        this.equiposTorneo = new LinkedHashMap<>();
+
+        JSONArray jsonEquipos = json.getJSONArray("equiposTorneo");
+        for (int i = 0; i < jsonEquipos.length(); i++) {
+            JSONObject jsonEquipo = jsonEquipos.getJSONObject(i);
+            Equipo equipoCargado = new Equipo(jsonEquipo); // Llama a Equipo(json)
+            this.equiposTorneo.put(equipoCargado.getNombre(), equipoCargado);
+        }
+    }
     // ==================== Getters y Setters ====================
     public String getNombre() {
         return nombre;

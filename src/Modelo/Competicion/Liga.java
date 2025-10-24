@@ -2,19 +2,74 @@ package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
 import Modelo.pPartido.Partido;
-
+import Interfaces.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import Gestora.*;
 import java.util.*;
 
-public class Liga extends Torneo {
+public class Liga extends Torneo implements iToJSON{
     private int jornada;
     private ArrayList<Partido> fixture;
     private Map <Equipo, FilaTabla> tablaPosiciones;
+
+    private String nombreEquipoUsuario;
 
     public Liga(String nombre) {
         super(nombre);
         this.jornada = 1;
         this.fixture = new ArrayList<>();
         this.tablaPosiciones = new HashMap<>();
+    }
+
+    public Liga (JSONObject json){
+        super(json); // 1. Carga 'nombre' y 'equiposTorneo'
+        this.jornada = json.getInt("jornada");
+
+        this.nombreEquipoUsuario = json.getString("equipoUsuario");
+
+        // 2. Carga y reconecta la Tabla de Posiciones
+        this.tablaPosiciones = new HashMap<>();
+        JSONArray jsonTablas = json.getJSONArray("tablaPosiciones");
+
+        for (int i = 0; i < jsonTablas.length(); i++) {
+            JSONObject jsonFila = jsonTablas.getJSONObject(i);
+
+            // 3. Crea la Fila (que guarda stats y el nombre temporal)
+            FilaTabla filaCargada = new FilaTabla(jsonFila);
+
+            // 4. Obtiene el nombre guardado
+            String nombreEquipo = filaCargada.getNombreEquipoCargado();
+
+            // 5. Busca el Equipo REAL en el mapa que cargó 'super(json)'
+            Equipo equipoReal = super.equiposTorneo.get(nombreEquipo);
+
+            if (equipoReal != null) {
+                filaCargada.setEquipo(equipoReal);
+                this.tablaPosiciones.put(equipoReal, filaCargada);
+            }
+        }
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject json = super.toJSON();
+
+        json.put("jornada", this.jornada); // Clave: "jornada"
+
+        json.put("equipoUsuario", this.nombreEquipoUsuario);
+
+        JSONArray jsonTabla = new JSONArray();
+
+        for (FilaTabla fila : this.tablaPosiciones.values()) {
+            // Llama a fila.toJSON() (que guarda los stats y el nombreEquipo)
+            jsonTabla.put(fila.toJSON());
+        }
+
+        // Guardamos el array completo en el JSON
+        json.put("tablaPosiciones", jsonTabla);
+
+        return json;
     }
 
     public int getJornada() {
@@ -41,10 +96,18 @@ public class Liga extends Torneo {
         this.tablaPosiciones = tablaPosiciones;
     }
 
+    public void setNombreEquipoUsuario(String nombreEquipoUsuario) {
+        this.nombreEquipoUsuario = nombreEquipoUsuario;
+    }
+
+    // (Y este es el 'get' que usará el main para buscar tu equipo)
+    public String getNombreEquipoUsuario() {
+        return nombreEquipoUsuario;
+    }
+
     public void generarFixture() {
         // 1. Obtener la lista de equipos y manejar N° impar
         ArrayList<Equipo> equipos = new ArrayList<>(super.getEquipos().values());
-        this.tablaPosiciones.clear(); // Limpiar la tabla por si acaso
 
         if (equipos.size() % 2 != 0) {
             Equipo equipoBye = new Equipo();
@@ -52,15 +115,18 @@ public class Liga extends Torneo {
             equipos.add(equipoBye);
         }
 
+        if (this.tablaPosiciones.isEmpty()) {
+            System.out.println("Creando tabla de posiciones para liga nueva...");
+            for (Equipo equipo : equipos) {
+                if (!equipo.getNombre().equals("FANTASMA")) {
+                    this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
+                }
+            }
+        }
+
         int numEquipos = equipos.size();
         int numJornadasIda = numEquipos - 1;
 
-        // 2. Inicializar la tabla de posiciones
-        for (Equipo equipo : equipos) {
-            if (!equipo.getNombre().equals("FANTASMA")) {
-                this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
-            }
-        }
 
         // 3. Separar el equipo fijo y la lista de rotación
         Equipo equipoFijo = equipos.get(0);
@@ -156,7 +222,11 @@ public class Liga extends Torneo {
             }
         }
 
-        mostrarTabla();
+        //Guarda la partida despues de cada jornada
+        String nombreArchivo = "partida_guardada.json";
+        JsonUtiles.grabarUnJson(toJSON(), nombreArchivo);
+        System.out.println("===== Partida guardada en: " + nombreArchivo + " =====");
+
         this.jornada++;
     }
 
