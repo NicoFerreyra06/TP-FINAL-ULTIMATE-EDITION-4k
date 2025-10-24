@@ -69,7 +69,7 @@ void main() {
                     liga.mostrarTabla();
                     break;
                 case 3:
-                    entrenamientosJornada += menuCambios(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
+                    entrenamientosJornada = menuCambios(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
                     break;
 
                 case 4:
@@ -104,13 +104,13 @@ public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
     while (!check) {
         try{
             int i = 0;
-            System.out.println("=== TITULARES ===");
+            System.out.println("\n=== TITULARES ===");
             for (Jugador j : usuarioEquipo.getTitulares()){
                 System.out.println(i + 1 + "-" +j.getNombre());
                 i++;
             }
 
-            System.out.println("Ingrese el numero del titular a cambiar");
+            System.out.println("\nIngrese el numero del titular a cambiar");
             int indiceTitular = sc.nextInt();
 
             if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
@@ -212,7 +212,6 @@ public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrena
 public static int menuCambios (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
     if (entrenamientosJornada < limiteEntrenamiento) {
         usuarioEquipo.entrenarEquipo();
-        IO.println("Entrenamiento realizado con exito!");
         return entrenamientosJornada + 1;
     } else {
         IO.println("Limites por jornada alcanzados");
