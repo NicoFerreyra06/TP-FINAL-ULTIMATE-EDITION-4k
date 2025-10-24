@@ -36,68 +36,29 @@ void main() {
         listaDeEquipos.add(equipo);
     }
 
-    try{
 
         System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
         System.out.println("Creando la liga y los equipos...");
 
         Liga liga = new Liga("Liga prueba");
 
-
-        for (Equipo equipo : listaDeEquipos){
+        //Anota los equipos
+        for (Equipo equipo : listaDeEquipos) {
             liga.anotarEquipo(equipo);
         }
 
-
-        for (int i = 0; i < listaDeEquipos.size(); i++) {
-            System.out.println((i + 1) + ". " + listaDeEquipos.get(i).getNombre());
-        }
-
-        System.out.println(" ==== Seleccione su equipo ====");
-        int indice = sc.nextInt();
-        Equipo usuarioEquipo = listaDeEquipos.get(indice - 1);
+    try{
+        //Selecciona el equipo del usuario
+        Equipo usuarioEquipo = seleccionarEquipo(sc, listaDeEquipos);
 
         liga.generarFixture();
 
-        System.out.println("¡Has elegido a " + usuarioEquipo.getNombre() + "! Mucha suerte.");
         boolean salir = false;
         int entrenamientosJornada = 0;
         final int limiteEntrenamiento = 1;
 
         while (!liga.isTerminada() && !salir) {
-            System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
-            ArrayList<Partido> fixture = liga.getFixture();
-            int jornadaActual = liga.getJornada() - 1;
-
-            Partido partidoUsuario = null;
-
-            // Buscamos el partido donde juegue el equipo del usuario
-            for (Partido p : fixture) {
-                if (p.getLocal().equals(usuarioEquipo) || p.getVisitante().equals(usuarioEquipo)) {
-                    partidoUsuario = p;
-                    break;
-                }
-            }
-
-            Equipo local = partidoUsuario.getLocal();
-            Equipo visitante = partidoUsuario.getVisitante();
-            String estadio = local.getEstadio().getNombre();
-
-            if (partidoUsuario.getLocal().equals(usuarioEquipo)) {
-                System.out.println("Tu partido: " + usuarioEquipo.getNombre() + " vs " + partidoUsuario.getVisitante().getNombre());
-            } else {
-                System.out.println("Tu partido: " + partidoUsuario.getLocal().getNombre() + " vs " + usuarioEquipo.getNombre());
-            }
-
-            System.out.println("Menú de Acciones:");
-            System.out.println("1. Jugar próxima fecha");
-            System.out.println("2. Ver tabla de posiciones");
-            int restantes = limiteEntrenamiento - entrenamientosJornada;
-            System.out.println("3. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
-            System.out.println("4. Hacer cambios");
-            System.out.println("5. Salir del juego");
-            System.out.print("Elige una opción: ");
-            int opcion = sc.nextInt();
+            int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
 
             switch (opcion){
                 case 1:
@@ -108,14 +69,7 @@ void main() {
                     liga.mostrarTabla();
                     break;
                 case 3:
-                    if (entrenamientosJornada < limiteEntrenamiento) {
-                        usuarioEquipo.entrenarEquipo();
-                        entrenamientosJornada++;
-                        IO.println("Entrenamiento realizado con exito!");
-                    } else {
-                        IO.println("Limites por jornada alcanzados");
-                    }
-
+                    entrenamientosJornada += menuCambios(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
                     break;
 
                 case 4:
@@ -137,6 +91,132 @@ void main() {
         }
     } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
+    }
+}
+
+public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
+
+    ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
+    ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
+
+    boolean check = false;
+
+    while (!check) {
+        try{
+            int i = 0;
+            System.out.println("=== TITULARES ===");
+            for (Jugador j : usuarioEquipo.getTitulares()){
+                System.out.println(i + 1 + "-" +j.getNombre());
+                i++;
+            }
+
+            System.out.println("Ingrese el numero del titular a cambiar");
+            int indiceTitular = sc.nextInt();
+
+            if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+
+            i = 0;
+            System.out.println("\n=== SUPLENTES ===");
+            for (Jugador j : usuarioEquipo.getSuplentes()){
+                System.out.println(i+ 1 + "-" +j.getNombre());
+                i++;
+            }
+
+            System.out.println("Ingrese el numero del suplente a cambiar");
+            int indiceSuplente = sc.nextInt();
+
+            if (indiceSuplente < 1 ||  indiceSuplente > suplentesArray.size()){
+                throw new IndexOutOfBoundsException();
+            }
+
+            Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
+            Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
+
+            usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
+
+            check = true;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Seleccione correctamente los numeros de los jugadores");
+            sc.nextLine();
+        }
+    }
+}
+
+public static Equipo seleccionarEquipo (Scanner sc, ArrayList<Equipo> listaDeEquipos) {
+    boolean check = false;
+    Equipo usuario = null;
+    int indice;
+
+    while (!check) {
+        try {
+            System.out.println("\n==== LISTA DE EQUIPOS DISPONIBLES ====");
+            for (int i = 0; i < listaDeEquipos.size(); i++) {
+                System.out.println((i + 1) + ". " + listaDeEquipos.get(i).getNombre());
+            }
+
+            System.out.print("Seleccione su equipo (1 - " + listaDeEquipos.size() + "): ");
+            indice = sc.nextInt();
+
+            if (indice < 1 || indice > listaDeEquipos.size()) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+
+            usuario = listaDeEquipos.get(indice - 1);
+            System.out.println("\nElegiste: " + usuario.getNombre());
+            check = true;
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("No selecciono bien el equipo, intente de nuevo!");
+        } catch (InputMismatchException e) {
+            System.out.println("Debe ingresar un numero valido");
+            sc.nextLine();
+        }
+    }
+    return usuario;
+}
+
+public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrenamientosJornada, Liga liga){
+
+    boolean check = false;
+    int opcion = -1;
+
+    while (!check) {
+        try {
+            System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
+            System.out.println("Menú de Acciones:");
+            System.out.println("1. Jugar próxima fecha");
+            System.out.println("2. Ver tabla de posiciones");
+            int restantes = limiteEntrenamiento - entrenamientosJornada;
+            System.out.println("3. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
+            System.out.println("4. Hacer cambios");
+            System.out.println("5. Salir del juego");
+            System.out.print("Elegi una opción: ");
+
+            opcion = sc.nextInt();
+            if (opcion < 1 || opcion > 5) {
+                throw new InputMismatchException();
+            }
+
+            check = true;
+
+        } catch (InputMismatchException e) {
+            System.out.println("Seleccione un numero valido entre 1 y 5");
+            sc.nextLine();
+        }
+    }
+    return opcion;
+}
+
+public static int menuCambios (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
+    if (entrenamientosJornada < limiteEntrenamiento) {
+        usuarioEquipo.entrenarEquipo();
+        IO.println("Entrenamiento realizado con exito!");
+        return entrenamientosJornada + 1;
+    } else {
+        IO.println("Limites por jornada alcanzados");
+        return entrenamientosJornada;
     }
 }
 
@@ -705,57 +785,4 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
     equipos.add(atlanta);
 
     return equipos;
-}
-
-public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
-
-    ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
-    ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
-
-    boolean check = false;
-
-    while (!check) {
-        try{
-            int i = 0;
-            System.out.println("=== TITULARES ===");
-            for (Jugador j : usuarioEquipo.getTitulares()){
-                System.out.println(i + 1 + "-" +j.getNombre());
-                i++;
-            }
-
-            System.out.println("Ingrese el numero del titular a cambiar");
-            int indiceTitular = sc.nextInt();
-
-            if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-
-            i = 0;
-            System.out.println("\n=== SUPLENTES ===");
-            for (Jugador j : usuarioEquipo.getSuplentes()){
-                System.out.println(i+ 1 + "-" +j.getNombre());
-                i++;
-            }
-
-            System.out.println("Ingrese el numero del suplente a cambiar");
-            int indiceSuplente = sc.nextInt();
-
-            if (indiceSuplente < 1 || suplentesArray.size() < indiceSuplente){
-                throw new ArrayIndexOutOfBoundsException();
-            }
-
-            Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
-            Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
-
-            usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
-
-            check = true;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("No selecciono bien el jugador, intente de nuevo!");
-        } catch (InputMismatchException e){
-            System.out.println("Debe ingresar un número válido");
-            sc.nextLine(); // limpia el buffer del scanner
-        }
-
-    }
 }
