@@ -178,6 +178,7 @@ public class Equipo implements iToJSON {
         this.jugoJornada = jugoJornada;
     }
 
+
     // ===================Metodos=======================
 
     /**
@@ -190,7 +191,6 @@ public class Equipo implements iToJSON {
 
     public boolean agregarJugador(Jugador jugador) {
         if (jugador == null) return false;
-
         if (titulares.contains(jugador) || suplentes.contains(jugador)) {
             return false;
         }
@@ -427,6 +427,14 @@ public class Equipo implements iToJSON {
         System.out.println(" ==========Sesion de entrenamiento exitosa========== ");
     }
 
+    public ArrayList<Jugador> getPlantilla () {
+        ArrayList<Jugador> plantilla = new ArrayList<>(titulares.size() + suplentes.size());
+
+        plantilla.addAll(titulares);
+        plantilla.addAll(suplentes);
+
+        return plantilla;
+    }
 
     //---------metodo toString---------
 
