@@ -87,7 +87,7 @@ void main() {
                     mostrarEquipo(usuarioEquipo);
                     break;
                 case 4:
-                    entrenamientosJornada = menuCambios(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
+                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
                     break;
 
                 case 5:
@@ -247,7 +247,7 @@ public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrena
     return opcion;
 }
 
-public static int menuCambios (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
+public static int menuEntrenamiento (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
     if (entrenamientosJornada < limiteEntrenamiento) {
         usuarioEquipo.entrenarEquipo();
         return entrenamientosJornada + 1;
