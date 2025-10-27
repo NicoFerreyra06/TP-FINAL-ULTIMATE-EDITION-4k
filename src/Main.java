@@ -4,7 +4,7 @@ import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
 import Modelo.Persona.*;
-
+import Exceptions.*;
 import java.util.*;
 import Gestora.*;
 import org.json.JSONObject;
@@ -60,15 +60,13 @@ void main() {
             } else {
                 System.out.println("Opción no válida.");
             }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        } catch (IllegalArgumentException | EquipoExistenteException e) {
+            System.out.println(e.getMessage());
             sc.nextLine();
         }
     }
 
     try{
-
-        liga.generarFixture();
 
         boolean salir = false;
         int entrenamientosJornada = 0;
@@ -95,8 +93,10 @@ void main() {
                 case 5:
                     realizarCambios(usuarioEquipo, sc);
                     break;
-
                 case 6:
+                    buscarJugador(sc, liga);
+                    break;
+                case 7:
                     salir = true;
                     break;
              }
@@ -119,12 +119,12 @@ public Liga cargarPartida (){
 
     JSONObject jsonPartida = new JSONObject(jsonString);
     Liga ligaCargada = new Liga(jsonPartida);
-    ligaCargada.generarFixture();
 
     System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
 
     return ligaCargada;
 }
+
 public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
 
     ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
@@ -228,11 +228,12 @@ public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrena
             System.out.println("3. Mostrar el equipo");
             System.out.println("4. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
             System.out.println("5. Hacer cambios");
-            System.out.println("6. Salir del juego");
+            System.out.println("6. Buscar jugador");
+            System.out.println("7. Salir del juego");
             System.out.print("Elegi una opción: ");
 
             opcion = sc.nextInt();
-            if (opcion < 1 || opcion > 6) {
+            if (opcion < 1 || opcion > 7) {
                 throw new InputMismatchException();
             }
 
@@ -269,6 +270,17 @@ public static void mostrarEquipo (Equipo equipo){
     for (Jugador jugador : suplentesArray) {
         System.out.println(jugador.toString());
     }
+}
+
+public static void buscarJugador (Scanner sc, Liga liga){
+    sc.nextLine();
+    System.out.println("Ingrese el equipo en el que quiere buscar ");
+    String nombreEquipo = sc.nextLine();
+
+    System.out.println("Ingrese el nombre del jugador a buscar");
+    String nombreJugador = sc.nextLine();
+
+    liga.buscarJugador(nombreEquipo, nombreJugador);
 }
 
 public static ArrayList<Equipo> crearEquiposIniciales() {
@@ -811,29 +823,29 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
     equipos.add(atlanta);
 
 
-    Equipo atlanta1 = new Equipo("Atlanta B", estadioAtlanta, dtAtlanta, 9000000.00);
+    Equipo brawlStars = new Equipo("brawl Stars", estadioAtlanta, dtAtlanta, 9000000.00);
 
 // Titulares
-    atlanta.agregarJugador(new Jugador("Rodrigo Lugo", 33, "Argentino", Posicion.ARQUERO, 38, 82, 79));
-    atlanta.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 68, 80, 77));
-    atlanta.agregarJugador(new Jugador("Nicolás Previtali", 28, "Argentino", Posicion.MEDIOCAMPISTA, 73, 81, 79));
-    atlanta.agregarJugador(new Jugador("Agustín Bolívar", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 80, 79));
-    atlanta.agregarJugador(new Jugador("Martín García", 24, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
-    atlanta.agregarJugador(new Jugador("Federico Bisanz", 25, "Argentino", Posicion.MEDIOCAMPISTA, 76, 79, 80));
-    atlanta.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 69, 80, 78));
-    atlanta.agregarJugador(new Jugador("Juan Galeano", 35, "Argentino", Posicion.MEDIOCAMPISTA, 75, 78, 78));
-    atlanta.agregarJugador(new Jugador("Luis López", 37, "Argentino", Posicion.DELANTERO, 83, 68, 80));
-    atlanta.agregarJugador(new Jugador("Fabricio Pedrozo", 31, "Argentino", Posicion.DELANTERO, 82, 70, 81));
-    atlanta.agregarJugador(new Jugador("Tomás Silva", 22, "Argentino", Posicion.DELANTERO, 80, 72, 80));
+    brawlStars.agregarJugador(new Jugador("Rodrigo Lugo", 33, "Argentino", Posicion.ARQUERO, 38, 82, 79));
+    brawlStars.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 68, 80, 77));
+    brawlStars.agregarJugador(new Jugador("Nicolás Previtali", 28, "Argentino", Posicion.MEDIOCAMPISTA, 73, 81, 79));
+    brawlStars.agregarJugador(new Jugador("Agustín Bolívar", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 80, 79));
+    brawlStars.agregarJugador(new Jugador("Martín García", 24, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
+    brawlStars.agregarJugador(new Jugador("Federico Bisanz", 25, "Argentino", Posicion.MEDIOCAMPISTA, 76, 79, 80));
+    brawlStars.agregarJugador(new Jugador("Alan Pérez", 30, "Argentino", Posicion.DEFENSOR, 69, 80, 78));
+    brawlStars.agregarJugador(new Jugador("Juan Galeano", 35, "Argentino", Posicion.MEDIOCAMPISTA, 75, 78, 78));
+    brawlStars.agregarJugador(new Jugador("Luis López", 37, "Argentino", Posicion.DELANTERO, 83, 68, 80));
+    brawlStars.agregarJugador(new Jugador("Fabricio Pedrozo", 31, "Argentino", Posicion.DELANTERO, 82, 70, 81));
+    brawlStars.agregarJugador(new Jugador("Tomás Silva", 22, "Argentino", Posicion.DELANTERO, 80, 72, 80));
 
 // Suplentes
-    atlanta.agregarJugador(new Jugador("Francisco Rago", 31, "Argentino", Posicion.ARQUERO, 38, 80, 78));
-    atlanta.agregarJugador(new Jugador("Nahuel Tecilla", 28, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
-    atlanta.agregarJugador(new Jugador("Ignacio Colombini", 35, "Argentino", Posicion.DELANTERO, 82, 70, 80));
-    atlanta.agregarJugador(new Jugador("Diego Becker", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 79, 78));
-    atlanta.agregarJugador(new Jugador("Matías Molina", 24, "Argentino", Posicion.MEDIOCAMPISTA, 72, 77, 76));
+    brawlStars.agregarJugador(new Jugador("Francisco Rago", 31, "Argentino", Posicion.ARQUERO, 38, 80, 78));
+    brawlStars.agregarJugador(new Jugador("Nahuel Tecilla", 28, "Argentino", Posicion.DEFENSOR, 70, 78, 77));
+    brawlStars.agregarJugador(new Jugador("Ignacio Colombini", 35, "Argentino", Posicion.DELANTERO, 82, 70, 80));
+    brawlStars.agregarJugador(new Jugador("Diego Becker", 27, "Argentino", Posicion.MEDIOCAMPISTA, 74, 79, 78));
+    brawlStars.agregarJugador(new Jugador("Matías Molina", 24, "Argentino", Posicion.MEDIOCAMPISTA, 72, 77, 76));
 
-    equipos.add(atlanta);
+    equipos.add(brawlStars);
 
     return equipos;
 }
