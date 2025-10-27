@@ -53,7 +53,7 @@ public  class Copa extends Torneo {
         for (Partido partido : rondaActual.getPartidos()) {
             if (partido.involucraEquipoUsuario(equipoJugador)) {
                 System.out.println("\n¡ES TU TURNO DE JUGAR!");
-                partido.simularInteractivo(); // Simulación interactiva para el usuario
+                partido.simularInteractivo(equipoJugador); // Simulación interactiva para el usuario
             } else {
                 partido.simularRapido(); // Simulación rápida para la IA
             }

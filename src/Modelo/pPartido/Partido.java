@@ -111,8 +111,12 @@ public class Partido {
     }
 
     // ===================Metodos=======================
-    public void simularInteractivo() throws InterruptedException {
-        System.out.println("Empieza el partido");
+    public void simularInteractivo(Equipo equipoUsuario) throws InterruptedException {
+        boolean check = false;
+        int opcion = -1;
+        int cambiosRestantes = 5;
+
+        IO.println("Empieza el partido");
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
@@ -126,16 +130,42 @@ public class Partido {
         visitante.verificarTitulares();
 
         for (int i = 1; i <= 90; i++) {
-            System.out.println("Minuto " + i);
+            IO.println("Minuto " + i);
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
 
             if (i == 45){
                 IO.println("Finalizo el primer tiempo! ");
+                IO.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante + "\n");
 
-                IO.println("Presione enter para comenzar el ST");
-                scanner.nextLine();
+                while (!check) {
 
+                    IO.println("---------ENTRETIEMPO---------");
+                    IO.println("Presione 1 para comenzar el ST");
+                    IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
+
+                    opcion = scanner.nextInt();
+
+                    if (opcion < 1 || opcion  > 2){
+                        System.out.println("Ingrese una opcion valida");
+                    }
+
+                    if (opcion == 1) check = true;
+
+
+                    if (opcion == 2) {
+                        if (cambiosRestantes > 0){
+                            if (local.equals(equipoUsuario)) {
+                                cambiosRestantes -= realizarCambioPartido(scanner, local, cambiosRestantes);
+                            } else if (visitante.equals(equipoUsuario)) {
+                                cambiosRestantes -= realizarCambioPartido(scanner, visitante, cambiosRestantes);
+                            }
+                        } else {
+                            IO.println("No le quedan cambios");
+                        }
+                    }
+
+                }
                 IO.println("Empieza el segundo tiempo! ");
             }
 
@@ -412,4 +442,62 @@ public class Partido {
         }
     }
 
+    public int realizarCambioPartido (Scanner sc, Equipo equipo, int cambiosRestantes){
+
+        ArrayList <Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
+        ArrayList <Jugador> suplentesArray = new ArrayList<>(equipo.getSuplentes());
+
+        boolean check = false;
+
+        while (!check) {
+            try{
+                int i = 0;
+                System.out.println("\n=== TITULARES ===");
+                for (Jugador j : equipo.getTitulares()){
+                    System.out.println(i + 1 + "-" +j.getNombre());
+                    i++;
+                }
+
+                System.out.println("\nIngrese el numero del titular a cambiar");
+                int indiceTitular = sc.nextInt();
+
+                if (indiceTitular < 1 || indiceTitular > equipo.getTitulares().size()) {
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+
+                i = 0;
+                System.out.println("\n=== SUPLENTES ===");
+                for (Jugador j : equipo.getSuplentes()){
+                    System.out.println(i+ 1 + "-" +j.getNombre());
+                    i++;
+                }
+
+                System.out.println("Ingrese el numero del suplente a cambiar");
+                int indiceSuplente = sc.nextInt();
+
+                if (indiceSuplente < 1 ||  indiceSuplente > equipo.getSuplentes().size()){
+                    throw new IndexOutOfBoundsException();
+                }
+
+                Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
+                Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
+
+
+                equipo.realizarCambio(jugadorTitular,jugadorSuplente);
+
+                check = true;
+
+                return 1;
+            } catch (InputMismatchException e) {
+                System.out.println("Error, debe ingresar un numero valido");
+                sc.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error, numero fuera de rango. Intente nuevamente ");
+            } catch (Exception e){
+                System.out.println("Ocurrio un error inesperado. Intente nuevamente");
+                sc.nextLine();
+            }
+        }
+        return 0;
+    }
 }

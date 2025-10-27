@@ -219,8 +219,6 @@ public class Liga extends Torneo implements iToJSON{
 
         // 8. Asignar el fixture total
         this.fixture = new ArrayList<>();
-        Collections.shuffle(fixtureIdaLimpio);
-        Collections.shuffle(fixtureVuelta);
         this.fixture.addAll(fixtureIdaLimpio);
         this.fixture.addAll(fixtureVuelta);
     }
@@ -238,7 +236,7 @@ public class Liga extends Torneo implements iToJSON{
 
         for (Partido p : partidosJornada) {
             if (p.involucraEquipoUsuario(equipoJugador)) {
-                p.simularInteractivo();
+                p.simularInteractivo(equipoJugador);
             } else {
                 p.simularRapido();
                 partidosRapidos.add(p);
