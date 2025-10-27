@@ -25,8 +25,9 @@ public class Liga extends Torneo implements iToJSON{
     public Liga (JSONObject json){
         super(json); // 1. Carga 'nombre' y 'equiposTorneo'
         this.jornada = json.getInt("jornada");
-
         this.nombreEquipoUsuario = json.getString("equipoUsuario");
+
+        this.fixture = new ArrayList<>();
 
         // 2. Carga y reconecta la Tabla de Posiciones
         this.tablaPosiciones = new HashMap<>();

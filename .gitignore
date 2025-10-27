@@ -11,3 +11,4 @@
 /.idea/
 # Ignorar la carpeta de compilación del IDE
 /out/
+partida_guardada.json
