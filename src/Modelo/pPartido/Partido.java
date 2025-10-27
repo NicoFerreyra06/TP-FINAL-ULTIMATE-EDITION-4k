@@ -201,7 +201,7 @@ public class Partido {
         }
 
         // ======================================
-        // 2. SIMULACIÓN DE GOL ATAUE
+        // 2. SIMULACIÓN DE GOL ATAQUE
         // ======================================
 
 
