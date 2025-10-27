@@ -66,52 +66,7 @@ void main() {
         }
     }
 
-    try{
 
-        boolean salir = false;
-        int entrenamientosJornada = 0;
-        final int limiteEntrenamiento = 1;
-
-        while (!liga.isTerminada() && !salir) {
-            int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
-
-            switch (opcion){
-                case 1:
-                    liga.jugarProximaFecha(usuarioEquipo);
-                    entrenamientosJornada = 0;
-                    break;
-                case 2:
-                    liga.mostrarTabla();
-                    break;
-                case 3:
-                    mostrarEquipo(usuarioEquipo);
-                    break;
-                case 4:
-                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
-                    break;
-
-                case 5:
-                    realizarCambios(usuarioEquipo, sc);
-                    break;
-                case 6:
-                    buscarJugador(sc, liga);
-                    break;
-                case 7:
-                    salir = true;
-                    break;
-             }
-        }
-
-        if (liga.isTerminada()) {
-            System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
-
-            PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
-            podiosDeCompeticion.mostrarEstadisticasIndivuduales();
-            liga.podioLiga();
-        }
-    } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
-    }
 }
 
 public Liga cargarPartida (){
