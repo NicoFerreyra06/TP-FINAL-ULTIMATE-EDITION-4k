@@ -1,5 +1,4 @@
 
-import Modelo.Podios.PodiosDeCompeticion;
 import enums.*;
 import Modelo.Competicion.*;
 import Modelo.Equipo.*;
@@ -16,8 +15,8 @@ void main() {
 
     System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
     Scanner sc = new Scanner(System.in);
-    Liga liga = null;
-    Equipo usuarioEquipo = null;
+    Liga liga;
+    Equipo usuarioEquipo;
 
     boolean partidaLista = false;
 
@@ -66,7 +65,7 @@ void main() {
         }
     }
 
-
+    
 }
 
 public Liga cargarPartida (){
@@ -78,61 +77,6 @@ public Liga cargarPartida (){
     System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
 
     return ligaCargada;
-}
-
-public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
-
-    ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
-    ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
-
-    boolean check = false;
-
-    while (!check) {
-        try{
-            int i = 0;
-            System.out.println("\n=== TITULARES ===");
-            for (Jugador j : usuarioEquipo.getTitulares()){
-                System.out.println(i + 1 + "-" +j.getNombre());
-                i++;
-            }
-
-            System.out.println("\nIngrese el numero del titular a cambiar");
-            int indiceTitular = sc.nextInt();
-
-            if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-
-            i = 0;
-            System.out.println("\n=== SUPLENTES ===");
-            for (Jugador j : usuarioEquipo.getSuplentes()){
-                System.out.println(i+ 1 + "-" +j.getNombre());
-                i++;
-            }
-
-            System.out.println("Ingrese el numero del suplente a cambiar");
-            int indiceSuplente = sc.nextInt();
-
-            if (indiceSuplente < 1 ||  indiceSuplente > suplentesArray.size()){
-                throw new IndexOutOfBoundsException();
-            }
-
-            Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
-            Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
-
-            usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
-
-            check = true;
-        } catch (InputMismatchException e) {
-            System.out.println("Error, debe ingresar un numero valido");
-            sc.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error, numero fuera de rango. Intente nuevamente ");
-        } catch (Exception e){
-            System.out.println("Ocurrio un error inesperado. Intente nuevamente");
-            sc.nextLine();
-        }
-    }
 }
 
 public static Equipo seleccionarEquipo (Scanner sc, ArrayList<Equipo> listaDeEquipos) {
@@ -168,77 +112,7 @@ public static Equipo seleccionarEquipo (Scanner sc, ArrayList<Equipo> listaDeEqu
     return usuario;
 }
 
-public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrenamientosJornada, Liga liga){
-
-    boolean check = false;
-    int opcion = -1;
-
-    while (!check) {
-        try {
-            System.out.println("\n--- Jornada " + liga.getJornada() + " ---");
-            System.out.println("Menú de Acciones:");
-            System.out.println("1. Jugar próxima fecha");
-            System.out.println("2. Ver tabla de posiciones");
-            int restantes = limiteEntrenamiento - entrenamientosJornada;
-            System.out.println("3. Mostrar el equipo");
-            System.out.println("4. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
-            System.out.println("5. Hacer cambios");
-            System.out.println("6. Buscar jugador");
-            System.out.println("7. Salir del juego");
-            System.out.print("Elegi una opción: ");
-
-            opcion = sc.nextInt();
-            if (opcion < 1 || opcion > 7) {
-                throw new InputMismatchException();
-            }
-
-            check = true;
-
-        } catch (InputMismatchException e) {
-            System.out.println("Seleccione un numero valido entre 1 y 5");
-            sc.nextLine();
-        }
-    }
-    return opcion;
-}
-
-public static int menuEntrenamiento (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
-    if (entrenamientosJornada < limiteEntrenamiento) {
-        usuarioEquipo.entrenarEquipo();
-        return entrenamientosJornada + 1;
-    } else {
-        IO.println("Limites por jornada alcanzados");
-        return entrenamientosJornada;
-    }
-}
-
-public static void mostrarEquipo (Equipo equipo){
-    ArrayList <Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
-    ArrayList <Jugador> suplentesArray = new ArrayList<>(equipo.getSuplentes());
-
-    System.out.println("\n=== TITULARES ===");
-    for (Jugador jugador : titularesArray) {
-        System.out.println(jugador.toString());
-    }
-
-    System.out.println("\n=== SUPLENTES ===");
-    for (Jugador jugador : suplentesArray) {
-        System.out.println(jugador.toString());
-    }
-}
-
-public static void buscarJugador (Scanner sc, Liga liga){
-    sc.nextLine();
-    System.out.println("Ingrese el equipo en el que quiere buscar ");
-    String nombreEquipo = sc.nextLine();
-
-    System.out.println("Ingrese el nombre del jugador a buscar");
-    String nombreJugador = sc.nextLine();
-
-    liga.buscarJugador(nombreEquipo, nombreJugador);
-}
-
-public static ArrayList<Equipo> crearEquiposIniciales()             {
+public static ArrayList<Equipo> crearEquiposIniciales() {
     ArrayList<Equipo> equipos = new ArrayList<>();
 
     //River
