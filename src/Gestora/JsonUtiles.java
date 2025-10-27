@@ -1,5 +1,8 @@
+package Gestora;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.FileNotFoundException;
@@ -22,6 +25,16 @@ public class JsonUtiles {
         }
     }
 
+
+    public static void grabarUnJson(JSONObject jsonObject, String archivo){
+        try {
+            FileWriter file = new FileWriter(archivo);
+            file.write(jsonObject.toString(4));
+            file.close();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
     public static JSONTokener leerUnJson(String archivo) {
         JSONTokener tokener = null;
 

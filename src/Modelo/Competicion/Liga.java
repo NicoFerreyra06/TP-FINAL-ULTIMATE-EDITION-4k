@@ -1,20 +1,107 @@
 package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
-import Modelo.Partido.Partido;
-
+import Modelo.pPartido.Partido;
+import Interfaces.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import Gestora.*;
 import java.util.*;
 
-public class Liga extends Torneo {
+public class Liga extends Torneo implements iToJSON{
     private int jornada;
     private ArrayList<Partido> fixture;
     private Map <Equipo, FilaTabla> tablaPosiciones;
+
+    private String nombreEquipoUsuario;
 
     public Liga(String nombre) {
         super(nombre);
         this.jornada = 1;
         this.fixture = new ArrayList<>();
         this.tablaPosiciones = new HashMap<>();
+    }
+
+    public Liga (JSONObject json){
+        super(json); // 1. Carga nombre y equiposTorneo
+        this.jornada = json.getInt("jornada");
+        this.nombreEquipoUsuario = json.getString("equipoUsuario");
+
+        this.fixture = new ArrayList<>();
+
+        // 2. Carga y reconecta la Tabla de Posiciones
+        this.tablaPosiciones = new HashMap<>();
+        JSONArray jsonTablas = json.getJSONArray("tablaPosiciones");
+
+        for (int i = 0; i < jsonTablas.length(); i++) {
+            JSONObject jsonFila = jsonTablas.getJSONObject(i);
+
+            // 3. Crea la Fila
+            FilaTabla filaCargada = new FilaTabla(jsonFila);
+
+            // 4. Obtiene el nombre guardado
+            String nombreEquipo = filaCargada.getNombreEquipoCargado();
+
+            // 5. Busca el Equipo REAL en el mapa que cargó 'super(json)'
+            Equipo equipoReal = super.equiposTorneo.get(nombreEquipo);
+
+            if (equipoReal != null) {
+                filaCargada.setEquipo(equipoReal);
+                this.tablaPosiciones.put(equipoReal, filaCargada);
+            }
+        }
+
+        // 3. Carga y reconstruye el Fixture
+        this.fixture = new ArrayList<>();
+        JSONArray jsonFixture = json.getJSONArray("fixture");
+
+        for (int i = 0; i < jsonFixture.length(); i++) {
+            JSONObject jsonPartido = jsonFixture.getJSONObject(i);
+
+            // Obtenemos los nombres de los equipos
+            String nombreLocal = jsonPartido.getString("local");
+            String nombreVisitante = jsonPartido.getString("visitante");
+
+            // Buscamos los objetos 'Equipo' reales en el mapa que ya cargamos
+            Equipo equipoLocal = super.equiposTorneo.get(nombreLocal);
+            Equipo equipoVisitante = super.equiposTorneo.get(nombreVisitante);
+
+            // Si encontramos ambos equipos, reconstruimos el partido
+            if (equipoLocal != null && equipoVisitante != null) {
+                Partido partidoCargado = new Partido(equipoLocal, equipoVisitante);
+                this.fixture.add(partidoCargado);
+            }
+        }
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject json = super.toJSON();
+
+        json.put("jornada", this.jornada);
+        json.put("equipoUsuario", this.nombreEquipoUsuario);
+
+        JSONArray jsonTabla = new JSONArray();
+
+        for (FilaTabla fila : this.tablaPosiciones.values()) {
+            jsonTabla.put(fila.toJSON());
+        }
+
+        // Guardamos el array completo en el JSON
+        json.put("tablaPosiciones", jsonTabla);
+
+        JSONArray jsonFixture = new JSONArray();
+        for (Partido partido : this.fixture) {
+            // Creamos un JSON simple para CADA partido
+            JSONObject jsonPartido = new JSONObject();
+            jsonPartido.put("local", partido.getLocal().getNombre());
+            jsonPartido.put("visitante", partido.getVisitante().getNombre());
+            jsonFixture.put(jsonPartido);
+        }
+        // Guardamos el array completo de partidos
+        json.put("fixture", jsonFixture);
+
+        return json;
     }
 
     public int getJornada() {
@@ -41,81 +128,99 @@ public class Liga extends Torneo {
         this.tablaPosiciones = tablaPosiciones;
     }
 
+    public void setNombreEquipoUsuario(String nombreEquipoUsuario) {
+        this.nombreEquipoUsuario = nombreEquipoUsuario;
+    }
+
+    // (Y este es el 'get' que usará el main para buscar tu equipo)
+    public String getNombreEquipoUsuario() {
+        return nombreEquipoUsuario;
+    }
+
     public void generarFixture() {
-        ArrayList<Equipo> listaEquipos = new ArrayList<>(super.getEquipos().values());
-        ArrayList<Partido> fixtureTotal = new ArrayList<>();
+        // 1. Obtener la lista de equipos y manejar N° impar
+        ArrayList<Equipo> equipos = new ArrayList<>(super.getEquipos().values());
 
-        HashSet<String> partidosProgramados = new HashSet<>();
-
-        for (Equipo equipo : listaEquipos) {
-            this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
+        if (equipos.size() % 2 != 0) {
+            Equipo equipoBye = new Equipo();
+            equipoBye.setNombre("FANTASMA");
+            equipos.add(equipoBye);
         }
 
-        int numeroEquipos = listaEquipos.size();
-
-        // VALIDACIÓN: Es necesario un número par de equipos
-        if (numeroEquipos % 2 != 0) {
-            System.err.println("Error: El número de equipos debe ser par para generar el fixture.");
-            // En un juego real, podrías añadir un equipo "fantasma" (BYE)
-            return;
-        }
-
-        int numeroJornadas = (numeroEquipos - 1) * 2;
-        int jornadasIda = numeroJornadas / 2; // La mitad de las jornadas son de "ida"
-
-        for (int jornada = 0; jornada < numeroJornadas; jornada++) {
-            ArrayList<Partido> partidosDeJornada = new ArrayList<>();
-
-            // 1. Resetea el flag para esta jornada
-            for (Equipo e : listaEquipos) {
-                e.setJugoJornada(false);
-            }
-
-            // 2. Intenta armar la jornada
-            for (int i = 0; i < listaEquipos.size(); i++) {
-                for (int j = i + 1; j < listaEquipos.size(); j++) {
-
-                    Equipo equipo1 = listaEquipos.get(i);
-                    Equipo equipo2 = listaEquipos.get(j);
-
-                    String claveIda = equipo1.getNombre() + "-" + equipo2.getNombre();
-                    String claveVuelta = equipo2.getNombre() + "-" + equipo1.getNombre();
-
-                    // Si ambos equipos están libres ESTA JORNADA
-                    if (!equipo1.isJugoJornada() && !equipo2.isJugoJornada()) {
-
-                        // ---- LÓGICA DE IDA ----
-                        if (jornada < jornadasIda) {
-
-                            // Si NUNCA se ha programado este cruce (ni A-B ni B-A)
-                            if (!partidosProgramados.contains(claveIda) && !partidosProgramados.contains(claveVuelta)) {
-                                partidosDeJornada.add(new Partido(equipo1, equipo2)); // A vs B
-                                partidosProgramados.add(claveIda); // Registra "A-B"
-                                equipo1.setJugoJornada(true);
-                                equipo2.setJugoJornada(true);
-                            }
-                        }
-                        // ---- LÓGICA DE VUELTA ----
-                        else {
-
-                            // Si el partido de VUELTA (B vs A) aún no se ha programado
-                            if (!partidosProgramados.contains(claveVuelta)) { // <-- CORREGIDO
-                                partidosDeJornada.add(new Partido(equipo2, equipo1)); // Partido INVERSO (B vs A)
-                                partidosProgramados.add(claveVuelta); // Registra "B-A"
-                                equipo1.setJugoJornada(true);
-                                equipo2.setJugoJornada(true);
-                            }
-                        }
-                    }
+        if (this.tablaPosiciones.isEmpty()) {
+            System.out.println("Creando tabla de posiciones para liga nueva...");
+            for (Equipo equipo : equipos) {
+                if (!equipo.getNombre().equals("FANTASMA")) {
+                    this.tablaPosiciones.put(equipo, new FilaTabla(equipo));
                 }
             }
-
-            // 4. Añade los partidos de esta jornada al fixture total
-            fixtureTotal.addAll(partidosDeJornada);
         }
 
-        // 5. Asigna el fixture completo a la variable de la clase
-        this.fixture = fixtureTotal;
+        int numEquipos = equipos.size();
+        int numJornadasIda = numEquipos - 1;
+
+
+        // 3. Separar el equipo fijo y la lista de rotación
+        Equipo equipoFijo = equipos.getFirst();
+        // Creamos una sublista con el resto de equipos.
+        List<Equipo> equiposRotativos = new ArrayList<>(equipos.subList(1, numEquipos));
+
+        ArrayList<Partido> fixtureIda = new ArrayList<>();
+        ArrayList<Partido> fixtureVuelta = new ArrayList<>();
+
+        // 4. Generamos la ida
+        for (int jornada = 0; jornada < numJornadasIda; jornada++) {
+
+            // El equipo fijo juega contra el primer equipo de la lista rotativa
+            Equipo rivalFijo = equiposRotativos.getFirst();
+
+            // Balanceo simple de local/visitante para el equipo fijo
+            if (jornada % 2 == 0) {
+                fixtureIda.add(new Partido(rivalFijo, equipoFijo)); // Fijo es visitante
+            } else {
+                fixtureIda.add(new Partido(equipoFijo, rivalFijo)); // Fijo es local
+            }
+
+            // Emparejar al resto de la lista "desde afuera hacia adentro"
+            int mitad = (numEquipos / 2) - 1; // N° de partidos restantes en la jornada
+            for (int i = 0; i < mitad; i++) {
+                Equipo local = equiposRotativos.get(i + 1);
+                Equipo visitante = equiposRotativos.get(equiposRotativos.size() - 1 - i);
+                fixtureIda.add(new Partido(local, visitante));
+            }
+
+            // 5. ROTAR la lista para la siguiente jornada
+            // Guardamos el último equipo
+            Equipo ultimo = equiposRotativos.remove(equiposRotativos.size() - 1);
+            // Lo insertamos al principio (posición 0), desplazando al resto
+            equiposRotativos.addFirst(ultimo);
+        }
+
+        // 6. Generaramos la vuelta
+        for (Partido partidoIda : fixtureIda) {
+            // Solo añadimos partidos reales (ninguno es FANTASMA)
+            if (!partidoIda.getLocal().getNombre().equals("FANTASMA") &&
+                    !partidoIda.getVisitante().getNombre().equals("FANTASMA"))
+            {
+                // Creamos el partido de vuelta invirtiendo local y visitante
+                fixtureVuelta.add(new Partido(partidoIda.getVisitante(), partidoIda.getLocal()));
+            }
+        }
+
+        // 7. Limpiar los partidos "FANTASMA" de la lista de IDA
+        ArrayList<Partido> fixtureIdaLimpio = new ArrayList<>();
+        for(Partido p : fixtureIda) {
+            if (!p.getLocal().getNombre().equals("FANTASMA") &&
+                    !p.getVisitante().getNombre().equals("FANTASMA"))
+            {
+                fixtureIdaLimpio.add(p);
+            }
+        }
+
+        // 8. Asignar el fixture total
+        this.fixture = new ArrayList<>();
+        this.fixture.addAll(fixtureIdaLimpio);
+        this.fixture.addAll(fixtureVuelta);
     }
 
     @Override
@@ -131,7 +236,7 @@ public class Liga extends Torneo {
 
         for (Partido p : partidosJornada) {
             if (p.involucraEquipoUsuario(equipoJugador)) {
-                p.simularInteractivo();
+                p.simularInteractivo(equipoJugador);
             } else {
                 p.simularRapido();
                 partidosRapidos.add(p);
@@ -149,7 +254,11 @@ public class Liga extends Torneo {
             }
         }
 
-        mostrarTabla();
+        //Guarda la partida despues de cada jornada
+        String nombreArchivo = "partida_guardada.json";
+        JsonUtiles.grabarUnJson(toJSON(), nombreArchivo);
+        System.out.println("===== Partida guardada en: " + nombreArchivo + " =====");
+
         this.jornada++;
     }
 
@@ -233,11 +342,31 @@ public class Liga extends Torneo {
         System.out.println("🏆 ¡El campeón de la liga es: " + campeon.getNombre() + "!");
     }
 
+
+    public void podioLiga() {
+        List<FilaTabla> filasOrdenadas = new ArrayList<>(tablaPosiciones.values());
+        Collections.sort(filasOrdenadas);
+
+        System.out.println("🏆 PODIO DE LA LIGA 🏆");
+        System.out.println("------------------------");
+        System.out.println("🥇 1° " + filasOrdenadas.get(0).equipo.getNombre());
+        System.out.println("🥈 2° " + filasOrdenadas.get(1).equipo.getNombre());
+        System.out.println("🥉 3° " + filasOrdenadas.get(2).equipo.getNombre());
+        System.out.println("------------------------");
+
+    }
+
     //Metodo para saber si la liga esta terminada
     public boolean isTerminada (){
         int numeroEquipos = super.getEquipos().size();
+        int jornadasTotales;
 
-        int jornadasTotales = (numeroEquipos - 1) * 2;
+        // Si hay cantidad impar, uno queda libre por fecha
+        if (numeroEquipos % 2 != 0) {
+            jornadasTotales = numeroEquipos * 2;
+        } else {
+            jornadasTotales = (numeroEquipos - 1) * 2;
+        }
 
         return this.jornada > jornadasTotales;
     }

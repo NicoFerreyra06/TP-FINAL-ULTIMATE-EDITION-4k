@@ -116,6 +116,14 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         this.tarjetaLiga = tarjeta;
     }
 
+    public int getAsistencias() {
+        return asistencias;
+    }
+
+    public void setAsistencias(int asistencias) {
+        this.asistencias = asistencias;
+    }
+
     public void entrenar(){
         if (Math.random() < 0.3){
             return;
@@ -165,7 +173,7 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         if(Math.random() < 0.5){
             if (estadoFisico < 100){
                 estadoFisico++;
-                System.out.println(getNombre() + " ha mejorado su ESTADO FISICO " + estadoFisico + "!");
+                System.out.println(getNombre() + " ha mejorado su ESTADO FISICO a" + estadoFisico + "!");
             }
         }
     }
@@ -174,8 +182,16 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
         this.golesConvertidos++;
     }
 
+    public void cancelarGoles(){
+        if(this.golesConvertidos > 0) this.golesConvertidos--;
+    }
+
     public void anotarAsistencia(){
         this.asistencias++;
+    }
+
+    public void cancelarAsistencia(){
+        if(this.asistencias>0)this.asistencias--;
     }
 
     //Equals & Hashcode
@@ -194,7 +210,7 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
 
     @Override
     public String toString() {
-        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d | Goles: %d\", ",
+        return String.format("%-5s | Posición: %s | Ataque: %d, Defensa: %d | Estado Físico: %d | Goles: %d\"",
                 this.getNombre(),
                 this.posicion,
                 this.habilidadAtaque,

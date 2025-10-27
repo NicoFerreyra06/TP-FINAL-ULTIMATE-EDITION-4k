@@ -1,8 +1,7 @@
 package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
-import Modelo.Partido.Partido;
-
+import Modelo.pPartido.Partido;
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 
@@ -20,7 +19,7 @@ public  class Copa extends Torneo {
             case 16 -> "Octavos de Final";
             case 8 -> "Cuartos de Final";
             case 4 -> "Semifinales";
-            case 2 -> "GRAN FINAL";
+            case 2 -> "Final";
             default -> "Ronda de " + numeroDeEquipos;
         };
     }
@@ -54,7 +53,7 @@ public  class Copa extends Torneo {
         for (Partido partido : rondaActual.getPartidos()) {
             if (partido.involucraEquipoUsuario(equipoJugador)) {
                 System.out.println("\n¡ES TU TURNO DE JUGAR!");
-                partido.simularInteractivo(); // Simulación interactiva para el usuario
+                partido.simularInteractivo(equipoJugador); // Simulación interactiva para el usuario
             } else {
                 partido.simularRapido(); // Simulación rápida para la IA
             }
