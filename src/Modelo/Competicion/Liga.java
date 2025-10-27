@@ -23,7 +23,7 @@ public class Liga extends Torneo implements iToJSON{
     }
 
     public Liga (JSONObject json){
-        super(json); // 1. Carga 'nombre' y 'equiposTorneo'
+        super(json); // 1. Carga nombre y equiposTorneo
         this.jornada = json.getInt("jornada");
         this.nombreEquipoUsuario = json.getString("equipoUsuario");
 
@@ -36,7 +36,7 @@ public class Liga extends Torneo implements iToJSON{
         for (int i = 0; i < jsonTablas.length(); i++) {
             JSONObject jsonFila = jsonTablas.getJSONObject(i);
 
-            // 3. Crea la Fila (que guarda stats y el nombre temporal)
+            // 3. Crea la Fila
             FilaTabla filaCargada = new FilaTabla(jsonFila);
 
             // 4. Obtiene el nombre guardado
@@ -50,25 +50,56 @@ public class Liga extends Torneo implements iToJSON{
                 this.tablaPosiciones.put(equipoReal, filaCargada);
             }
         }
+
+        // 3. Carga y reconstruye el Fixture
+        this.fixture = new ArrayList<>();
+        JSONArray jsonFixture = json.getJSONArray("fixture");
+
+        for (int i = 0; i < jsonFixture.length(); i++) {
+            JSONObject jsonPartido = jsonFixture.getJSONObject(i);
+
+            // Obtenemos los nombres de los equipos
+            String nombreLocal = jsonPartido.getString("local");
+            String nombreVisitante = jsonPartido.getString("visitante");
+
+            // Buscamos los objetos 'Equipo' reales en el mapa que ya cargamos
+            Equipo equipoLocal = super.equiposTorneo.get(nombreLocal);
+            Equipo equipoVisitante = super.equiposTorneo.get(nombreVisitante);
+
+            // Si encontramos ambos equipos, reconstruimos el partido
+            if (equipoLocal != null && equipoVisitante != null) {
+                Partido partidoCargado = new Partido(equipoLocal, equipoVisitante);
+                this.fixture.add(partidoCargado);
+            }
+        }
     }
 
     @Override
     public JSONObject toJSON() {
         JSONObject json = super.toJSON();
 
-        json.put("jornada", this.jornada); // Clave: "jornada"
-
+        json.put("jornada", this.jornada);
         json.put("equipoUsuario", this.nombreEquipoUsuario);
 
         JSONArray jsonTabla = new JSONArray();
 
         for (FilaTabla fila : this.tablaPosiciones.values()) {
-            // Llama a fila.toJSON() (que guarda los stats y el nombreEquipo)
             jsonTabla.put(fila.toJSON());
         }
 
         // Guardamos el array completo en el JSON
         json.put("tablaPosiciones", jsonTabla);
+
+        JSONArray jsonFixture = new JSONArray();
+        for (Partido partido : this.fixture) {
+            // Creamos un JSON simple para CADA partido
+            JSONObject jsonPartido = new JSONObject();
+            jsonPartido.put("local", partido.getLocal().getNombre());
+            jsonPartido.put("visitante", partido.getVisitante().getNombre());
+            jsonFixture.put(jsonPartido);
+        }
+        // Guardamos el array completo de partidos
+        json.put("fixture", jsonFixture);
 
         return json;
     }
@@ -130,18 +161,18 @@ public class Liga extends Torneo implements iToJSON{
 
 
         // 3. Separar el equipo fijo y la lista de rotación
-        Equipo equipoFijo = equipos.get(0);
+        Equipo equipoFijo = equipos.getFirst();
         // Creamos una sublista con el resto de equipos.
         List<Equipo> equiposRotativos = new ArrayList<>(equipos.subList(1, numEquipos));
 
         ArrayList<Partido> fixtureIda = new ArrayList<>();
         ArrayList<Partido> fixtureVuelta = new ArrayList<>();
 
-        // 4. Generar todas las jornadas de "IDA"
+        // 4. Generamos la ida
         for (int jornada = 0; jornada < numJornadasIda; jornada++) {
 
             // El equipo fijo juega contra el primer equipo de la lista rotativa
-            Equipo rivalFijo = equiposRotativos.get(0);
+            Equipo rivalFijo = equiposRotativos.getFirst();
 
             // Balanceo simple de local/visitante para el equipo fijo
             if (jornada % 2 == 0) {
@@ -162,10 +193,10 @@ public class Liga extends Torneo implements iToJSON{
             // Guardamos el último equipo
             Equipo ultimo = equiposRotativos.remove(equiposRotativos.size() - 1);
             // Lo insertamos al principio (posición 0), desplazando al resto
-            equiposRotativos.add(0, ultimo);
+            equiposRotativos.addFirst(ultimo);
         }
 
-        // 6. Generar la "VUELTA" invirtiendo los partidos de ida
+        // 6. Generaramos la vuelta
         for (Partido partidoIda : fixtureIda) {
             // Solo añadimos partidos reales (ninguno es FANTASMA)
             if (!partidoIda.getLocal().getNombre().equals("FANTASMA") &&
@@ -188,6 +219,8 @@ public class Liga extends Torneo implements iToJSON{
 
         // 8. Asignar el fixture total
         this.fixture = new ArrayList<>();
+        Collections.shuffle(fixtureIdaLimpio);
+        Collections.shuffle(fixtureVuelta);
         this.fixture.addAll(fixtureIdaLimpio);
         this.fixture.addAll(fixtureVuelta);
     }

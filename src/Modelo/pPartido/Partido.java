@@ -20,6 +20,8 @@ public class Partido {
     private final Random random;
     ArrayList<Gol> goleadores;
 
+    private static final double corner = 0.003;
+
     public Partido(Equipo local, Equipo visitante) {
         this.local = local;
         this.visitante = visitante;
@@ -112,13 +114,12 @@ public class Partido {
     public void simularInteractivo() throws InterruptedException {
         System.out.println("Empieza el partido");
 
-        double corner = 0.003;
-
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
-        double probabilidadFalta = 0.15;
+        double probabilidadFalta = 0.10;
+
         Scanner scanner = new Scanner(System.in);
 
         local.verificarTitulares();
@@ -151,7 +152,7 @@ public class Partido {
     }
 
     public void simularRapido() {
-        double corner = 0.003;
+
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
@@ -174,8 +175,6 @@ public class Partido {
         // ======================================
         // 1. SIMULACIÓN DE CÓRNERS
         // ======================================
-
-
         if(random.nextDouble() < c_Local){
             if (mostrar) System.out.println(minuto + ": Corner para el equipo local");
 

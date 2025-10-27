@@ -29,7 +29,7 @@ void main() {
             int opcionInicio = sc.nextInt();
 
             if (opcionInicio == 1) {
-                System.out.println("Creando la liga y los equipos...");
+                System.out.println("Creando la liga y los equipos");
                 liga = new Liga("Liga Marino");
 
                 for (Equipo equipo : listaDeEquipos) {
@@ -283,7 +283,7 @@ public static void buscarJugador (Scanner sc, Liga liga){
     liga.buscarJugador(nombreEquipo, nombreJugador);
 }
 
-public static ArrayList<Equipo> crearEquiposIniciales() {
+public static ArrayList<Equipo> crearEquiposIniciales()             {
     ArrayList<Equipo> equipos = new ArrayList<>();
 
     //River
