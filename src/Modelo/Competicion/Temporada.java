@@ -2,18 +2,14 @@ package Modelo.Competicion;
 
 import Modelo.Equipo.Equipo;
 
-import java.util.LinkedHashSet;
-
 public class Temporada {
     protected int anio;
-    protected Liga liga;
-    protected LinkedHashSet<Equipo> equipos;
+    protected Torneo torneo;
 
     //Constructor
-    public Temporada(int anio, Liga liga) {
+    public Temporada(int anio, Torneo torneo) {
         this.anio = anio;
-        this.liga = liga;
-        this.equipos = new LinkedHashSet<>();
+        this.torneo = torneo;
     }
 
     //Getters y Setters
@@ -24,12 +20,10 @@ public class Temporada {
         this.anio = anio;
     }
 
-    public Liga getLiga() {
-        return liga;
+    public Torneo getTorneo() {
+        return torneo;
     }
-    public void setLiga(Liga liga) {
-        this.liga = liga;
+    public void setTorneo(Torneo torneo) {
+        this.torneo = torneo;
     }
-
-
 }
