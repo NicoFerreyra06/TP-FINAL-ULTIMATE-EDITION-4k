@@ -1,18 +1,20 @@
-
+import Exceptions.EquipoExistenteException;
+import Gestora.JsonUtiles;
+import Modelo.Competicion.Liga;
+import Modelo.Equipo.Equipo;
+import Modelo.Equipo.Estadio;
+import Modelo.Equipo.Tactica;
+import Modelo.Persona.DirectorTecnico;
+import Modelo.Persona.Jugador;
 import Modelo.Podios.PodiosDeCompeticion;
-import enums.*;
-import Modelo.Competicion.*;
-import Modelo.Equipo.*;
-import Modelo.Persona.*;
-import Exceptions.*;
-import java.util.*;
-import Gestora.*;
+import enums.Eformacion;
+import enums.EstiloJuego;
+import enums.Posicion;
 import org.json.JSONObject;
-
 
 void main() {
 
-    ArrayList <Equipo> listaDeEquipos = crearEquiposIniciales();
+    ArrayList<Equipo> listaDeEquipos = crearEquiposIniciales();
 
     System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
     Scanner sc = new Scanner(System.in);
@@ -66,7 +68,7 @@ void main() {
         }
     }
 
-    try{
+    try {
 
         boolean salir = false;
         int entrenamientosJornada = 0;
@@ -75,7 +77,7 @@ void main() {
         while (!liga.isTerminada() && !salir) {
             int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
 
-            switch (opcion){
+            switch (opcion) {
                 case 1:
                     liga.jugarProximaFecha(usuarioEquipo);
                     entrenamientosJornada = 0;
@@ -87,7 +89,7 @@ void main() {
                     mostrarEquipo(usuarioEquipo);
                     break;
                 case 4:
-                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento,  usuarioEquipo);
+                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento, usuarioEquipo);
                     break;
 
                 case 5:
@@ -99,13 +101,13 @@ void main() {
                 case 7:
                     salir = true;
                     break;
-             }
+            }
         }
 
         if (liga.isTerminada()) {
             System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
 
-            PodiosDeCompeticion <Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
+            PodiosDeCompeticion<Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
             liga.podioLiga();
         }
@@ -114,7 +116,7 @@ void main() {
     }
 }
 
-public Liga cargarPartida (){
+public Liga cargarPartida() {
     String jsonString = JsonUtiles.leer("partida_guardada");
 
     JSONObject jsonPartida = new JSONObject(jsonString);
@@ -125,19 +127,19 @@ public Liga cargarPartida (){
     return ligaCargada;
 }
 
-public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
+public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
 
-    ArrayList <Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
-    ArrayList <Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
+    ArrayList<Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
+    ArrayList<Jugador> suplentesArray = new ArrayList<>(usuarioEquipo.getSuplentes());
 
     boolean check = false;
 
     while (!check) {
-        try{
+        try {
             int i = 0;
             System.out.println("\n=== TITULARES ===");
-            for (Jugador j : usuarioEquipo.getTitulares()){
-                System.out.println(i + 1 + "-" +j.getNombre());
+            for (Jugador j : usuarioEquipo.getTitulares()) {
+                System.out.println(i + 1 + "-" + j.getNombre());
                 i++;
             }
 
@@ -150,22 +152,22 @@ public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
 
             i = 0;
             System.out.println("\n=== SUPLENTES ===");
-            for (Jugador j : usuarioEquipo.getSuplentes()){
-                System.out.println(i+ 1 + "-" +j.getNombre());
+            for (Jugador j : usuarioEquipo.getSuplentes()) {
+                System.out.println(i + 1 + "-" + j.getNombre());
                 i++;
             }
 
             System.out.println("Ingrese el numero del suplente a cambiar");
             int indiceSuplente = sc.nextInt();
 
-            if (indiceSuplente < 1 ||  indiceSuplente > suplentesArray.size()){
+            if (indiceSuplente < 1 || indiceSuplente > suplentesArray.size()) {
                 throw new IndexOutOfBoundsException();
             }
 
             Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
             Jugador jugadorSuplente = suplentesArray.get(indiceSuplente - 1);
 
-            usuarioEquipo.realizarCambio(jugadorTitular,jugadorSuplente);
+            usuarioEquipo.realizarCambio(jugadorTitular, jugadorSuplente);
 
             check = true;
         } catch (InputMismatchException e) {
@@ -173,14 +175,14 @@ public static void realizarCambios (Equipo usuarioEquipo, Scanner sc) {
             sc.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println("Error, numero fuera de rango. Intente nuevamente ");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Ocurrio un error inesperado. Intente nuevamente");
             sc.nextLine();
         }
     }
 }
 
-public static Equipo seleccionarEquipo (Scanner sc, ArrayList<Equipo> listaDeEquipos) {
+public static Equipo seleccionarEquipo(Scanner sc, ArrayList<Equipo> listaDeEquipos) {
     boolean check = false;
     Equipo usuario = null;
     int indice;
@@ -213,7 +215,7 @@ public static Equipo seleccionarEquipo (Scanner sc, ArrayList<Equipo> listaDeEqu
     return usuario;
 }
 
-public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrenamientosJornada, Liga liga){
+public static int menuOpciones(Scanner sc, int limiteEntrenamiento, int entrenamientosJornada, Liga liga) {
 
     boolean check = false;
     int opcion = -1;
@@ -247,7 +249,7 @@ public static int menuOpciones (Scanner sc, int limiteEntrenamiento, int entrena
     return opcion;
 }
 
-public static int menuEntrenamiento (int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo){
+public static int menuEntrenamiento(int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo) {
     if (entrenamientosJornada < limiteEntrenamiento) {
         usuarioEquipo.entrenarEquipo();
         return entrenamientosJornada + 1;
@@ -257,9 +259,9 @@ public static int menuEntrenamiento (int entrenamientosJornada, int limiteEntren
     }
 }
 
-public static void mostrarEquipo (Equipo equipo){
-    ArrayList <Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
-    ArrayList <Jugador> suplentesArray = new ArrayList<>(equipo.getSuplentes());
+public static void mostrarEquipo(Equipo equipo) {
+    ArrayList<Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
+    ArrayList<Jugador> suplentesArray = new ArrayList<>(equipo.getSuplentes());
 
     System.out.println("\n=== TITULARES ===");
     for (Jugador jugador : titularesArray) {
@@ -272,7 +274,7 @@ public static void mostrarEquipo (Equipo equipo){
     }
 }
 
-public static void buscarJugador (Scanner sc, Liga liga){
+public static void buscarJugador(Scanner sc, Liga liga) {
     sc.nextLine();
     System.out.println("Ingrese el equipo en el que quiere buscar ");
     String nombreEquipo = sc.nextLine();
@@ -283,7 +285,7 @@ public static void buscarJugador (Scanner sc, Liga liga){
     liga.buscarJugador(nombreEquipo, nombreJugador);
 }
 
-public static ArrayList<Equipo> crearEquiposIniciales()             {
+public static ArrayList<Equipo> crearEquiposIniciales() {
     ArrayList<Equipo> equipos = new ArrayList<>();
 
     //River
@@ -304,9 +306,9 @@ public static ArrayList<Equipo> crearEquiposIniciales()             {
 
     //MedioCampo
     river.agregarJugador(new Jugador("Juan Carlos Portillo", 25, "Argentina", Posicion.MEDIOCAMPISTA, 60, 80, 83));
-    river.agregarJugador(new Jugador("Kevin Castano", 25, "Colombiana", Posicion.MEDIOCAMPISTA, 80,75 , 70));
-    river.agregarJugador(new Jugador("Santiago Lencina", 20, "Argentina", Posicion.MEDIOCAMPISTA, 81,64, 70));
-    river.agregarJugador(new Jugador("Juan Quintero", 32, "Colombiana", Posicion.MEDIOCAMPISTA, 86,50, 69));
+    river.agregarJugador(new Jugador("Kevin Castano", 25, "Colombiana", Posicion.MEDIOCAMPISTA, 80, 75, 70));
+    river.agregarJugador(new Jugador("Santiago Lencina", 20, "Argentina", Posicion.MEDIOCAMPISTA, 81, 64, 70));
+    river.agregarJugador(new Jugador("Juan Quintero", 32, "Colombiana", Posicion.MEDIOCAMPISTA, 86, 50, 69));
 
     //Atacante
     river.agregarJugador(new Jugador("Sebastian Driussi", 29, "Argentina", Posicion.DELANTERO, 87, 43, 75));
@@ -359,10 +361,10 @@ public static ArrayList<Equipo> crearEquiposIniciales()             {
     Tactica tacticaSanLorenzo = new Tactica(Eformacion.F_4141, EstiloJuego.DEFENSIVO);
     DirectorTecnico dtSanLorenzo = new DirectorTecnico("Damian Ayude", 43, "Argentina", 70, tacticaSanLorenzo);
 
-    Equipo sanLorenzo = new Equipo("San Lorenzo", pedroBidegain, dtSanLorenzo,  10000000.00);
+    Equipo sanLorenzo = new Equipo("San Lorenzo", pedroBidegain, dtSanLorenzo, 10000000.00);
 
-    sanLorenzo.agregarJugador(new Jugador("Orlando Gil", 25, "Paraguayo", Posicion.ARQUERO, 20, 70 , 70));
-    sanLorenzo.agregarJugador(new Jugador("Ezequiel Herrera", 22, "Argentino", Posicion.DEFENSOR, 40, 77 , 79));
+    sanLorenzo.agregarJugador(new Jugador("Orlando Gil", 25, "Paraguayo", Posicion.ARQUERO, 20, 70, 70));
+    sanLorenzo.agregarJugador(new Jugador("Ezequiel Herrera", 22, "Argentino", Posicion.DEFENSOR, 40, 77, 79));
     sanLorenzo.agregarJugador(new Jugador("Jhohan Romana", 27, "Colombiano", Posicion.DEFENSOR, 40, 85, 89));
     sanLorenzo.agregarJugador(new Jugador("Gaston Hernandez", 27, "Argentino", Posicion.DEFENSOR, 40, 79, 80));
     sanLorenzo.agregarJugador(new Jugador("Elian Baez", 21, "Argentino", Posicion.DEFENSOR, 40, 77, 73));
@@ -370,8 +372,8 @@ public static ArrayList<Equipo> crearEquiposIniciales()             {
     sanLorenzo.agregarJugador(new Jugador("Ignacio Perruzzi", 20, "Argentino", Posicion.MEDIOCAMPISTA, 78, 77, 79));
     sanLorenzo.agregarJugador(new Jugador("Nicolas Tripichio", 29, "Argentino", Posicion.MEDIOCAMPISTA, 82, 72, 80));
     sanLorenzo.agregarJugador(new Jugador("Ezequiel Cerutti", 33, "Argentino", Posicion.MEDIOCAMPISTA, 80, 68, 86));
-    sanLorenzo.agregarJugador(new Jugador("Facundo Gulli" , 20, "Argentino", Posicion.MEDIOCAMPISTA, 82, 68, 82));
-    sanLorenzo.agregarJugador(new Jugador("Alexis Cuello" , 25, "Argentino", Posicion.DELANTERO, 85, 58, 82));
+    sanLorenzo.agregarJugador(new Jugador("Facundo Gulli", 20, "Argentino", Posicion.MEDIOCAMPISTA, 82, 68, 82));
+    sanLorenzo.agregarJugador(new Jugador("Alexis Cuello", 25, "Argentino", Posicion.DELANTERO, 85, 58, 82));
 
     sanLorenzo.agregarJugador(new Jugador("Diego Herazo", 29, "Colombiano", Posicion.DELANTERO, 84, 40, 85));
     sanLorenzo.agregarJugador(new Jugador("Daniel Herrera", 21, "Colombiano", Posicion.DEFENSOR, 60, 78, 88));
@@ -414,26 +416,26 @@ public static ArrayList<Equipo> crearEquiposIniciales()             {
     Estadio estadioRacing = new Estadio("Estadio Eva Peron", 50000, 40.00);
 
     Tactica tacticaRacing = new Tactica(Eformacion.F_433, EstiloJuego.OFENSIVO);
-    DirectorTecnico dtRacing = new DirectorTecnico("Gustavo Costas", 62, "Argentino ",79 ,tacticaRacing);
+    DirectorTecnico dtRacing = new DirectorTecnico("Gustavo Costas", 62, "Argentino ", 79, tacticaRacing);
     Equipo racing = new Equipo("Racing", estadioRacing, dtRacing, 25000001.00);
 
     racing.agregarJugador(new Jugador("Facundo Cambeses", 28, "Argentino", Posicion.ARQUERO, 40, 83, 80));
-    racing.agregarJugador(new Jugador("Gaston Martirena", 25, "Uruguayo", Posicion.DEFENSOR, 72, 80,80));
-    racing.agregarJugador(new Jugador("Santiago Quiros", 22, "Argentino", Posicion.DEFENSOR, 69, 82,76));
-    racing.agregarJugador(new Jugador("Agustin Basso", 33, "Argentino", Posicion.DEFENSOR, 65, 82,76));
-    racing.agregarJugador(new Jugador("Marco Di Cesare", 23, "Argentino", Posicion.DEFENSOR, 70, 82,80));
-    racing.agregarJugador(new Jugador("Bruno Zuculini", 32, "Argentino", Posicion.MEDIOCAMPISTA, 75, 82,80));
-    racing.agregarJugador(new Jugador("Juan Ignacio Nardoni", 23, "Argentino", Posicion.MEDIOCAMPISTA, 72, 85,83));
-    racing.agregarJugador(new Jugador("Ramiro Degregorio", 22, "Argentino", Posicion.MEDIOCAMPISTA, 72, 80,83));
-    racing.agregarJugador(new Jugador("Luciano Dario Vietto", 31, "Argentino", Posicion.DELANTERO, 79, 76,80));
-    racing.agregarJugador(new Jugador("Adrián Emmanuel Martínez", 33, "Argentino", Posicion.DELANTERO, 89, 60,85));
-    racing.agregarJugador(new Jugador("Adrián Balboa", 31, "Uruguayo", Posicion.DELANTERO, 80, 60,85));
+    racing.agregarJugador(new Jugador("Gaston Martirena", 25, "Uruguayo", Posicion.DEFENSOR, 72, 80, 80));
+    racing.agregarJugador(new Jugador("Santiago Quiros", 22, "Argentino", Posicion.DEFENSOR, 69, 82, 76));
+    racing.agregarJugador(new Jugador("Agustin Basso", 33, "Argentino", Posicion.DEFENSOR, 65, 82, 76));
+    racing.agregarJugador(new Jugador("Marco Di Cesare", 23, "Argentino", Posicion.DEFENSOR, 70, 82, 80));
+    racing.agregarJugador(new Jugador("Bruno Zuculini", 32, "Argentino", Posicion.MEDIOCAMPISTA, 75, 82, 80));
+    racing.agregarJugador(new Jugador("Juan Ignacio Nardoni", 23, "Argentino", Posicion.MEDIOCAMPISTA, 72, 85, 83));
+    racing.agregarJugador(new Jugador("Ramiro Degregorio", 22, "Argentino", Posicion.MEDIOCAMPISTA, 72, 80, 83));
+    racing.agregarJugador(new Jugador("Luciano Dario Vietto", 31, "Argentino", Posicion.DELANTERO, 79, 76, 80));
+    racing.agregarJugador(new Jugador("Adrián Emmanuel Martínez", 33, "Argentino", Posicion.DELANTERO, 89, 60, 85));
+    racing.agregarJugador(new Jugador("Adrián Balboa", 31, "Uruguayo", Posicion.DELANTERO, 80, 60, 85));
 
-    racing.agregarJugador(new Jugador("Gabriel Arias", 31, "Argentino", Posicion.ARQUERO, 33, 80,80));
-    racing.agregarJugador(new Jugador("Franco Pardo", 28, "Argentino", Posicion.DEFENSOR, 60, 81,70));
-    racing.agregarJugador(new Jugador("Marcos Rojo", 35, "Argentino", Posicion.DEFENSOR, 75, 75,70));
-    racing.agregarJugador(new Jugador("Gabriel Rojas", 28, "Argentino", Posicion.DEFENSOR, 75, 81,70));
-    racing.agregarJugador(new Jugador("Duvan Vergara", 29, "Colombiano", Posicion.DELANTERO, 79, 75,75));
+    racing.agregarJugador(new Jugador("Gabriel Arias", 31, "Argentino", Posicion.ARQUERO, 33, 80, 80));
+    racing.agregarJugador(new Jugador("Franco Pardo", 28, "Argentino", Posicion.DEFENSOR, 60, 81, 70));
+    racing.agregarJugador(new Jugador("Marcos Rojo", 35, "Argentino", Posicion.DEFENSOR, 75, 75, 70));
+    racing.agregarJugador(new Jugador("Gabriel Rojas", 28, "Argentino", Posicion.DEFENSOR, 75, 81, 70));
+    racing.agregarJugador(new Jugador("Duvan Vergara", 29, "Colombiano", Posicion.DELANTERO, 79, 75, 75));
 
     equipos.add(racing);
 
