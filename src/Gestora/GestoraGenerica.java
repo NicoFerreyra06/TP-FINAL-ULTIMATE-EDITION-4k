@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestoraGenerica <T extends iToJSON> implements iToJSON {
-    private String nombreJSON;
-    private List <T> elementos;
+    private final String nombreJSON;
+    private final List <T> elementos;
 
     public GestoraGenerica(String nombreJSON) {
         this.nombreJSON = nombreJSON;

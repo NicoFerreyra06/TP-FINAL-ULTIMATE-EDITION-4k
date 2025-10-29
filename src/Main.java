@@ -12,121 +12,6 @@ import enums.EstiloJuego;
 import enums.Posicion;
 import org.json.JSONObject;
 
-void main() {
-
-    ArrayList<Equipo> listaDeEquipos = crearEquiposIniciales();
-
-    System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
-    Scanner sc = new Scanner(System.in);
-    Liga liga = null;
-    Equipo usuarioEquipo = null;
-
-    boolean partidaLista = false;
-
-    while (!partidaLista) {
-        try {
-            System.out.println("1. Nueva Partida");
-            System.out.println("2. Cargar Partida");
-            System.out.print("Seleccione una opción: ");
-            int opcionInicio = sc.nextInt();
-
-            if (opcionInicio == 1) {
-                System.out.println("Creando la liga y los equipos");
-                liga = new Liga("Liga Marino");
-
-                for (Equipo equipo : listaDeEquipos) {
-                    liga.anotarEquipo(equipo);
-                }
-
-                usuarioEquipo = seleccionarEquipo(sc, listaDeEquipos);
-
-                liga.setNombreEquipoUsuario(usuarioEquipo.getNombre());
-
-                liga.generarFixture();
-                partidaLista = true;
-
-            } else if (opcionInicio == 2) {
-
-                liga = cargarPartida();
-
-                if (liga != null) {
-
-                    String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
-                    usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
-
-                    System.out.println("¡Partida cargada! Su equipo es: " + usuarioEquipo.getNombre());
-                    partidaLista = true;
-                } else {
-                    System.out.println("No se pudo cargar la partida. Intente de nuevo.");
-                }
-            } else {
-                System.out.println("Opción no válida.");
-            }
-        } catch (IllegalArgumentException | EquipoExistenteException e) {
-            System.out.println(e.getMessage());
-            sc.nextLine();
-        }
-    }
-
-    try {
-
-        boolean salir = false;
-        int entrenamientosJornada = 0;
-        final int limiteEntrenamiento = 1;
-
-        while (!liga.isTerminada() && !salir) {
-            int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
-
-            switch (opcion) {
-                case 1:
-                    liga.jugarProximaFecha(usuarioEquipo);
-                    entrenamientosJornada = 0;
-                    break;
-                case 2:
-                    liga.mostrarTabla();
-                    break;
-                case 3:
-                    mostrarEquipo(usuarioEquipo);
-                    break;
-                case 4:
-                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento, usuarioEquipo);
-                    break;
-
-                case 5:
-                    realizarCambios(usuarioEquipo, sc);
-                    break;
-                case 6:
-                    buscarJugador(sc, liga);
-                    break;
-                case 7:
-                    salir = true;
-                    break;
-            }
-        }
-
-        if (liga.isTerminada()) {
-            System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
-
-            PodiosDeCompeticion<Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
-            podiosDeCompeticion.mostrarEstadisticasIndivuduales();
-            liga.podioLiga();
-        }
-    } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
-    }
-}
-
-public Liga cargarPartida() {
-    String jsonString = JsonUtiles.leer("partida_guardada");
-
-    JSONObject jsonPartida = new JSONObject(jsonString);
-    Liga ligaCargada = new Liga(jsonPartida);
-
-    System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
-
-    return ligaCargada;
-}
-
 public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
 
     ArrayList<Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());
@@ -850,4 +735,120 @@ public static ArrayList<Equipo> crearEquiposIniciales() {
     equipos.add(brawlStars);
 
     return equipos;
+}
+
+void main() {
+
+    ArrayList<Equipo> listaDeEquipos = crearEquiposIniciales();
+
+    System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
+    Scanner sc = new Scanner(System.in);
+    Liga liga = null;
+    Equipo usuarioEquipo = null;
+
+    boolean partidaLista = false;
+
+    while (!partidaLista) {
+        try {
+            System.out.println("1. Nueva Partida");
+            System.out.println("2. Cargar Partida");
+            System.out.print("Seleccione una opción: ");
+            int opcionInicio = sc.nextInt();
+
+
+            if (opcionInicio == 1) {
+                System.out.println("Creando la liga y los equipos");
+                liga = new Liga("Liga Marino");
+
+                for (Equipo equipo : listaDeEquipos) {
+                    liga.anotarEquipo(equipo);
+                }
+
+                usuarioEquipo = seleccionarEquipo(sc, listaDeEquipos);
+
+                liga.setNombreEquipoUsuario(usuarioEquipo.getNombre());
+
+                liga.generarFixture();
+                partidaLista = true;
+
+            } else if (opcionInicio == 2) {
+
+                liga = cargarPartida();
+
+                if (liga != null) {
+
+                    String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
+                    usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
+
+                    System.out.println("¡Partida cargada! Su equipo es: " + usuarioEquipo.getNombre());
+                    partidaLista = true;
+                } else {
+                    System.out.println("No se pudo cargar la partida. Intente de nuevo.");
+                }
+            } else {
+                System.out.println("Opción no válida.");
+            }
+        } catch (IllegalArgumentException | EquipoExistenteException e) {
+            System.out.println(e.getMessage());
+            sc.nextLine();
+        }
+    }
+
+    try {
+
+        boolean salir = false;
+        int entrenamientosJornada = 0;
+        final int limiteEntrenamiento = 1;
+
+        while (!liga.isTerminada() && !salir) {
+            int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
+
+            switch (opcion) {
+                case 1:
+                    liga.jugarProximaFecha(usuarioEquipo);
+                    entrenamientosJornada = 0;
+                    break;
+                case 2:
+                    liga.mostrarTabla();
+                    break;
+                case 3:
+                    mostrarEquipo(usuarioEquipo);
+                    break;
+                case 4:
+                    entrenamientosJornada = menuEntrenamiento(entrenamientosJornada, limiteEntrenamiento, usuarioEquipo);
+                    break;
+
+                case 5:
+                    realizarCambios(usuarioEquipo, sc);
+                    break;
+                case 6:
+                    buscarJugador(sc, liga);
+                    break;
+                case 7:
+                    salir = true;
+                    break;
+            }
+        }
+
+        if (liga.isTerminada()) {
+            System.out.println("\n--- ¡LA LIGA HA TERMINADO! ---");
+
+            PodiosDeCompeticion<Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
+            podiosDeCompeticion.mostrarEstadisticasIndivuduales();
+            liga.podioLiga();
+        }
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+}
+
+public Liga cargarPartida() {
+    String jsonString = JsonUtiles.leer("partida_guardada");
+
+    JSONObject jsonPartida = new JSONObject(jsonString);
+    Liga ligaCargada = new Liga(jsonPartida);
+
+    System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
+
+    return ligaCargada;
 }

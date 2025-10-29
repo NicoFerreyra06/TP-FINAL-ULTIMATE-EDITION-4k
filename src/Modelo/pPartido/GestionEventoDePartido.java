@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class GestionEventoDePartido {
 
-    private Random random = new Random();
-    private boolean offside = false;
+    private final Random random = new Random();
+    private final boolean offside = false;
 
 
     public EventoPartido generarlo(boolean afterGol) {
