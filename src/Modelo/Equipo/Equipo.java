@@ -4,11 +4,10 @@ import Interfaces.iToJSON;
 import Modelo.Persona.DirectorTecnico;
 import Modelo.Persona.Jugador;
 import enums.Posicion;
-
-import java.util.*;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.*;
 
 public class Equipo implements iToJSON {
     private String nombre;
@@ -43,6 +42,7 @@ public class Equipo implements iToJSON {
 
         JSONObject estadio = json.getJSONObject("estadio");
         this.estadio = new Estadio(estadio);
+
         this.presupuesto = json.getDouble("presupuesto");
         this.puntos = json.getInt("puntos");
         this.random = new Random();
@@ -65,6 +65,7 @@ public class Equipo implements iToJSON {
             JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
             this.suplentes.add(new Jugador(jsonJugador));
         }
+
         //reconstruir lista expulsados
         this.Expulsados = new LinkedHashSet<>();
         JSONArray jsonExpulsados = json.getJSONArray("expulsados");

@@ -1,5 +1,6 @@
 package Modelo.pPartido;
 
+import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import enums.EventoPartido;
@@ -111,7 +112,7 @@ public class Partido {
     }
 
     // ===================Metodos=======================
-    public void simularInteractivo(Equipo equipoUsuario) throws InterruptedException {
+    public void simularInteractivo(Equipo equipoUsuario) throws InterruptedException, LimiteEntrenamientoException {
         boolean check = false;
         int opcion = -1;
         int cambiosRestantes = 5;
@@ -152,7 +153,6 @@ public class Partido {
 
                     if (opcion == 1) check = true;
 
-
                     if (opcion == 2) {
                         if (cambiosRestantes > 0){
                             if (local.equals(equipoUsuario)) {
@@ -161,7 +161,7 @@ public class Partido {
                                 cambiosRestantes -= realizarCambioPartido(scanner, visitante, cambiosRestantes);
                             }
                         } else {
-                            IO.println("No le quedan cambios");
+                            throw new LimiteEntrenamientoException("Limite de cambios alcanzada");
                         }
                     }
 
@@ -169,7 +169,7 @@ public class Partido {
                 IO.println("Empieza el segundo tiempo! ");
             }
 
-            Thread.sleep(0);
+            Thread.sleep(350);
         }
 
         mostrarResultado();

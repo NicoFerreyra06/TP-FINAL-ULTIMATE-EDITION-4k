@@ -1,6 +1,10 @@
 import Exceptions.EquipoExistenteException;
+import Exceptions.LimiteEntrenamientoException;
 import Gestora.JsonUtiles;
+import Modelo.Competicion.Copa;
 import Modelo.Competicion.Liga;
+import Modelo.Competicion.Temporada;
+import Modelo.Competicion.Torneo;
 import Modelo.Equipo.Equipo;
 import Modelo.Equipo.Estadio;
 import Modelo.Equipo.Tactica;
@@ -134,7 +138,7 @@ public static int menuOpciones(Scanner sc, int limiteEntrenamiento, int entrenam
     return opcion;
 }
 
-public static int menuEntrenamiento(int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo) {
+public static int menuEntrenamiento(int entrenamientosJornada, int limiteEntrenamiento, Equipo usuarioEquipo) throws LimiteEntrenamientoException {
     if (entrenamientosJornada < limiteEntrenamiento) {
         usuarioEquipo.entrenarEquipo();
         return entrenamientosJornada + 1;
@@ -744,8 +748,8 @@ void main() {
     System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
     Scanner sc = new Scanner(System.in);
     Liga liga = null;
+    Copa copa = null;
     Equipo usuarioEquipo = null;
-
     boolean partidaLista = false;
 
     while (!partidaLista) {
@@ -795,7 +799,6 @@ void main() {
     }
 
     try {
-
         boolean salir = false;
         int entrenamientosJornada = 0;
         final int limiteEntrenamiento = 1;
@@ -837,8 +840,8 @@ void main() {
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
             liga.podioLiga();
         }
-    } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
+    } catch (LimiteEntrenamientoException | InterruptedException e){
+        System.out.println(e.getMessage());
     }
 }
 
@@ -846,7 +849,8 @@ public Liga cargarPartida() {
     String jsonString = JsonUtiles.leer("partida_guardada");
 
     JSONObject jsonPartida = new JSONObject(jsonString);
-    Liga ligaCargada = new Liga(jsonPartida);
+    Temporada temporada = new Temporada(jsonPartida);
+    Liga ligaCargada = temporada.getLiga();
 
     System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
 

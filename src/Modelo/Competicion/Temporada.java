@@ -1,29 +1,58 @@
 package Modelo.Competicion;
 
-import Modelo.Equipo.Equipo;
+import Interfaces.iToJSON;
+import org.json.JSONObject;
 
-public class Temporada {
-    protected int anio;
-    protected Torneo torneo;
+public final class Temporada implements iToJSON {
+    private int anio;
+    private Copa copa;
+    private Liga liga;
 
     //Constructor
-    public Temporada(int anio, Torneo torneo) {
+    public Temporada(int anio, Copa copa, Liga liga) {
         this.anio = anio;
-        this.torneo = torneo;
+        this.copa = copa;
+        this.liga = liga;
+    }
+
+    public Temporada (JSONObject jsonObject){
+        this.anio = jsonObject.getInt("anio");
+        //JSON de copa no implementada
+        //this.copa = new Copa(jsonObject.getString("copa"));
+        this.liga = new Liga(jsonObject.getString("liga"));
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("anio", this.anio);
+        jsonObject.put("liga", this.liga.toJSON());
+        return jsonObject;
     }
 
     //Getters y Setters
     public int getAnio() {
         return anio;
     }
+
     public void setAnio(int anio) {
         this.anio = anio;
     }
 
-    public Torneo getTorneo() {
-        return torneo;
+    public Copa getCopa() {
+        return copa;
     }
-    public void setTorneo(Torneo torneo) {
-        this.torneo = torneo;
+
+    public void setCopa(Copa copa) {
+        this.copa = copa;
+    }
+
+    public Liga getLiga() {
+        return liga;
+    }
+
+    public void setLiga(Liga liga) {
+        this.liga = liga;
     }
 }
