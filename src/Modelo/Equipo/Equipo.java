@@ -282,7 +282,7 @@ public class Equipo implements iToJSON {
         while (true) {
             Jugador asistidor = getJugadorAzar();
 
-            if (!(asistidor.equals(goleador)) && asistidor.getPosicion() != Posicion.ARQUERO) {
+            if (asistidor != null && !(asistidor.equals(goleador)) && asistidor.getPosicion() != Posicion.ARQUERO) {
                 return asistidor;
             }
         }
@@ -303,17 +303,18 @@ public class Equipo implements iToJSON {
 
             Jugador candidato = getJugadorAzar();
             double probabilidadDeFalta = 0;
-            switch (candidato.getPosicion()) {
-                case DEFENSOR -> probabilidadDeFalta = 0.45;
-                case MEDIOCAMPISTA -> probabilidadDeFalta = 0.30;
-                case DELANTERO -> probabilidadDeFalta = 0.20;
-                case ARQUERO -> probabilidadDeFalta = 0.05;
-            }
+            if (candidato != null) {
+                switch (candidato.getPosicion()) {
+                    case DEFENSOR -> probabilidadDeFalta = 0.45;
+                    case MEDIOCAMPISTA -> probabilidadDeFalta = 0.30;
+                    case DELANTERO -> probabilidadDeFalta = 0.20;
+                    case ARQUERO -> probabilidadDeFalta = 0.05;
+                }
 
-            if (random.nextDouble() < probabilidadDeFalta) {
-                return candidato; // Se encontro al que cometio la falta.
+                if (random.nextDouble() < probabilidadDeFalta) {
+                    return candidato; // Se encontro al que cometio la falta.
+                }
             }
-
         }
     }
 

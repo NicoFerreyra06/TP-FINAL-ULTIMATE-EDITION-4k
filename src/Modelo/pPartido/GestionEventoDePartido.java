@@ -21,8 +21,8 @@ public class GestionEventoDePartido {
         }
 
         if (r < 0.10) return EventoPartido.Penal;
-        else if (r < 0.30) return EventoPartido.Tiro_LibreLejano;
         else if (r < 0.25) return EventoPartido.Tiro_Libre;
+        else if (r < 0.30) return EventoPartido.Tiro_LibreLejano;
         else return EventoPartido.Ninguno;
     }
 
