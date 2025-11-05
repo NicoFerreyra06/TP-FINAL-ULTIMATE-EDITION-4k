@@ -125,7 +125,7 @@ public static int menuOpciones(Scanner sc, int limiteEntrenamiento, int entrenam
             check = true;
 
         } catch (InputMismatchException e) {
-            System.out.println("Seleccione un numero valido entre 1 y 5");
+            System.out.println("Seleccione un numero valido entre 1 y 7");
             sc.nextLine();
         }
     }
@@ -187,7 +187,6 @@ void main() {
             System.out.println("2. Cargar Partida");
             System.out.print("Seleccione una opción: ");
             int opcionInicio = sc.nextInt();
-
 
             if (opcionInicio == 1) {
                 System.out.println("Creando la liga y los equipos");
@@ -278,8 +277,8 @@ public Liga cargarPartida() {
     String jsonString = JsonUtiles.leer("partida_guardada");
 
     JSONObject jsonPartida = new JSONObject(jsonString);
-    Temporada temporada = new Temporada(jsonPartida);
-    Liga ligaCargada = temporada.getLiga();
+
+    Liga ligaCargada = new Liga(jsonPartida);
 
     System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
 

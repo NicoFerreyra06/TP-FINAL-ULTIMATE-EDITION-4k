@@ -125,7 +125,6 @@ public class Partido {
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
         double probabilidadFalta = 0.10;
 
-        Scanner scanner = new Scanner(System.in);
 
         local.verificarTitulares();
         visitante.verificarTitulares();
@@ -156,9 +155,9 @@ public class Partido {
                     if (opcion == 2) {
                         if (cambiosRestantes > 0){
                             if (local.equals(equipoUsuario)) {
-                                cambiosRestantes -= realizarCambioPartido(scanner, local, cambiosRestantes);
+                                cambiosRestantes -= realizarCambioPartido(sc, local, cambiosRestantes);
                             } else if (visitante.equals(equipoUsuario)) {
-                                cambiosRestantes -= realizarCambioPartido(scanner, visitante, cambiosRestantes);
+                                cambiosRestantes -= realizarCambioPartido(sc, visitante, cambiosRestantes);
                             }
                         } else {
                             throw new LimiteEntrenamientoException("Limite de cambios alcanzada");
@@ -289,6 +288,9 @@ public class Partido {
         Jugador goleador = equipo.elegirAutorGol();
         Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
 
+        if (goleador == null || asistidor == null) {
+            return; // Si el equipo no tiene jugadores, no puede anotar. Salta el evento.
+        }
 
         if (local){
             this.golesLocal++;
@@ -332,6 +334,10 @@ public class Partido {
     public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) {
         Jugador autorFalta = equipo.elegirAutorFalta();
 
+        // <<< AÑADE ESTAS 3 LÍNEAS AQUÍ >>>
+        if (autorFalta == null) {
+            return; // Si el equipo no tiene jugadores, no puede cometer falta. Salta el evento.
+        }
         int tipoTarjeta = determinarTarjeta();
 
         if (local){
@@ -399,8 +405,8 @@ public class Partido {
 
     private int determinarTarjeta() {
         double valorAleatorio = random.nextDouble(); // Un número entre 0.0 y 1.0
-        double probRoja = 0.02; // 3% de probabilidad de roja directa
-        double probAmarilla = 0.3; // 20% de probabilidad de amarilla (adicional al 3% de roja)
+        double probRoja = 0.001; // 3% de probabilidad de roja directa
+        double probAmarilla = 0.1 ; // 20% de probabilidad de amarilla (adicional al 3% de roja)
 
         if (valorAleatorio < probRoja) {
             return 2; // Roja
