@@ -1,9 +1,11 @@
 package Modelo.Competicion;
 
+import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.pPartido.Partido;
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
+import java.util.Scanner;
 
 public  class Copa extends Torneo {
     private ArrayList<Ronda> rondas;
@@ -25,7 +27,7 @@ public  class Copa extends Torneo {
     }
 
     @Override
-    public void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException {
+    public void jugarProximaFecha(Equipo equipoJugador, Scanner sc) throws InterruptedException, LimiteEntrenamientoException {
         // Si solo queda un equipo ya define al campeón de la copa.
         if (equiposTorneo.size() <= 1) {
             System.out.println("¡La copa ha finalizado!");
@@ -53,7 +55,7 @@ public  class Copa extends Torneo {
         for (Partido partido : rondaActual.getPartidos()) {
             if (partido.involucraEquipoUsuario(equipoJugador)) {
                 System.out.println("\n¡ES TU TURNO DE JUGAR!");
-                partido.simularInteractivo(equipoJugador); // Simulación interactiva para el usuario
+                partido.simularInteractivo(equipoJugador, sc); // Simulación interactiva para el usuario
             } else {
                 partido.simularRapido(); // Simulación rápida para la IA
             }

@@ -1,6 +1,7 @@
 package Modelo.Competicion;
 
 import Exceptions.EquipoExistenteException;
+import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Interfaces.iToJSON;
 import Modelo.Persona.Jugador;
@@ -9,6 +10,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Scanner;
 
 public abstract class Torneo implements iToJSON{
     protected String nombre;
@@ -59,7 +61,7 @@ public abstract class Torneo implements iToJSON{
     }
 
     // ==================== Metodos ====================
-    public abstract void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException;
+    public abstract void jugarProximaFecha(Equipo equipoJugador, Scanner sc) throws InterruptedException, LimiteEntrenamientoException;
 
     public void anotarEquipo (Equipo equipo) throws EquipoExistenteException {
         if (equipo == null){

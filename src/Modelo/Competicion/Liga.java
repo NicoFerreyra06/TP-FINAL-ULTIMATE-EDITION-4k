@@ -1,5 +1,6 @@
 package Modelo.Competicion;
 
+import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.pPartido.Partido;
 import Interfaces.*;
@@ -224,7 +225,7 @@ public class Liga extends Torneo implements iToJSON{
     }
 
     @Override
-    public void jugarProximaFecha(Equipo equipoJugador) throws InterruptedException {
+    public void jugarProximaFecha(Equipo equipoJugador, Scanner sc) throws InterruptedException, LimiteEntrenamientoException{
         if (jornada > (super.getEquipos().size() - 1) * 2) {
             IO.println("LA LIGA HA FINALIZADO");
             mostrarTabla();
@@ -236,7 +237,7 @@ public class Liga extends Torneo implements iToJSON{
 
         for (Partido p : partidosJornada) {
             if (p.involucraEquipoUsuario(equipoJugador)) {
-                p.simularInteractivo(equipoJugador);
+                p.simularInteractivo(equipoJugador, sc);
             } else {
                 p.simularRapido();
                 partidosRapidos.add(p);

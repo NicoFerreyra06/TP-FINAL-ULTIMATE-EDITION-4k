@@ -112,7 +112,7 @@ public class Partido {
     }
 
     // ===================Metodos=======================
-    public void simularInteractivo(Equipo equipoUsuario) throws InterruptedException, LimiteEntrenamientoException {
+    public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException, LimiteEntrenamientoException {
         boolean check = false;
         int opcion = -1;
         int cambiosRestantes = 5;
@@ -145,7 +145,7 @@ public class Partido {
                     IO.println("Presione 1 para comenzar el ST");
                     IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
 
-                    opcion = scanner.nextInt();
+                    opcion = sc.nextInt();
 
                     if (opcion < 1 || opcion  > 2){
                         System.out.println("Ingrese una opcion valida");
@@ -169,7 +169,7 @@ public class Partido {
                 IO.println("Empieza el segundo tiempo! ");
             }
 
-            Thread.sleep(350);
+            Thread.sleep(0);
         }
 
         mostrarResultado();

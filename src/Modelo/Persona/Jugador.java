@@ -105,7 +105,18 @@ public class Jugador extends Persona implements iEntrenable, iToJSON{
     }
 
     public double calcularMediaJugador (){
-        return (this.habilidadAtaque + this.habilidadDefensa) / 2.0;
+        switch (this.posicion){
+            case ARQUERO:
+                return this.habilidadDefensa * 0.95 + this.habilidadAtaque * 0.05;
+            case DEFENSOR:
+                return this.habilidadDefensa * 0.80 + this.habilidadAtaque * 0.2;
+            case MEDIOCAMPISTA:
+                return (this.habilidadAtaque + this.habilidadDefensa) / 2.0;
+            case DELANTERO:
+                return this.habilidadAtaque * 0.90 + this.habilidadDefensa * 0.1;
+            default:
+                return (this.habilidadAtaque + this.habilidadDefensa) / 2.0;
+        }
     }
 
     public int getTarjetaLiga() {

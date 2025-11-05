@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+//Guarda cualquier tipo de lista (Mientras que implemente iTOJson)
+// en formato Json.
 public class GestoraGenerica <T extends iToJSON> implements iToJSON {
     private final String nombreJSON;
     private final List <T> elementos;
