@@ -117,10 +117,11 @@ public class Partido {
         int opcion = -1;
         int cambiosRestantes = 5;
 
-        IO.println("Empieza el partido");
+        double baseProb = 0.001;
 
-        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
-        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
+        double probabilidadLocal = baseProb * local.calcularMediaGeneral();
+        double probabilidadVisitante = visitante.calcularMediaGeneral() * baseProb;
+
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
         double probabilidadFalta = 0.10;
@@ -129,8 +130,15 @@ public class Partido {
         local.verificarTitulares();
         visitante.verificarTitulares();
 
+        IO.println("Empieza el partido");
+
         for (int i = 1; i <= 90; i++) {
             IO.println("Minuto " + i);
+
+            if (i > 80){
+                probabilidadLocal *= 2;
+                probabilidadVisitante *= 2;
+            }
 
             simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
 
@@ -168,7 +176,7 @@ public class Partido {
                 IO.println("Empieza el segundo tiempo! ");
             }
 
-            Thread.sleep(0);
+            Thread.sleep(250);
         }
 
         mostrarResultado();
@@ -196,72 +204,69 @@ public class Partido {
         visitante.verificarTitulares();
     }
 
-    public void simularMinuto (double probabilidadFalta, double probabilidadLocal, double probabilidadVisitante, boolean mostrar, int minuto,double c_Local,double c_Visitante) {
+    public void simularMinuto(double probFaltaBase, double probGolLocal, double probGolVisitante,
+                              boolean mostrar, int minuto, double c_Local, double c_Visitante) {
 
-        GestionEventoDePartido gestionEvento = new GestionEventoDePartido();
-        EventoPartido evento = gestionEvento.generarlo(false);
-
-        // ======================================
-        // 1. SIMULACIÓN DE CÓRNERS
-        // ======================================
-        if(random.nextDouble() < c_Local){
-            if (mostrar) System.out.println(minuto + ": Corner para el equipo local");
-
-            // La probabilidad de gol aumenta para un córner (factor 1.5)
-            double probGolAumentada = gestionEvento.modificarProbGol(EventoPartido.Corner, probabilidadLocal);
-
-            // Simular si el córner termina en gol
-            if (random.nextDouble() < probGolAumentada) {
-                gestionarGolesAsistencias(this.local, true, mostrar, minuto);
-            }
-        }
-
-        // Córner para el Equipo VISITANTE
-        if(random.nextDouble() < c_Visitante){
-            if (mostrar) System.out.println(minuto + ": Corner para el equipo visitante");
-
-            // La probabilidad de gol aumenta para un córner (factor 1.5)
-            double probGolAumentada = gestionEvento.modificarProbGol(EventoPartido.Corner, probabilidadVisitante);
-
-            // Simular si el córner termina en gol
-            if (random.nextDouble() < probGolAumentada) {
-                gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
-            }
-        }
-
-        // ======================================
-        // 2. SIMULACIÓN DE GOL ATAQUE
-        // ======================================
+        double evento = random.nextDouble();
 
 
-        if (random.nextDouble() < probabilidadLocal) {
-            gestionarGolesAsistencias(this.local, true, mostrar, minuto);
-        }
+        double multiplicadorUltimosMinutos = (minuto > 80) ? 1.8 : (minuto > 70 ? 1.3 : 1.0);
 
-        if (random.nextDouble() < probabilidadVisitante) {
-            gestionarGolesAsistencias(this.visitante, false, mostrar, minuto);
-        }
+        // VENTAJA PARA EQUIPO CON MÁS MEDIA
+        double totalMedia = local.calcularMediaGeneral() + visitante.calcularMediaGeneral();
+        double probAtaqueLocal = (local.calcularMediaGeneral() / totalMedia);
 
-        // ======================================
-        // 3. SIMULACIÓN DE FALTAS
-        // ======================================
-
-        if (random.nextDouble() < probabilidadFalta) { // ¿Ocurre una falta?
-            // Si ocurre, AHORA decidimos quién la hizo
-            double ajusteFalta = (local.calcularMediaGeneral() > visitante.calcularMediaGeneral()) ? 0.45 : 0.55;
-
-            if (random.nextDouble() > ajusteFalta) {
-                gestionarFaltas(this.visitante, false, mostrar, minuto); // Falta visitante
-                gestionFaltaEvento(this.local, true, mostrar, minuto);
-
+        // ---- 1. FALTAS ----
+        if (evento < 0.08) { // 8% de chances de falta
+            if (random.nextDouble() < 0.5) {
+                gestionarFaltas(local, true, mostrar, minuto);
             } else {
-                gestionarFaltas(this.local, true, mostrar, minuto); // Falta local
-                gestionFaltaEvento(this.visitante, false, mostrar, minuto);
+                gestionarFaltas(visitante, false, mostrar, minuto);
             }
         }
 
+        // ---- 2. CORNER ----
+        else if (evento < 0.12) { // 4% de chances de corner
+            if (random.nextDouble() < probAtaqueLocal) {
+                if (random.nextDouble() < c_Local * 2.5 * multiplicadorUltimosMinutos) {
+                    gestionarGolesAsistencias(local, true, mostrar, minuto);
+                } else if (mostrar) System.out.println("Minuto " + minuto + ": corner local sin suerte");
+            } else {
+                if (random.nextDouble() < c_Visitante * 2.5 * multiplicadorUltimosMinutos) {
+                    gestionarGolesAsistencias(visitante, false, mostrar, minuto);
+                } else if (mostrar) System.out.println("Minuto " + minuto + ": corner visitante sin suerte");
+            }
+        }
 
+        // ---- 3. ATAQUE NORMAL ----
+        else if (evento < 0.4) { // 28% minutos con intento de ataque
+            if (random.nextDouble() < probAtaqueLocal) {
+                if (random.nextDouble() < probGolLocal * 2 * multiplicadorUltimosMinutos) {
+                    gestionarGolesAsistencias(local, true, mostrar, minuto);
+                }
+            } else {
+                if (random.nextDouble() < probGolVisitante * 2 * multiplicadorUltimosMinutos) {
+                    gestionarGolesAsistencias(visitante, false, mostrar, minuto);
+                }
+            }
+        }
+
+        // ---- 4. LOCURA ESPECIAL ----
+        else if (evento > 0.98 && minuto > 85) { // 2% chance en los últimos minutos
+            if (random.nextBoolean()) {
+                if (mostrar) System.out.println("🔥 ¡" + local.getNombre() + " se lanza con todo al ataque final!");
+                if (random.nextDouble() < probGolLocal * 5) {
+                    gestionarGolesAsistencias(local, true, mostrar, minuto);
+                }
+            } else {
+                if (mostrar) System.out.println("🔥 ¡Contra letal de " + visitante.getNombre() + "!");
+                if (random.nextDouble() < probGolVisitante * 5) {
+                    gestionarGolesAsistencias(visitante, false, mostrar, minuto);
+                }
+            }
+        }
     }
+
 
     public void gestionFaltaEvento(Equipo equipoQueRecibe, boolean esLocal, boolean mostrar, int minuto){
 
@@ -334,7 +339,6 @@ public class Partido {
     public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) {
         Jugador autorFalta = equipo.elegirAutorFalta();
 
-        // <<< AÑADE ESTAS 3 LÍNEAS AQUÍ >>>
         if (autorFalta == null) {
             return; // Si el equipo no tiene jugadores, no puede cometer falta. Salta el evento.
         }
