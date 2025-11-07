@@ -479,7 +479,7 @@ public class Partido {
                 int indiceTitular = sc.nextInt();
 
                 if (indiceTitular < 1 || indiceTitular > equipo.getTitulares().size()) {
-                    throw new ArrayIndexOutOfBoundsException();
+                    throw new IllegalArgumentException();
                 }
 
                 i = 0;
@@ -493,7 +493,7 @@ public class Partido {
                 int indiceSuplente = sc.nextInt();
 
                 if (indiceSuplente < 1 ||  indiceSuplente > equipo.getSuplentes().size()){
-                    throw new IndexOutOfBoundsException();
+                    throw new IllegalArgumentException ();
                 }
 
                 Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);
@@ -506,7 +506,7 @@ public class Partido {
 
                 return 1;
             } catch (InputMismatchException e) {
-                System.out.println("Error, debe ingresar un numero valido");
+                System.out.println("Error, debe ingresar un numero");
                 sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error, numero fuera de rango. Intente nuevamente ");

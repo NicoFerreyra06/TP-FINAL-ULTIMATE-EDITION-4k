@@ -31,7 +31,7 @@ public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
             int indiceTitular = sc.nextInt();
 
             if (indiceTitular < 1 || indiceTitular > titularesArray.size()) {
-                throw new ArrayIndexOutOfBoundsException();
+                throw new IllegalArgumentException();
             }
 
             i = 0;
@@ -45,7 +45,7 @@ public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
             int indiceSuplente = sc.nextInt();
 
             if (indiceSuplente < 1 || indiceSuplente > suplentesArray.size()) {
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException();
             }
 
             Jugador jugadorTitular = titularesArray.get(indiceTitular - 1);

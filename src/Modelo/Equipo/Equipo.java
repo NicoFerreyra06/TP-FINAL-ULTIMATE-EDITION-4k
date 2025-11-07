@@ -73,13 +73,8 @@ public class Equipo implements iToJSON {
                 JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
                 agregarJugador(new Jugador(jsonJugador));
             }
-
-        } catch (JugadorExistente e)
-        {
+        } catch (JugadorExistente e) {
             System.out.println("Advertencia al cargar: " + this.nombre + ": " + e.getMessage());
-        } catch (IllegalArgumentException e)
-        {
-            System.out.println("Error al cargar: " + this.nombre + ": " + e.getMessage() + "");
         }
 
         //reconstruir lista expulsados
@@ -391,14 +386,11 @@ public class Equipo implements iToJSON {
 
     public void realizarCambio(Jugador saleTitular, Jugador saleSuplente) throws JugadorNoEncontradoException
     {
-        if (!titulares.contains(saleTitular))
+        if (!titulares.contains(saleTitular) || !suplentes.contains(saleSuplente))
         {
             throw new JugadorNoEncontradoException("El jugador: " + saleTitular.getNombre() + " no se encuentra en el equipo.");
         }
-        if (!suplentes.contains(saleSuplente))
-        {
-            throw new JugadorNoEncontradoException("El jugador: " + saleSuplente.getNombre() + " no se encuentra en el equipo.");
-        }
+
             //Si pasa las excepcion hace los cambios
             suplentes.remove(saleSuplente);
             titulares.remove(saleTitular);

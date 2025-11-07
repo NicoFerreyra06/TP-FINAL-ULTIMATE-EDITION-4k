@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class JugadorNoEncontradoException extends RuntimeException
+public class JugadorNoEncontradoException extends Exception
 {
     public JugadorNoEncontradoException(String message) {
         super(message);
