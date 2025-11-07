@@ -247,26 +247,28 @@ void main() {
 
         while (!liga.isTerminada() && !salir) {
             int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
+            if(!(copa == null)){
+                if (liga.getJornada() == 8){
+                    copa.jugarProximaFecha(usuarioEquipo, sc);
+                    copa.mostrarBracket();
+                }
 
-            if (liga.getJornada() == 8){
-                copa.jugarProximaFecha(usuarioEquipo, sc);
-                copa.mostrarBracket();
+                if (liga.getJornada() == 12){
+                    copa.jugarProximaFecha(usuarioEquipo, sc);
+                    copa.mostrarBracket();
+                }
+
+                if (liga.getJornada() == 16){
+                    copa.jugarProximaFecha(usuarioEquipo, sc);
+                    copa.mostrarBracket();
+                }
+
+                if (liga.getJornada() == 20){
+                    copa.jugarProximaFecha(usuarioEquipo, sc);
+                    copa.mostrarBracket();
+                }
             }
 
-            if (liga.getJornada() == 12){
-                copa.jugarProximaFecha(usuarioEquipo, sc);
-                copa.mostrarBracket();
-            }
-
-            if (liga.getJornada() == 16){
-                copa.jugarProximaFecha(usuarioEquipo, sc);
-                copa.mostrarBracket();
-            }
-
-            if (liga.getJornada() == 20){
-                copa.jugarProximaFecha(usuarioEquipo, sc);
-                copa.mostrarBracket();
-            }
             switch (opcion) {
                 case 1:
                     liga.jugarProximaFecha(usuarioEquipo, sc);
