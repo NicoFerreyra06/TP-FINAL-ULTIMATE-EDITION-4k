@@ -1,4 +1,5 @@
 import Exceptions.EquipoExistenteException;
+import Exceptions.JugadorNoEncontradoException;
 import Exceptions.LimiteEntrenamientoException;
 import Gestora.GestoraEquipos;
 import Gestora.JsonUtiles;
@@ -58,7 +59,13 @@ public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
             sc.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println("Error, numero fuera de rango. Intente nuevamente ");
-        } catch (Exception e) {
+        }catch (JugadorNoEncontradoException e)
+        {
+            System.out.println("Error en el cambio: "+ e.getMessage());
+            System.out.println("Intente nuevamente");
+        }
+
+        catch (Exception e) {
             System.out.println("Ocurrio un error inesperado. Intente nuevamente");
             sc.nextLine();
         }

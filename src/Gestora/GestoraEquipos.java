@@ -2,6 +2,7 @@ package Gestora;
 
 import Modelo.Equipo.Equipo;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GestoraEquipos extends GestoraGenerica <Equipo> {
@@ -24,7 +25,8 @@ public class GestoraEquipos extends GestoraGenerica <Equipo> {
 
                 super.agregarElemento(equipo);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Error al cargar el equipo: " + e.getMessage());
         }
 

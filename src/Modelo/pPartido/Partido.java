@@ -1,5 +1,6 @@
 package Modelo.pPartido;
 
+import Exceptions.JugadorNoEncontradoException;
 import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
@@ -509,7 +510,12 @@ public class Partido {
                 sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error, numero fuera de rango. Intente nuevamente ");
-            } catch (Exception e){
+            }
+            catch (JugadorNoEncontradoException e){
+                System.out.println("Error al procesar el cambio: "+ e.getMessage());
+                System.out.println("Intente nuevamente");
+            }
+            catch (Exception e){
                 System.out.println("Ocurrio un error inesperado. Intente nuevamente");
                 sc.nextLine();
             }

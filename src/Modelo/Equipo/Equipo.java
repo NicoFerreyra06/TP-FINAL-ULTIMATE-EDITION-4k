@@ -1,5 +1,7 @@
 package Modelo.Equipo;
 
+import Exceptions.JugadorExistente;
+import Exceptions.JugadorNoEncontradoException;
 import Interfaces.iToJSON;
 import Modelo.Persona.DirectorTecnico;
 import Modelo.Persona.Jugador;
@@ -51,23 +53,36 @@ public class Equipo implements iToJSON {
         this.tecnico = new DirectorTecnico(jsonTecnico);
 
         //reconstruir lista titulares
+        //Incializo las listas antes del try catch
         this.titulares = new HashSet<>();
-        JSONArray jsonTitulares = json.getJSONArray("titulares");
-        for (int i = 0; i < jsonTitulares.length(); i++) {
-            JSONObject jsonJugador = jsonTitulares.getJSONObject(i);
-            this.titulares.add(new Jugador(jsonJugador));
-        }
-
-        //reconstruir lista suplentes
         this.suplentes = new HashSet<>();
-        JSONArray jsonSuplentes = json.getJSONArray("suplentes");
-        for (int i = 0; i < jsonSuplentes.length(); i++) {
-            JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
-            this.suplentes.add(new Jugador(jsonJugador));
+        this.Expulsados = new LinkedHashSet <>();
+
+
+        JSONArray jsonTitulares = json.getJSONArray("titulares");
+        try {
+            for (int i = 0; i < jsonTitulares.length(); i++)
+            {
+                JSONObject jsonJugador = jsonTitulares.getJSONObject(i);
+                agregarJugador(new Jugador(jsonJugador));
+            }
+
+            JSONArray jsonSuplentes = json.getJSONArray("suplentes");
+            for (int i = 0; i < jsonSuplentes.length(); i++)
+            {
+                JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
+                agregarJugador(new Jugador(jsonJugador));
+            }
+
+        } catch (JugadorExistente e)
+        {
+            System.out.println("Advertencia al cargar: " + this.nombre + ": " + e.getMessage());
+        } catch (IllegalArgumentException e)
+        {
+            System.out.println("Error al cargar: " + this.nombre + ": " + e.getMessage() + "");
         }
 
         //reconstruir lista expulsados
-        this.Expulsados = new LinkedHashSet<>();
         JSONArray jsonExpulsados = json.getJSONArray("expulsados");
         for (int i = 0; i < jsonExpulsados.length(); i++) {
             JSONObject jsonJugador = jsonExpulsados.getJSONObject(i);
@@ -190,10 +205,13 @@ public class Equipo implements iToJSON {
      * @return true si se agrego, falso si no.
      */
 
-    public boolean agregarJugador(Jugador jugador) {
-        if (jugador == null) return false;
+    public boolean agregarJugador(Jugador jugador) throws JugadorExistente {
+        if (jugador == null)
+        {
+            throw new IllegalArgumentException("El jugador no puede ser nulo");
+        }
         if (titulares.contains(jugador) || suplentes.contains(jugador)) {
-            return false;
+            throw new JugadorExistente("El jugador: " + jugador.getNombre() + " ya se encuentra en el equipo.");
         }
 
         if (titulares.size() < 11) {
@@ -371,10 +389,17 @@ public class Equipo implements iToJSON {
      * realizar los cambios que deseé
      */
 
-    public void realizarCambio(Jugador saleTitular, Jugador saleSuplente) {
-
-        if (titulares.contains(saleTitular) && suplentes.contains(saleSuplente)) {
-
+    public void realizarCambio(Jugador saleTitular, Jugador saleSuplente) throws JugadorNoEncontradoException
+    {
+        if (!titulares.contains(saleTitular))
+        {
+            throw new JugadorNoEncontradoException("El jugador: " + saleTitular.getNombre() + " no se encuentra en el equipo.");
+        }
+        if (!suplentes.contains(saleSuplente))
+        {
+            throw new JugadorNoEncontradoException("El jugador: " + saleSuplente.getNombre() + " no se encuentra en el equipo.");
+        }
+            //Si pasa las excepcion hace los cambios
             suplentes.remove(saleSuplente);
             titulares.remove(saleTitular);
             titulares.add(saleSuplente);
@@ -383,7 +408,6 @@ public class Equipo implements iToJSON {
             System.out.println("⬇ Sale: " + saleTitular.getNombre());
             System.out.println("⬆ Entra: " + saleSuplente.getNombre());
 
-        }
     }
 
     /**
