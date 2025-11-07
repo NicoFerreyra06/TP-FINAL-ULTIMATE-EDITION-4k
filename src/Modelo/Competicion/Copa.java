@@ -16,6 +16,14 @@ public  class Copa extends Torneo {
         this.rondas = new ArrayList<>();
     }
 
+    public ArrayList<Ronda> getRondas() {
+        return rondas;
+    }
+
+    public void setRondas(ArrayList<Ronda> rondas) {
+        this.rondas = rondas;
+    }
+
     private String getNombreRonda(int numeroDeEquipos) {
         return switch (numeroDeEquipos) {
             case 16 -> "Octavos de Final";
@@ -57,7 +65,7 @@ public  class Copa extends Torneo {
                 System.out.println("\n¡ES TU TURNO DE JUGAR!");
                 partido.simularInteractivo(equipoJugador, sc); // Simulación interactiva para el usuario
             } else {
-                partido.simularRapido(); // Simulación rápida para la IA
+                partido.simularRapido();
             }
         }
 
@@ -113,16 +121,4 @@ public  class Copa extends Torneo {
         System.out.println("\n=============================================");
     }
 
-
-        //Getters y Setters
-
-
-
-    public ArrayList<Ronda> getRondas() {
-        return rondas;
-    }
-
-    public void setRondas(ArrayList<Ronda> rondas) {
-        this.rondas = rondas;
-    }
 }

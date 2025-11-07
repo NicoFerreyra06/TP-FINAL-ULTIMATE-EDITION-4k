@@ -31,11 +31,12 @@ public class Ronda
 
 
     //Simula una tanda de penales hasta obtener un unico ganador
-    private Equipo tandaDePenales(Equipo local, Equipo visitante, Equipo equipoJugador) {
+    private Equipo tandaDePenales(Equipo local, Equipo visitante, Equipo equipoJugador) throws InterruptedException {
         boolean esPartidoDelJugador = local.equals(equipoJugador) || visitante.equals(equipoJugador);
 
         if (esPartidoDelJugador) {
             System.out.println("¡COMIENZA LA TANDA DE PENALES ENTRE " + local.getNombre() + " Y " + visitante.getNombre() + "!");
+            Thread.sleep(500);
         }
 
         int golesLocal = 0;
@@ -64,9 +65,13 @@ public class Ronda
             // Muestra el detalle SOLO si es el partido del jugador
             if (esPartidoDelJugador) {
                 System.out.println("\n--- Penal #" + i + " ---");
+                Thread.sleep(250);
                 System.out.println(golLocal ? "¡GOL de " + local.getNombre() + "!" : "¡FALLÓ " + local.getNombre() + "!");
+                Thread.sleep(250);
                 System.out.println(golVisitante ? "¡GOL de " + visitante.getNombre() + "!" : "¡FALLÓ " + visitante.getNombre() + "!");
+                Thread.sleep(250);
                 System.out.println("Resultado parcial: " + local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
+                Thread.sleep(250);
             }
         }
 
@@ -109,12 +114,11 @@ public class Ronda
     }
 
     //El metodo getGanadores ahora guarda el resultado antes de devolverlo
-    public ArrayList<Equipo> getGanadores(Equipo equipoJugador) {
+    public ArrayList<Equipo> getGanadores(Equipo equipoJugador) throws InterruptedException {
         ArrayList<Equipo> ganadores = new ArrayList<>();
         for (Partido partido : this.partidos) {
             Equipo ganador = partido.getGanador();
             if (ganador == null) {
-                // (Aquí va tu lógica de penales, que no cambia)
                 ganador = tandaDePenales(partido.getLocal(), partido.getVisitante(), equipoJugador);
             }
             ganadores.add(ganador);
