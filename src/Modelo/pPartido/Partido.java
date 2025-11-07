@@ -416,7 +416,7 @@ public class Partido {
                 visitante.getNombre().toUpperCase());
 
 
-        System.out.println("\nEstadio: " + local.getEstadio().getNombre() + " (Capacidad: " + local.getEstadio().getCapacidad() + ")\n");
+        System.out.println("\n 🏟️ Estadio: " + local.getEstadio().getNombre() + " (Capacidad: " + local.getEstadio().getCapacidad() + ")\n");
 
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-30s | %-30s\n",

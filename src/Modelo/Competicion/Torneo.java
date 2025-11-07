@@ -73,33 +73,4 @@ public abstract class Torneo implements iToJSON{
         }
         equiposTorneo.put(equipo.getNombre(), equipo);
     }
-
-    public void buscarJugador (String equipoBuscado, String nombreJugador) {
-        boolean equipoEncontrado = false;
-        boolean jugadorEncontrado = false;
-
-        for (Equipo equipo : equiposTorneo.values()) {
-            if (equipo.getNombre().toLowerCase().equals(equipoBuscado)) {
-                equipoEncontrado = true;
-
-                for (Jugador jugador : equipo.getPlantilla()) {
-                    if (jugador.getNombre().toLowerCase().equals(nombreJugador)) {
-                        jugadorEncontrado = true;
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-
-        if (equipoEncontrado){
-            if (jugadorEncontrado){
-                System.out.println("Jugador '" + nombreJugador + "' encontrado en '" + equipoBuscado + "'.");
-            } else {
-                System.out.println("Jugador no encontrado");
-            }
-        } else {
-            System.out.println("Equipo " + equipoBuscado + " no encontrado");
-        }
-    }
 }

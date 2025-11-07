@@ -120,12 +120,11 @@ public static int menuOpciones(Scanner sc, int limiteEntrenamiento, int entrenam
             System.out.println("3. Mostrar el equipo");
             System.out.println("4. Entrenar tus jugadores, (entrenamientos restantes: " + restantes + ")");
             System.out.println("5. Hacer cambios");
-            System.out.println("6. Buscar jugador");
-            System.out.println("7. Salir del juego");
-            System.out.print("Elegi una opción: ");
+            System.out.println("6. Salir del juego");
+            System.out.print("Elegi una opción: (1 - 6)");
 
             opcion = sc.nextInt();
-            if (opcion < 1 || opcion > 7) {
+            if (opcion < 1 || opcion > 6) {
                 throw new InputMismatchException();
             }
 
@@ -164,16 +163,6 @@ public static void mostrarEquipo(Equipo equipo) {
     }
 }
 
-public static void buscarJugador(Scanner sc, Liga liga) {
-    sc.nextLine();
-    System.out.println("Ingrese el equipo en el que quiere buscar ");
-    String nombreEquipo = sc.nextLine();
-
-    System.out.println("Ingrese el nombre del jugador a buscar");
-    String nombreJugador = sc.nextLine();
-
-    liga.buscarJugador(nombreEquipo, nombreJugador);
-}
 
 void main() {
 
@@ -288,9 +277,6 @@ void main() {
                     realizarCambios(usuarioEquipo, sc);
                     break;
                 case 6:
-                    buscarJugador(sc, liga);
-                    break;
-                case 7:
                     salir = true;
                     break;
             }
