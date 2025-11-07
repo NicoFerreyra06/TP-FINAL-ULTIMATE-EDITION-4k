@@ -113,7 +113,7 @@ public class Partido {
     }
 
     // ===================Metodos=======================
-    public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException, LimiteEntrenamientoException {
+    public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException {
         boolean check = false;
         boolean checkInput = false;
         int opcion = -1;
@@ -149,7 +149,7 @@ public class Partido {
 
                             if (opcion < 1 || opcion  > 2){
                                 System.out.println("Ingrese una opcion valida");
-                                return;
+                                continue;
                             }
                             checkInput = true;
                         } catch (InputMismatchException e) {
@@ -168,7 +168,8 @@ public class Partido {
                                 cambiosRestantes -= realizarCambioPartido(sc, visitante, cambiosRestantes);
                             }
                         } else {
-                            throw new LimiteEntrenamientoException("Limite de cambios alcanzada");
+                            System.out.println("ADVERTENCIA: Límite de 5 cambios alcanzado. Seleccione 1 para continuar.");
+                            checkInput = false;
                         }
                     }
 
