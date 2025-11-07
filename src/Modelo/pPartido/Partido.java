@@ -114,6 +114,7 @@ public class Partido {
     // ===================Metodos=======================
     public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException, LimiteEntrenamientoException {
         boolean check = false;
+        boolean checkInput = false;
         int opcion = -1;
         int cambiosRestantes = 5;
 
@@ -124,38 +125,36 @@ public class Partido {
 
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
-        double probabilidadFalta = 0.10;
 
-
-        local.verificarTitulares();
-        visitante.verificarTitulares();
-
-        IO.println("Empieza el partido");
+        presentacionPartido(sc);
 
         for (int i = 1; i <= 90; i++) {
             IO.println("Minuto " + i);
 
-            if (i > 80){
-                probabilidadLocal *= 2;
-                probabilidadVisitante *= 2;
-            }
-
-            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
+            simularMinuto(probabilidadLocal, probabilidadVisitante, true, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
 
             if (i == 45){
                 IO.println("Finalizo el primer tiempo! ");
                 IO.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante + "\n");
 
                 while (!check) {
+                    while (!checkInput) {
+                        try {
+                            IO.println("---------ENTRETIEMPO---------");
+                            IO.println("Presione 1 para comenzar el ST");
+                            IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
 
-                    IO.println("---------ENTRETIEMPO---------");
-                    IO.println("Presione 1 para comenzar el ST");
-                    IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
+                            opcion = sc.nextInt();
 
-                    opcion = sc.nextInt();
-
-                    if (opcion < 1 || opcion  > 2){
-                        System.out.println("Ingrese una opcion valida");
+                            if (opcion < 1 || opcion  > 2){
+                                System.out.println("Ingrese una opcion valida");
+                                return;
+                            }
+                            checkInput = true;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Ingrese una opcion valida");
+                            sc.nextLine();
+                        }
                     }
 
                     if (opcion == 1) check = true;
@@ -176,6 +175,11 @@ public class Partido {
                 IO.println("Empieza el segundo tiempo! ");
             }
 
+            if (i > 80){
+                probabilidadLocal *= 2;
+                probabilidadVisitante *= 2;
+            }
+
             Thread.sleep(250);
         }
 
@@ -194,22 +198,21 @@ public class Partido {
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
-        double probabilidadFalta = 0.10;
 
         for (int i = 1; i <= 90; i++) {
-            simularMinuto(probabilidadFalta, probabilidadLocal, probabilidadVisitante, false, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
+            simularMinuto(probabilidadLocal, probabilidadVisitante, false, i,probabilidadLocalCorner,probabilidadVisitanteCorner);
         }
 
         local.verificarTitulares();
         visitante.verificarTitulares();
+
+        local.bajarSancion();
+        visitante.bajarSancion();
     }
 
-    public void simularMinuto(double probFaltaBase, double probGolLocal, double probGolVisitante,
-                              boolean mostrar, int minuto, double c_Local, double c_Visitante) {
+    public void simularMinuto(double probGolLocal, double probGolVisitante, boolean mostrar, int minuto, double c_Local, double c_Visitante) {
 
         double evento = random.nextDouble();
-
-
         double multiplicadorUltimosMinutos = (minuto > 80) ? 1.8 : (minuto > 70 ? 1.3 : 1.0);
 
         // VENTAJA PARA EQUIPO CON MÁS MEDIA
@@ -230,11 +233,11 @@ public class Partido {
             if (random.nextDouble() < probAtaqueLocal) {
                 if (random.nextDouble() < c_Local * 2.5 * multiplicadorUltimosMinutos) {
                     gestionarGolesAsistencias(local, true, mostrar, minuto);
-                } else if (mostrar) System.out.println("Minuto " + minuto + ": corner local sin suerte");
+                } else if (mostrar) System.out.println("Minuto " + minuto + ": Corner local sin suerte");
             } else {
                 if (random.nextDouble() < c_Visitante * 2.5 * multiplicadorUltimosMinutos) {
                     gestionarGolesAsistencias(visitante, false, mostrar, minuto);
-                } else if (mostrar) System.out.println("Minuto " + minuto + ": corner visitante sin suerte");
+                } else if (mostrar) System.out.println("Minuto " + minuto + ": Corner visitante sin suerte");
             }
         }
 
@@ -267,27 +270,6 @@ public class Partido {
         }
     }
 
-
-    public void gestionFaltaEvento(Equipo equipoQueRecibe, boolean esLocal, boolean mostrar, int minuto){
-
-        GestionEventoDePartido gestionEvento = new GestionEventoDePartido();
-        EventoPartido evento = gestionEvento.generarlo(false);
-
-
-        if(EventoPartido.Ninguno != evento && EventoPartido.Corner != evento){
-            if (mostrar) {
-                System.out.println(minuto + ": Se produce un " + evento + " a favor de " + equipoQueRecibe.getNombre());
-            }
-        }
-        double proBase = equipoQueRecibe.calcularMediaGeneral() * 0.0002;
-        double probGol = gestionEvento.modificarProbGol(evento, proBase);
-
-        // SIMULAR EL GOL con la probabilidad AUMENTADA
-        if(random.nextDouble() < probGol){
-            gestionarGolesAsistencias(equipoQueRecibe, esLocal, mostrar, minuto);
-        }
-    }
-
     public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
 
         Jugador goleador = equipo.elegirAutorGol();
@@ -312,7 +294,6 @@ public class Partido {
         }
 
         //VERIFICA QUE NO SEA FUERA DE JUEGO
-
         GestionEventoDePartido eventoOFF = new GestionEventoDePartido();
         EventoPartido offside = eventoOFF.generarlo(true);
 
@@ -387,7 +368,7 @@ public class Partido {
                 if (autorFalta.getTarjetaLiga() >= 2) {
                     this.rojasVisitante++;
                     if(mostrar) System.out.println("¡Segunda amarilla! ROJA para " + autorFalta.getNombre());
-                    equipo.ExpulsarJugador(autorFalta); // ¡Expulsar ahora!
+                    equipo.ExpulsarJugador(autorFalta);
                 }
 
             } else if (tipoTarjeta == 2){
@@ -397,7 +378,6 @@ public class Partido {
                     System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
                 }
 
-                // *** ¡LLAMADA A EXPULSAR MOVIDA AQUÍ! ***
                 equipo.ExpulsarJugador(autorFalta);
             } else {
                 if (mostrar){
@@ -425,7 +405,33 @@ public class Partido {
         return local.equals(equipo) || visitante.equals(equipo);
     }
 
-    public void mostrarResultado (){
+    private void presentacionPartido(Scanner sc) {
+
+        System.out.println("------------------------------------------------------------------");
+        System.out.printf("%-5s %s %5s\n",
+                local.getNombre().toUpperCase(),
+                "VS",
+                visitante.getNombre().toUpperCase());
+
+
+        System.out.println("\nEstadio: " + local.getEstadio().getNombre() + " (Capacidad: " + local.getEstadio().getCapacidad() + ")\n");
+
+        System.out.println("------------------------------------------------------------------");
+        System.out.printf("%-30s | %-30s\n",
+                "Táctica: " + local.getTecnico().getTacticaPreferida().getEformacion(),
+                "Táctica: " + visitante.getTecnico().getTacticaPreferida().getEformacion());
+        System.out.printf("%-30s | %-30s\n",
+                "DT: " + local.getTecnico().getNombre(),
+                "DT: " + visitante.getTecnico().getNombre());
+        System.out.println("------------------------------------------------------------------");
+
+        System.out.println("\nPresione Enter para el pitazo inicial...");
+        sc.nextLine();
+        sc.nextLine();
+
+    }
+
+    private void mostrarResultado (){
         System.out.println("Termina el partido");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
 

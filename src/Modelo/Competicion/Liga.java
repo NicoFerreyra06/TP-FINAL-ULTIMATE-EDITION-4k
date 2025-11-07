@@ -133,7 +133,6 @@ public class Liga extends Torneo implements iToJSON{
         this.nombreEquipoUsuario = nombreEquipoUsuario;
     }
 
-    // (Y este es el 'get' que usará el main para buscar tu equipo)
     public String getNombreEquipoUsuario() {
         return nombreEquipoUsuario;
     }
