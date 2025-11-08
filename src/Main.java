@@ -5,11 +5,9 @@ import Gestora.GestoraEquipos;
 import Gestora.JsonUtiles;
 import Modelo.Competicion.Copa;
 import Modelo.Competicion.Liga;
-import Modelo.Competicion.Temporada;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import Modelo.Podios.PodiosDeCompeticion;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {

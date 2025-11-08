@@ -5,6 +5,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+/**
+ * Gestora especializada para administrar una colección de objetos {@link Equipo}.
+ * Extiende de {@link GestoraGenerica} y añade funcionalidad específica
+ * para cargar equipos desde un archivo JSON.
+ */
 public class GestoraEquipos extends GestoraGenerica <Equipo> {
     public GestoraEquipos(String nombreJSON) {
         super(nombreJSON);
