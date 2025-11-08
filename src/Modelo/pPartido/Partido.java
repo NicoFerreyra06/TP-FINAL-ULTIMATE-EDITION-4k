@@ -154,7 +154,7 @@ public class Partido {
     // ===================Metodos=======================
     public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException {
         boolean check = false;
-        boolean checkInput = false;
+
         int opcion = -1;
         int cambiosRestantes = 5;
 
@@ -177,25 +177,25 @@ public class Partido {
                 IO.println("Finalizo el primer tiempo! ");
                 IO.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante + "\n");
 
-                while (!check) {
-                    while (!checkInput) {
-                        try {
-                            IO.println("---------ENTRETIEMPO---------");
-                            IO.println("Presione 1 para comenzar el ST");
-                            IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
+                do {
+                    try {
+                        IO.println("---------ENTRETIEMPO---------");
+                        IO.println("Presione 1 para comenzar el ST");
+                        IO.println("Presione 2 para realizar cambios" + " (Cambios restantes) " + cambiosRestantes + "\n");
 
-                            opcion = sc.nextInt();
+                        opcion = sc.nextInt();
 
-                            if (opcion < 1 || opcion  > 2){
-                                System.out.println("Ingrese una opcion valida");
-                                continue;
-                            }
-                            checkInput = true;
-                        } catch (InputMismatchException e) {
+                        if (opcion < 1 || opcion  > 2){
                             System.out.println("Ingrese una opcion valida");
-                            sc.nextLine();
+                            continue;
                         }
+
+                        check = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Ingrese una opcion valida");
+                        sc.nextLine();
                     }
+
 
                     if (opcion == 1) check = true;
 
@@ -203,27 +203,27 @@ public class Partido {
                         if (cambiosRestantes > 0){
                             if (local.equals(equipoUsuario)) {
                                 cambiosRestantes -= realizarCambioPartido(sc, local, cambiosRestantes);
+                                check = false;
                             } else if (visitante.equals(equipoUsuario)) {
                                 cambiosRestantes -= realizarCambioPartido(sc, visitante, cambiosRestantes);
+                                check = false;
                             }
                         } else {
                             System.out.println("ADVERTENCIA: Límite de 5 cambios alcanzado. Seleccione 1 para continuar.");
-                            checkInput = false;
+                            check = true;
                         }
                     }
 
-                }
-                IO.println("Empieza el segundo tiempo! ");
-            }
+                } while (!check);
 
-            if (i > 80){
-                probabilidadLocal *= 2;
-                probabilidadVisitante *= 2;
+
+                IO.println("Empieza el segundo tiempo! ");
             }
 
             Thread.sleep(250);
         }
 
+        Thread.sleep(1500);
         mostrarResultado();
 
         visitante.bajarSancion();
@@ -233,7 +233,7 @@ public class Partido {
         visitante.verificarTitulares();
     }
 
-    public void simularRapido() {
+    public void simularRapido() throws InterruptedException {
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
         double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
@@ -251,7 +251,7 @@ public class Partido {
         visitante.bajarSancion();
     }
 
-    public void simularMinuto(double probGolLocal, double probGolVisitante, boolean mostrar, int minuto, double c_Local, double c_Visitante) {
+    public void simularMinuto(double probGolLocal, double probGolVisitante, boolean mostrar, int minuto, double c_Local, double c_Visitante) throws InterruptedException {
 
         double evento = random.nextDouble();
         double multiplicadorUltimosMinutos = (minuto > 80) ? 1.8 : (minuto > 70 ? 1.3 : 1.0);
@@ -274,11 +274,17 @@ public class Partido {
             if (random.nextDouble() < probAtaqueLocal) {
                 if (random.nextDouble() < c_Local * 2.5 * multiplicadorUltimosMinutos) {
                     gestionarGolesAsistencias(local, true, mostrar, minuto);
-                } else if (mostrar) System.out.println("Minuto " + minuto + ": Corner local sin suerte");
+                } else if (mostrar){
+                    System.out.println("Minuto " + minuto + ": Corner local sin suerte");
+                    Thread.sleep(100);
+                }
             } else {
                 if (random.nextDouble() < c_Visitante * 2.5 * multiplicadorUltimosMinutos) {
                     gestionarGolesAsistencias(visitante, false, mostrar, minuto);
-                } else if (mostrar) System.out.println("Minuto " + minuto + ": Corner visitante sin suerte");
+                } else if (mostrar){
+                    System.out.println("Minuto " + minuto + ": Corner visitante sin suerte");
+                    Thread.sleep(100);
+                }
             }
         }
 
@@ -298,12 +304,18 @@ public class Partido {
         // ---- 4. LOCURA ESPECIAL ----
         else if (evento > 0.98 && minuto > 85) { // 2% chance en los últimos minutos
             if (random.nextBoolean()) {
-                if (mostrar) System.out.println("🔥 ¡" + local.getNombre() + " se lanza con todo al ataque final!");
+                if (mostrar){
+                    System.out.println("🔥 ¡" + local.getNombre() + " se lanza con todo al ataque final!");
+                    Thread.sleep(250);
+                }
                 if (random.nextDouble() < probGolLocal * 5) {
                     gestionarGolesAsistencias(local, true, mostrar, minuto);
                 }
             } else {
-                if (mostrar) System.out.println("🔥 ¡Contra letal de " + visitante.getNombre() + "!");
+                if (mostrar){
+                    System.out.println("🔥 ¡Contra letal de " + visitante.getNombre() + "!");
+                    Thread.sleep(250);
+                }
                 if (random.nextDouble() < probGolVisitante * 5) {
                     gestionarGolesAsistencias(visitante, false, mostrar, minuto);
                 }
@@ -311,7 +323,7 @@ public class Partido {
         }
     }
 
-    public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+    public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) throws InterruptedException {
 
         Jugador goleador = equipo.elegirAutorGol();
         Jugador asistidor = equipo.elegirAutorAsistencia(goleador);
@@ -331,6 +343,7 @@ public class Partido {
 
         if (mostrar){
             System.out.println("⚽ ¡Goool de " + equipo.getNombre() + "! Anotó: " + goleador.getNombre());
+            Thread.sleep(250);
             goleadores.add(new Gol(minuto, goleador, asistidor));
         }
 
@@ -341,24 +354,22 @@ public class Partido {
         if(offside == EventoPartido.Pos_Adelantada){
             if(mostrar) {
                 System.out.println("Gol anulado por fuera de juego...");
+                Thread.sleep(250);
                 goleadores.remove(goleadores.size()-1);
             }
 
             //anular gol y asistencia.
             if(local){
                 if(this.golesLocal > 0) this.golesLocal--;
-
             }else{
-                if(this.golesVisitante>0){this.golesVisitante--;
-
-                }
+                if(this.golesVisitante>0)this.golesVisitante--;
             }
             goleador.cancelarGoles();
             asistidor.cancelarAsistencia();
         }
     }
 
-    public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) {
+    public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) throws InterruptedException {
         Jugador autorFalta = equipo.elegirAutorFalta();
 
         if (autorFalta == null) {
@@ -374,11 +385,13 @@ public class Partido {
 
                 if (mostrar){
                     System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                    Thread.sleep(250);
                 }
 
                 if (autorFalta.getTarjetaLiga() >= 2){
                     this.rojasLocal++; // Contabiliza la roja
                     if(mostrar) System.out.println("¡Segunda amarilla! ROJA para " + autorFalta.getNombre());
+                    Thread.sleep(250);
                     equipo.ExpulsarJugador(autorFalta);
                 }
             } else if (tipoTarjeta == 2){
@@ -387,6 +400,7 @@ public class Partido {
 
                 if (mostrar){
                     System.out.println("Minuto " + minuto + ": ¡Falta grave de " + autorFalta.getNombre() + "! ROJA para " + autorFalta.getNombre());
+                    Thread.sleep(250);
                 }
 
                 equipo.ExpulsarJugador(autorFalta);
@@ -394,6 +408,7 @@ public class Partido {
             } else {
                 if (mostrar){
                     System.out.println("Minuto " + minuto + ": Falta de " + autorFalta.getNombre());
+                    Thread.sleep(250);
                 }
             }
         } else {
@@ -404,11 +419,13 @@ public class Partido {
 
                 if (mostrar){
                     System.out.println("️Minuto " + minuto + ": Falta de " + autorFalta.getNombre() + ". Amarilla para " + autorFalta.getNombre());
+                    Thread.sleep(250);
                 }
 
                 if (autorFalta.getTarjetaLiga() >= 2) {
                     this.rojasVisitante++;
                     if(mostrar) System.out.println("¡Segunda amarilla! ROJA para " + autorFalta.getNombre());
+                    Thread.sleep(250);
                     equipo.ExpulsarJugador(autorFalta);
                 }
 
@@ -423,6 +440,7 @@ public class Partido {
             } else {
                 if (mostrar){
                     System.out.println("Minuto " + minuto +": Falta de " + autorFalta.getNombre());
+                    Thread.sleep(250);
                 }
             }
         }
@@ -472,7 +490,7 @@ public class Partido {
 
     }
 
-    private void mostrarResultado (){
+    private void mostrarResultado () throws InterruptedException{
         System.out.println("Termina el partido");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
 
@@ -480,6 +498,7 @@ public class Partido {
             System.out.println("Minuto " + gol.getMinuto() +
                     ": Gol de " + gol.getAutor().getNombre() +
                     " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
+            Thread.sleep(250);
         }
     }
     /**

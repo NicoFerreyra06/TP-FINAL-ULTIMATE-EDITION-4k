@@ -198,8 +198,6 @@ void main() {
                     copa.anotarEquipo(listaDeEquipos.get(i));
                 }
 
-
-
                 liga.setNombreEquipoUsuario(usuarioEquipo.getNombre());
 
                 liga.generarFixture();
