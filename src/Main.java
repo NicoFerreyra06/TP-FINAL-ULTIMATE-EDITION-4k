@@ -9,6 +9,7 @@ import Modelo.Competicion.Temporada;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import Modelo.Podios.PodiosDeCompeticion;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
@@ -208,15 +209,20 @@ void main() {
 
             } else if (opcionInicio == 2) {
 
-                liga = cargarPartida();
+                liga = cargarLiga();
+                copa = cargarCopa();
 
-                if (liga != null) {
+                if (liga != null || copa != null) {
 
                     String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
                     usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
 
-                    System.out.println("¡Partida cargada! Su equipo es: " + usuarioEquipo.getNombre());
-                    partidaLista = true;
+                    if (usuarioEquipo == null) {
+                        System.out.println("Error fatal: No se encontró tu equipo (" + nombreEquipoUsuario + ") en la liga cargada.");
+                    } else {
+                        System.out.println("¡Partida cargada! Su equipo es: " + usuarioEquipo.getNombre());
+                        partidaLista = true;
+                    }
                 } else {
                     System.out.println("No se pudo cargar la partida. Intente de nuevo.");
                 }
@@ -236,32 +242,29 @@ void main() {
 
         while (!liga.isTerminada() && !salir) {
             int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
-            if(!(copa == null)){
-                if (liga.getJornada() == 8){
-                    copa.jugarProximaFecha(usuarioEquipo, sc);
-                    copa.mostrarBracket();
-                }
-
-                if (liga.getJornada() == 12){
-                    copa.jugarProximaFecha(usuarioEquipo, sc);
-                    copa.mostrarBracket();
-                }
-
-                if (liga.getJornada() == 16){
-                    copa.jugarProximaFecha(usuarioEquipo, sc);
-                    copa.mostrarBracket();
-                }
-
-                if (liga.getJornada() == 20){
-                    copa.jugarProximaFecha(usuarioEquipo, sc);
-                    copa.mostrarBracket();
-                }
-            }
 
             switch (opcion) {
                 case 1:
+                    if (copa != null){
+                        if (liga.getJornada() == 8 || liga.getJornada() == 16 ||
+                                liga.getJornada() == 24 || liga.getJornada() == 33){
+
+                            copa.jugarProximaFecha(usuarioEquipo, sc);
+                            copa.mostrarBracket();
+                        }
+                    }
+
                     liga.jugarProximaFecha(usuarioEquipo, sc);
                     entrenamientosJornada = 0;
+                try {
+                    System.out.println("Guardando partida....");
+                    JsonUtiles.grabarUnJson(liga.toJSON(), "Liga.json");
+                    JsonUtiles.grabarUnJson(copa.toJSON(), "Copa.json");
+                    System.out.println("Partida guardada correctamente! ");
+                } catch (Exception e) {
+                    System.out.println("ERROR AL GUARDAR PARTIDA!");
+                }
+
                     break;
                 case 2:
                     liga.mostrarTabla();
@@ -294,8 +297,8 @@ void main() {
     }
 }
 
-public Liga cargarPartida() {
-    String jsonString = JsonUtiles.leer("partida_guardada");
+public Liga cargarLiga() {
+    String jsonString = JsonUtiles.leer("Liga");
 
     JSONObject jsonPartida = new JSONObject(jsonString);
 
@@ -304,4 +307,16 @@ public Liga cargarPartida() {
     System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
 
     return ligaCargada;
+}
+
+public Copa cargarCopa() {
+    String jsonString = JsonUtiles.leer("Copa");
+
+    JSONObject jsonPartida = new JSONObject(jsonString);
+
+    Copa copaCargada = new Copa(jsonPartida);
+
+    System.out.println("¡Partida cargada! Listo para jugar la jornada ");
+
+    return copaCargada;
 }

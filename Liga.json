@@ -1536,14 +1536,14 @@
         },
         {
             "golesContra": 0,
-            "empatados": 0,
+            "empatados": 1,
             "perdidos": 0,
             "nombreEquipo": "Independiente",
             "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 1,
-            "puntos": 3,
-            "golesFavor": 1
+            "ganados": 0,
+            "diferenciaGoles": 0,
+            "puntos": 1,
+            "golesFavor": 0
         },
         {
             "golesContra": 0,
@@ -1568,15 +1568,15 @@
             "golesFavor": 0
         },
         {
-            "golesContra": 1,
-            "empatados": 1,
-            "perdidos": 0,
+            "golesContra": 2,
+            "empatados": 0,
+            "perdidos": 1,
             "nombreEquipo": "Banfield",
             "jugados": 1,
             "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 1
+            "diferenciaGoles": -2,
+            "puntos": 0,
+            "golesFavor": 0
         },
         {
             "golesContra": 0,
@@ -1602,58 +1602,58 @@
         },
         {
             "golesContra": 0,
-            "empatados": 1,
+            "empatados": 0,
             "perdidos": 0,
             "nombreEquipo": "Ferro Carril Oeste",
             "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "ganados": 1,
+            "diferenciaGoles": 2,
+            "puntos": 3,
+            "golesFavor": 2
         },
         {
-            "golesContra": 0,
-            "empatados": 1,
-            "perdidos": 0,
+            "golesContra": 2,
+            "empatados": 0,
+            "perdidos": 1,
             "nombreEquipo": "Huracán",
             "jugados": 1,
             "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
+            "diferenciaGoles": -2,
+            "puntos": 0,
             "golesFavor": 0
         },
         {
-            "golesContra": 5,
+            "golesContra": 3,
             "empatados": 0,
-            "perdidos": 0,
+            "perdidos": 1,
             "nombreEquipo": "Boca Juniors",
             "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 1,
-            "puntos": 3,
-            "golesFavor": 6
-        },
-        {
-            "golesContra": 0,
-            "empatados": 1,
-            "perdidos": 0,
-            "nombreEquipo": "Gimnasia (LP)",
-            "jugados": 1,
             "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "diferenciaGoles": -1,
+            "puntos": 0,
+            "golesFavor": 2
         },
         {
             "golesContra": 0,
             "empatados": 0,
             "perdidos": 0,
-            "nombreEquipo": "Chacarita Juniors",
+            "nombreEquipo": "Gimnasia (LP)",
             "jugados": 1,
             "ganados": 1,
             "diferenciaGoles": 1,
             "puntos": 3,
             "golesFavor": 1
+        },
+        {
+            "golesContra": 0,
+            "empatados": 1,
+            "perdidos": 0,
+            "nombreEquipo": "Chacarita Juniors",
+            "jugados": 1,
+            "ganados": 0,
+            "diferenciaGoles": 0,
+            "puntos": 1,
+            "golesFavor": 0
         },
         {
             "golesContra": 1,
@@ -1667,26 +1667,26 @@
             "golesFavor": 0
         },
         {
-            "golesContra": 1,
-            "empatados": 0,
-            "perdidos": 1,
-            "nombreEquipo": "Atlanta",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": -1,
-            "puntos": 0,
-            "golesFavor": 0
-        },
-        {
-            "golesContra": 1,
+            "golesContra": 0,
             "empatados": 1,
             "perdidos": 0,
-            "nombreEquipo": "Vélez Sarsfield",
+            "nombreEquipo": "Atlanta",
             "jugados": 1,
             "ganados": 0,
             "diferenciaGoles": 0,
             "puntos": 1,
-            "golesFavor": 1
+            "golesFavor": 0
+        },
+        {
+            "golesContra": 0,
+            "empatados": 0,
+            "perdidos": 0,
+            "nombreEquipo": "Vélez Sarsfield",
+            "jugados": 1,
+            "ganados": 1,
+            "diferenciaGoles": 2,
+            "puntos": 3,
+            "golesFavor": 2
         },
         {
             "golesContra": 0,
@@ -1700,21 +1700,10 @@
             "golesFavor": 0
         },
         {
-            "golesContra": 1,
-            "empatados": 0,
-            "perdidos": 1,
-            "nombreEquipo": "Estudiantes (LP)",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": -1,
-            "puntos": 0,
-            "golesFavor": 0
-        },
-        {
             "golesContra": 0,
             "empatados": 1,
             "perdidos": 0,
-            "nombreEquipo": "Platense",
+            "nombreEquipo": "Estudiantes (LP)",
             "jugados": 1,
             "ganados": 0,
             "diferenciaGoles": 0,
@@ -1722,15 +1711,26 @@
             "golesFavor": 0
         },
         {
-            "golesContra": 6,
+            "golesContra": 1,
             "empatados": 0,
             "perdidos": 1,
-            "nombreEquipo": "River Plate",
+            "nombreEquipo": "Platense",
             "jugados": 1,
             "ganados": 0,
             "diferenciaGoles": -1,
             "puntos": 0,
-            "golesFavor": 5
+            "golesFavor": 0
+        },
+        {
+            "golesContra": 2,
+            "empatados": 0,
+            "perdidos": 0,
+            "nombreEquipo": "River Plate",
+            "jugados": 1,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 3,
+            "golesFavor": 3
         },
         {
             "golesContra": 0,
@@ -1759,16 +1759,16 @@
                     "id": "be84ac9f-9dc0-4a52-9ad7-88cfba1d38ef",
                     "nombre": "Paulo Diaz",
                     "edad": 31,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Chilena"
                 },
                 {
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 97,
                     "habilidadDefensa": 77,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 76,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "babe284b-55fe-4434-8dc7-81782dd75d0c",
                     "nombre": "Juan Quintero",
                     "edad": 32,
@@ -1785,14 +1785,14 @@
                     "id": "2dc67e87-5211-4e4a-8c80-457f128afa8d",
                     "nombre": "Santiago Lencina",
                     "edad": 20,
-                    "asistencias": 0,
+                    "asistencias": 4,
                     "nacionalidad": "Argentina"
                 },
                 {
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 96,
                     "habilidadDefensa": 61,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 94,
                     "golesConvertidos": 1,
                     "id": "2946cd5c-31db-49cc-86fa-07fd5a83cfdd",
@@ -1807,11 +1807,11 @@
                     "habilidadDefensa": 83,
                     "tarjetaLiga": 0,
                     "estadoFisico": 86,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 2,
                     "id": "9020eeaa-786e-4f90-ab93-0816d5b77e28",
                     "nombre": "Juan Carlos Portillo",
                     "edad": 25,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentina"
                 },
                 {
@@ -1820,7 +1820,7 @@
                     "habilidadDefensa": 97,
                     "tarjetaLiga": 0,
                     "estadoFisico": 92,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "9bf75ba8-f89b-48ff-b265-32bb56c40d1d",
                     "nombre": "Lucas Martinez Quarta",
                     "edad": 29,
@@ -1846,7 +1846,7 @@
                     "habilidadDefensa": 99,
                     "tarjetaLiga": 0,
                     "estadoFisico": 92,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "35d38cb6-79db-44a4-b75a-56835b925cb8",
                     "nombre": "Franco Armani",
                     "edad": 39,
@@ -1859,7 +1859,7 @@
                     "habilidadDefensa": 95,
                     "tarjetaLiga": 0,
                     "estadoFisico": 93,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "f46a9fee-fb41-4701-a061-6798ffd0b6b1",
                     "nombre": "Gonzalo Montiel",
                     "edad": 28,
@@ -1872,7 +1872,7 @@
                     "habilidadDefensa": 95,
                     "tarjetaLiga": 0,
                     "estadoFisico": 93,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "977d6a83-6b6f-4494-9dba-30eb586b32cc",
                     "nombre": "Lautaro Rivero",
                     "edad": 21,
@@ -1889,7 +1889,7 @@
                     "id": "9d57f3bd-b6a6-44f5-8d03-1ae9aef6b068",
                     "nombre": "Sebastian Driussi",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentina"
                 }
             ],
@@ -2027,24 +2027,24 @@
                     "habilidadDefensa": 90,
                     "tarjetaLiga": 0,
                     "estadoFisico": 98,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "bd783830-c87c-47d3-83c0-67ab8a2dc0c0",
                     "nombre": "Lautaro Di Lollo",
                     "edad": 21,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 66,
                     "habilidadDefensa": 88,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 92,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "ea98ff1e-c021-40f4-9997-d82e901d3531",
                     "nombre": "Marcelo Costa",
                     "edad": 31,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2070,7 +2070,7 @@
                     "id": "05635b62-ac2e-4447-9b4b-a08e47cab1b9",
                     "nombre": "Miguel Merentiel",
                     "edad": 29,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -2083,7 +2083,7 @@
                     "id": "20309854-5375-4f57-8afb-1406a9fbe994",
                     "nombre": "Leandro Paredes",
                     "edad": 31,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2109,7 +2109,7 @@
                     "id": "8a7c9c26-95de-4de8-baba-ca2e9ecd2bae",
                     "nombre": "Juan Barinaga",
                     "edad": 24,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2122,7 +2122,7 @@
                     "id": "6f579d5a-fd5f-4cd9-8b35-b1f2a2728daf",
                     "nombre": "Alan Velasco",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2131,7 +2131,7 @@
                     "habilidadDefensa": 99,
                     "tarjetaLiga": 0,
                     "estadoFisico": 99,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "785df719-5183-4d5d-9154-8ab0f6416464",
                     "nombre": "Agustín Marchesín",
                     "edad": 37,
@@ -2144,11 +2144,11 @@
                     "habilidadDefensa": 58,
                     "tarjetaLiga": 0,
                     "estadoFisico": 96,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "4dd7b6f2-a8e4-405f-bbcc-fe622dd5e1f2",
                     "nombre": "Milton Gimenez",
                     "edad": 29,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2157,11 +2157,11 @@
                     "habilidadDefensa": 54,
                     "tarjetaLiga": 0,
                     "estadoFisico": 99,
-                    "golesConvertidos": 3,
+                    "golesConvertidos": 1,
                     "id": "04fe7bae-0a2d-4ef6-afdc-3d8778844767",
                     "nombre": "Exequiel Zeballos",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -2192,7 +2192,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 54,
                     "habilidadDefensa": 93,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 94,
                     "golesConvertidos": 0,
                     "id": "e8f99170-3f75-4fb9-b0df-a06b1e1e60bb",
@@ -2211,7 +2211,7 @@
                     "id": "8d17aafc-0995-4fd9-b1cf-821cda5252fc",
                     "nombre": "Ezequiel Cerutti",
                     "edad": 33,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2246,7 +2246,7 @@
                     "habilidadDefensa": 71,
                     "tarjetaLiga": 0,
                     "estadoFisico": 85,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "b2b8f973-0059-430b-b1c0-1e448479b90c",
                     "nombre": "Facundo Gulli",
                     "edad": 20,
@@ -2311,7 +2311,7 @@
                     "habilidadDefensa": 88,
                     "tarjetaLiga": 0,
                     "estadoFisico": 84,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "03a909da-a8bf-4565-a286-3369caf58922",
                     "nombre": "Fabricio Lopez",
                     "edad": 22,
@@ -2328,7 +2328,7 @@
                     "id": "f1fbfd7e-c8e8-4b15-9e4d-c943811427f6",
                     "nombre": "Ignacio Perruzzi",
                     "edad": 20,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -2438,7 +2438,7 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 88,
                     "habilidadDefensa": 66,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 88,
                     "golesConvertidos": 0,
                     "id": "f00585fd-cd3c-4881-b645-5e199dae9d0f",
@@ -2490,7 +2490,7 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 88,
                     "habilidadDefensa": 66,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 88,
                     "golesConvertidos": 0,
                     "id": "25b765a3-f4d0-40c2-80c9-2eaa79a77b0c",
@@ -2544,7 +2544,7 @@
                     "habilidadDefensa": 66,
                     "tarjetaLiga": 0,
                     "estadoFisico": 88,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "69938e04-ff52-4b3d-97d7-f149e896346a",
                     "nombre": "Walter Mazzanti",
                     "edad": 29,
@@ -2561,7 +2561,7 @@
                     "id": "e86d982c-0af1-400d-88fd-839a0d864822",
                     "nombre": "Rodrigo Fernandez",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Uruguayo"
                 }
             ],
@@ -3139,7 +3139,7 @@
                     "habilidadDefensa": 85,
                     "tarjetaLiga": 0,
                     "estadoFisico": 83,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "272cb269-0f3e-4f07-8482-faf1f8649c44",
                     "nombre": "Santiago Cáseres",
                     "edad": 28,
@@ -3217,7 +3217,7 @@
                     "habilidadDefensa": 83,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "e03ca6d0-6443-416a-9650-4cd2556301ac",
                     "nombre": "Francisco Ortega",
                     "edad": 25,
@@ -3228,7 +3228,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 77,
                     "habilidadDefensa": 83,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 81,
                     "golesConvertidos": 0,
                     "id": "d4da5856-4b99-4f6e-a704-671a57abbd2c",
@@ -3256,7 +3256,7 @@
                     "habilidadDefensa": 81,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "abd381b5-4bab-4dd6-aa2e-2c58877960a6",
                     "nombre": "Lenny Lobato",
                     "edad": 23,
@@ -3273,7 +3273,7 @@
                     "id": "9f6e3bbe-1a7c-4c39-9626-54bf12a854a5",
                     "nombre": "Santiago Castro",
                     "edad": 20,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3372,7 +3372,7 @@
                     "habilidadDefensa": 79,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "0e1aa508-5d10-44c3-8833-6901bc7859d7",
                     "nombre": "Matías Melluso",
                     "edad": 27,
@@ -3415,7 +3415,7 @@
                     "id": "7ed49f5e-6834-4949-99d4-46964dfcf102",
                     "nombre": "Benjamín Domínguez",
                     "edad": 21,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3493,7 +3493,7 @@
                     "id": "bd4d505c-ca49-43a8-a9d8-a4c94793dfa1",
                     "nombre": "Ivo Mammini",
                     "edad": 21,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3502,7 +3502,7 @@
                     "habilidadDefensa": 77,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "7965508c-ced9-4c28-9b10-5336726bc035",
                     "nombre": "Pablo De Blasis",
                     "edad": 39,
@@ -3745,11 +3745,11 @@
                     "habilidadDefensa": 73,
                     "tarjetaLiga": 0,
                     "estadoFisico": 82,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "50483a49-7236-4821-a8c3-445602dbef93",
                     "nombre": "Brian Aguirre",
                     "edad": 21,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3784,7 +3784,7 @@
                     "habilidadDefensa": 82,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "e2b142ae-aafc-44de-a495-2082ae3f6177",
                     "nombre": "Armando Méndez",
                     "edad": 29,
@@ -3840,7 +3840,7 @@
                     "id": "0ca2bfdf-147e-46a9-af9b-e02466dc438d",
                     "nombre": "Francisco González",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3969,7 +3969,7 @@
                     "id": "52358e5d-db16-4ea8-ab60-0f563179a7ea",
                     "nombre": "Facundo Mallo",
                     "edad": 29,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -3978,7 +3978,7 @@
                     "habilidadDefensa": 76,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "0ddcba9d-6d80-48c9-a4a7-43b017b90d74",
                     "nombre": "Ignacio Malcorra",
                     "edad": 37,
@@ -3991,7 +3991,7 @@
                     "habilidadDefensa": 73,
                     "tarjetaLiga": 0,
                     "estadoFisico": 82,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "dfa0ae83-6693-42ac-a7b0-67be69ed023a",
                     "nombre": "Agustín Módica",
                     "edad": 21,
@@ -4034,7 +4034,7 @@
                     "id": "feecda71-c78c-4192-8684-27caba08f66f",
                     "nombre": "Damián Martínez",
                     "edad": 34,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4054,9 +4054,9 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 71,
                     "habilidadDefensa": 84,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "cc5dd5d3-8c7b-4c29-a934-3d0d74adc595",
                     "nombre": "Carlos Quintana",
                     "edad": 36,
@@ -4073,7 +4073,7 @@
                     "id": "35519210-afcb-4550-bbb4-64a7f4acff84",
                     "nombre": "Kevin Ortiz",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4535,7 +4535,7 @@
                     "habilidadDefensa": 81,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "5a0fa418-f604-412e-ad8e-9c4cca24566e",
                     "nombre": "Alan Rodríguez",
                     "edad": 29,
@@ -4591,7 +4591,7 @@
                     "id": "6d74e62f-40d7-4809-b65f-fb919722e5ac",
                     "nombre": "Gastón Verón",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4766,7 +4766,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 74,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 79,
                     "golesConvertidos": 0,
                     "id": "d90c2779-baa5-411c-966a-74fb5e49d66c",
@@ -4807,11 +4807,11 @@
                     "habilidadDefensa": 78,
                     "tarjetaLiga": 0,
                     "estadoFisico": 78,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "f8945872-d01f-4fa1-95ca-d61df53ff9bb",
                     "nombre": "Claudio Mosca",
                     "edad": 33,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4846,7 +4846,7 @@
                     "habilidadDefensa": 72,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "cb8a490b-f85c-41ce-95fe-378349802802",
                     "nombre": "Tomás Molina",
                     "edad": 29,
@@ -4876,7 +4876,7 @@
                     "id": "3121c2e5-73d2-4017-9cc6-0746b9e0a73a",
                     "nombre": "Gastón Moreira",
                     "edad": 25,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -5051,7 +5051,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 76,
                     "habilidadDefensa": 79,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 79,
                     "golesConvertidos": 0,
                     "id": "6c78388b-1f4b-429e-b599-5ff7bd7e6c0d",
@@ -5234,7 +5234,7 @@
                     "habilidadDefensa": 82,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "cab2e86b-e9a1-4dc7-ac72-8bb81172700b",
                     "nombre": "Alejandro Maciel",
                     "edad": 27,
@@ -5290,7 +5290,7 @@
                     "id": "b98a5c37-2838-41fc-94ea-b15a8104e93d",
                     "nombre": "Emanuel Coronel",
                     "edad": 27,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -5299,11 +5299,11 @@
                     "habilidadDefensa": 70,
                     "tarjetaLiga": 0,
                     "estadoFisico": 83,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "679462cf-9b8b-4e13-8148-85654c1008e5",
                     "nombre": "Milton Giménez",
                     "edad": 29,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -5349,7 +5349,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 67,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 77,
                     "golesConvertidos": 0,
                     "id": "cb42ec53-1288-446c-919f-e3f7801d3e74",
@@ -5549,7 +5549,7 @@
                     "id": "72f9affd-c09c-4404-a873-94667ce0939f",
                     "nombre": "Santiago Godoy",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -5584,7 +5584,7 @@
                     "habilidadDefensa": 78,
                     "tarjetaLiga": 0,
                     "estadoFisico": 77,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "b40b4f77-4614-45db-a725-7064eb1b8f83",
                     "nombre": "Ariel López",
                     "edad": 24,
@@ -5711,7 +5711,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 76,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 81,
                     "golesConvertidos": 0,
                     "id": "ab83c39c-cdfa-4483-b490-0809ddb6fff3",
@@ -5737,7 +5737,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 71,
                     "habilidadDefensa": 84,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 82,
                     "golesConvertidos": 0,
                     "id": "89b6b3f1-6db0-49be-b8fd-16a2f72ce280",
@@ -6599,5 +6599,5 @@
         }
     ],
     "nombre": "Liga Marino",
-    "equipoUsuario": "Boca Juniors"
+    "equipoUsuario": "River Plate"
 }

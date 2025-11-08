@@ -1,11 +1,13 @@
 package Modelo.Competicion;
 
 import Exceptions.LimiteEntrenamientoException;
+import Gestora.JsonUtiles;
 import Modelo.Equipo.Equipo;
 import Modelo.pPartido.Partido;
 import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 import java.util.Scanner;
+import org.json.*;
 
 public  class Copa extends Torneo {
     private ArrayList<Ronda> rondas;
@@ -15,6 +17,34 @@ public  class Copa extends Torneo {
         super(nombre);
         this.rondas = new ArrayList<>();
     }
+
+    public Copa (JSONObject json) {
+        super(json);
+        this.rondas = new ArrayList<>();
+
+        JSONArray jsonRondas = json.getJSONArray("rondas");
+        for (int i = 0; i < jsonRondas.length(); i++) {
+            JSONObject jsonRonda = jsonRondas.getJSONObject(i);
+
+            Ronda ronda = new Ronda(jsonRonda);
+
+            this.rondas.add(ronda);
+        }
+    }
+
+    public JSONObject toJSON() {
+        JSONObject jsonObject = super.toJSON();
+
+        JSONArray jsonRondas = new JSONArray();
+
+        for (Ronda ronda : this.rondas) {
+            jsonRondas.put(ronda.toJSON());
+        }
+        jsonObject.put("rondas", jsonRondas);
+
+        return jsonObject;
+    }
+
 
     public ArrayList<Ronda> getRondas() {
         return rondas;

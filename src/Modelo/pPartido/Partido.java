@@ -5,6 +5,8 @@ import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import enums.EventoPartido;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.*;
 
@@ -37,6 +39,43 @@ public class Partido {
         this.rojasVisitante = 0;
         this.random = new Random();
         this.goleadores = new ArrayList<>();
+    }
+
+    public Partido (JSONObject jsonObject){
+        JSONObject jsonLocal = jsonObject.getJSONObject("local");
+        this.local = new Equipo(jsonLocal);
+
+        JSONObject jsonVisitante = jsonObject.getJSONObject("visitante");
+        this.visitante = new Equipo(jsonVisitante);
+
+        this.golesLocal = jsonObject.getInt("golesLocal");
+        this.golesVisitante = jsonObject.getInt("golesVisitante");
+        this.faltasLocal = jsonObject.getInt("faltasLocal");
+        this.faltasVisitante = jsonObject.getInt("faltasVisitante");
+        this.amarillasLocal = jsonObject.getInt("amarillasLocal");
+        this.amarillasVisitante = jsonObject.getInt("amarillasVisitante");
+        this.rojasLocal = jsonObject.getInt("rojasLocal");
+        this.rojasVisitante = jsonObject.getInt("rojasVisitante");
+
+        this.goleadores = new ArrayList<>();
+
+        this.random = new Random();
+    }
+
+    public JSONObject toJson(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("local", this.local.toJSON());
+        jsonObject.put("visitante", this.visitante.toJSON());
+
+        jsonObject.put("golesLocal", this.golesLocal);
+        jsonObject.put("golesVisitante", this.golesVisitante);
+        jsonObject.put("faltasLocal", this.faltasLocal);
+        jsonObject.put("faltasVisitante", this.faltasVisitante);
+        jsonObject.put("amarillasLocal", this.amarillasLocal);
+        jsonObject.put("amarillasVisitante", this.amarillasVisitante);
+        jsonObject.put("rojasLocal", this.rojasLocal);
+        jsonObject.put("rojasVisitante", this.rojasVisitante);
+        return jsonObject;
     }
 
     // ==================== Getters y Setters ====================

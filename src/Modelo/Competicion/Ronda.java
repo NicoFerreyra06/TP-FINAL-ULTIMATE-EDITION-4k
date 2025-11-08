@@ -3,6 +3,9 @@ package Modelo.Competicion;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import Modelo.pPartido.Partido;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,14 +22,31 @@ public class Ronda
         this.ganadoresDeLaRonda = null; //Se le da valor cuando se llame getGanadores()
     }
 
-    //falta completar metodo
-    public void jugarRonda()
-    {
-        System.out.println("========= JUGANDO: " + this.nombre + " =========");
-        for (Partido partido : this.partidos) {
-            partido.simularRapido(); // Usamos la simulación rápida para avanzar
+    public Ronda(JSONObject json) {
+        this.nombre = json.getString("nombre");
+        this.partidos = new ArrayList<>();
+
+        JSONArray jsonPartidos = json.getJSONArray("partidos");
+        for (int i = 0; i < jsonPartidos.length(); i++) {
+            JSONObject jsonPartido = jsonPartidos.getJSONObject(i);
+
+            Partido partidoCargado = new Partido(jsonPartido);
+            this.partidos.add(partidoCargado);
         }
-        System.out.println("========================================\n");
+    }
+
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("nombre", this.nombre);
+
+        JSONArray jsonPartidos = new JSONArray();
+
+        for (Partido partido : this.partidos) {
+            jsonPartidos.put(partido.toJson());
+        }
+
+        jsonObject.put("partidos", jsonPartidos);
+        return jsonObject;
     }
 
 

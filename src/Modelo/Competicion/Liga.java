@@ -254,11 +254,6 @@ public class Liga extends Torneo implements iToJSON{
             }
         }
 
-        //Guarda la partida despues de cada jornada
-        String nombreArchivo = "partida_guardada.json";
-        JsonUtiles.grabarUnJson(toJSON(), nombreArchivo);
-        System.out.println("===== Partida guardada en: " + nombreArchivo + " =====");
-
         this.jornada++;
     }
 
