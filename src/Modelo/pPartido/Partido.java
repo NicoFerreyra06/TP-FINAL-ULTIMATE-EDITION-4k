@@ -232,8 +232,10 @@ public class Partido {
             Thread.sleep(250);
         }
 
-        Thread.sleep(1500);
         mostrarResultado();
+        System.out.println("\nPresione cualquier tecla para continuar...");
+        sc.nextLine();
+        sc.nextLine();
 
         visitante.bajarSancion();
         local.bajarSancion();
@@ -528,15 +530,15 @@ public class Partido {
     /**
      * Muestra el resultado final del partido
      */
-    private void mostrarResultado () throws InterruptedException{
-        System.out.println("Termina el partido");
+    private void mostrarResultado () {
+        System.out.println("------------------------------------------------------");
+        System.out.println("Termina el partido!");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
 
         for (Gol gol : goleadores) {
             System.out.println("Minuto " + gol.getMinuto() +
                     ": Gol de " + gol.getAutor().getNombre() +
                     " (Asistencia: " + gol.getAsistidor().getNombre() + ")");
-            Thread.sleep(250);
         }
     }
     /**

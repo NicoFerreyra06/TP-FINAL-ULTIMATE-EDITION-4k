@@ -61,13 +61,10 @@ public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
             sc.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println("Error, numero fuera de rango. Intente nuevamente ");
-        }catch (JugadorNoEncontradoException e)
-        {
-            System.out.println("Error en el cambio: "+ e.getMessage());
+        } catch (JugadorNoEncontradoException e) {
+            System.out.println("Error en el cambio: " + e.getMessage());
             System.out.println("Intente nuevamente");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Ocurrio un error inesperado. Intente nuevamente");
             sc.nextLine();
         }
@@ -170,7 +167,7 @@ void main() {
 
     GestoraEquipos gestoraEquipos = new GestoraEquipos("equipos");
     gestoraEquipos.cargarEquipos("equipos");
-    ArrayList <Equipo> listaDeEquipos = (ArrayList<Equipo>) gestoraEquipos.getElementos();
+    ArrayList<Equipo> listaDeEquipos = (ArrayList<Equipo>) gestoraEquipos.getElementos();
 
     System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
     Scanner sc = new Scanner(System.in);
@@ -197,7 +194,7 @@ void main() {
                     liga.anotarEquipo(equipo);
                 }
 
-                for (int i = 0; i < 16; i++){
+                for (int i = 0; i < 16; i++) {
                     copa.anotarEquipo(listaDeEquipos.get(i));
                 }
 
@@ -244,25 +241,32 @@ void main() {
 
             switch (opcion) {
                 case 1:
-                    if (copa != null){
-                        if (liga.getJornada() == 8 || liga.getJornada() == 16 ||
-                                liga.getJornada() == 24 || liga.getJornada() == 33){
+                    boolean jornadaCopa = false;
 
+                    if (copa != null) {
+                        if (liga.getJornada() == 8 || liga.getJornada() == 16 || liga.getJornada() == 24 || liga.getJornada() == 33) {
+
+                            System.out.println("\n🏆 Semana de Copa");
                             copa.jugarProximaFecha(usuarioEquipo, sc);
                             copa.mostrarBracket();
+
+                            liga.setJornada(liga.getJornada() + 1);
+                            jornadaCopa = true;
                         }
                     }
+                    if (!jornadaCopa) {
+                        liga.jugarProximaFecha(usuarioEquipo, sc);
+                        entrenamientosJornada = 0;
+                    }
 
-                    liga.jugarProximaFecha(usuarioEquipo, sc);
-                    entrenamientosJornada = 0;
-                try {
-                    System.out.println("Guardando partida....");
-                    JsonUtiles.grabarUnJson(liga.toJSON(), "Liga.json");
-                    JsonUtiles.grabarUnJson(copa.toJSON(), "Copa.json");
-                    System.out.println("Partida guardada correctamente! ");
-                } catch (Exception e) {
-                    System.out.println("ERROR AL GUARDAR PARTIDA!");
-                }
+                    try {
+                        System.out.println("Guardando partida....");
+                        JsonUtiles.grabarUnJson(liga.toJSON(), "Liga.json");
+                        JsonUtiles.grabarUnJson(copa.toJSON(), "Copa.json");
+                        System.out.println("Partida guardada correctamente! ");
+                    } catch (Exception e) {
+                        System.out.println("ERROR AL GUARDAR PARTIDA!");
+                    }
 
                     break;
                 case 2:
@@ -291,7 +295,7 @@ void main() {
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
             liga.podioLiga();
         }
-    } catch (LimiteEntrenamientoException | InterruptedException e){
+    } catch (LimiteEntrenamientoException | InterruptedException e) {
         System.out.println(e.getMessage());
     }
 }
@@ -303,8 +307,6 @@ public Liga cargarLiga() {
 
     Liga ligaCargada = new Liga(jsonPartida);
 
-    System.out.println("¡Partida cargada! Listo para jugar la jornada " + ligaCargada.getJornada());
-
     return ligaCargada;
 }
 
@@ -314,8 +316,6 @@ public Copa cargarCopa() {
     JSONObject jsonPartida = new JSONObject(jsonString);
 
     Copa copaCargada = new Copa(jsonPartida);
-
-    System.out.println("¡Partida cargada! Listo para jugar la jornada ");
 
     return copaCargada;
 }
