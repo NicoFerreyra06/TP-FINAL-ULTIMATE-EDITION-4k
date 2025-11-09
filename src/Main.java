@@ -10,6 +10,9 @@ import Modelo.Persona.Jugador;
 import Modelo.Podios.PodiosDeCompeticion;
 import org.json.JSONObject;
 
+/**
+ * Funcion para realizar cambios, entre jugadores del {@link Equipo} del jugador
+ */
 public static void realizarCambios(Equipo usuarioEquipo, Scanner sc) {
 
     ArrayList<Jugador> titularesArray = new ArrayList<>(usuarioEquipo.getTitulares());

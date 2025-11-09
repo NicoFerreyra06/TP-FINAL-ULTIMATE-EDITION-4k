@@ -5,11 +5,14 @@ import Exceptions.LimiteEntrenamientoException;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import enums.EventoPartido;
-import org.json.JSONArray;
 import org.json.JSONObject;
-
+import Modelo.Competicion.*;
 import java.util.*;
 
+/**
+ * Clase para simular los partidos entre dos equipos
+ * es el corazon de {@link Copa} y {@link Liga}
+ */
 public class Partido {
     private final Equipo local;
     private final Equipo visitante;
@@ -152,6 +155,12 @@ public class Partido {
     }
 
     // ===================Metodos=======================
+
+    /**
+     * Simula el partido del usuario minuto a minuto
+     * permitiendole al usuario realizar cambios en el entretiempo
+     * @Param equipoUsuario El equipo controlado por el usuario
+     */
     public void simularInteractivo(Equipo equipoUsuario, Scanner sc) throws InterruptedException {
         boolean check = false;
 
@@ -233,6 +242,9 @@ public class Partido {
         visitante.verificarTitulares();
     }
 
+    /**
+     * Simula el partido de forma rápida (sin interacción ni pausas de tiempo).
+     */
     public void simularRapido() throws InterruptedException {
 
         double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
@@ -251,6 +263,9 @@ public class Partido {
         visitante.bajarSancion();
     }
 
+    /**
+     * Simula los eventos que pueden pasar en el minuto de partido
+     */
     public void simularMinuto(double probGolLocal, double probGolVisitante, boolean mostrar, int minuto, double c_Local, double c_Visitante) throws InterruptedException {
 
         double evento = random.nextDouble();
@@ -323,6 +338,10 @@ public class Partido {
         }
     }
 
+    /**
+     * Elige y gestiona el autor del gol y el autor de la asistencia.
+     * Actualizando las estadisticas de cada jugador.
+     */
     public void gestionarGolesAsistencias (Equipo equipo, boolean local, boolean mostrar, int minuto) throws InterruptedException {
 
         Jugador goleador = equipo.elegirAutorGol();
@@ -369,6 +388,10 @@ public class Partido {
         }
     }
 
+    /**
+     * Gestiona una falta cometida, determinando si resulta en amarilla o roja
+     * actualiza las estadisticas del jugador y gestiona las sanciones del jugador
+     */
     public void gestionarFaltas (Equipo equipo, boolean local, boolean mostrar, int minuto) throws InterruptedException {
         Jugador autorFalta = equipo.elegirAutorFalta();
 
@@ -446,6 +469,10 @@ public class Partido {
         }
     }
 
+    /**
+     * Determina al azar si una falta resulta en tarjeta (Roja, Amarilla o ninguna).
+     * @return 2 para Roja, 1 para Amarilla, 0 para Sin tarjeta.
+     */
     private int determinarTarjeta() {
         double valorAleatorio = random.nextDouble(); // Un número entre 0.0 y 1.0
         double probRoja = 0.001; // 3% de probabilidad de roja directa
@@ -460,10 +487,18 @@ public class Partido {
         }
     }
 
+    /**
+     * Verifica si el equipo participa en el partido
+     * @param equipo el equipo a verificar
+     * @return True si es local o visitante, False si no es
+     */
     public boolean involucraEquipoUsuario(Equipo equipo) {
         return local.equals(equipo) || visitante.equals(equipo);
     }
 
+    /**
+     * Metodo para la presentacion de todos los partidos.
+     */
     private void presentacionPartido(Scanner sc) {
 
         System.out.println("------------------------------------------------------------------");
@@ -490,6 +525,9 @@ public class Partido {
 
     }
 
+    /**
+     * Muestra el resultado final del partido
+     */
     private void mostrarResultado () throws InterruptedException{
         System.out.println("Termina el partido");
         System.out.println(local.getNombre() + " " + golesLocal + " - " + visitante.getNombre() + " " + golesVisitante);
@@ -518,6 +556,9 @@ public class Partido {
         }
     }
 
+    /**
+     * Funcion para realizar cambios, entre jugadores del {@link Equipo} del jugador
+     */
     public int realizarCambioPartido (Scanner sc, Equipo equipo, int cambiosRestantes){
 
         ArrayList <Jugador> titularesArray = new ArrayList<>(equipo.getTitulares());
