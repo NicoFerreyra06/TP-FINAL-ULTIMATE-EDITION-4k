@@ -11,11 +11,13 @@ import org.json.*;
 
 public  class Copa extends Torneo {
     private ArrayList<Ronda> rondas;
+    ArrayList<Equipo> ganadores;
 
     //Constructor
     public Copa(String nombre) {
         super(nombre);
         this.rondas = new ArrayList<>();
+        this.ganadores = new ArrayList<>();
     }
 
     public Copa (JSONObject json) {
@@ -30,6 +32,22 @@ public  class Copa extends Torneo {
 
             this.rondas.add(ronda);
         }
+
+        this.ganadores = new ArrayList<>();
+
+        JSONArray jsonGanadores = json.getJSONArray("ganadores");
+        for (int i = 0; i < jsonGanadores.length(); i++) {
+            // Leemos el nombre del equipo
+            String nombreGanador = jsonGanadores.getString(i);
+
+            // Buscamos el objeto Equipo real en el mapa cargado por super(json)
+            Equipo equipoGanador = super.equiposTorneo.get(nombreGanador);
+
+            if (equipoGanador != null) {
+                this.ganadores.add(equipoGanador);
+            }
+        }
+
     }
 
     public JSONObject toJSON() {
@@ -41,6 +59,13 @@ public  class Copa extends Torneo {
             jsonRondas.put(ronda.toJSON());
         }
         jsonObject.put("rondas", jsonRondas);
+
+        JSONArray jsonGanadores = new JSONArray();
+            for (Equipo equipo : this.ganadores) {
+                jsonGanadores.put(equipo.getNombre());
+            }
+
+        jsonObject.put("ganadores", jsonGanadores);
 
         return jsonObject;
     }
@@ -100,7 +125,7 @@ public  class Copa extends Torneo {
         }
 
         //  Obtener ganadores y actualizar la lista de equipos en la copa
-        ArrayList<Equipo> ganadores = rondaActual.getGanadores(equipoJugador);
+        this.ganadores = rondaActual.getGanadores(equipoJugador);
         rondas.add(rondaActual);
 
         // Actualizamos la lista de equipos en la copa con los ganadores.
@@ -115,13 +140,21 @@ public  class Copa extends Torneo {
         }
     }
 
+    public void campeonCopa (){
+        if (equiposTorneo.size() == 1) {
+            System.out.println("\n ¡¡" + ganadores.get(0).getNombre() + " ES EL CAMPEÓN DE LA COPA " + getNombre().toUpperCase() + "!!");
+        } else {
+            System.out.println("Aun quedan equipos en la competencia");
+        }
+    }
+
     public void mostrarBracket() {
         System.out.println("\n=============================================");
         System.out.println("        BRACKET DE LA " + getNombre().toUpperCase());
         System.out.println("=============================================");
 
         if (rondas.isEmpty()) {
-            System.out.println("\n      ...El torneo aún no ha comenzado...");
+            System.out.println("\n ...El torneo aún no ha comenzado...");
             return;
         }
 

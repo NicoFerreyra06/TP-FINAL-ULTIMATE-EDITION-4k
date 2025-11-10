@@ -234,7 +234,6 @@ void main() {
         boolean salir = false;
         int entrenamientosJornada = 0;
         final int limiteEntrenamiento = 1;
-
         while (!liga.isTerminada() && !salir) {
             int opcion = menuOpciones(sc, limiteEntrenamiento, entrenamientosJornada, liga);
 
@@ -293,6 +292,7 @@ void main() {
             PodiosDeCompeticion<Liga> podiosDeCompeticion = new PodiosDeCompeticion<>(liga);
             podiosDeCompeticion.mostrarEstadisticasIndivuduales();
             liga.podioLiga();
+            copa.campeonCopa();
         }
     } catch (LimiteEntrenamientoException | InterruptedException e) {
         System.out.println(e.getMessage());
