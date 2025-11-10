@@ -1,6 +1,6 @@
 package Modelo.Equipo;
 
-import Exceptions.JugadorExistente;
+import Exceptions.JugadorExistenteException;
 import Exceptions.JugadorNoEncontradoException;
 import Interfaces.iToJSON;
 import Modelo.Persona.DirectorTecnico;
@@ -73,7 +73,7 @@ public class Equipo implements iToJSON {
                 JSONObject jsonJugador = jsonSuplentes.getJSONObject(i);
                 agregarJugador(new Jugador(jsonJugador));
             }
-        } catch (JugadorExistente e) {
+        } catch (JugadorExistenteException e) {
             System.out.println("Advertencia al cargar: " + this.nombre + ": " + e.getMessage());
         }
 
@@ -200,13 +200,13 @@ public class Equipo implements iToJSON {
      * @return true si se agrego, falso si no.
      */
 
-    public boolean agregarJugador(Jugador jugador) throws JugadorExistente {
+    public boolean agregarJugador(Jugador jugador) throws JugadorExistenteException {
         if (jugador == null)
         {
             throw new IllegalArgumentException("El jugador no puede ser nulo");
         }
         if (titulares.contains(jugador) || suplentes.contains(jugador)) {
-            throw new JugadorExistente("El jugador: " + jugador.getNombre() + " ya se encuentra en el equipo.");
+            throw new JugadorExistenteException("El jugador: " + jugador.getNombre() + " ya se encuentra en el equipo.");
         }
 
         if (titulares.size() < 11) {

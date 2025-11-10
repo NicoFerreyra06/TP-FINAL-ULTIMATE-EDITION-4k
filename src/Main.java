@@ -162,6 +162,21 @@ public static void mostrarEquipo(Equipo equipo) {
     }
 }
 
+public Liga cargarLiga() {
+    String jsonString = JsonUtiles.leer("Liga");
+
+    JSONObject jsonPartida = new JSONObject(jsonString);
+
+    return new Liga(jsonPartida);
+}
+
+public Copa cargarCopa() {
+    String jsonString = JsonUtiles.leer("Copa");
+
+    JSONObject jsonPartida = new JSONObject(jsonString);
+
+    return new Copa(jsonPartida);
+}
 
 void main() {
 
@@ -299,18 +314,3 @@ void main() {
     }
 }
 
-public Liga cargarLiga() {
-    String jsonString = JsonUtiles.leer("Liga");
-
-    JSONObject jsonPartida = new JSONObject(jsonString);
-
-    return new Liga(jsonPartida);
-}
-
-public Copa cargarCopa() {
-    String jsonString = JsonUtiles.leer("Copa");
-
-    JSONObject jsonPartida = new JSONObject(jsonString);
-
-    return new Copa(jsonPartida);
-}
