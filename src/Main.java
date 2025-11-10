@@ -209,7 +209,6 @@ void main() {
                 copa = cargarCopa();
 
                 if (liga != null || copa != null) {
-
                     String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
                     usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
 
@@ -305,9 +304,7 @@ public Liga cargarLiga() {
 
     JSONObject jsonPartida = new JSONObject(jsonString);
 
-    Liga ligaCargada = new Liga(jsonPartida);
-
-    return ligaCargada;
+    return new Liga(jsonPartida);
 }
 
 public Copa cargarCopa() {
@@ -315,7 +312,5 @@ public Copa cargarCopa() {
 
     JSONObject jsonPartida = new JSONObject(jsonString);
 
-    Copa copaCargada = new Copa(jsonPartida);
-
-    return copaCargada;
+    return new Copa(jsonPartida);
 }
