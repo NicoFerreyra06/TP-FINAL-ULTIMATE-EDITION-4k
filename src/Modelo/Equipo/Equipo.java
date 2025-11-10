@@ -16,9 +16,9 @@ public class Equipo implements iToJSON {
     private Estadio estadio;
     private DirectorTecnico tecnico;
     private double presupuesto;
-    private HashSet<Jugador> titulares;
-    private HashSet<Jugador> suplentes;
-    private LinkedHashSet <Jugador> Expulsados;
+    private Set<Jugador> titulares;
+    private Set<Jugador> suplentes;
+    private Set <Jugador> Expulsados;
     private int puntos;
     private final Random random;
     private boolean jugoJornada;
@@ -32,8 +32,8 @@ public class Equipo implements iToJSON {
         this.estadio = estadio;
         this.tecnico = tecnico;
         this.presupuesto = presupuesto;
-        this.titulares = new HashSet<>();
-        this.suplentes = new HashSet<>();
+        this.titulares = new LinkedHashSet<>();
+        this.suplentes = new LinkedHashSet<>();
         this.Expulsados = new LinkedHashSet <>();
         this.puntos = 0;
         this.random = new Random();
@@ -149,22 +149,6 @@ public class Equipo implements iToJSON {
         this.presupuesto = presupuesto;
     }
 
-    public HashSet<Jugador> getTitulares() {
-        return titulares;
-    }
-
-    public void setTitulares(HashSet<Jugador> titulares) {
-        this.titulares = titulares;
-    }
-
-    public HashSet<Jugador> getSuplentes() {
-        return suplentes;
-    }
-
-    public void setSuplentes(HashSet<Jugador> suplentes) {
-        this.suplentes = suplentes;
-    }
-
     public int getPuntos() {
         return puntos;
     }
@@ -173,11 +157,27 @@ public class Equipo implements iToJSON {
         this.puntos = puntos;
     }
 
-    public LinkedHashSet<Jugador> getExpulsados() {
+    public Set<Jugador> getTitulares() {
+        return titulares;
+    }
+
+    public void setTitulares(Set<Jugador> titulares) {
+        this.titulares = titulares;
+    }
+
+    public Set<Jugador> getSuplentes() {
+        return suplentes;
+    }
+
+    public void setSuplentes(Set<Jugador> suplentes) {
+        this.suplentes = suplentes;
+    }
+
+    public Set<Jugador> getExpulsados() {
         return Expulsados;
     }
 
-    public void setExpulsados(LinkedHashSet<Jugador> expulsados) {
+    public void setExpulsados(Set<Jugador> expulsados) {
         Expulsados = expulsados;
     }
 
