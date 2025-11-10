@@ -165,8 +165,8 @@ public static void mostrarEquipo(Equipo equipo) {
 
 void main() {
 
-    GestoraEquipos gestoraEquipos = new GestoraEquipos("equipos");
-    gestoraEquipos.cargarEquipos("equipos");
+    GestoraEquipos gestoraEquipos = new GestoraEquipos("Equipos");
+    gestoraEquipos.cargarEquipos("Equipos");
     ArrayList<Equipo> listaDeEquipos = (ArrayList<Equipo>) gestoraEquipos.getElementos();
 
     System.out.println("¡Bienvenido al Mánager de Fútbol! ⚽");
@@ -243,7 +243,7 @@ void main() {
                     boolean jornadaCopa = false;
 
                     if (copa != null) {
-                        if (liga.getJornada() == 8 || liga.getJornada() == 16 || liga.getJornada() == 24 || liga.getJornada() == 33) {
+                        if (liga.getJornada() == 8 || liga.getJornada() == 16 || liga.getJornada() == 24 || liga.getJornada() == 37) {
 
                             System.out.println("\n🏆 Semana de Copa");
                             copa.jugarProximaFecha(usuarioEquipo, sc);

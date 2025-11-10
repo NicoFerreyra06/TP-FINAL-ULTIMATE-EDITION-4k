@@ -3083,8 +3083,8 @@
       },
       {
         "posicion": "ARQUERO",
-        "habilidadAtaque": 35,
-        "habilidadDefensa": 79,
+        "habilidadAtaque": 99,
+        "habilidadDefensa": 99,
         "tarjetaLiga": 0,
         "estadoFisico": 77,
         "golesConvertidos": 0,

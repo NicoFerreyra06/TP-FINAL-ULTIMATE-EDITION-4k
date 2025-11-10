@@ -1,803 +1,51 @@
 {
     "fixture": [
         {
-            "visitante": "River Plate",
-            "local": "Boca Juniors"
+            "visitante": "Estudiantes (LP)",
+            "local": "Lanús"
         },
         {
-            "visitante": "Tigre",
-            "local": "San Lorenzo"
+            "visitante": "Boca Juniors",
+            "local": "Tigre"
         },
         {
-            "visitante": "Atlanta",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
+            "visitante": "Racing",
             "local": "Huracán"
         },
         {
-            "visitante": "Argentinos Juniors",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Boca Juniors"
+            "visitante": "River Plate",
+            "local": "Vélez Sarsfield"
         },
         {
             "visitante": "Colón",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Colón",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
             "local": "Banfield"
         },
         {
-            "visitante": "Argentinos Juniors",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "River Plate"
+            "visitante": "San Lorenzo",
+            "local": "Rosario Central"
         },
         {
             "visitante": "Argentinos Juniors",
             "local": "Platense"
         },
         {
-            "visitante": "Lanús",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Chacarita Juniors"
-        },
-        {
             "visitante": "Newell\u2019s Old Boys",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Racing",
             "local": "Independiente"
         },
         {
-            "visitante": "River Plate",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Colón"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Platense"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Lanús"
-        },
-        {
             "visitante": "Ferro Carril Oeste",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Chacarita Juniors",
             "local": "Gimnasia (LP)"
         },
         {
-            "visitante": "Banfield",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
+            "visitante": "Atlanta",
             "local": "Chacarita Juniors"
         },
         {
-            "visitante": "Vélez Sarsfield",
-            "local": "Banfield"
+            "visitante": "Boca Juniors",
+            "local": "Estudiantes (LP)"
         },
         {
-            "visitante": "Gimnasia (LP)",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Rosario Central",
+            "visitante": "Racing",
             "local": "Lanús"
         },
         {
@@ -805,487 +53,231 @@
             "local": "Tigre"
         },
         {
-            "visitante": "Boca Juniors",
-            "local": "Atlanta"
+            "visitante": "Colón",
+            "local": "Huracán"
         },
         {
             "visitante": "San Lorenzo",
-            "local": "Colón"
+            "local": "Vélez Sarsfield"
         },
         {
-            "visitante": "Independiente",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Racing",
+            "visitante": "Argentinos Juniors",
             "local": "Banfield"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Lanús"
         },
         {
             "visitante": "Newell\u2019s Old Boys",
             "local": "Rosario Central"
         },
         {
-            "visitante": "Atlanta",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Platense"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Platense"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Platense",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Racing",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "River Plate",
-            "local": "Ferro Carril Oeste"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Argentinos Juniors"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "San Lorenzo",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Independiente",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "River Plate"
-        },
-        {
             "visitante": "Ferro Carril Oeste",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Gimnasia (LP)"
+            "local": "Platense"
         },
         {
             "visitante": "Atlanta",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "Racing"
-        },
-        {
-            "visitante": "San Lorenzo",
             "local": "Independiente"
         },
         {
+            "visitante": "Chacarita Juniors",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Racing"
+        },
+        {
             "visitante": "River Plate",
-            "local": "Lanús"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Rosario Central"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Tigre",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Boca Juniors",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Colón",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Atlanta",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Tigre",
             "local": "Boca Juniors"
         },
         {
-            "visitante": "River Plate",
-            "local": "Newell\u2019s Old Boys"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Huracán"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Vélez Sarsfield"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Platense",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Chacarita Juniors",
-            "local": "San Lorenzo"
-        },
-        {
             "visitante": "Colón",
-            "local": "Boca Juniors"
+            "local": "Lanús"
         },
         {
-            "visitante": "Atlanta",
+            "visitante": "San Lorenzo",
             "local": "Tigre"
         },
         {
-            "visitante": "Huracán",
-            "local": "River Plate"
+            "visitante": "Argentinos Juniors",
+            "local": "Huracán"
         },
         {
             "visitante": "Newell\u2019s Old Boys",
-            "local": "Gimnasia (LP)"
-        },
-        {
-            "visitante": "Rosario Central",
             "local": "Vélez Sarsfield"
         },
         {
-            "visitante": "Lanús",
+            "visitante": "Ferro Carril Oeste",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "River Plate",
             "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Racing"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Colón"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "River Plate"
         },
         {
             "visitante": "Argentinos Juniors",
             "local": "Racing"
         },
         {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Boca Juniors"
+        },
+        {
             "visitante": "Ferro Carril Oeste",
-            "local": "Independiente"
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Banfield"
         },
         {
             "visitante": "Platense",
-            "local": "San Lorenzo"
+            "local": "Rosario Central"
         },
         {
-            "visitante": "Banfield",
+            "visitante": "San Lorenzo",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Atlanta",
             "local": "Boca Juniors"
         },
         {
             "visitante": "Chacarita Juniors",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
             "local": "Tigre"
         },
         {
-            "visitante": "Colón",
-            "local": "Atlanta"
+            "visitante": "Independiente",
+            "local": "Huracán"
         },
         {
-            "visitante": "River Plate",
-            "local": "Gimnasia (LP)"
+            "visitante": "Platense",
+            "local": "Vélez Sarsfield"
         },
         {
-            "visitante": "Huracán",
+            "visitante": "Rosario Central",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Banfield",
             "local": "Vélez Sarsfield"
         },
         {
@@ -1293,188 +285,764 @@
             "local": "Estudiantes (LP)"
         },
         {
-            "visitante": "Rosario Central",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "San Lorenzo"
-        },
-        {
             "visitante": "Ferro Carril Oeste",
-            "local": "Boca Juniors"
+            "local": "Argentinos Juniors"
         },
         {
-            "visitante": "Platense",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Banfield",
-            "local": "Atlanta"
+            "visitante": "Atlanta",
+            "local": "San Lorenzo"
         },
         {
             "visitante": "Chacarita Juniors",
             "local": "Colón"
         },
         {
-            "visitante": "Vélez Sarsfield",
+            "visitante": "Gimnasia (LP)",
             "local": "River Plate"
         },
         {
-            "visitante": "Gimnasia (LP)",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Huracán",
+            "visitante": "Independiente",
             "local": "Racing"
         },
         {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Independiente"
+            "visitante": "Platense",
+            "local": "Boca Juniors"
         },
         {
             "visitante": "Rosario Central",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
             "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Platense",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Platense",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Racing"
         },
         {
             "visitante": "Lanús",
             "local": "Boca Juniors"
         },
         {
+            "visitante": "Gimnasia (LP)",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Racing",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Racing",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Colón",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Ferro Carril Oeste"
+        },
+        {
             "visitante": "Argentinos Juniors",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Platense"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
             "local": "Tigre"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Platense"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Chacarita Juniors"
         },
         {
             "visitante": "Ferro Carril Oeste",
             "local": "Atlanta"
         },
         {
-            "visitante": "Platense",
+            "visitante": "Lanús",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Banfield",
             "local": "Colón"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Atlanta"
         },
         {
             "visitante": "Banfield",
             "local": "Chacarita Juniors"
         },
         {
-            "visitante": "River Plate",
-            "local": "Estudiantes (LP)"
-        },
-        {
-            "visitante": "Vélez Sarsfield",
-            "local": "Racing"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Boca Juniors"
-        },
-        {
             "visitante": "Rosario Central",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Chacarita Juniors"
+            "local": "Gimnasia (LP)"
         },
         {
             "visitante": "Platense",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Racing",
-            "local": "River Plate"
-        },
-        {
-            "visitante": "Estudiantes (LP)",
             "local": "Independiente"
         },
         {
-            "visitante": "Vélez Sarsfield",
-            "local": "San Lorenzo"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
-            "local": "Boca Juniors"
-        },
-        {
-            "visitante": "Huracán",
-            "local": "Tigre"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
-            "local": "Atlanta"
-        },
-        {
-            "visitante": "Rosario Central",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Lanús",
-            "local": "Chacarita Juniors"
-        },
-        {
-            "visitante": "Argentinos Juniors",
-            "local": "Banfield"
-        },
-        {
-            "visitante": "Ferro Carril Oeste",
-            "local": "Platense"
+            "visitante": "Colón",
+            "local": "Estudiantes (LP)"
         },
         {
             "visitante": "River Plate",
-            "local": "Independiente"
-        },
-        {
-            "visitante": "Racing",
             "local": "San Lorenzo"
         },
         {
-            "visitante": "Estudiantes (LP)",
-            "local": "Boca Juniors"
+            "visitante": "Racing",
+            "local": "Argentinos Juniors"
         },
         {
-            "visitante": "Vélez Sarsfield",
-            "local": "Tigre"
+            "visitante": "Boca Juniors",
+            "local": "Newell\u2019s Old Boys"
         },
         {
-            "visitante": "Gimnasia (LP)",
+            "visitante": "Lanús",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Tigre",
             "local": "Atlanta"
         },
         {
             "visitante": "Huracán",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Newell\u2019s Old Boys",
             "local": "Chacarita Juniors"
         },
         {
+            "visitante": "Vélez Sarsfield",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Independiente"
+        },
+        {
             "visitante": "Rosario Central",
-            "local": "Banfield"
+            "local": "Platense"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Atlanta"
         },
         {
             "visitante": "Lanús",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
             "local": "Platense"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Ferro Carril Oeste"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Newell\u2019s Old Boys"
         },
         {
             "visitante": "Argentinos Juniors",
@@ -1482,176 +1050,531 @@
         },
         {
             "visitante": "San Lorenzo",
-            "local": "River Plate"
+            "local": "Atlanta"
         },
         {
-            "visitante": "Independiente",
-            "local": "Boca Juniors"
+            "visitante": "Colón",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Gimnasia (LP)"
         },
         {
             "visitante": "Racing",
-            "local": "Tigre"
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Atlanta"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Chacarita Juniors"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Huracán"
         },
         {
             "visitante": "Estudiantes (LP)",
             "local": "Atlanta"
         },
         {
-            "visitante": "Vélez Sarsfield",
-            "local": "Colón"
-        },
-        {
-            "visitante": "Gimnasia (LP)",
+            "visitante": "Ferro Carril Oeste",
             "local": "Chacarita Juniors"
         },
         {
-            "visitante": "Huracán",
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "River Plate",
             "local": "Banfield"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Lanús",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Independiente"
         },
         {
             "visitante": "Newell\u2019s Old Boys",
             "local": "Platense"
         },
         {
-            "visitante": "Rosario Central",
-            "local": "Ferro Carril Oeste"
+            "visitante": "Argentinos Juniors",
+            "local": "Rosario Central"
         },
         {
-            "visitante": "Lanús",
+            "visitante": "San Lorenzo",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Boca Juniors",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Gimnasia (LP)"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Independiente"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Racing",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Colón",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "River Plate",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Platense"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Rosario Central"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Colón",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "San Lorenzo",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Banfield"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Vélez Sarsfield"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Argentinos Juniors",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Newell\u2019s Old Boys",
             "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Estudiantes (LP)",
+            "local": "Huracán"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Tigre"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Ferro Carril Oeste",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Tigre",
+            "local": "Estudiantes (LP)"
+        },
+        {
+            "visitante": "Huracán",
+            "local": "Lanús"
+        },
+        {
+            "visitante": "Vélez Sarsfield",
+            "local": "Boca Juniors"
+        },
+        {
+            "visitante": "Banfield",
+            "local": "Racing"
+        },
+        {
+            "visitante": "Rosario Central",
+            "local": "River Plate"
+        },
+        {
+            "visitante": "Platense",
+            "local": "Colón"
+        },
+        {
+            "visitante": "Independiente",
+            "local": "San Lorenzo"
+        },
+        {
+            "visitante": "Gimnasia (LP)",
+            "local": "Argentinos Juniors"
+        },
+        {
+            "visitante": "Chacarita Juniors",
+            "local": "Newell\u2019s Old Boys"
+        },
+        {
+            "visitante": "Atlanta",
+            "local": "Ferro Carril Oeste"
         }
     ],
-    "jornada": 1,
+    "jornada": 3,
     "tablaPosiciones": [
         {
-            "golesContra": 0,
+            "golesContra": 2,
             "empatados": 1,
-            "perdidos": 0,
+            "perdidos": 1,
             "nombreEquipo": "Newell\u2019s Old Boys",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
-            "diferenciaGoles": 0,
+            "diferenciaGoles": -1,
             "puntos": 1,
-            "golesFavor": 0
+            "golesFavor": 1
         },
         {
-            "golesContra": 0,
+            "golesContra": 4,
             "empatados": 1,
-            "perdidos": 0,
+            "perdidos": 1,
             "nombreEquipo": "Independiente",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
-            "diferenciaGoles": 0,
+            "diferenciaGoles": -3,
             "puntos": 1,
-            "golesFavor": 0
+            "golesFavor": 1
         },
         {
-            "golesContra": 0,
-            "empatados": 1,
-            "perdidos": 0,
+            "golesContra": 1,
+            "empatados": 0,
+            "perdidos": 1,
             "nombreEquipo": "Rosario Central",
-            "jugados": 1,
-            "ganados": 0,
+            "jugados": 2,
+            "ganados": 1,
             "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "puntos": 3,
+            "golesFavor": 1
         },
         {
             "golesContra": 0,
             "empatados": 1,
             "perdidos": 0,
             "nombreEquipo": "Argentinos Juniors",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 4,
+            "golesFavor": 1
         },
         {
-            "golesContra": 2,
-            "empatados": 0,
+            "golesContra": 1,
+            "empatados": 1,
             "perdidos": 1,
             "nombreEquipo": "Banfield",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": -2,
-            "puntos": 0,
-            "golesFavor": 0
-        },
-        {
-            "golesContra": 0,
-            "empatados": 0,
-            "perdidos": 0,
-            "nombreEquipo": "San Lorenzo",
-            "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 1,
-            "puntos": 3,
-            "golesFavor": 1
-        },
-        {
-            "golesContra": 0,
-            "empatados": 1,
-            "perdidos": 0,
-            "nombreEquipo": "Lanús",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
-        },
-        {
-            "golesContra": 0,
-            "empatados": 0,
-            "perdidos": 0,
-            "nombreEquipo": "Ferro Carril Oeste",
-            "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 2,
-            "puntos": 3,
-            "golesFavor": 2
-        },
-        {
-            "golesContra": 2,
-            "empatados": 0,
-            "perdidos": 1,
-            "nombreEquipo": "Huracán",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": -2,
-            "puntos": 0,
-            "golesFavor": 0
-        },
-        {
-            "golesContra": 3,
-            "empatados": 0,
-            "perdidos": 1,
-            "nombreEquipo": "Boca Juniors",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
             "diferenciaGoles": -1,
-            "puntos": 0,
-            "golesFavor": 2
-        },
-        {
-            "golesContra": 0,
-            "empatados": 0,
-            "perdidos": 0,
-            "nombreEquipo": "Gimnasia (LP)",
-            "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 1,
-            "puntos": 3,
-            "golesFavor": 1
-        },
-        {
-            "golesContra": 0,
-            "empatados": 1,
-            "perdidos": 0,
-            "nombreEquipo": "Chacarita Juniors",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": 0,
             "puntos": 1,
             "golesFavor": 0
         },
@@ -1659,89 +1582,166 @@
             "golesContra": 1,
             "empatados": 0,
             "perdidos": 1,
-            "nombreEquipo": "Tigre",
-            "jugados": 1,
+            "nombreEquipo": "San Lorenzo",
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 0,
+            "puntos": 3,
+            "golesFavor": 1
+        },
+        {
+            "golesContra": 2,
+            "empatados": 1,
+            "perdidos": 1,
+            "nombreEquipo": "Lanús",
+            "jugados": 2,
             "ganados": 0,
             "diferenciaGoles": -1,
-            "puntos": 0,
+            "puntos": 1,
+            "golesFavor": 1
+        },
+        {
+            "golesContra": 0,
+            "empatados": 1,
+            "perdidos": 0,
+            "nombreEquipo": "Ferro Carril Oeste",
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 4,
+            "golesFavor": 1
+        },
+        {
+            "golesContra": 1,
+            "empatados": 2,
+            "perdidos": 0,
+            "nombreEquipo": "Huracán",
+            "jugados": 2,
+            "ganados": 0,
+            "diferenciaGoles": 0,
+            "puntos": 2,
+            "golesFavor": 1
+        },
+        {
+            "golesContra": 0,
+            "empatados": 2,
+            "perdidos": 0,
+            "nombreEquipo": "Boca Juniors",
+            "jugados": 2,
+            "ganados": 0,
+            "diferenciaGoles": 0,
+            "puntos": 2,
             "golesFavor": 0
         },
         {
             "golesContra": 0,
             "empatados": 1,
             "perdidos": 0,
-            "nombreEquipo": "Atlanta",
-            "jugados": 1,
+            "nombreEquipo": "Gimnasia (LP)",
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 4,
+            "golesFavor": 1
+        },
+        {
+            "golesContra": 1,
+            "empatados": 1,
+            "perdidos": 0,
+            "nombreEquipo": "Tigre",
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 4,
+            "golesFavor": 2
+        },
+        {
+            "golesContra": 2,
+            "empatados": 0,
+            "perdidos": 2,
+            "nombreEquipo": "Chacarita Juniors",
+            "jugados": 2,
             "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
+            "diferenciaGoles": -2,
+            "puntos": 0,
             "golesFavor": 0
         },
         {
             "golesContra": 0,
             "empatados": 0,
             "perdidos": 0,
-            "nombreEquipo": "Vélez Sarsfield",
-            "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 2,
-            "puntos": 3,
-            "golesFavor": 2
+            "nombreEquipo": "Atlanta",
+            "jugados": 2,
+            "ganados": 2,
+            "diferenciaGoles": 4,
+            "puntos": 6,
+            "golesFavor": 4
         },
         {
-            "golesContra": 0,
-            "empatados": 1,
+            "golesContra": 2,
+            "empatados": 0,
+            "perdidos": 0,
+            "nombreEquipo": "Vélez Sarsfield",
+            "jugados": 2,
+            "ganados": 2,
+            "diferenciaGoles": 4,
+            "puntos": 6,
+            "golesFavor": 6
+        },
+        {
+            "golesContra": 2,
+            "empatados": 2,
             "perdidos": 0,
             "nombreEquipo": "Racing",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
             "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "puntos": 2,
+            "golesFavor": 2
         },
         {
             "golesContra": 0,
             "empatados": 1,
             "perdidos": 0,
             "nombreEquipo": "Estudiantes (LP)",
-            "jugados": 1,
-            "ganados": 0,
-            "diferenciaGoles": 0,
-            "puntos": 1,
-            "golesFavor": 0
+            "jugados": 2,
+            "ganados": 1,
+            "diferenciaGoles": 1,
+            "puntos": 4,
+            "golesFavor": 1
         },
         {
             "golesContra": 1,
-            "empatados": 0,
+            "empatados": 1,
             "perdidos": 1,
             "nombreEquipo": "Platense",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
             "diferenciaGoles": -1,
-            "puntos": 0,
+            "puntos": 1,
             "golesFavor": 0
-        },
-        {
-            "golesContra": 2,
-            "empatados": 0,
-            "perdidos": 0,
-            "nombreEquipo": "River Plate",
-            "jugados": 1,
-            "ganados": 1,
-            "diferenciaGoles": 1,
-            "puntos": 3,
-            "golesFavor": 3
         },
         {
             "golesContra": 0,
-            "empatados": 1,
+            "empatados": 2,
             "perdidos": 0,
             "nombreEquipo": "Colón",
-            "jugados": 1,
+            "jugados": 2,
             "ganados": 0,
             "diferenciaGoles": 0,
-            "puntos": 1,
+            "puntos": 2,
             "golesFavor": 0
+        },
+        {
+            "golesContra": 7,
+            "empatados": 0,
+            "perdidos": 2,
+            "nombreEquipo": "River Plate",
+            "jugados": 2,
+            "ganados": 0,
+            "diferenciaGoles": -4,
+            "puntos": 0,
+            "golesFavor": 3
         }
     ],
     "equiposTorneo": [
@@ -1755,7 +1755,7 @@
                     "habilidadDefensa": 97,
                     "tarjetaLiga": 0,
                     "estadoFisico": 95,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "be84ac9f-9dc0-4a52-9ad7-88cfba1d38ef",
                     "nombre": "Paulo Diaz",
                     "edad": 31,
@@ -1766,13 +1766,13 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 97,
                     "habilidadDefensa": 77,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 76,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "babe284b-55fe-4434-8dc7-81782dd75d0c",
                     "nombre": "Juan Quintero",
                     "edad": 32,
-                    "asistencias": 0,
+                    "asistencias": 2,
                     "nacionalidad": "Colombiana"
                 },
                 {
@@ -1785,20 +1785,20 @@
                     "id": "2dc67e87-5211-4e4a-8c80-457f128afa8d",
                     "nombre": "Santiago Lencina",
                     "edad": 20,
-                    "asistencias": 4,
+                    "asistencias": 0,
                     "nacionalidad": "Argentina"
                 },
                 {
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 96,
                     "habilidadDefensa": 61,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 94,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "2946cd5c-31db-49cc-86fa-07fd5a83cfdd",
                     "nombre": "Maximiliano Salas",
                     "edad": 27,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentina"
                 },
                 {
@@ -1807,11 +1807,11 @@
                     "habilidadDefensa": 83,
                     "tarjetaLiga": 0,
                     "estadoFisico": 86,
-                    "golesConvertidos": 2,
+                    "golesConvertidos": 0,
                     "id": "9020eeaa-786e-4f90-ab93-0816d5b77e28",
                     "nombre": "Juan Carlos Portillo",
                     "edad": 25,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentina"
                 },
                 {
@@ -1837,7 +1837,7 @@
                     "id": "f6bbaa45-7dc0-499d-8d69-8ea2173da11e",
                     "nombre": "Kevin Castano",
                     "edad": 25,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Colombiana"
                 },
                 {
@@ -1859,11 +1859,11 @@
                     "habilidadDefensa": 95,
                     "tarjetaLiga": 0,
                     "estadoFisico": 93,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "f46a9fee-fb41-4701-a061-6798ffd0b6b1",
                     "nombre": "Gonzalo Montiel",
                     "edad": 28,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Chilena"
                 },
                 {
@@ -1872,11 +1872,11 @@
                     "habilidadDefensa": 95,
                     "tarjetaLiga": 0,
                     "estadoFisico": 93,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "977d6a83-6b6f-4494-9dba-30eb586b32cc",
                     "nombre": "Lautaro Rivero",
                     "edad": 21,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentina"
                 },
                 {
@@ -2027,7 +2027,7 @@
                     "habilidadDefensa": 90,
                     "tarjetaLiga": 0,
                     "estadoFisico": 98,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "bd783830-c87c-47d3-83c0-67ab8a2dc0c0",
                     "nombre": "Lautaro Di Lollo",
                     "edad": 21,
@@ -2070,7 +2070,7 @@
                     "id": "05635b62-ac2e-4447-9b4b-a08e47cab1b9",
                     "nombre": "Miguel Merentiel",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -2116,7 +2116,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 90,
                     "habilidadDefensa": 61,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 97,
                     "golesConvertidos": 0,
                     "id": "6f579d5a-fd5f-4cd9-8b35-b1f2a2728daf",
@@ -2148,7 +2148,7 @@
                     "id": "4dd7b6f2-a8e4-405f-bbcc-fe622dd5e1f2",
                     "nombre": "Milton Gimenez",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2157,7 +2157,7 @@
                     "habilidadDefensa": 54,
                     "tarjetaLiga": 0,
                     "estadoFisico": 99,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "04fe7bae-0a2d-4ef6-afdc-3d8778844767",
                     "nombre": "Exequiel Zeballos",
                     "edad": 23,
@@ -2192,7 +2192,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 54,
                     "habilidadDefensa": 93,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 94,
                     "golesConvertidos": 0,
                     "id": "e8f99170-3f75-4fb9-b0df-a06b1e1e60bb",
@@ -2211,16 +2211,16 @@
                     "id": "8d17aafc-0995-4fd9-b1cf-821cda5252fc",
                     "nombre": "Ezequiel Cerutti",
                     "edad": 33,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 57,
                     "habilidadDefensa": 94,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 90,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "441ba82e-20bc-49aa-b086-92f26a58dd41",
                     "nombre": "Elian Baez",
                     "edad": 21,
@@ -2246,7 +2246,7 @@
                     "habilidadDefensa": 71,
                     "tarjetaLiga": 0,
                     "estadoFisico": 85,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "b2b8f973-0059-430b-b1c0-1e448479b90c",
                     "nombre": "Facundo Gulli",
                     "edad": 20,
@@ -2257,7 +2257,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 84,
                     "habilidadDefensa": 74,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 82,
                     "golesConvertidos": 0,
                     "id": "83676676-a8a9-43b7-b56d-51570b89b5a4",
@@ -2283,7 +2283,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 49,
                     "habilidadDefensa": 94,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 98,
                     "golesConvertidos": 0,
                     "id": "527c9b26-323e-463d-8da9-2f37c61a3756",
@@ -2328,7 +2328,7 @@
                     "id": "f1fbfd7e-c8e8-4b15-9e4d-c943811427f6",
                     "nombre": "Ignacio Perruzzi",
                     "edad": 20,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -2427,7 +2427,7 @@
                     "habilidadDefensa": 86,
                     "tarjetaLiga": 0,
                     "estadoFisico": 86,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "73636785-6059-44b8-90c1-1e2fb12f7b50",
                     "nombre": "Milton Valenzuela",
                     "edad": 27,
@@ -2438,7 +2438,7 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 88,
                     "habilidadDefensa": 66,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 88,
                     "golesConvertidos": 0,
                     "id": "f00585fd-cd3c-4881-b645-5e199dae9d0f",
@@ -2490,7 +2490,7 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 88,
                     "habilidadDefensa": 66,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 88,
                     "golesConvertidos": 0,
                     "id": "25b765a3-f4d0-40c2-80c9-2eaa79a77b0c",
@@ -2522,7 +2522,7 @@
                     "id": "9b38348b-9e46-49fb-9d90-304a594cbb5f",
                     "nombre": "Kevin Lomonaco",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentina"
                 },
                 {
@@ -2673,7 +2673,7 @@
                     "habilidadDefensa": 86,
                     "tarjetaLiga": 0,
                     "estadoFisico": 84,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "4f74dc92-344e-4b34-b721-8600a01aacae",
                     "nombre": "Marco Di Cesare",
                     "edad": 23,
@@ -2716,7 +2716,7 @@
                     "id": "71c6b62f-583e-4bfe-bb9e-c07cf106ecba",
                     "nombre": "Santiago Quiros",
                     "edad": 22,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -2725,7 +2725,7 @@
                     "habilidadDefensa": 96,
                     "tarjetaLiga": 0,
                     "estadoFisico": 93,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "32e96425-ca2b-4db2-ab40-dafcc5a74860",
                     "nombre": "Facundo Cambeses",
                     "edad": 28,
@@ -2794,7 +2794,7 @@
                     "id": "5a1ff9bf-7da3-41e7-8adb-73e28ff40130",
                     "nombre": "Gaston Martirena",
                     "edad": 25,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -2932,7 +2932,7 @@
                     "habilidadDefensa": 78,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "385aabf3-7734-486c-a8ee-b33750da1291",
                     "nombre": "José Sosa",
                     "edad": 39,
@@ -3040,7 +3040,7 @@
                     "id": "d1d54b2c-59d2-4b4c-a5f1-95d0df077942",
                     "nombre": "Enzo Pérez",
                     "edad": 38,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3152,11 +3152,11 @@
                     "habilidadDefensa": 75,
                     "tarjetaLiga": 0,
                     "estadoFisico": 83,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 2,
                     "id": "ca11eb6f-b05a-48bf-88f9-30572be5f1d6",
                     "nombre": "Thiago Fernández",
                     "edad": 20,
-                    "asistencias": 0,
+                    "asistencias": 2,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3202,13 +3202,13 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 75,
                     "habilidadDefensa": 85,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 81,
                     "golesConvertidos": 0,
                     "id": "6d5b11c4-eed3-4703-9bf6-65faea5895d9",
                     "nombre": "Lautaro Giannetti",
                     "edad": 30,
-                    "asistencias": 0,
+                    "asistencias": 3,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3228,7 +3228,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 77,
                     "habilidadDefensa": 83,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 81,
                     "golesConvertidos": 0,
                     "id": "d4da5856-4b99-4f6e-a704-671a57abbd2c",
@@ -3243,7 +3243,7 @@
                     "habilidadDefensa": 84,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 2,
                     "id": "0bb308b0-9540-4167-a984-a2bc1f98b301",
                     "nombre": "Christian Ordóñez",
                     "edad": 24,
@@ -3256,7 +3256,7 @@
                     "habilidadDefensa": 81,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "abd381b5-4bab-4dd6-aa2e-2c58877960a6",
                     "nombre": "Lenny Lobato",
                     "edad": 23,
@@ -3269,11 +3269,11 @@
                     "habilidadDefensa": 71,
                     "tarjetaLiga": 0,
                     "estadoFisico": 85,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "9f6e3bbe-1a7c-4c39-9626-54bf12a854a5",
                     "nombre": "Santiago Castro",
                     "edad": 20,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3372,7 +3372,7 @@
                     "habilidadDefensa": 79,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "0e1aa508-5d10-44c3-8833-6901bc7859d7",
                     "nombre": "Matías Melluso",
                     "edad": 27,
@@ -3383,13 +3383,13 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 82,
                     "habilidadDefensa": 72,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 82,
                     "golesConvertidos": 0,
                     "id": "61f9f3b4-2b33-4d00-b21e-a61313c6d03b",
                     "nombre": "Rodrigo Castillo",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -3415,7 +3415,7 @@
                     "id": "7ed49f5e-6834-4949-99d4-46964dfcf102",
                     "nombre": "Benjamín Domínguez",
                     "edad": 21,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3489,11 +3489,11 @@
                     "habilidadDefensa": 70,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "bd4d505c-ca49-43a8-a9d8-a4c94793dfa1",
                     "nombre": "Ivo Mammini",
                     "edad": 21,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3502,7 +3502,7 @@
                     "habilidadDefensa": 77,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "7965508c-ced9-4c28-9b10-5336726bc035",
                     "nombre": "Pablo De Blasis",
                     "edad": 39,
@@ -3565,7 +3565,7 @@
                     "habilidadDefensa": 69,
                     "tarjetaLiga": 0,
                     "estadoFisico": 83,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "7e55c525-a975-4edf-84fe-4a1f11f7ac40",
                     "nombre": "Matías Cóccaro",
                     "edad": 27,
@@ -3673,7 +3673,7 @@
                     "id": "247e88f1-4dd9-4b83-aeba-b9747a6cdd96",
                     "nombre": "Lucas Carrizo",
                     "edad": 27,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3723,7 +3723,7 @@
                     "id": "e7e6c350-53ed-4e3f-a553-881ed707319b",
                     "nombre": "Éver Banega",
                     "edad": 37,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3749,7 +3749,7 @@
                     "id": "50483a49-7236-4821-a8c3-445602dbef93",
                     "nombre": "Brian Aguirre",
                     "edad": 21,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -3784,7 +3784,7 @@
                     "habilidadDefensa": 82,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "e2b142ae-aafc-44de-a495-2082ae3f6177",
                     "nombre": "Armando Méndez",
                     "edad": 29,
@@ -3821,7 +3821,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 73,
                     "habilidadDefensa": 81,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 80,
                     "golesConvertidos": 0,
                     "id": "5872ee2d-3468-4b56-bbaf-9d169dbdf88a",
@@ -3840,7 +3840,7 @@
                     "id": "0ca2bfdf-147e-46a9-af9b-e02466dc438d",
                     "nombre": "Francisco González",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -3969,7 +3969,7 @@
                     "id": "52358e5d-db16-4ea8-ab60-0f563179a7ea",
                     "nombre": "Facundo Mallo",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Uruguayo"
                 },
                 {
@@ -3978,7 +3978,7 @@
                     "habilidadDefensa": 76,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "0ddcba9d-6d80-48c9-a4a7-43b017b90d74",
                     "nombre": "Ignacio Malcorra",
                     "edad": 37,
@@ -3991,11 +3991,11 @@
                     "habilidadDefensa": 73,
                     "tarjetaLiga": 0,
                     "estadoFisico": 82,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "dfa0ae83-6693-42ac-a7b0-67be69ed023a",
                     "nombre": "Agustín Módica",
                     "edad": 21,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4034,7 +4034,7 @@
                     "id": "feecda71-c78c-4192-8684-27caba08f66f",
                     "nombre": "Damián Martínez",
                     "edad": 34,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4073,7 +4073,7 @@
                     "id": "35519210-afcb-4550-bbb4-64a7f4acff84",
                     "nombre": "Kevin Ortiz",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4302,7 +4302,7 @@
                     "habilidadDefensa": 73,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "8cf9304c-fd77-4b4f-89c7-bea66fa6eafe",
                     "nombre": "Ramiro Carrera",
                     "edad": 31,
@@ -4319,7 +4319,7 @@
                     "id": "b4bb0f52-766c-4f3c-8723-7637210577c3",
                     "nombre": "Juan Cáceres",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Paraguayo"
                 },
                 {
@@ -4535,7 +4535,7 @@
                     "habilidadDefensa": 81,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "5a0fa418-f604-412e-ad8e-9c4cca24566e",
                     "nombre": "Alan Rodríguez",
                     "edad": 29,
@@ -4578,7 +4578,7 @@
                     "id": "8c0c3a0a-e9e8-4fad-9cf9-d1fc86a10ad7",
                     "nombre": "Miguel Torrén",
                     "edad": 36,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4591,7 +4591,7 @@
                     "id": "6d74e62f-40d7-4809-b65f-fb919722e5ac",
                     "nombre": "Gastón Verón",
                     "edad": 23,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4613,7 +4613,7 @@
                     "habilidadDefensa": 79,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "1e7b891c-711b-419a-b0a3-16443ea06219",
                     "nombre": "Alan Lescano",
                     "edad": 24,
@@ -4733,7 +4733,19 @@
             }
         },
         {
-            "expulsados": [],
+            "expulsados": [{
+                "posicion": "MEDIOCAMPISTA",
+                "habilidadAtaque": 74,
+                "habilidadDefensa": 80,
+                "tarjetaLiga": 1,
+                "estadoFisico": 79,
+                "golesConvertidos": 1,
+                "id": "d90c2779-baa5-411c-966a-74fb5e49d66c",
+                "nombre": "Pablo Palacio",
+                "edad": 28,
+                "asistencias": 0,
+                "nacionalidad": "Argentino"
+            }],
             "presupuesto": 8000000,
             "titulares": [
                 {
@@ -4746,6 +4758,19 @@
                     "id": "a641a59b-3612-4b48-a394-ca7ecd9c7079",
                     "nombre": "Jonathan Herrera",
                     "edad": 32,
+                    "asistencias": 1,
+                    "nacionalidad": "Argentino"
+                },
+                {
+                    "posicion": "DELANTERO",
+                    "habilidadAtaque": 80,
+                    "habilidadDefensa": 72,
+                    "tarjetaLiga": 0,
+                    "estadoFisico": 79,
+                    "golesConvertidos": 0,
+                    "id": "f3ae02bb-6091-4feb-b686-902913a386ab",
+                    "nombre": "Pablo Tiscornia",
+                    "edad": 23,
                     "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
@@ -4759,19 +4784,6 @@
                     "id": "a3103262-fb13-4507-8d7b-45d528dfa205",
                     "nombre": "Gabriel Díaz",
                     "edad": 30,
-                    "asistencias": 0,
-                    "nacionalidad": "Argentino"
-                },
-                {
-                    "posicion": "MEDIOCAMPISTA",
-                    "habilidadAtaque": 74,
-                    "habilidadDefensa": 80,
-                    "tarjetaLiga": 0,
-                    "estadoFisico": 79,
-                    "golesConvertidos": 0,
-                    "id": "d90c2779-baa5-411c-966a-74fb5e49d66c",
-                    "nombre": "Pablo Palacio",
-                    "edad": 28,
                     "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
@@ -4807,11 +4819,11 @@
                     "habilidadDefensa": 78,
                     "tarjetaLiga": 0,
                     "estadoFisico": 78,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "f8945872-d01f-4fa1-95ca-d61df53ff9bb",
                     "nombre": "Claudio Mosca",
                     "edad": 33,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -4829,8 +4841,8 @@
                 },
                 {
                     "posicion": "ARQUERO",
-                    "habilidadAtaque": 35,
-                    "habilidadDefensa": 79,
+                    "habilidadAtaque": 99,
+                    "habilidadDefensa": 99,
                     "tarjetaLiga": 0,
                     "estadoFisico": 77,
                     "golesConvertidos": 0,
@@ -4846,7 +4858,7 @@
                     "habilidadDefensa": 72,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "cb8a490b-f85c-41ce-95fe-378349802802",
                     "nombre": "Tomás Molina",
                     "edad": 29,
@@ -4876,24 +4888,11 @@
                     "id": "3121c2e5-73d2-4017-9cc6-0746b9e0a73a",
                     "nombre": "Gastón Moreira",
                     "edad": 25,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 }
             ],
             "suplentes": [
-                {
-                    "posicion": "DELANTERO",
-                    "habilidadAtaque": 80,
-                    "habilidadDefensa": 72,
-                    "tarjetaLiga": 0,
-                    "estadoFisico": 79,
-                    "golesConvertidos": 0,
-                    "id": "f3ae02bb-6091-4feb-b686-902913a386ab",
-                    "nombre": "Pablo Tiscornia",
-                    "edad": 23,
-                    "asistencias": 0,
-                    "nacionalidad": "Argentino"
-                },
                 {
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 78,
@@ -5051,7 +5050,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 76,
                     "habilidadDefensa": 79,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 79,
                     "golesConvertidos": 0,
                     "id": "6c78388b-1f4b-429e-b599-5ff7bd7e6c0d",
@@ -5103,7 +5102,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 70,
                     "habilidadDefensa": 81,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 78,
                     "golesConvertidos": 0,
                     "id": "4861ec42-a887-45f0-ab30-2d72021967b8",
@@ -5234,7 +5233,7 @@
                     "habilidadDefensa": 82,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 1,
+                    "golesConvertidos": 0,
                     "id": "cab2e86b-e9a1-4dc7-ac72-8bb81172700b",
                     "nombre": "Alejandro Maciel",
                     "edad": 27,
@@ -5303,7 +5302,7 @@
                     "id": "679462cf-9b8b-4e13-8148-85654c1008e5",
                     "nombre": "Milton Giménez",
                     "edad": 29,
-                    "asistencias": 1,
+                    "asistencias": 0,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -5349,7 +5348,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 67,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 77,
                     "golesConvertidos": 0,
                     "id": "cb42ec53-1288-446c-919f-e3f7801d3e74",
@@ -5504,7 +5503,7 @@
                     "posicion": "MEDIOCAMPISTA",
                     "habilidadAtaque": 74,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 79,
                     "golesConvertidos": 0,
                     "id": "e33a46ec-bcf6-4e3e-b77a-92595f6d59fe",
@@ -5569,7 +5568,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 67,
                     "habilidadDefensa": 80,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 77,
                     "golesConvertidos": 0,
                     "id": "2c973173-62cb-4b89-9b15-8b7d1f561f90",
@@ -5737,7 +5736,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 71,
                     "habilidadDefensa": 84,
-                    "tarjetaLiga": 1,
+                    "tarjetaLiga": 0,
                     "estadoFisico": 82,
                     "golesConvertidos": 0,
                     "id": "89b6b3f1-6db0-49be-b8fd-16a2f72ce280",
@@ -5998,7 +5997,7 @@
                     "habilidadDefensa": 70,
                     "tarjetaLiga": 0,
                     "estadoFisico": 81,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 2,
                     "id": "32610251-c321-43c3-9849-fe6761a2d481",
                     "nombre": "Fabricio Pedrozo",
                     "edad": 31,
@@ -6011,11 +6010,11 @@
                     "habilidadDefensa": 78,
                     "tarjetaLiga": 0,
                     "estadoFisico": 77,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "63332ad3-e817-4e7c-8697-c3d0cc86d353",
                     "nombre": "Martín García",
                     "edad": 24,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -6041,7 +6040,7 @@
                     "id": "147cc37b-de67-4044-bc94-e6beb8b31d26",
                     "nombre": "Tomás Silva",
                     "edad": 22,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -6054,7 +6053,7 @@
                     "id": "bca258e8-380d-4a90-b82e-27f023397d35",
                     "nombre": "Alan Pérez",
                     "edad": 30,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -6063,11 +6062,11 @@
                     "habilidadDefensa": 80,
                     "tarjetaLiga": 0,
                     "estadoFisico": 79,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "1499670b-a490-4d20-8d03-0cf88170a96f",
                     "nombre": "Agustín Bolívar",
                     "edad": 27,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
@@ -6387,7 +6386,7 @@
                     "habilidadDefensa": 74,
                     "tarjetaLiga": 0,
                     "estadoFisico": 80,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "a1b2c3d4-tigr-0007-0000-000000000007",
                     "nombre": "Martín Garay",
                     "edad": 25,
@@ -6400,7 +6399,7 @@
                     "habilidadDefensa": 79,
                     "tarjetaLiga": 0,
                     "estadoFisico": 82,
-                    "golesConvertidos": 0,
+                    "golesConvertidos": 1,
                     "id": "a1b2c3d4-tigr-0006-0000-000000000006",
                     "nombre": "Agustín Cardozo",
                     "edad": 27,
@@ -6417,7 +6416,7 @@
                     "id": "a1b2c3d4-tigr-0002-0000-000000000002",
                     "nombre": "Martín Ortega",
                     "edad": 25,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 },
                 {
@@ -6437,7 +6436,7 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 62,
                     "habilidadDefensa": 77,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 80,
                     "golesConvertidos": 0,
                     "id": "a1b2c3d4-tigr-0005-0000-000000000005",
@@ -6463,7 +6462,7 @@
                     "posicion": "DELANTERO",
                     "habilidadAtaque": 83,
                     "habilidadDefensa": 45,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 82,
                     "golesConvertidos": 0,
                     "id": "a1b2c3d4-tigr-0010-0000-000000000010",
@@ -6502,13 +6501,13 @@
                     "posicion": "DEFENSOR",
                     "habilidadAtaque": 55,
                     "habilidadDefensa": 78,
-                    "tarjetaLiga": 0,
+                    "tarjetaLiga": 1,
                     "estadoFisico": 79,
                     "golesConvertidos": 0,
                     "id": "a1b2c3d4-tigr-0004-0000-000000000004",
                     "nombre": "Kevin Lomónaco",
                     "edad": 23,
-                    "asistencias": 0,
+                    "asistencias": 1,
                     "nacionalidad": "Argentino"
                 }
             ],
