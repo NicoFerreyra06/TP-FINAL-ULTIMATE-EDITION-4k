@@ -28,6 +28,7 @@ public class Partido {
     ArrayList<Gol> goleadores;
 
     private static final double corner = 0.003;
+    private static final double probabilidadaBaseGol = 0.001;
 
     public Partido(Equipo local, Equipo visitante) {
         this.local = local;
@@ -167,10 +168,8 @@ public class Partido {
         int opcion = -1;
         int cambiosRestantes = 5;
 
-        double baseProb = 0.001;
-
-        double probabilidadLocal = baseProb * local.calcularMediaGeneral();
-        double probabilidadVisitante = visitante.calcularMediaGeneral() * baseProb;
+        double probabilidadLocal = probabilidadaBaseGol * local.calcularMediaGeneral();
+        double probabilidadVisitante = visitante.calcularMediaGeneral() * probabilidadaBaseGol;
 
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
@@ -249,8 +248,9 @@ public class Partido {
      */
     public void simularRapido() throws InterruptedException {
 
-        double probabilidadLocal = local.calcularMediaGeneral() * 0.0002;
-        double probabilidadVisitante = visitante.calcularMediaGeneral() * 0.0002;
+        double probabilidadLocal = probabilidadaBaseGol * local.calcularMediaGeneral();
+        double probabilidadVisitante = visitante.calcularMediaGeneral() * probabilidadaBaseGol;
+
         double probabilidadLocalCorner = local.calcularMediaGeneral() / (visitante.calcularMediaGeneral() + 10) * corner;
         double probabilidadVisitanteCorner = visitante.calcularMediaGeneral() / (local.calcularMediaGeneral() + 10) * corner;
 
@@ -308,11 +308,11 @@ public class Partido {
         // ---- 3. ATAQUE NORMAL ----
         else if (evento < 0.4) { // 28% minutos con intento de ataque
             if (random.nextDouble() < probAtaqueLocal) {
-                if (random.nextDouble() < probGolLocal * 2 * multiplicadorUltimosMinutos) {
+                if (random.nextDouble() < probGolLocal ) {
                     gestionarGolesAsistencias(local, true, mostrar, minuto);
                 }
             } else {
-                if (random.nextDouble() < probGolVisitante * 2 * multiplicadorUltimosMinutos) {
+                if (random.nextDouble() < probGolVisitante) {
                     gestionarGolesAsistencias(visitante, false, mostrar, minuto);
                 }
             }

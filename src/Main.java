@@ -209,7 +209,10 @@ void main() {
                 copa = cargarCopa();
 
                 if (liga != null || copa != null) {
-                    String nombreEquipoUsuario = liga.getNombreEquipoUsuario();
+                    String nombreEquipoUsuario = null;
+                    if (liga != null) {
+                        nombreEquipoUsuario = liga.getNombreEquipoUsuario();
+                    }
                     usuarioEquipo = liga.getEquipos().get(nombreEquipoUsuario);
 
                     if (usuarioEquipo == null) {

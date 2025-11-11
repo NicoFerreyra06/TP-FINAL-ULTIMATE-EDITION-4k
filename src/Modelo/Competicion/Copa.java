@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections; // Necesaria para el sorteo (barajar la lista)
 import java.util.Scanner;
 import org.json.*;
+import Interfaces.iToJSON;
 
-public  class Copa extends Torneo {
+public class Copa extends Torneo implements iToJSON{
     private ArrayList<Ronda> rondas;
-    ArrayList<Equipo> ganadores;
+    private ArrayList<Equipo> ganadores;
 
     //Constructor
     public Copa(String nombre) {

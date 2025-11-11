@@ -21,7 +21,6 @@ public class Equipo implements iToJSON {
     private LinkedHashSet <Jugador> Expulsados;
     private int puntos;
     private final Random random;
-    private boolean jugoJornada;
 
     public Equipo() {
         random = new Random();
@@ -179,14 +178,6 @@ public class Equipo implements iToJSON {
 
     public void setExpulsados(LinkedHashSet<Jugador> expulsados) {
         Expulsados = expulsados;
-    }
-
-    public boolean isJugoJornada() {
-        return jugoJornada;
-    }
-
-    public void setJugoJornada(boolean jugoJornada) {
-        this.jugoJornada = jugoJornada;
     }
 
 
