@@ -2,6 +2,7 @@ package Modelo.pPartido;
 
 import Exceptions.JugadorNoEncontradoException;
 import Exceptions.LimiteEntrenamientoException;
+import Interfaces.iToJSON;
 import Modelo.Equipo.Equipo;
 import Modelo.Persona.Jugador;
 import enums.EventoPartido;
@@ -13,7 +14,7 @@ import java.util.*;
  * Clase para simular los partidos entre dos equipos
  * es el corazon de {@link Copa} y {@link Liga}
  */
-public class Partido {
+public class Partido implements iToJSON {
     private final Equipo local;
     private final Equipo visitante;
     private int golesLocal;
@@ -66,7 +67,7 @@ public class Partido {
         this.random = new Random();
     }
 
-    public JSONObject toJson(){
+    public JSONObject toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("local", this.local.toJSON());
         jsonObject.put("visitante", this.visitante.toJSON());
